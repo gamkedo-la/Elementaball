@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Art/Sprites/blue_enemy_prototype.png" type="Texture" id=1]
+[ext_resource path="res://Art/Sprites/blue_enemy_16x32.png" type="Texture" id=1]
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
 [ext_resource path="res://Ball.gd" type="Script" id=3]
 [ext_resource path="res://Art/Sprites/goal_placeholder.png" type="Texture" id=4]
@@ -10,8 +10,8 @@
 [ext_resource path="res://Art/Sprites/blue_player_prototype.png" type="Texture" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 7.30521
-height = 39.9378
+radius = 3.79665
+height = 19.1932
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 13.9318
@@ -20,13 +20,13 @@ radius = 13.9318
 radius = 32.425
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 8.9534
-height = 41.4526
+radius = 4.71782
+height = 19.1438
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 180.927, 115.719 )
+position = Vector2( 32.2008, 74.1879 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -37,7 +37,7 @@ speed = 200
 texture = ExtResource( 8 )
 
 [node name="Position2D" type="Position2D" parent="Player"]
-position = Vector2( 12.2417, -0.00841904 )
+position = Vector2( 6.01735, -0.40572 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource( 1 )
@@ -62,8 +62,8 @@ __meta__ = {
 }
 
 [node name="Ball" type="RigidBody2D" parent="."]
-position = Vector2( 210.983, 133.28 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 38.9399, 73.1371 )
+scale = Vector2( 0.25, 0.25 )
 collision_layer = 2
 gravity_scale = 0.0
 contacts_reported = 1
@@ -89,8 +89,8 @@ __meta__ = {
 
 [node name="Goal" type="Sprite" parent="."]
 modulate = Color( 0, 1, 1, 1 )
-position = Vector2( 588.647, 101.229 )
-scale = Vector2( 1.25, 1.25 )
+position = Vector2( 288.414, 53.1205 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 4 )
 
 [node name="Goal" type="StaticBody2D" parent="Goal"]
@@ -101,7 +101,7 @@ collision_mask = 2
 shape = SubResource( 3 )
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
-position = Vector2( 376.295, 131.585 )
+position = Vector2( 155.17, 79.9518 )
 collision_mask = 3
 script = ExtResource( 5 )
 
@@ -112,7 +112,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 4 )
 
 [node name="Position2D" type="Position2D" parent="Enemy"]
-position = Vector2( -12.1617, -1.0653 )
+position = Vector2( -6.26877, -0.363762 )
 
 [node name="HP" type="Label" parent="Enemy"]
 margin_left = -26.4882
@@ -127,8 +127,8 @@ __meta__ = {
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 318.65, 180.513 )
-scale = Vector2( 1.27612, 0.723331 )
+position = Vector2( 159.547, 89.402 )
+scale = Vector2( 0.639707, 0.358887 )
 texture = ExtResource( 6 )
 
 [connection signal="id_pressed" from="Player/Popup/KickMenu" to="Ball" method="_on_KickMenu_id_pressed"]
