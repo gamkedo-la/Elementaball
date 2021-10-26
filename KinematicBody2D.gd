@@ -25,7 +25,13 @@ func _physics_process(delta):
 		
 	move_and_slide(motion)
 
-func _check_collisions():
-	if get_slide_count() != 0 :
-		for i in range (0,get_slide_count()) :
-			return(get_slide_collision(i))
+func _check_collisions(collider_name):
+	var slide_count = get_slide_count()
+	if slide_count:
+		var collision = get_slide_collision(slide_count - 1)
+		var collider = collision.collider
+		if collider.name == collider_name:
+			return collider
+		else:
+			return null
+			
