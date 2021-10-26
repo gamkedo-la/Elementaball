@@ -16,9 +16,6 @@
 [node name="KickMenu" parent="Popup" index="0"]
 items = [ "Thorns Kick", null, 0, false, false, 0, 0, null, "", false, "Fireball Kick", null, 0, false, false, 1, 0, null, "", false, "Spray Throw", null, 0, false, false, 2, 0, null, "", false ]
 
-[node name="TackleMenu" parent="Popup" index="1"]
-items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Swipe", null, 0, false, false, 1, 0, null, "", false, "Flame Tackle", null, 0, false, false, 2, 0, null, "", false ]
-
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 
 [node name="Goal" parent="." instance=ExtResource( 5 )]
@@ -29,5 +26,8 @@ items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Sw
 
 [connection signal="id_pressed" from="Popup/KickMenu" to="Ball" method="_on_KickMenu_id_pressed"]
 [connection signal="id_pressed" from="Popup/TackleMenu" to="Ball" method="_on_TackleMenu_id_pressed"]
+[connection signal="body_entered" from="Ball/InterceptArea" to="Enemy" method="_on_InterceptArea_body_entered"]
 
 [editable path="Popup"]
+[editable path="Ball"]
+[editable path="Enemy"]
