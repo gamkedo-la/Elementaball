@@ -1,137 +1,29 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Art/Sprites/blue_enemy_16x32.png" type="Texture" id=1]
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
-[ext_resource path="res://Ball.gd" type="Script" id=3]
-[ext_resource path="res://Art/Sprites/goal_placeholder.png" type="Texture" id=4]
-[ext_resource path="res://Enemy.gd" type="Script" id=5]
-[ext_resource path="res://Art/Pitch.png" type="Texture" id=6]
-[ext_resource path="res://Art/Sprites/ballplaceholder.png" type="Texture" id=7]
-[ext_resource path="res://Art/Sprites/blue_player_prototype.png" type="Texture" id=8]
-[ext_resource path="res://Fonts/new_pixellari_font.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Players/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Field and Equipment/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/Popup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Players/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Field and Equipment/Goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Field and Equipment/ParallaxBackground.tscn" type="PackedScene" id=6]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 3.79665
-height = 19.1932
+[node name="Main" type="Node2D"]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 13.9318
+[node name="Player" parent="." instance=ExtResource( 1 )]
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 32.425
+[node name="Popup" parent="." instance=ExtResource( 3 )]
 
-[sub_resource type="CapsuleShape2D" id=4]
-radius = 4.71782
-height = 19.1438
-
-[node name="Node2D" type="Node2D"]
-
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 32.2008, 74.1879 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-speed = 100
-
-[node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 8 )
-
-[node name="Position2D" type="Position2D" parent="Player"]
-position = Vector2( 6.01735, -0.40572 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 1 )
-
-[node name="Popup" type="Popup" parent="Player"]
-visible = true
-margin_left = 44.0
-margin_top = 20.0
-margin_right = 54.0
-margin_bottom = 30.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="KickMenu" type="PopupMenu" parent="Player/Popup"]
-margin_top = 0.0558777
-margin_right = 86.0
-margin_bottom = 52.0559
-custom_fonts/font = ExtResource( 9 )
+[node name="KickMenu" parent="Popup" index="0"]
 items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick", null, 0, false, false, 1, 0, null, "", false ]
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Ball" type="RigidBody2D" parent="."]
-position = Vector2( 38.9399, 73.1371 )
-scale = Vector2( 0.25, 0.25 )
-collision_layer = 2
-gravity_scale = 0.0
-contacts_reported = 1
-contact_monitor = true
-can_sleep = false
-script = ExtResource( 3 )
+[node name="Ball" parent="." instance=ExtResource( 2 )]
 
-[node name="Sprite" type="Sprite" parent="Ball"]
-position = Vector2( 0.269226, -0.225494 )
-scale = Vector2( 0.447539, 0.438769 )
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Goal" parent="." instance=ExtResource( 5 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-position = Vector2( 0.074707, -0.0558777 )
-shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
 
-[node name="Goal" type="Sprite" parent="."]
-modulate = Color( 0, 1, 1, 1 )
-position = Vector2( 288.414, 53.1205 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 4 )
+[node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 
-[node name="Goal" type="StaticBody2D" parent="Goal"]
-collision_layer = 0
-collision_mask = 2
+[connection signal="id_pressed" from="Popup/KickMenu" to="Ball" method="_on_KickMenu_id_pressed"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/Goal"]
-shape = SubResource( 3 )
-
-[node name="Enemy" type="KinematicBody2D" parent="."]
-position = Vector2( 185.723, 70.8173 )
-collision_mask = 3
-script = ExtResource( 5 )
-
-[node name="Sprite" type="Sprite" parent="Enemy"]
-texture = ExtResource( 1 )
-
-[node name="EnemyCollider" type="CollisionShape2D" parent="Enemy"]
-shape = SubResource( 4 )
-
-[node name="Position2D" type="Position2D" parent="Enemy"]
-position = Vector2( -6.26877, -0.363762 )
-
-[node name="HP" type="Label" parent="Enemy"]
-margin_left = -17.6688
-margin_top = -24.4145
-margin_right = 39.3312
-margin_bottom = -10.4145
-rect_scale = Vector2( 0.64, 0.64 )
-text = "HP: Num"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 159.547, 89.402 )
-scale = Vector2( 0.639707, 0.358887 )
-texture = ExtResource( 6 )
-
-[connection signal="id_pressed" from="Player/Popup/KickMenu" to="Ball" method="_on_KickMenu_id_pressed"]
-[connection signal="index_pressed" from="Player/Popup/KickMenu" to="Ball" method="_on_KickMenu_index_pressed"]
+[editable path="Popup"]

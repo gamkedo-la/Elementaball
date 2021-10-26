@@ -44,8 +44,8 @@ func _physics_process(delta):
 func _input(event):
 	if dribbling == true and Input.is_action_just_pressed("ui_kick"):
 		dribbling = false
-		get_node("../Player/Popup/KickMenu").popup()
-		get_node("../Player/Popup/KickMenu").rect_position = get_node("../Player/Position2D").global_position
+		get_node("../Popup/KickMenu").popup()
+		get_node("../Popup/KickMenu").rect_position = get_node("../Player/Position2D").global_position
 	if enemyPossession == true and Input.is_action_just_pressed("ui_kick"):
 		var bodies = [get_node("../Player")._check_collisions()]
 		if bodies.size() > 0:

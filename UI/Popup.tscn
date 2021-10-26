@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Fonts/new_pixellari_font.tres" type="DynamicFont" id=1]
+
+[node name="Popup" type="Popup"]
+visible = true
+margin_left = 76.2008
+margin_top = 94.1879
+margin_right = 86.2008
+margin_bottom = 104.188
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KickMenu" type="PopupMenu" parent="."]
+margin_top = 0.0558777
+margin_right = 86.0
+margin_bottom = 52.0559
+custom_fonts/font = ExtResource( 1 )
+items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick", null, 0, false, false, 1, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
