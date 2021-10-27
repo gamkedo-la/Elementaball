@@ -38,6 +38,7 @@ func _physics_process(delta):
 						body.HP -= 10
 					kicking = false
 					enemyPossession = true
+					get_node("../Enemy").intercepting = false
 				if body.name == "Goal":
 					kicking = false
 					goal = true
