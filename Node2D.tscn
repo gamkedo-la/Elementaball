@@ -14,6 +14,7 @@ radius = 42.2346
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 157.008, 74.1879 )
 
 [node name="Popup" parent="." instance=ExtResource( 3 )]
 
@@ -21,15 +22,19 @@ radius = 42.2346
 items = [ "Thorns Kick", null, 0, false, false, 0, 0, null, "", false, "Fireball Kick", null, 0, false, false, 1, 0, null, "", false, "Spray Throw", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
+position = Vector2( 164.415, 74.4719 )
 
 [node name="Goal" parent="." instance=ExtResource( 5 )]
+position = Vector2( 405.212, 69.806 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 321.877, 72.8196 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
+follow_viewport_enable = true
 
 [node name="DefenseZone" type="Area2D" parent="."]
-position = Vector2( 185.752, 81.0718 )
+position = Vector2( 321.906, 73.7302 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone"]
 shape = SubResource( 1 )
@@ -48,3 +53,4 @@ script = ExtResource( 7 )
 [editable path="Ball"]
 [editable path="Enemy"]
 [editable path="Enemy/InterceptArea"]
+[editable path="ParallaxBackground"]

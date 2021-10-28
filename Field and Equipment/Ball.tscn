@@ -15,6 +15,14 @@ contact_monitor = true
 can_sleep = false
 script = ExtResource( 2 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0.074707, -0.0558777 )
+scale = Vector2( 0.25, 0.25 )
+current = true
+smoothing_enabled = true
+offset_h = 0.1
+offset_v = 0.1
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.0308533, 0.0106812 )
 scale = Vector2( 0.114118, 0.101814 )

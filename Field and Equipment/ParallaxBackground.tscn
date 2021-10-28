@@ -1,10 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Art/Pitch.png" type="Texture" id=1]
+[ext_resource path="res://Art/Placeholder Pitch.png" type="Texture" id=1]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 159.547, 89.402 )
-scale = Vector2( 0.639707, 0.358887 )
 texture = ExtResource( 1 )
