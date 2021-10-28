@@ -4,11 +4,10 @@
 [ext_resource path="res://Field and Equipment/Ball.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 13.9318
+radius = 13.3805
 
 [node name="Ball" type="RigidBody2D"]
 position = Vector2( 38.9399, 73.1371 )
-scale = Vector2( 0.25, 0.25 )
 collision_layer = 2
 gravity_scale = 0.0
 contacts_reported = 1
@@ -17,15 +16,13 @@ can_sleep = false
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.269226, -0.225494 )
-scale = Vector2( 0.447539, 0.438769 )
+position = Vector2( 0.0308533, 0.0106812 )
+scale = Vector2( 0.114118, 0.101814 )
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.074707, -0.0558777 )
+scale = Vector2( 0.25, 0.25 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
