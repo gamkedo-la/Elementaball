@@ -47,7 +47,7 @@ func _move_to_target():
 		_try_steal();
 
 func _on_InterceptArea_body_entered(body):
-	if body.name == "Enemy":
+	if body.name == "Player" and ball.enemyPossession == false:
 		intercepting = true
 		
 func _try_steal():
@@ -58,7 +58,7 @@ func _try_steal():
 
 
 func _on_InterceptArea_body_exited(body):
-	if body.name == "Enemy":
+	if body.name == "Player" and ball.enemyPossession == false:
 		intercepting = false
 
 

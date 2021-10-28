@@ -35,12 +35,12 @@ shape = SubResource( 1 )
 
 [connection signal="id_pressed" from="Popup/KickMenu" to="Ball" method="_on_KickMenu_id_pressed"]
 [connection signal="id_pressed" from="Popup/TackleMenu" to="Ball" method="_on_TackleMenu_id_pressed"]
-[connection signal="body_entered" from="Ball/InterceptArea" to="Enemy" method="_on_InterceptArea_body_entered"]
-[connection signal="body_exited" from="Ball/InterceptArea" to="Enemy" method="_on_InterceptArea_body_exited"]
+[connection signal="body_entered" from="Enemy/InterceptArea" to="Enemy" method="_on_InterceptArea_body_entered"]
+[connection signal="body_exited" from="Enemy/InterceptArea" to="Enemy" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="DefenseZone" to="Enemy" method="_on_DefenseZone_body_entered"]
 [connection signal="body_exited" from="DefenseZone" to="Enemy" method="_on_DefenseZone_body_exited"]
 
 [editable path="Popup"]
 [editable path="Ball"]
-[editable path="Ball/InterceptArea"]
 [editable path="Enemy"]
+[editable path="Enemy/InterceptArea"]
