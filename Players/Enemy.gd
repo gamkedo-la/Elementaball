@@ -13,7 +13,7 @@ func _process(delta):
 	self.get_node("HP").text = ("HP:" + str(HP))
 
 func _physics_process(delta):	
-	#if the ball's range collides with the enemy
+	#if the enemy's defense range collides with the ball
 	if intercepting == true:
 		destination = ball.global_position
 		#the enemy moves toward the ball TODO: while blocking own goal
