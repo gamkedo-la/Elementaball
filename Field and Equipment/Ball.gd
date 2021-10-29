@@ -61,11 +61,12 @@ func _on_KickMenu_id_pressed(id):
 	kicking = true
 	get_node("CollisionShape2D").disabled = false
 	kickID = id
+	#TODO get these kicks to pass variables identifying what type they are so a function can calculate the damage
 	if id == 0:
 		get_node("Sprite").modulate = Color(0,255,0)
 	if id == 1:
 		get_node("Sprite").modulate = Color(255,0,0)
-	if id == 1:
+	if id == 2:
 		get_node("Sprite").modulate = Color(0,0,255)
 	self.mode = RigidBody2D.MODE_RIGID
 	var goal_position = get_node("../Goal").position
