@@ -28,7 +28,9 @@ items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Sw
 position = Vector2( 164.415, 74.4719 )
 
 [node name="Goal" parent="." instance=ExtResource( 5 )]
-position = Vector2( 405.212, 69.806 )
+modulate = Color( 1, 1, 1, 1 )
+show_behind_parent = true
+position = Vector2( 402.689, 78.6354 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 321.877, 72.8196 )
