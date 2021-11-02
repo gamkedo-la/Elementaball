@@ -84,3 +84,4 @@ func _on_TackleMenu_id_pressed(id):
 	if id == 2:
 		target.HP -= 5
 	dribbling = true
+	enemyPossession = false

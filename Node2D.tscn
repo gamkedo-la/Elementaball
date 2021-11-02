@@ -73,20 +73,20 @@ position = Vector2( 164.415, 74.4719 )
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 402.689, 63.1582 )
-frame = 0
+frame = 7
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -85.4805, 63.1582 )
 frames = SubResource( 9 )
-frame = 6
+frame = 5
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 321.877, 72.8196 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 347.268, -10.4794 )
+position = Vector2( 237.266, 16.2777 )
 
 [node name="Sprite" parent="Enemy2" index="0"]
 texture = ExtResource( 9 )
@@ -95,6 +95,18 @@ texture = ExtResource( 9 )
 rotation = 1.52987
 
 [node name="Position2D" parent="Enemy2" index="2"]
+position = Vector2( -11.7001, 3.85023 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 236.077, 162.55 )
+
+[node name="Sprite" parent="Enemy3" index="0"]
+texture = ExtResource( 9 )
+
+[node name="EnemyCollider" parent="Enemy3" index="1"]
+rotation = 1.52987
+
+[node name="Position2D" parent="Enemy3" index="2"]
 position = Vector2( -11.7001, 3.85023 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
@@ -106,6 +118,18 @@ position = Vector2( 321.906, 73.7302 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone"]
 shape = SubResource( 10 )
 
+[node name="DefenseZone2" type="Area2D" parent="."]
+position = Vector2( 236.878, 14.8644 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone2"]
+shape = SubResource( 10 )
+
+[node name="DefenseZone3" type="Area2D" parent="."]
+position = Vector2( 236.878, 162.921 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone3"]
+shape = SubResource( 10 )
+
 [node name="Scene Controller" type="Node" parent="."]
 script = ExtResource( 7 )
 
@@ -115,12 +139,19 @@ script = ExtResource( 7 )
 [connection signal="body_exited" from="Enemy/InterceptArea" to="Enemy" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_entered"]
 [connection signal="body_exited" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_exited"]
+[connection signal="body_entered" from="Enemy3/InterceptArea" to="Enemy3" method="_on_InterceptArea_body_entered"]
+[connection signal="body_exited" from="Enemy3/InterceptArea" to="Enemy3" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="DefenseZone" to="Enemy" method="_on_DefenseZone_body_entered"]
 [connection signal="body_exited" from="DefenseZone" to="Enemy" method="_on_DefenseZone_body_exited"]
+[connection signal="body_entered" from="DefenseZone2" to="Enemy" method="_on_DefenseZone_body_entered"]
+[connection signal="body_exited" from="DefenseZone2" to="Enemy" method="_on_DefenseZone_body_exited"]
+[connection signal="body_entered" from="DefenseZone3" to="Enemy" method="_on_DefenseZone_body_entered"]
+[connection signal="body_exited" from="DefenseZone3" to="Enemy" method="_on_DefenseZone_body_exited"]
 
 [editable path="Popup"]
 [editable path="Ball"]
 [editable path="Enemy"]
 [editable path="Enemy/InterceptArea"]
 [editable path="Enemy2"]
+[editable path="Enemy3"]
 [editable path="ParallaxBackground"]
