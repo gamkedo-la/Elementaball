@@ -8,49 +8,49 @@
 [ext_resource path="res://Field and Equipment/ParallaxBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scene Controller.gd" type="Script" id=7]
 [ext_resource path="res://Art/Sprites/enemy_goal.png" type="Texture" id=8]
-[ext_resource path="res://Art/Sprites/dragito_prototype.png" type="Texture" id=9]
+[ext_resource path="res://Art/Sprites/dragito_enemy.png" type="Texture" id=9]
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 64, 128 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 8 )
 region = Rect2( 64, 0, 64, 128 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 8 )
 region = Rect2( 128, 0, 64, 128 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 8 )
 region = Rect2( 192, 0, 64, 128 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 8 )
 region = Rect2( 256, 0, 64, 128 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 8 )
 region = Rect2( 320, 0, 64, 128 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 8 )
 region = Rect2( 384, 0, 64, 128 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 8 )
 region = Rect2( 448, 0, 64, 128 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=10]
 radius = 42.2346
 
 [node name="Main" type="Node2D"]
@@ -73,14 +73,14 @@ position = Vector2( 164.415, 74.4719 )
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 402.689, 63.1582 )
-frame = 5
+frame = 6
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -85.4805, 63.1582 )
-frames = SubResource( 2 )
-frame = 2
+frames = SubResource( 9 )
+frame = 4
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 321.877, 72.8196 )
@@ -98,7 +98,7 @@ follow_viewport_enable = true
 position = Vector2( 321.906, 73.7302 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone"]
-shape = SubResource( 1 )
+shape = SubResource( 10 )
 
 [node name="Scene Controller" type="Node" parent="."]
 script = ExtResource( 7 )
