@@ -5,12 +5,10 @@ var destination = Vector2()
 var intercepting = false
 var inDefenseZone = true
 export var speed = 150
+var maxHP = 50
 var HP = 50
 
 onready var ball = get_node("../Ball")
-
-func _process(delta):
-	self.get_node("HP").text = ("HP:" + str(HP))
 
 func _physics_process(delta):	
 	#if the enemy's defense range collides with the ball

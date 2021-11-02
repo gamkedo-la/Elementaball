@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 var motion = Vector2()
 export var speed = 300
+var HP = 50
+var maxHP = 50
 
 func _physics_process(delta):
 	if get_node("../Ball").dribbling == true or get_node("../Ball").enemyPossession == true:

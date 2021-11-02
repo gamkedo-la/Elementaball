@@ -37,6 +37,7 @@ func _physics_process(delta):
 						body.HP -= 5
 					if kickID == 2:
 						body.HP -= 10
+					body.get_node("Health Bar").update_healthbar(body.HP)
 					kicking = false
 					enemyPossession = true
 					possessionNode = body.get_node("Position2D")
@@ -83,5 +84,6 @@ func _on_TackleMenu_id_pressed(id):
 		target.HP -= 10
 	if id == 2:
 		target.HP -= 5
+	target.get_node("Health Bar").update_healthbar(target.HP)
 	dribbling = true
 	enemyPossession = false

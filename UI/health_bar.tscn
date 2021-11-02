@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/health_bar_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Art/UI/health_bar_foreground.png" type="Texture" id=3]
+[ext_resource path="res://UI/health_bar.gd" type="Script" id=4]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/health_bar_progress.png-0fa9ec12758b2abaf09ec66f0da635dc.stex"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health Bar" type="TextureProgress" parent="."]
+margin_top = -1.0
+margin_right = 16.0
+margin_bottom = 5.0
+theme = ExtResource( 1 )
+value = 55.0
+texture_over = ExtResource( 3 )
+texture_progress = SubResource( 1 )
