@@ -3,6 +3,7 @@ extends RigidBody2D
 
 var dribbling = true
 var kicking = false
+var selecting = false
 var kickID
 var target
 var goal = false
@@ -49,14 +50,16 @@ func _physics_process(delta):
 		self.get_node("Sprite").visible = false
 		
 func _input(event):
-	if dribbling == true and Input.is_action_just_pressed("ui_kick"):
+	if dribbling == true and Input.is_action_just_pressed("ui_kick") and selecting == false:
 		dribbling = false
+		selecting = true
 		get_node("../Popup/KickMenu").popup()
 		get_node("../Popup/KickMenu").rect_position = get_node("../Player/Position2D").global_position
-	if enemyPossession == true and Input.is_action_just_pressed("ui_kick"):
+	if enemyPossession == true and Input.is_action_just_pressed("ui_steal") and selecting == false:
 		if get_node("../Player")._check_collisions("Enemy") != null:
 			target = get_node("../Player")._check_collisions("Enemy")
 			enemyPossession = false
+			selecting = true
 			get_node("../Popup/TackleMenu").popup()
 			get_node("../Popup/TackleMenu").rect_position = get_node("../Player/Position2D").global_position
 
@@ -74,6 +77,7 @@ func _on_KickMenu_id_pressed(id):
 	self.mode = RigidBody2D.MODE_RIGID
 	var goal_position = get_node("../Goal").position
 	self.linear_velocity = ((goal_position - self.position) * kickSpeed)
+	selecting = false
 
 
 func _on_TackleMenu_id_pressed(id):
@@ -85,5 +89,7 @@ func _on_TackleMenu_id_pressed(id):
 	if id == 2:
 		target.HP -= 5
 	target.get_node("Health Bar").update_healthbar(target.HP)
+	selecting = false
 	dribbling = true
 	enemyPossession = false
+
