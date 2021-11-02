@@ -7,6 +7,7 @@ var kickID
 var target
 var goal = false
 var enemyPossession = false
+var possessionNode
 export var kickSpeed = 1
 
 func _ready():
@@ -23,7 +24,7 @@ func _physics_process(delta):
 	if enemyPossession == true:
 		self.mode = RigidBody2D.MODE_KINEMATIC
 		get_node("CollisionShape2D").disabled = true
-		self.position = get_node("../Enemy/Position2D").global_position
+		self.position = possessionNode.global_position
 	
 	if kicking == true:
 		var bodies=get_colliding_bodies()
@@ -38,7 +39,8 @@ func _physics_process(delta):
 						body.HP -= 10
 					kicking = false
 					enemyPossession = true
-					get_node("../Enemy").intercepting = false
+					possessionNode = body.get_node("Position2D")
+					body.intercepting = false
 				if body.name == "Goal":
 					kicking = false
 					goal = true

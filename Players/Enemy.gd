@@ -41,7 +41,7 @@ func _check_collisions():
 		
 func _move_to_target():
 	var distance2Target = destination.distance_to(self.position); 
-	if(distance2Target > 5): 
+	if(distance2Target > 20): 
 		move_and_slide(velocity);
 	elif (destination == ball.global_position and ball.kicking == false):
 		_try_steal();
@@ -55,6 +55,7 @@ func _try_steal():
 	ball.kicking = false
 	ball.dribbling = false
 	ball.enemyPossession = true
+	ball.possessionNode = get_node("Position2D")
 
 
 func _on_InterceptArea_body_exited(body):

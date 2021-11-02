@@ -30,7 +30,7 @@ func _check_collisions(collider_name):
 	if slide_count:
 		var collision = get_slide_collision(slide_count - 1)
 		var collider = collision.collider
-		if collider.name == collider_name:
+		if collider_name in collider.name:
 			return collider
 		else:
 			return null

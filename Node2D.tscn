@@ -73,14 +73,14 @@ position = Vector2( 164.415, 74.4719 )
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 402.689, 63.1582 )
-frame = 6
+frame = 0
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -85.4805, 63.1582 )
 frames = SubResource( 9 )
-frame = 4
+frame = 6
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 321.877, 72.8196 )
@@ -90,6 +90,12 @@ position = Vector2( 347.268, -10.4794 )
 
 [node name="Sprite" parent="Enemy2" index="0"]
 texture = ExtResource( 9 )
+
+[node name="EnemyCollider" parent="Enemy2" index="1"]
+rotation = 1.52987
+
+[node name="Position2D" parent="Enemy2" index="2"]
+position = Vector2( -11.7001, 3.85023 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 follow_viewport_enable = true
