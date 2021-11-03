@@ -31,7 +31,7 @@ func _physics_process(delta):
 		var bodies=get_colliding_bodies()
 		if bodies.size() > 0:
 			for body in bodies:
-				if body.name == "Enemy":
+				if "Enemy" in body.name:
 					if kickID == 0:
 						body.HP -= 20
 					if kickID == 1:
