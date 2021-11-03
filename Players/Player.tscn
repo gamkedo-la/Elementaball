@@ -9,14 +9,13 @@ radius = 3.79665
 height = 19.1932
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 32.2008, 74.1879 )
+position = Vector2( 32.3776, 74.1879 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 100
 
-[node name="Control" parent="." instance=ExtResource( 3 )]
+[node name="Health Bar" parent="." instance=ExtResource( 3 )]
 margin_left = -8.3085
 margin_top = -23.1578
 margin_right = -8.3085

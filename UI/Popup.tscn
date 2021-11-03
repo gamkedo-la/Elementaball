@@ -30,3 +30,13 @@ items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Sw
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BlockMenu" type="PopupMenu" parent="."]
+margin_top = 0.0558777
+margin_right = 86.0
+margin_bottom = 52.0559
+custom_fonts/font = ExtResource( 1 )
+items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping Wave", null, 0, false, false, 1, 0, null, "", false, "Flame Wall", null, 0, false, false, 2, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}

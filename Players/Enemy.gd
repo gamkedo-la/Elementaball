@@ -4,6 +4,7 @@ var velocity = Vector2()
 var destination = Vector2()
 var intercepting = false
 var inDefenseZone = true
+var stealCooldown = false
 export var starting_stats : Resource
 var type : String = "Type"
 var HP : int
@@ -57,7 +58,7 @@ func _move_to_target():
 	var distance2Target = destination.distance_to(self.position); 
 	if(distance2Target > 20): 
 		move_and_slide(velocity);
-	elif (destination == ball.global_position and ball.kicking == false):
+	elif (destination == ball.global_position and ball.kicking == false and stealCooldown == false):
 		_try_steal();
 
 func _on_InterceptArea_body_entered(body):
@@ -65,11 +66,22 @@ func _on_InterceptArea_body_entered(body):
 		intercepting = true
 		
 func _try_steal():
+	stealCooldown = true
+	ball.target = get_node("../Player")
+	ball.calc_tackle_damage(type)
+	yield(ball, "calculated")
 	intercepting = false
 	ball.kicking = false
 	ball.dribbling = false
 	ball.enemyPossession = true
 	ball.possessionNode = get_node("Position2D")
+	start_steal_cooldown()
+
+func start_steal_cooldown():
+	stealCooldown = true
+	var cooldownTimer = get_tree().create_timer(5.0)
+	yield(cooldownTimer, "timeout")
+	stealCooldown = false
 
 
 func _on_InterceptArea_body_exited(body):

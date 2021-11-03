@@ -1,12 +1,30 @@
 extends KinematicBody2D
 
 var motion = Vector2()
-export var speed = 300
-var HP = 50
+var beingTackled = false
+
+export var starting_stats : Resource
+var type : String = "Type"
+var HP : int
 var maxHP = 50
+var agility : int
+var power : int
+var speed : int
+
+func _ready():
+	initialize_stats(starting_stats)
+	
+func initialize_stats(stats : StartingStats):
+	type = stats.type
+	HP = stats.HP
+	maxHP = stats.maxHP
+	agility = stats.agility
+	power = stats.power
+	speed = stats.speed
+	get_node("Health Bar").update_healthbar(maxHP)
 
 func _physics_process(delta):
-	if get_node("../Ball").dribbling == true or get_node("../Ball").enemyPossession == true:
+	if (get_node("../Ball").dribbling == true or get_node("../Ball").enemyPossession == true):
 		if Input.is_action_pressed("ui_right"):
 			motion.x = speed
 		

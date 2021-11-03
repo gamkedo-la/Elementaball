@@ -59,6 +59,7 @@ radius = 42.2346
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 157.008, 74.1879 )
+starting_stats = ExtResource( 10 )
 
 [node name="Popup" parent="." instance=ExtResource( 3 )]
 
@@ -68,6 +69,9 @@ items = [ "Thorns Kick", null, 0, false, false, 0, 0, null, "", false, "Fireball
 [node name="TackleMenu" parent="Popup" index="1"]
 items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Swipe", null, 0, false, false, 1, 0, null, "", false, "Flame Tackle", null, 0, false, false, 2, 0, null, "", false ]
 
+[node name="BlockMenu" parent="Popup" index="2"]
+items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping Wave", null, 0, false, false, 1, 0, null, "", false, "Flame Wall", null, 0, false, false, 2, 0, null, "", false ]
+
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 164.415, 74.4719 )
 
@@ -75,14 +79,13 @@ position = Vector2( 164.415, 74.4719 )
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 402.689, 63.1582 )
-frame = 6
+frame = 5
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -85.4805, 63.1582 )
 frames = SubResource( 9 )
-frame = 4
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 321.877, 72.8196 )
@@ -140,6 +143,7 @@ script = ExtResource( 7 )
 
 [connection signal="id_pressed" from="Popup/KickMenu" to="Ball" method="_on_KickMenu_id_pressed"]
 [connection signal="id_pressed" from="Popup/TackleMenu" to="Ball" method="_on_TackleMenu_id_pressed"]
+[connection signal="id_pressed" from="Popup/BlockMenu" to="Ball" method="_on_BlockMenu_id_pressed"]
 [connection signal="body_entered" from="Enemy/InterceptArea" to="Enemy" method="_on_InterceptArea_body_entered"]
 [connection signal="body_exited" from="Enemy/InterceptArea" to="Enemy" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_entered"]
@@ -153,6 +157,7 @@ script = ExtResource( 7 )
 [connection signal="body_entered" from="DefenseZone3" to="Enemy" method="_on_DefenseZone_body_entered"]
 [connection signal="body_exited" from="DefenseZone3" to="Enemy" method="_on_DefenseZone_body_exited"]
 
+[editable path="Player"]
 [editable path="Popup"]
 [editable path="Ball"]
 [editable path="Enemy"]

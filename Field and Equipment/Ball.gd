@@ -6,6 +6,10 @@ var kicking = false
 var selecting = false
 var kickID
 var target
+var blockType
+signal blocked
+signal calculated
+var totalDamage
 var goal = false
 var enemyPossession = false
 var possessionNode
@@ -36,6 +40,7 @@ func _physics_process(delta):
 				if body.name == "Goal":
 					kicking = false
 					goal = true
+					
 	if goal == true:
 		self.get_node("Sprite").visible = false
 		
@@ -45,10 +50,10 @@ func _input(event):
 		selecting = true
 		get_node("../Popup/KickMenu").popup()
 		get_node("../Popup/KickMenu").rect_position = get_node("../Player/Position2D").global_position
+		
 	if enemyPossession == true and Input.is_action_just_pressed("ui_steal") and selecting == false:
 		if get_node("../Player")._check_collisions("Enemy") != null:
 			target = get_node("../Player")._check_collisions("Enemy")
-			enemyPossession = false
 			selecting = true
 			get_node("../Popup/TackleMenu").popup()
 			get_node("../Popup/TackleMenu").rect_position = get_node("../Player/Position2D").global_position
@@ -72,14 +77,13 @@ func _on_KickMenu_id_pressed(id):
 func calc_intercept_damage(interceptor):
 	var kickType
 	var baseDamage = 10
-	var totalDamage
 	#TODO: These need to be changed to take in the type of the ability selected
 	if kickID == 0:
-		kickType = "green"
+		kickType = "Green"
 	if kickID == 1:
-		kickType = "red"
+		kickType = "Red"
 	if kickID == 2:
-		kickType = "blue"
+		kickType = "Blue"
 	
 	totalDamage = calc_element_damage(kickType, interceptor.type, baseDamage)
 	interceptor.HP -= totalDamage	
@@ -93,42 +97,91 @@ func _on_TackleMenu_id_pressed(id):
 	var tackleType
 	#TODO: These need to be changed to take in the type of the ability selected
 	if id == 0:
-		tackleType = "green"
+		tackleType = "Green"
 	if id == 1:
-		tackleType = "blue"
+		tackleType = "Blue"
 	if id == 2:
-		tackleType = "red"
+		tackleType = "Red"
 	calc_tackle_damage(tackleType)
-
+	selecting = false
+	
 func calc_tackle_damage(tackleType):
 	var baseDamage = 5
-	var totalDamage = calc_element_damage(tackleType, target.type, baseDamage)
-	target.HP -= totalDamage	
-	target.get_node("Health Bar").update_healthbar(target.HP)
-	selecting = false
-	dribbling = true
-	enemyPossession = false
+	totalDamage = calc_element_damage(tackleType, target.type, baseDamage)
 	
-#TODO: Create menu and calc function for blocking moves
-
+	#if enemy is tackling the player, they have a chance to defend. TODO: Allow AI to defend as well
+	if enemyPossession == true:
+		emit_signal("calculated")
+		target.HP -= totalDamage	
+		target.get_node("Health Bar").update_healthbar(target.HP)
+		target.start_steal_cooldown()
+		enemyPossession = false
+		dribbling = true
+	else:
+		selecting = true
+		dribbling = false
+		get_node("../Popup/BlockMenu").popup()
+		get_node("../Popup/BlockMenu").rect_position = get_node("../Player/Position2D").global_position
+		
+		yield(self, "blocked")
+		
+		var damageReduction = calc_damage_reduction(tackleType, blockType)
+		totalDamage = (totalDamage * damageReduction)
+		target.HP -= totalDamage	
+		target.get_node("Health Bar").update_healthbar(target.HP)
+		emit_signal("calculated")
+	
+func _on_BlockMenu_id_pressed(id):
+	#TODO: These need to be changed to take in the type of the ability selected
+	if id == 0:
+		blockType = "Green"
+	if id == 1:
+		blockType = "Blue"
+	if id == 2:
+		blockType = "Red"
+	selecting = false
+	emit_signal("blocked")
+	
 func calc_element_damage(attackType, defenderType, baseDamage):
 	var totalDamage
-	if attackType == "green" and defenderType == "Green":
+	if attackType == "Green" and defenderType == "Green":
 		totalDamage = baseDamage
-	elif attackType == "green" and defenderType == "Red":
+	elif attackType == "Green" and defenderType == "Red":
 		totalDamage = (baseDamage/2)
-	elif attackType == "green" and defenderType == "Blue":
+	elif attackType == "Green" and defenderType == "Blue":
 		totalDamage = (baseDamage*2)
-	elif attackType == "red" and defenderType == "Green":
+	elif attackType == "Red" and defenderType == "Green":
 		totalDamage = (baseDamage*2)
-	elif attackType == "red" and defenderType == "Red":
+	elif attackType == "Red" and defenderType == "Red":
 		totalDamage = baseDamage
-	elif attackType == "red" and defenderType == "Blue":
+	elif attackType == "Red" and defenderType == "Blue":
 		totalDamage = (baseDamage/2)
-	elif attackType == "blue" and defenderType == "Green":
+	elif attackType == "Blue" and defenderType == "Green":
 		totalDamage = (baseDamage/2)
-	elif attackType == "blue" and defenderType == "Red":
+	elif attackType == "Blue" and defenderType == "Red":
 		totalDamage = (baseDamage*2)
-	elif attackType == "blue" and defenderType == "Blue":
+	elif attackType == "Blue" and defenderType == "Blue":
 		totalDamage = baseDamage
 	return totalDamage
+	
+func calc_damage_reduction(attackType, blockType):
+	var damageReduction
+	if attackType == "Green" and blockType == "Green":
+		damageReduction = 0.75
+	elif attackType == "Green" and blockType == "Red":
+		damageReduction = 0.5
+	elif attackType == "Green" and blockType == "Blue":
+		damageReduction = 1
+	elif attackType == "Red" and blockType == "Green":
+		damageReduction = 1
+	elif attackType == "Red" and blockType == "Red":
+		damageReduction = 0.75
+	elif attackType == "Red" and blockType == "Blue":
+		damageReduction = 0.5
+	elif attackType == "Blue" and blockType == "Green":
+		damageReduction = 0.5
+	elif attackType == "Blue" and blockType == "Red":
+		damageReduction = 1
+	elif attackType == "Blue" and blockType == "Blue":
+		damageReduction = 0.75
+	return damageReduction
