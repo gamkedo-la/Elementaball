@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource( 1 )
-type = "Type"
-HP = 0
-maxHP = 0
-agility = 0
-power = 0
-speed = 0
+type = "Green"
+HP = 60
+maxHP = 60
+agility = 2
+power = 2
+speed = 150

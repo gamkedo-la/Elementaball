@@ -7,7 +7,7 @@ var inDefenseZone = true
 export var starting_stats : Resource
 var type : String = "Type"
 var HP : int
-var maxHP : int
+var maxHP = 50
 var agility : int
 var power : int
 var speed : int
@@ -15,9 +15,9 @@ var speed : int
 onready var ball = get_node("../Ball")
 
 func _ready():
-	initialize(starting_stats)
+	initialize_stats(starting_stats)
 	
-func initialize(stats : StartingStats):
+func initialize_stats(stats : StartingStats):
 	type = stats.type
 	HP = stats.HP
 	maxHP = stats.maxHP

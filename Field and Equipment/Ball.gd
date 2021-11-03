@@ -32,17 +32,7 @@ func _physics_process(delta):
 		if bodies.size() > 0:
 			for body in bodies:
 				if "Enemy" in body.name:
-					if kickID == 0:
-						body.HP -= 20
-					if kickID == 1:
-						body.HP -= 5
-					if kickID == 2:
-						body.HP -= 10
-					body.get_node("Health Bar").update_healthbar(body.HP)
-					kicking = false
-					enemyPossession = true
-					possessionNode = body.get_node("Position2D")
-					body.intercepting = false
+					calc_intercept_damage(body)
 				if body.name == "Goal":
 					kicking = false
 					goal = true
@@ -79,6 +69,42 @@ func _on_KickMenu_id_pressed(id):
 	self.linear_velocity = ((goal_position - self.position) * kickSpeed)
 	selecting = false
 
+func calc_intercept_damage(interceptor):
+	var kickType
+	var baseDamage = 10
+	var totalDamage
+	if kickID == 0:
+		kickType = "green"
+	if kickID == 1:
+		kickType = "red"
+	if kickID == 2:
+		kickType = "blue"
+	
+	if kickType == "green" and interceptor.type == "Green":
+		totalDamage = baseDamage
+	elif kickType == "green" and interceptor.type == "Red":
+		totalDamage = (baseDamage/2)
+	elif kickType == "green" and interceptor.type == "Blue":
+		totalDamage = (baseDamage*2)
+	elif kickType == "red" and interceptor.type == "Green":
+		totalDamage = (baseDamage*2)
+	elif kickType == "red" and interceptor.type == "Red":
+		totalDamage = baseDamage
+	elif kickType == "red" and interceptor.type == "Blue":
+		totalDamage = (baseDamage/2)
+	if kickType == "blue" and interceptor.type == "Green":
+		totalDamage = (baseDamage/2)
+	elif kickType == "blue" and interceptor.type == "Red":
+		totalDamage = (baseDamage*2)
+	elif kickType == "blue" and interceptor.type == "Blue":
+		totalDamage = baseDamage
+	
+	interceptor.HP -= totalDamage	
+	interceptor.get_node("Health Bar").update_healthbar(interceptor.HP)
+	kicking = false
+	enemyPossession = true
+	possessionNode = interceptor.get_node("Position2D")
+	interceptor.intercepting = false
 
 func _on_TackleMenu_id_pressed(id):
 	kickID = id

@@ -22,3 +22,6 @@ theme = ExtResource( 1 )
 value = 55.0
 texture_over = ExtResource( 3 )
 texture_progress = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

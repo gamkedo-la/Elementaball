@@ -75,13 +75,14 @@ position = Vector2( 164.415, 74.4719 )
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 402.689, 63.1582 )
+frame = 1
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -85.4805, 63.1582 )
 frames = SubResource( 9 )
-frame = 1
+frame = 7
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 321.877, 72.8196 )

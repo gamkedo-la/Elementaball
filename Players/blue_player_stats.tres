@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 type = "Blue"
 HP = 50
-maxHP = 100
+maxHP = 50
 agility = 3
 power = 2
-speed = 150
+speed = 175
