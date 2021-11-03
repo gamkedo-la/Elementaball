@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Players/StartingStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+type = "Type"
+HP = 50
+maxHP = 50
+agility = 2
+power = 3
+speed = 150

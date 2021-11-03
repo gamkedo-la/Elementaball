@@ -5,7 +5,6 @@
 [ext_resource path="res://UI/health_bar.gd" type="Script" id=4]
 
 [sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/health_bar_progress.png-0fa9ec12758b2abaf09ec66f0da635dc.stex"
 
 [node name="Control" type="Control"]
 anchor_right = 1.0

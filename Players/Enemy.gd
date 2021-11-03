@@ -4,11 +4,27 @@ var velocity = Vector2()
 var destination = Vector2()
 var intercepting = false
 var inDefenseZone = true
-export var speed = 150
-var maxHP = 50
-var HP = 50
+export var starting_stats : Resource
+var type : String = "Type"
+var HP : int
+var maxHP : int
+var agility : int
+var power : int
+var speed : int
 
 onready var ball = get_node("../Ball")
+
+func _ready():
+	initialize(starting_stats)
+	
+func initialize(stats : StartingStats):
+	type = stats.type
+	HP = stats.HP
+	maxHP = stats.maxHP
+	agility = stats.agility
+	power = stats.power
+	speed = stats.speed
+	get_node("Health Bar").update_healthbar(maxHP)
 
 func _physics_process(delta):	
 	#if the enemy's defense range collides with the ball
