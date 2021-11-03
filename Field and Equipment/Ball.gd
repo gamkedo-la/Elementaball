@@ -73,6 +73,7 @@ func calc_intercept_damage(interceptor):
 	var kickType
 	var baseDamage = 10
 	var totalDamage
+	#TODO: These need to be changed to take in the type of the ability selected
 	if kickID == 0:
 		kickType = "green"
 	if kickID == 1:
@@ -80,25 +81,7 @@ func calc_intercept_damage(interceptor):
 	if kickID == 2:
 		kickType = "blue"
 	
-	if kickType == "green" and interceptor.type == "Green":
-		totalDamage = baseDamage
-	elif kickType == "green" and interceptor.type == "Red":
-		totalDamage = (baseDamage/2)
-	elif kickType == "green" and interceptor.type == "Blue":
-		totalDamage = (baseDamage*2)
-	elif kickType == "red" and interceptor.type == "Green":
-		totalDamage = (baseDamage*2)
-	elif kickType == "red" and interceptor.type == "Red":
-		totalDamage = baseDamage
-	elif kickType == "red" and interceptor.type == "Blue":
-		totalDamage = (baseDamage/2)
-	if kickType == "blue" and interceptor.type == "Green":
-		totalDamage = (baseDamage/2)
-	elif kickType == "blue" and interceptor.type == "Red":
-		totalDamage = (baseDamage*2)
-	elif kickType == "blue" and interceptor.type == "Blue":
-		totalDamage = baseDamage
-	
+	totalDamage = calc_element_damage(kickType, interceptor.type, baseDamage)
 	interceptor.HP -= totalDamage	
 	interceptor.get_node("Health Bar").update_healthbar(interceptor.HP)
 	kicking = false
@@ -107,15 +90,45 @@ func calc_intercept_damage(interceptor):
 	interceptor.intercepting = false
 
 func _on_TackleMenu_id_pressed(id):
-	kickID = id
+	var tackleType
+	#TODO: These need to be changed to take in the type of the ability selected
 	if id == 0:
-		target.HP -= 20
+		tackleType = "green"
 	if id == 1:
-		target.HP -= 10
+		tackleType = "blue"
 	if id == 2:
-		target.HP -= 5
+		tackleType = "red"
+	calc_tackle_damage(tackleType)
+
+func calc_tackle_damage(tackleType):
+	var baseDamage = 5
+	var totalDamage = calc_element_damage(tackleType, target.type, baseDamage)
+	target.HP -= totalDamage	
 	target.get_node("Health Bar").update_healthbar(target.HP)
 	selecting = false
 	dribbling = true
 	enemyPossession = false
+	
+#TODO: Create menu and calc function for blocking moves
 
+func calc_element_damage(attackType, defenderType, baseDamage):
+	var totalDamage
+	if attackType == "green" and defenderType == "Green":
+		totalDamage = baseDamage
+	elif attackType == "green" and defenderType == "Red":
+		totalDamage = (baseDamage/2)
+	elif attackType == "green" and defenderType == "Blue":
+		totalDamage = (baseDamage*2)
+	elif attackType == "red" and defenderType == "Green":
+		totalDamage = (baseDamage*2)
+	elif attackType == "red" and defenderType == "Red":
+		totalDamage = baseDamage
+	elif attackType == "red" and defenderType == "Blue":
+		totalDamage = (baseDamage/2)
+	elif attackType == "blue" and defenderType == "Green":
+		totalDamage = (baseDamage/2)
+	elif attackType == "blue" and defenderType == "Red":
+		totalDamage = (baseDamage*2)
+	elif attackType == "blue" and defenderType == "Blue":
+		totalDamage = baseDamage
+	return totalDamage
