@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dragito_enemy.png-02b87de3eb3a0f6886e36e19d112fb99.stex"
+path="res://.import/multicolor_pitch.png-e5dee895852f8617e660dcf2f5eb3fee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/dragito_enemy.png"
-dest_files=[ "res://.import/dragito_enemy.png-02b87de3eb3a0f6886e36e19d112fb99.stex" ]
+source_file="res://Art/multicolor_pitch.png"
+dest_files=[ "res://.import/multicolor_pitch.png-e5dee895852f8617e660dcf2f5eb3fee.stex" ]
 
 [params]
 

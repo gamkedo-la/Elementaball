@@ -8,7 +8,7 @@
 [ext_resource path="res://Field and Equipment/ParallaxBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scene Controller.gd" type="Script" id=7]
 [ext_resource path="res://Art/Sprites/enemy_goal.png" type="Texture" id=8]
-[ext_resource path="res://Art/Sprites/dragito_enemy.png" type="Texture" id=9]
+[ext_resource path="res://Art/Sprites/dragito_enemy_idle.png" type="Texture" id=9]
 [ext_resource path="res://Players/blue_player_stats.tres" type="Resource" id=10]
 [ext_resource path="res://Players/red_player_stats.tres" type="Resource" id=11]
 
@@ -78,14 +78,15 @@ position = Vector2( 164.415, 74.4719 )
 [node name="Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
-position = Vector2( 402.689, 63.1582 )
-frame = 5
+position = Vector2( 375.143, 47.2662 )
+frame = 4
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
-position = Vector2( -85.4805, 63.1582 )
+position = Vector2( -46.2803, 48.3257 )
 frames = SubResource( 9 )
+frame = 2
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 321.877, 72.8196 )
