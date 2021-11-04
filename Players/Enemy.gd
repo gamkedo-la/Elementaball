@@ -17,6 +17,10 @@ var maxHP = 50
 var agility : int
 var power : int
 var speed : int
+var ability1 : Resource
+var ability2 : Resource
+var ability3 : Resource
+var ability4 : Resource
 
 onready var ball = get_node("../Ball")
 
@@ -30,6 +34,11 @@ func initialize_stats(stats : StartingStats):
 	agility = stats.agility
 	power = stats.power
 	speed = stats.speed
+	ability1 = stats.ability1
+	ability2 = stats.ability2
+	ability3 = stats.ability3
+	ability4 = stats.ability4
+	
 	get_node("Health Bar").update_healthbar(maxHP)
 
 func _physics_process(delta):	

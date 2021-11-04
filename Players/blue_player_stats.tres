@@ -1,6 +1,10 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://Players/StartingStats.gd" type="Script" id=1]
+[ext_resource path="res://Abilities/Tackles/tail_swipe.tres" type="Resource" id=2]
+[ext_resource path="res://Abilities/Kicks/spray_throw.tres" type="Resource" id=3]
+[ext_resource path="res://Abilities/Tackles/branch_swipe.tres" type="Resource" id=4]
+[ext_resource path="res://Abilities/Blocks/sweeping_wave.tres" type="Resource" id=5]
 
 [resource]
 script = ExtResource( 1 )
@@ -10,3 +14,7 @@ maxHP = 50
 agility = 3
 power = 2
 speed = 175
+ability1 = ExtResource( 3 )
+ability2 = ExtResource( 2 )
+ability3 = ExtResource( 5 )
+ability4 = ExtResource( 4 )

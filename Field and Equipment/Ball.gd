@@ -67,8 +67,17 @@ func player_kick():
 	
 	#Bring up the Kick Menu
 	selecting = true
-	get_node("../Popup/KickMenu").popup()
-	get_node("../Popup/KickMenu").rect_position = get_node("../Player/Position2D").global_position
+	var kickMenu = get_node("../Popup/KickMenu")
+	kickMenu.clear()
+	var player = get_node("../Player")
+	#Add the kick abilities available for the player to the menu
+	#TODO: Make a default (no element) kick ability and calculate damage for it
+	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
+	for ability in abilities:
+		if ability.action == "Kick":
+			kickMenu.add_item(ability.name)
+	kickMenu.popup()
+	kickMenu.rect_position = get_node("../Player/Position2D").global_position
 
 func player_steal():
 	#If player is colliding with an enemy, that enemy becomes the target
@@ -77,8 +86,41 @@ func player_steal():
 		
 		#Bring up the Tackle Menu to let the player choose an ability
 		selecting = true
-		get_node("../Popup/TackleMenu").popup()
-		get_node("../Popup/TackleMenu").rect_position = get_node("../Player/Position2D").global_position
+		var tackleMenu = get_node("../Popup/TackleMenu")
+		tackleMenu.clear()
+		var player = get_node("../Player")
+		#Add the tackle abilities available for the player to the menu
+		#TODO: Make a default (no element) tackle ability and calculate damage for it
+		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
+		for ability in abilities:
+			if ability.action == "Tackle":
+				tackleMenu.add_item(ability.name)
+		tackleMenu.popup()
+		tackleMenu.rect_position = get_node("../Player/Position2D").global_position
+
+func player_block(tackleType):
+	selecting = true
+	dribbling = false
+	
+	var blockMenu = get_node("../Popup/BlockMenu")
+	blockMenu.clear()
+	var player = get_node("../Player")
+	#Add the block abilities available for the player to the menu
+	#TODO: Make a default (no element) block ability and calculate damage reduction for it
+	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
+	for ability in abilities:
+		if ability.action == "Block":
+			blockMenu.add_item(ability.name)
+		blockMenu.popup()
+		blockMenu.rect_position = get_node("../Player/Position2D").global_position	
+		
+	yield(self, "blocked")
+		
+	var damageReduction = calc_damage_reduction(tackleType, blockType)
+	totalDamage = (totalDamage * damageReduction)
+	target.HP -= totalDamage	
+	target.get_node("Health Bar").update_healthbar(target.HP)
+	emit_signal("calculated")
 
 func check_kick_collisions():
 	var bodies=get_colliding_bodies()
@@ -157,18 +199,7 @@ func calc_tackle_damage(tackleType):
 		enemyPossession = false
 		dribbling = true
 	else:
-		selecting = true
-		dribbling = false
-		get_node("../Popup/BlockMenu").popup()
-		get_node("../Popup/BlockMenu").rect_position = get_node("../Player/Position2D").global_position
-		
-		yield(self, "blocked")
-		
-		var damageReduction = calc_damage_reduction(tackleType, blockType)
-		totalDamage = (totalDamage * damageReduction)
-		target.HP -= totalDamage	
-		target.get_node("Health Bar").update_healthbar(target.HP)
-		emit_signal("calculated")
+		player_block(tackleType)
 	
 func _on_BlockMenu_id_pressed(id):
 	#TODO: These need to be changed to take in the type of the ability selected

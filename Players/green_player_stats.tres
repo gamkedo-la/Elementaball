@@ -1,6 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://Players/StartingStats.gd" type="Script" id=1]
+[ext_resource path="res://Abilities/Kicks/thorns_kick.tres" type="Resource" id=2]
+[ext_resource path="res://Abilities/Blocks/thorn_wall.tres" type="Resource" id=3]
+[ext_resource path="res://Abilities/Tackles/branch_swipe.tres" type="Resource" id=4]
 
 [resource]
 script = ExtResource( 1 )
@@ -10,3 +13,6 @@ maxHP = 60
 agility = 2
 power = 2
 speed = 150
+ability1 = ExtResource( 3 )
+ability2 = ExtResource( 2 )
+ability3 = ExtResource( 4 )
