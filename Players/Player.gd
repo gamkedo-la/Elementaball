@@ -13,7 +13,8 @@ var speed : int
 
 func _ready():
 	initialize_stats(starting_stats)
-	
+
+#TODO Combine with enemy scene so both player controls and AI are available to all players on the field	
 func initialize_stats(stats : StartingStats):
 	type = stats.type
 	HP = stats.HP
@@ -23,6 +24,7 @@ func initialize_stats(stats : StartingStats):
 	speed = stats.speed
 	get_node("Health Bar").update_healthbar(maxHP)
 
+#This handles player motion. The other actions are calculated in the Ball script.
 func _physics_process(delta):
 	if (get_node("../Ball").dribbling == true or get_node("../Ball").enemyPossession == true):
 		if Input.is_action_pressed("ui_right"):

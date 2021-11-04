@@ -1,18 +1,24 @@
 extends RigidBody2D
 
-
+#Variables to signal what the player is doing
 var dribbling = true
 var kicking = false
 var selecting = false
+
+#Variables for abilities
 var kickID
 var target
 var blockType
+
+#Variables for damage calculation phase
 signal blocked
 signal calculated
 var totalDamage
-var goal = false
+
+#Enemy ball possession variables
 var enemyPossession = false
 var possessionNode
+
 export var kickSpeed = 1
 
 func _ready():
@@ -22,41 +28,74 @@ func _ready():
 
 func _physics_process(delta):
 	if dribbling == true:
-		self.mode = RigidBody2D.MODE_KINEMATIC
-		get_node("CollisionShape2D").disabled = true
-		self.position = get_node("../Player/Position2D").global_position
+		player_dribbling()
 
 	if enemyPossession == true:
-		self.mode = RigidBody2D.MODE_KINEMATIC
-		get_node("CollisionShape2D").disabled = true
-		self.position = possessionNode.global_position
+		enemy_dribbling()
 	
 	if kicking == true:
-		var bodies=get_colliding_bodies()
-		if bodies.size() > 0:
-			for body in bodies:
-				if "Enemy" in body.name:
-					calc_intercept_damage(body)
-				if body.name == "Goal":
-					kicking = false
-					goal = true
-					
-	if goal == true:
-		self.get_node("Sprite").visible = false
+		#TODO: Calculate the kick missing the goal
+		check_kick_collisions()
+
 		
 func _input(event):
 	if dribbling == true and Input.is_action_just_pressed("ui_kick") and selecting == false:
-		dribbling = false
-		selecting = true
-		get_node("../Popup/KickMenu").popup()
-		get_node("../Popup/KickMenu").rect_position = get_node("../Player/Position2D").global_position
+		player_kick()
 		
 	if enemyPossession == true and Input.is_action_just_pressed("ui_steal") and selecting == false:
-		if get_node("../Player")._check_collisions("Enemy") != null:
-			target = get_node("../Player")._check_collisions("Enemy")
-			selecting = true
-			get_node("../Popup/TackleMenu").popup()
-			get_node("../Popup/TackleMenu").rect_position = get_node("../Player/Position2D").global_position
+		player_steal()
+
+#TODO: Make player and enemy dribbling into one function, feed in thier dribbling position
+func player_dribbling():
+	#Stop the ball from colliding with things
+	self.mode = RigidBody2D.MODE_KINEMATIC
+	get_node("CollisionShape2D").disabled = true
+	
+	#Put the ball in the player's dribbling position
+	self.position = get_node("../Player/Position2D").global_position
+
+func enemy_dribbling():
+	#Stop ball from colliding
+	self.mode = RigidBody2D.MODE_KINEMATIC
+	get_node("CollisionShape2D").disabled = true
+	
+	#Put the ball in the enemy's dribbling position
+	self.position = possessionNode.global_position
+
+func player_kick():
+	dribbling = false
+	
+	#Bring up the Kick Menu
+	selecting = true
+	get_node("../Popup/KickMenu").popup()
+	get_node("../Popup/KickMenu").rect_position = get_node("../Player/Position2D").global_position
+
+func player_steal():
+	#If player is colliding with an enemy, that enemy becomes the target
+	if get_node("../Player")._check_collisions("Enemy") != null:
+		target = get_node("../Player")._check_collisions("Enemy")
+		
+		#Bring up the Tackle Menu to let the player choose an ability
+		selecting = true
+		get_node("../Popup/TackleMenu").popup()
+		get_node("../Popup/TackleMenu").rect_position = get_node("../Player/Position2D").global_position
+
+func check_kick_collisions():
+	var bodies=get_colliding_bodies()
+	if bodies.size() > 0:
+		for body in bodies:
+			#If the enemy intercepts the ball, calculate damage and give possession to enemy.
+			#TODO: Calculate Enemy failing their interception and the results
+			if "Enemy" in body.name:
+				calc_intercept_damage(body)
+			
+			#TODO: If ball collides with goal, score a point
+			if body.name == "Goal":
+				score_goal()
+
+func score_goal():
+	kicking = false
+	self.get_node("Sprite").visible = false
 
 func _on_KickMenu_id_pressed(id):
 	kicking = true
