@@ -78,21 +78,22 @@ position = Vector2( 164.415, 74.4719 )
 [node name="Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
-position = Vector2( 375.143, 47.2662 )
-frame = 5
+position = Vector2( 517.111, 47.2662 )
+frame = 0
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
-position = Vector2( -46.2803, 48.3257 )
+position = Vector2( -191.427, 48.3257 )
 frames = SubResource( 9 )
+frame = 6
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 321.877, 72.8196 )
+position = Vector2( 396.039, 62.225 )
 starting_stats = ExtResource( 10 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 237.266, 16.2777 )
+position = Vector2( 244.682, -68.4794 )
 starting_stats = ExtResource( 11 )
 
 [node name="Sprite" parent="Enemy2" index="0"]
@@ -105,7 +106,7 @@ rotation = 1.52987
 position = Vector2( -11.7001, 3.85023 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 236.077, 162.55 )
+position = Vector2( 236.077, 194.334 )
 starting_stats = ExtResource( 11 )
 
 [node name="Sprite" parent="Enemy3" index="0"]
@@ -121,19 +122,19 @@ position = Vector2( -11.7001, 3.85023 )
 follow_viewport_enable = true
 
 [node name="DefenseZone" type="Area2D" parent="."]
-position = Vector2( 321.906, 73.7302 )
+position = Vector2( 395.009, 64.195 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone"]
 shape = SubResource( 10 )
 
 [node name="DefenseZone2" type="Area2D" parent="."]
-position = Vector2( 236.878, 14.8644 )
+position = Vector2( 246.413, -67.7737 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone2"]
 shape = SubResource( 10 )
 
 [node name="DefenseZone3" type="Area2D" parent="."]
-position = Vector2( 236.878, 162.921 )
+position = Vector2( 236.878, 190.467 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone3"]
 shape = SubResource( 10 )
