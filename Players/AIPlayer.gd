@@ -5,6 +5,7 @@ var velocity = Vector2()
 var destination = Vector2()
 
 #States for defense
+export var controlling = false
 var intercepting = false
 var inDefenseZone = true
 var stealCooldown = false
@@ -42,15 +43,16 @@ func initialize_stats(stats : StartingStats):
 	get_node("Health Bar").update_healthbar(maxHP)
 
 func _physics_process(delta):	
-	#if the enemy's defense range collides with the ball
-	if intercepting == true:
-		intercept()
+	if controlling == false:
+		#if the enemy's defense range collides with the ball
+		if intercepting == true:
+			intercept()
 			
-	#TODO if ball is out of range, returns to assigned zone
-	else:
-		defend_zone() 
+		#TODO if ball is out of range, returns to assigned zone
+		else:
+			defend_zone() 
 		
-	#TODO: Add offensive AI - running toward goal, passing, kicking
+		#TODO: Add offensive AI - running toward goal, passing, kicking
 		
 func defend_zone():
 	if(inDefenseZone == false): 

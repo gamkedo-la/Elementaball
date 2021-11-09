@@ -86,8 +86,8 @@ func player_kick():
 
 func player_steal():
 	#If player is colliding with an enemy, that enemy becomes the target
-	if get_node("../Player")._check_collisions("Enemy") != null:
-		target = get_node("../Player")._check_collisions("Enemy")
+	if get_node("../Player")._check_player_collisions("Enemy") != null:
+		target = get_node("../Player")._check_player_collisions("Enemy")
 		
 		#Bring up the Tackle Menu to let the player choose an ability
 		selecting = true
@@ -193,7 +193,7 @@ func calc_tackle_damage(tackledType):
 		enemyPossession = false
 		dribbling = true
 	else:
-		player_block(tackleType)
+		player_block(tackledType)
 	
 func _on_BlockMenu_id_pressed(id):
 	blockedType = blockType[id]
