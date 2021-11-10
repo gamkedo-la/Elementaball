@@ -6,10 +6,8 @@ var kicking = false
 var selecting = false
 
 #Variables for abilities
-var kickType
+var abilityTypes = []
 var kickedType
-var tackleType = "Red"
-var blockType
 var blockedType
 var target
 
@@ -76,11 +74,11 @@ func player_kick():
 	#Add the kick abilities available for the player to the menu
 	#TODO: Make a default (no element) kick ability and calculate damage for it
 	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
-	kickType = []
+	abilityTypes = []
 	for ability in abilities:
 		if ability.action == "Kick":
 			kickMenu.add_item(ability.name)
-			kickType.append(ability.type)
+			abilityTypes.append(ability.type)
 	kickMenu.popup()
 	kickMenu.rect_position = get_node("../Player/Position2D").global_position
 
@@ -97,15 +95,15 @@ func player_steal():
 		#Add the tackle abilities available for the player to the menu
 		#TODO: Make a default (no element) tackle ability and calculate damage for it
 		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
-		tackleType = []
+		abilityTypes = []
 		for ability in abilities:
 			if ability.action == "Tackle":
 				tackleMenu.add_item(ability.name)
-				tackleType.append(ability.type)
+				abilityTypes.append(ability.type)
 		tackleMenu.popup()
 		tackleMenu.rect_position = get_node("../Player/Position2D").global_position
 
-func player_block(tackleType):
+func player_block(tackledType):
 	selecting = true
 	dribbling = false
 	
@@ -115,17 +113,17 @@ func player_block(tackleType):
 	#Add the block abilities available for the player to the menu
 	#TODO: Make a default (no element) block ability and calculate damage reduction for it
 	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
-	blockType = []
+	abilityTypes = []
 	for ability in abilities:
 		if ability.action == "Block":
 			blockMenu.add_item(ability.name)
-			blockType.append(ability.type)
-		blockMenu.popup()
-		blockMenu.rect_position = get_node("../Player/Position2D").global_position	
+			abilityTypes.append(ability.type)
+	blockMenu.popup()
+	blockMenu.rect_position = get_node("../Player/Position2D").global_position	
 		
 	yield(self, "blocked")
 		
-	var damageReduction = calc_damage_reduction(tackleType)
+	var damageReduction = calc_damage_reduction(tackledType)
 	totalDamage = (totalDamage * damageReduction)
 	target.HP -= totalDamage	
 	target.get_node("Health Bar").update_healthbar(target.HP)
@@ -152,13 +150,13 @@ func _on_KickMenu_id_pressed(id):
 	kicking = true
 	get_node("CollisionShape2D").disabled = false
 	
-	if kickType[id] == "Green":
+	if abilityTypes[id] == "Green":
 		get_node("Sprite").modulate = Color(0,255,0)
 		kickedType = "Green"
-	if kickType[id] == "Red":
+	if abilityTypes[id] == "Red":
 		get_node("Sprite").modulate = Color(255,0,0)
 		kickedType = "Red"
-	if kickType[id] == "Blue":
+	if abilityTypes[id] == "Blue":
 		get_node("Sprite").modulate = Color(0,0,255)
 		kickedType = "Blue"
 	self.mode = RigidBody2D.MODE_RIGID
@@ -177,7 +175,7 @@ func calc_intercept_damage(interceptor):
 	interceptor.intercepting = false
 
 func _on_TackleMenu_id_pressed(id):
-	calc_tackle_damage(tackleType[id])
+	calc_tackle_damage(abilityTypes[id])
 	selecting = false
 	
 func calc_tackle_damage(tackledType):
@@ -196,7 +194,7 @@ func calc_tackle_damage(tackledType):
 		player_block(tackledType)
 	
 func _on_BlockMenu_id_pressed(id):
-	blockedType = blockType[id]
+	blockedType = abilityTypes[id]
 	selecting = false
 	emit_signal("blocked")
 	

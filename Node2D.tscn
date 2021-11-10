@@ -90,14 +90,13 @@ position = Vector2( 164.415, 74.4719 )
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 517.111, 47.2662 )
-frame = 2
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -191.427, 48.3257 )
 frames = SubResource( 9 )
-frame = 0
+frame = 1
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 396.039, 62.225 )
@@ -138,6 +137,12 @@ position = Vector2( 63.0682, -67.7737 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone2"]
 shape = SubResource( 10 )
 
+[node name="DefenseZone5" type="Area2D" parent="."]
+position = Vector2( 245.542, -67.7737 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone5"]
+shape = SubResource( 10 )
+
 [node name="DefenseZone3" type="Area2D" parent="."]
 position = Vector2( 57.5017, 190.467 )
 
@@ -166,6 +171,8 @@ script = ExtResource( 7 )
 [connection signal="body_exited" from="DefenseZone" to="Enemy" method="_on_DefenseZone_body_exited"]
 [connection signal="body_entered" from="DefenseZone2" to="Enemy" method="_on_DefenseZone_body_entered"]
 [connection signal="body_exited" from="DefenseZone2" to="Enemy" method="_on_DefenseZone_body_exited"]
+[connection signal="body_entered" from="DefenseZone5" to="Enemy" method="_on_DefenseZone_body_entered"]
+[connection signal="body_exited" from="DefenseZone5" to="Enemy" method="_on_DefenseZone_body_exited"]
 [connection signal="body_entered" from="DefenseZone3" to="Enemy" method="_on_DefenseZone_body_entered"]
 [connection signal="body_exited" from="DefenseZone3" to="Enemy" method="_on_DefenseZone_body_exited"]
 [connection signal="body_entered" from="DefenseZone4" to="Enemy" method="_on_DefenseZone_body_entered"]
