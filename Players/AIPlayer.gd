@@ -5,10 +5,13 @@ var velocity = Vector2()
 var destination = Vector2()
 
 #States for defense
-export var controlling = false
 var intercepting = false
 var inDefenseZone = true
 var stealCooldown = false
+
+#States for offense
+export var controlling = false
+export var inPossession = false
 
 #All the starting stats from the Starting Stats class of resources
 export var starting_stats : Resource

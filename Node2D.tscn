@@ -62,6 +62,7 @@ radius = 42.2346
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -66.992, 63.1879 )
 controlling = true
+inPossession = true
 starting_stats = ExtResource( 10 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
@@ -90,13 +91,14 @@ position = Vector2( 164.415, 74.4719 )
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 517.111, 47.2662 )
+frame = 4
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -191.427, 48.3257 )
 frames = SubResource( 9 )
-frame = 1
+frame = 2
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 396.039, 62.225 )

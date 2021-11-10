@@ -3,6 +3,8 @@ extends RigidBody2D
 #Variables to signal what the player is doing
 var dribbling = true
 var kicking = false
+var attacker
+var blocker
 var selecting = false
 
 #Variables for abilities
@@ -21,8 +23,11 @@ var enemyPossession = false
 var possessionNode
 
 export var kickSpeed = 1
+var sceneController
 
 func _ready():
+	sceneController = get_node("../Scene Controller")
+	
 	# Called every time the node is added to the scene.
 	set_physics_process(true)
 	
@@ -124,7 +129,7 @@ func player_block(tackledType):
 	yield(self, "blocked")
 		
 	var damageReduction = calc_damage_reduction(tackledType)
-	totalDamage = (totalDamage * damageReduction)
+	totalDamage = ((totalDamage * damageReduction) - blocker.power)
 	target.HP -= totalDamage	
 	target.get_node("Health Bar").update_healthbar(target.HP)
 	emit_signal("calculated")
@@ -148,6 +153,7 @@ func score_goal():
 
 func _on_KickMenu_id_pressed(id):
 	kicking = true
+	attacker = find_attacker("kick")
 	get_node("CollisionShape2D").disabled = false
 	
 	if abilityTypes[id] == "Green":
@@ -164,8 +170,32 @@ func _on_KickMenu_id_pressed(id):
 	self.linear_velocity = ((goal_position - self.position) * kickSpeed)
 	selecting = false
 
+func find_attacker(attackAction):
+	#Find all players
+	var players = sceneController.allPlayers
+
+	if attackAction == "kick":
+		#Find player in possession
+		for player in players:
+			if player.inPossession == true:
+				return player
+	if attackAction == "tackle":
+		#Find player being controlled
+			for player in players:
+				if player.controlling == true:
+					return player
+
+func find_blocker():
+	#Find all players
+	var players = sceneController.allPlayers
+	#Find player being controlled
+	for player in players:
+		if player.controlling == true:
+			return player
+
 func calc_intercept_damage(interceptor):
 	var baseDamage = 10
+	baseDamage = calc_power_modifier(baseDamage)
 	totalDamage = calc_element_damage(kickedType, interceptor.type, baseDamage)
 	interceptor.HP -= totalDamage	
 	interceptor.get_node("Health Bar").update_healthbar(interceptor.HP)
@@ -175,6 +205,7 @@ func calc_intercept_damage(interceptor):
 	interceptor.intercepting = false
 
 func _on_TackleMenu_id_pressed(id):
+	attacker = find_attacker("tackle")
 	calc_tackle_damage(abilityTypes[id])
 	selecting = false
 	
@@ -194,9 +225,14 @@ func calc_tackle_damage(tackledType):
 		player_block(tackledType)
 	
 func _on_BlockMenu_id_pressed(id):
+	blocker = find_blocker()
 	blockedType = abilityTypes[id]
 	selecting = false
 	emit_signal("blocked")
+
+func calc_power_modifier(baseDamage):
+	baseDamage += attacker.power
+	return baseDamage
 	
 func calc_element_damage(attackType, defenderType, baseDamage):
 	var totalDamage
