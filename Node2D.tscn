@@ -63,14 +63,17 @@ radius = 42.2346
 position = Vector2( -66.992, 63.1879 )
 controlling = true
 inPossession = true
+fieldPosition = "PlayerCenter"
 starting_stats = ExtResource( 10 )
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 63.3513, -69.4719 )
+fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
 [node name="Player3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 58.5892, 190.068 )
+fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
 [node name="Popup" parent="." instance=ExtResource( 3 )]
@@ -91,21 +94,23 @@ position = Vector2( 164.415, 74.4719 )
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 517.111, 47.2662 )
-frame = 4
+frame = 7
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -191.427, 48.3257 )
 frames = SubResource( 9 )
-frame = 2
+frame = 5
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 396.039, 62.225 )
+fieldPosition = "EnemyCenter"
 starting_stats = ExtResource( 10 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 236.524, 189.648 )
+fieldPosition = "EnemyLeft"
 starting_stats = ExtResource( 13 )
 
 [node name="Sprite" parent="Enemy3" index="0"]
@@ -113,6 +118,7 @@ texture = ExtResource( 12 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 244.682, -68.4794 )
+fieldPosition = "EnemyRight"
 starting_stats = ExtResource( 11 )
 
 [node name="Sprite" parent="Enemy2" index="0"]
@@ -127,34 +133,40 @@ position = Vector2( -11.7001, 3.85023 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 follow_viewport_enable = true
 
-[node name="DefenseZone" type="Area2D" parent="."]
-position = Vector2( 395.009, 64.195 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone"]
-shape = SubResource( 10 )
-
-[node name="DefenseZone2" type="Area2D" parent="."]
-position = Vector2( 63.0682, -67.7737 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone2"]
-shape = SubResource( 10 )
-
-[node name="DefenseZone5" type="Area2D" parent="."]
+[node name="EnemyRight" type="Area2D" parent="."]
 position = Vector2( 245.542, -67.7737 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyRight"]
 shape = SubResource( 10 )
 
-[node name="DefenseZone3" type="Area2D" parent="."]
+[node name="EnemyCenter" type="Area2D" parent="."]
+position = Vector2( 395.009, 64.195 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCenter"]
+shape = SubResource( 10 )
+
+[node name="EnemyLeft" type="Area2D" parent="."]
+position = Vector2( 236.921, 190.329 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyLeft"]
+shape = SubResource( 10 )
+
+[node name="PlayerLeft" type="Area2D" parent="."]
+position = Vector2( 63.0682, -67.7737 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeft"]
+shape = SubResource( 10 )
+
+[node name="PlayerRight" type="Area2D" parent="."]
 position = Vector2( 57.5017, 190.467 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRight"]
 shape = SubResource( 10 )
 
-[node name="DefenseZone4" type="Area2D" parent="."]
+[node name="PlayerCenter" type="Area2D" parent="."]
 position = Vector2( -68.4368, 62.467 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DefenseZone4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCenter"]
 shape = SubResource( 10 )
 
 [node name="Scene Controller" type="Node" parent="."]
@@ -169,16 +181,18 @@ script = ExtResource( 7 )
 [connection signal="body_exited" from="Enemy3/InterceptArea" to="Enemy3" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_entered"]
 [connection signal="body_exited" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_exited"]
-[connection signal="body_entered" from="DefenseZone" to="Enemy" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="DefenseZone" to="Enemy" method="_on_DefenseZone_body_exited"]
-[connection signal="body_entered" from="DefenseZone2" to="Enemy" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="DefenseZone2" to="Enemy" method="_on_DefenseZone_body_exited"]
-[connection signal="body_entered" from="DefenseZone5" to="Enemy" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="DefenseZone5" to="Enemy" method="_on_DefenseZone_body_exited"]
-[connection signal="body_entered" from="DefenseZone3" to="Enemy" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="DefenseZone3" to="Enemy" method="_on_DefenseZone_body_exited"]
-[connection signal="body_entered" from="DefenseZone4" to="Enemy" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="DefenseZone4" to="Enemy" method="_on_DefenseZone_body_exited"]
+[connection signal="body_entered" from="EnemyRight" to="Enemy2" method="_on_DefenseZone_body_entered"]
+[connection signal="body_exited" from="EnemyRight" to="Enemy2" method="_on_DefenseZone_body_exited"]
+[connection signal="body_entered" from="EnemyCenter" to="Enemy" method="_on_DefenseZone_body_entered"]
+[connection signal="body_exited" from="EnemyCenter" to="Enemy" method="_on_DefenseZone_body_exited"]
+[connection signal="body_entered" from="EnemyLeft" to="Enemy3" method="_on_DefenseZone_body_entered"]
+[connection signal="body_exited" from="EnemyLeft" to="Enemy3" method="_on_DefenseZone_body_exited"]
+[connection signal="body_entered" from="PlayerLeft" to="Player2" method="_on_DefenseZone_body_entered"]
+[connection signal="body_exited" from="PlayerLeft" to="Player2" method="_on_DefenseZone_body_exited"]
+[connection signal="body_entered" from="PlayerRight" to="Player3" method="_on_DefenseZone_body_entered"]
+[connection signal="body_exited" from="PlayerRight" to="Player3" method="_on_DefenseZone_body_exited"]
+[connection signal="body_entered" from="PlayerCenter" to="Player" method="_on_DefenseZone_body_entered"]
+[connection signal="body_exited" from="PlayerCenter" to="Player" method="_on_DefenseZone_body_exited"]
 
 [editable path="Player"]
 [editable path="Player2"]

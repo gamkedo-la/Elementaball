@@ -23,8 +23,8 @@ func _ready():
 	playerLeft = get_node("../Player2")
 	playerRight = get_node("../Player3")
 	enemyCenter = get_node("../Enemy")
-	enemyLeft = get_node("../Enemy2")
-	enemyRight = get_node("../Enemy3")
+	enemyLeft = get_node("../Enemy3")
+	enemyRight = get_node("../Enemy2")
 	
 	playerTeam = [playerCenter, playerLeft, playerRight]
 	enemyTeam = [enemyCenter, enemyLeft, enemyRight]

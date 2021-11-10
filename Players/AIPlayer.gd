@@ -8,10 +8,13 @@ var destination = Vector2()
 var intercepting = false
 var inDefenseZone = true
 var stealCooldown = false
+var defenseZone
 
 #States for offense
 export var controlling = false
 export var inPossession = false
+
+export var fieldPosition : String
 
 #All the starting stats from the Starting Stats class of resources
 export var starting_stats : Resource
@@ -30,6 +33,7 @@ onready var ball = get_node("../Ball")
 
 func _ready():
 	initialize_stats(starting_stats)
+	defenseZone = get_node("../" + fieldPosition)
 	
 func initialize_stats(stats : StartingStats):
 	type = stats.type
@@ -59,7 +63,7 @@ func _physics_process(delta):
 		
 func defend_zone():
 	if(inDefenseZone == false): 
-		destination = get_node("../DefenseZone").global_position
+		destination = defenseZone.global_position
 		velocity = (destination-self.position).normalized()*speed; 
 		_move_to_target()
 	else:
