@@ -1,5 +1,9 @@
 extends Node
 
+signal goalScored(kicker)
+signal inPossession(player)
+signal controlling(player)
+
 #All the players on the field
 var playerCenter
 var playerLeft

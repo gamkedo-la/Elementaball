@@ -5,22 +5,18 @@ var beingTackled = false
 
 #This handles player motion. The other actions are calculated in the Ball script.
 func _physics_process(delta):
-	if controlling == true:
-		if (get_node("../Ball").dribbling == true or get_node("../Ball").enemyPossession == true):
-			if Input.is_action_pressed("ui_right"):
-				motion.x = speed
+	if controlling == true and get_node("../Ball").selecting == false:
+		if Input.is_action_pressed("ui_right"):
+			motion.x = speed
 		
-			elif Input.is_action_pressed("ui_left"):
-				motion.x = -speed
+		elif Input.is_action_pressed("ui_left"):
+			motion.x = -speed
 		
-			elif Input.is_action_pressed("ui_up"):
-				motion.y = -speed
+		elif Input.is_action_pressed("ui_up"):
+			motion.y = -speed
 		
-			elif Input.is_action_pressed("ui_down"):
-				motion.y = speed
-			else:
-				motion.x = 0
-				motion.y = 0
+		elif Input.is_action_pressed("ui_down"):
+			motion.y = speed
 		else:
 			motion.x = 0
 			motion.y = 0

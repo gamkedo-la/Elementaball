@@ -6,7 +6,7 @@
 [ext_resource path="res://Players/Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Field and Equipment/Goal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Field and Equipment/ParallaxBackground.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scene Controller.gd" type="Script" id=7]
+[ext_resource path="res://Camera2D.gd" type="Script" id=7]
 [ext_resource path="res://Art/Sprites/enemy_goal.png" type="Texture" id=8]
 [ext_resource path="res://Art/Sprites/dragito_enemy_idle.png" type="Texture" id=9]
 [ext_resource path="res://Players/blue_player_stats.tres" type="Resource" id=10]
@@ -88,20 +88,20 @@ items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Sw
 items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping Wave", null, 0, false, false, 1, 0, null, "", false, "Flame Wall", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
-position = Vector2( 164.415, 74.4719 )
+position = Vector2( 159.743, 67.7977 )
 
 [node name="Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 517.111, 47.2662 )
-frame = 7
+frame = 2
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -191.427, 48.3257 )
 frames = SubResource( 9 )
-frame = 5
+frame = 0
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 396.039, 62.225 )
@@ -169,8 +169,10 @@ position = Vector2( -68.4368, 62.467 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCenter"]
 shape = SubResource( 10 )
 
-[node name="Scene Controller" type="Node" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 script = ExtResource( 7 )
+margin = Vector2( 200, 100 )
 
 [connection signal="id_pressed" from="Popup/KickMenu" to="Ball" method="_on_KickMenu_id_pressed"]
 [connection signal="id_pressed" from="Popup/TackleMenu" to="Ball" method="_on_TackleMenu_id_pressed"]

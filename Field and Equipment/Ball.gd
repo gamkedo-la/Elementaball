@@ -1,7 +1,8 @@
 extends RigidBody2D
 
 #Variables to signal what the player is doing
-var dribbling = true
+var groundball = true
+var dribbling = false
 var kicking = false
 var attacker
 var blocker
@@ -21,27 +22,27 @@ var totalDamage
 #Enemy ball possession variables
 var enemyPossession = false
 var possessionNode
+var playerInPossession
 
 export var kickSpeed = 1
-var sceneController
 
 func _ready():
-	sceneController = get_node("../Scene Controller")
-	
-	# Called every time the node is added to the scene.
-	set_physics_process(true)
-	
+	SceneController.connect("inPossession", self, "set_possession")
+	set_physics_process(true)	
 
 func _physics_process(delta):
 	if dribbling == true:
-		player_dribbling()
+		dribbling()
 
 	if enemyPossession == true:
-		enemy_dribbling()
+		dribbling()
 	
 	if kicking == true:
 		#TODO: Calculate the kick missing the goal
 		check_kick_collisions()
+		
+	if groundball == true:
+		check_groundball_collisions()
 
 		
 func _input(event):
@@ -51,21 +52,17 @@ func _input(event):
 	if enemyPossession == true and Input.is_action_just_pressed("ui_steal") and selecting == false:
 		player_steal()
 
+func set_possession(player):
+	playerInPossession = player
+	possessionNode = player.get_node("Position2D")
+
 #TODO: Make player and enemy dribbling into one function, feed in thier dribbling position
-func player_dribbling():
+func dribbling():
 	#Stop the ball from colliding with things
 	self.mode = RigidBody2D.MODE_KINEMATIC
 	get_node("CollisionShape2D").disabled = true
 	
 	#Put the ball in the player's dribbling position
-	self.position = get_node("../Player/Position2D").global_position
-
-func enemy_dribbling():
-	#Stop ball from colliding
-	self.mode = RigidBody2D.MODE_KINEMATIC
-	get_node("CollisionShape2D").disabled = true
-	
-	#Put the ball in the enemy's dribbling position
 	self.position = possessionNode.global_position
 
 func player_kick():
@@ -134,6 +131,14 @@ func player_block(tackledType):
 	target.get_node("Health Bar").update_healthbar(target.HP)
 	emit_signal("calculated")
 
+func check_groundball_collisions():
+	var bodies=get_colliding_bodies()
+	if bodies.size() > 0:
+		for body in bodies:
+			if "Enemy" in body.name or "Player" in body.name:
+				SceneController.emit_signal("inPossession", body)
+				dribbling = true
+
 func check_kick_collisions():
 	var bodies=get_colliding_bodies()
 	if bodies.size() > 0:
@@ -149,7 +154,7 @@ func check_kick_collisions():
 
 func score_goal():
 	kicking = false
-	self.get_node("Sprite").visible = false
+	dribbling = true
 
 func _on_KickMenu_id_pressed(id):
 	kicking = true
@@ -172,13 +177,11 @@ func _on_KickMenu_id_pressed(id):
 
 func find_attacker(attackAction):
 	#Find all players
-	var players = sceneController.allPlayers
+	var players = SceneController.allPlayers
 
 	if attackAction == "kick":
 		#Find player in possession
-		for player in players:
-			if player.inPossession == true:
-				return player
+		return playerInPossession
 	if attackAction == "tackle":
 		#Find player being controlled
 			for player in players:
@@ -187,7 +190,7 @@ func find_attacker(attackAction):
 
 func find_blocker():
 	#Find all players
-	var players = sceneController.allPlayers
+	var players = SceneController.allPlayers
 	#Find player being controlled
 	for player in players:
 		if player.controlling == true:

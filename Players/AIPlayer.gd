@@ -34,7 +34,11 @@ onready var ball = get_node("../Ball")
 func _ready():
 	initialize_stats(starting_stats)
 	defenseZone = get_node("../" + fieldPosition)
-	
+	SceneController.connect("inPossession", self, "set_possession")
+	SceneController.connect("controlling", self, "set_control")
+	if inPossession:
+		SceneController.emit_signal("inPossession", self)
+		
 func initialize_stats(stats : StartingStats):
 	type = stats.type
 	HP = stats.HP
@@ -70,6 +74,20 @@ func defend_zone():
 		#TODO moves between ball and their own goal within assigned zone
 		velocity = (self.position).normalized()*speed;
 
+func set_possession(player):
+	if player == self:
+		inPossession = true
+	else:
+		inPossession = false
+	print(player)
+		
+func set_control(player):
+	if player == self:
+		controlling = true
+	else:
+		controlling = false
+
+
 func intercept():
 	destination = ball.global_position
 	#the enemy moves toward the ball TODO: while blocking own goal
@@ -104,7 +122,7 @@ func _on_InterceptArea_body_exited(body):
 
 func _on_DefenseZone_body_entered(body):
 	inDefenseZone = true
-
+	
 func _on_DefenseZone_body_exited(body):
 	inDefenseZone = false
 	
