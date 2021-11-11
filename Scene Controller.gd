@@ -11,6 +11,7 @@ var playerRight
 var enemyCenter
 var enemyLeft
 var enemyRight
+var playerIndex = 0
 
 #Array of the player controlled team
 var playerTeam = []
@@ -30,10 +31,17 @@ func _ready():
 	enemyLeft = get_node("../Enemy3")
 	enemyRight = get_node("../Enemy2")
 	
-	playerTeam = [playerCenter, playerLeft, playerRight]
+	playerTeam = get_tree().get_nodes_in_group("player_team")
 	enemyTeam = [enemyCenter, enemyLeft, enemyRight]
 	allPlayers = [playerCenter, playerLeft, playerRight, enemyCenter, enemyLeft, enemyRight]
 
 func _process(delta):
 	if Input.is_action_pressed("ui_exit"):
 		get_tree().quit()
+		
+	if Input.is_action_just_pressed("ui_next_player"):
+		playerIndex += 1
+		if playerIndex > 2:
+			playerIndex = 0
+		emit_signal("controlling", playerTeam[playerIndex])
+		print(playerIndex)

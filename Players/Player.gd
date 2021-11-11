@@ -2,7 +2,11 @@ extends "res://Players/AIPlayer.gd"
 
 var motion = Vector2()
 var beingTackled = false
+var playerTeam = []
 
+func _ready():
+	playerTeam = get_tree().get_nodes_in_group("player_team")
+	
 #This handles player motion. The other actions are calculated in the Ball script.
 func _physics_process(delta):
 	if controlling == true and get_node("../Ball").selecting == false:

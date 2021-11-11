@@ -59,19 +59,25 @@ radius = 42.2346
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." groups=[
+"player_team",
+] instance=ExtResource( 1 )]
 position = Vector2( -66.992, 63.1879 )
 controlling = true
 inPossession = true
 fieldPosition = "PlayerCenter"
 starting_stats = ExtResource( 10 )
 
-[node name="Player2" parent="." instance=ExtResource( 1 )]
+[node name="Player2" parent="." groups=[
+"player_team",
+] instance=ExtResource( 1 )]
 position = Vector2( 63.3513, -69.4719 )
 fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
-[node name="Player3" parent="." instance=ExtResource( 1 )]
+[node name="Player3" parent="." groups=[
+"player_team",
+] instance=ExtResource( 1 )]
 position = Vector2( 58.5892, 190.068 )
 fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
@@ -94,14 +100,13 @@ position = Vector2( 159.743, 67.7977 )
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 517.111, 47.2662 )
-frame = 2
+frame = 5
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -191.427, 48.3257 )
 frames = SubResource( 9 )
-frame = 0
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 396.039, 62.225 )
