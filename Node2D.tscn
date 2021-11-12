@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Players/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Field and Equipment/Ball.tscn" type="PackedScene" id=2]
@@ -13,46 +13,6 @@
 [ext_resource path="res://Players/red_player_stats.tres" type="Resource" id=11]
 [ext_resource path="res://Art/Sprites/green_enemy_idle.png" type="Texture" id=12]
 [ext_resource path="res://Players/green_player_stats.tres" type="Resource" id=13]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 64, 128 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 8 )
-region = Rect2( 64, 0, 64, 128 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 8 )
-region = Rect2( 128, 0, 64, 128 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 8 )
-region = Rect2( 192, 0, 64, 128 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 8 )
-region = Rect2( 256, 0, 64, 128 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 8 )
-region = Rect2( 320, 0, 64, 128 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 8 )
-region = Rect2( 384, 0, 64, 128 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 8 )
-region = Rect2( 448, 0, 64, 128 )
-
-[sub_resource type="SpriteFrames" id=9]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 42.2346
@@ -97,10 +57,9 @@ items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping W
 position = Vector2( 159.34, 67.8276 )
 
 [node name="Goal" parent="." instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 517.111, 47.2662 )
-frame = 5
+frame = 1
 
 [node name="Position2D" type="Position2D" parent="Goal"]
 position = Vector2( 63.113, 35.2653 )
@@ -109,10 +68,13 @@ position = Vector2( 63.113, 35.2653 )
 position = Vector2( 31.28, -82.489 )
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -191.427, 48.3257 )
-frames = SubResource( 9 )
+texture = ExtResource( 8 )
+frame = 0
+
+[node name="CollisionShape2D" parent="Enemy Goal/Goal" index="0"]
+position = Vector2( 2.33832, -32.6637 )
 
 [node name="Position2D" type="Position2D" parent="Enemy Goal"]
 position = Vector2( -29.151, -102.029 )
@@ -218,6 +180,7 @@ margin = Vector2( 200, 100 )
 [editable path="Player3"]
 [editable path="Popup"]
 [editable path="Ball"]
+[editable path="Enemy Goal"]
 [editable path="Enemy"]
 [editable path="Enemy/InterceptArea"]
 [editable path="Enemy/Health Bar"]
