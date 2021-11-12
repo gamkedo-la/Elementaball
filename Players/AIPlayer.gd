@@ -95,7 +95,7 @@ func intercept():
 
 func _try_steal():
 	stealCooldown = true
-	ball.target = get_node("../Player")
+	ball.target = ball.playerInPossession
 	ball.calc_tackle_damage(type)
 	yield(ball, "calculated")
 	intercepting = false
@@ -112,11 +112,11 @@ func start_steal_cooldown():
 	stealCooldown = false
 
 func _on_InterceptArea_body_entered(body):
-	if body.name == "Player" and ball.enemyPossession == false:
+	if body == ball.playerInPossession and ball.enemyPossession == false:
 		intercepting = true
 
 func _on_InterceptArea_body_exited(body):
-	if body.name == "Player" and ball.enemyPossession == false:
+	if body == ball.playerInPossession and ball.enemyPossession == false:
 		intercepting = false
 
 func _on_DefenseZone_body_entered(body):
