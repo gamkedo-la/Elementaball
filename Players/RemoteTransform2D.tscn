@@ -1,0 +1,5 @@
+[gd_scene format=2]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D"]
+remote_path = NodePath("../../../Ball")
+update_scale = false

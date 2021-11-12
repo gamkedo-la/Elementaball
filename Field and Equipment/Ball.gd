@@ -23,11 +23,13 @@ var totalDamage
 var enemyPossession = false
 var possessionNode
 var playerInPossession
+onready var controllingPlayer = get_node("../Player")
 
 export var kickSpeed = 1
 
 func _ready():
 	SceneController.connect("inPossession", self, "set_possession")
+	SceneController.connect("controlling", self, "set_control")
 	set_physics_process(true)	
 
 func _physics_process(delta):
@@ -46,7 +48,7 @@ func _physics_process(delta):
 
 		
 func _input(event):
-	if dribbling == true and Input.is_action_just_pressed("ui_kick") and selecting == false:
+	if playerInPossession == controllingPlayer and Input.is_action_just_pressed("ui_kick") and selecting == false:
 		player_kick()
 		
 	if enemyPossession == true and Input.is_action_just_pressed("ui_steal") and selecting == false:
@@ -55,6 +57,9 @@ func _input(event):
 func set_possession(player):
 	playerInPossession = player
 	possessionNode = player.get_node("Position2D")
+	
+func set_control(player):
+	controllingPlayer = player
 
 #TODO: Make player and enemy dribbling into one function, feed in thier dribbling position
 func dribbling():
@@ -63,7 +68,7 @@ func dribbling():
 	get_node("CollisionShape2D").disabled = true
 	
 	#Put the ball in the player's dribbling position
-	self.position = possessionNode.global_position
+	self.global_position = possessionNode.global_position
 
 func player_kick():
 	dribbling = false
@@ -72,7 +77,7 @@ func player_kick():
 	selecting = true
 	var kickMenu = get_node("../Popup/KickMenu")
 	kickMenu.clear()
-	var player = get_node("../Player")
+	var player = playerInPossession
 	#Add the kick abilities available for the player to the menu
 	#TODO: Make a default (no element) kick ability and calculate damage for it
 	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
@@ -82,18 +87,18 @@ func player_kick():
 			kickMenu.add_item(ability.name)
 			abilityTypes.append(ability.type)
 	kickMenu.popup()
-	kickMenu.rect_position = get_node("../Player/Position2D").global_position
+	kickMenu.rect_position = playerInPossession.global_position
 
 func player_steal():
 	#If player is colliding with an enemy, that enemy becomes the target
-	if get_node("../Player")._check_player_collisions("Enemy") != null:
-		target = get_node("../Player")._check_player_collisions("Enemy")
+	if controllingPlayer._check_player_collisions("Enemy") != null:
+		target = controllingPlayer._check_player_collisions("Enemy")
 		
 		#Bring up the Tackle Menu to let the player choose an ability
 		selecting = true
 		var tackleMenu = get_node("../Popup/TackleMenu")
 		tackleMenu.clear()
-		var player = get_node("../Player")
+		var player = controllingPlayer
 		#Add the tackle abilities available for the player to the menu
 		#TODO: Make a default (no element) tackle ability and calculate damage for it
 		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
@@ -103,7 +108,7 @@ func player_steal():
 				tackleMenu.add_item(ability.name)
 				abilityTypes.append(ability.type)
 		tackleMenu.popup()
-		tackleMenu.rect_position = get_node("../Player/Position2D").global_position
+		tackleMenu.rect_position = controllingPlayer.global_position
 
 func player_block(tackledType):
 	selecting = true
@@ -111,7 +116,7 @@ func player_block(tackledType):
 	
 	var blockMenu = get_node("../Popup/BlockMenu")
 	blockMenu.clear()
-	var player = get_node("../Player")
+	var player = controllingPlayer
 	#Add the block abilities available for the player to the menu
 	#TODO: Make a default (no element) block ability and calculate damage reduction for it
 	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
@@ -121,7 +126,7 @@ func player_block(tackledType):
 			blockMenu.add_item(ability.name)
 			abilityTypes.append(ability.type)
 	blockMenu.popup()
-	blockMenu.rect_position = get_node("../Player/Position2D").global_position	
+	blockMenu.rect_position = controllingPlayer.global_position	
 		
 	yield(self, "blocked")
 		
@@ -135,9 +140,14 @@ func check_groundball_collisions():
 	var bodies=get_colliding_bodies()
 	if bodies.size() > 0:
 		for body in bodies:
-			if "Enemy" in body.name or "Player" in body.name:
+			if "Player" in body.name:
 				SceneController.emit_signal("inPossession", body)
+				groundball = false
 				dribbling = true
+			if "Enemy" in body.name:
+				enemyPossession = true
+				SceneController.emit_signal("inPossession", body)
+				groundball = false
 
 func check_kick_collisions():
 	var bodies=get_colliding_bodies()
@@ -159,7 +169,6 @@ func score_goal():
 func _on_KickMenu_id_pressed(id):
 	kicking = true
 	attacker = find_attacker("kick")
-	get_node("CollisionShape2D").disabled = false
 	
 	if abilityTypes[id] == "Green":
 		get_node("Sprite").modulate = Color(0,255,0)
@@ -170,9 +179,13 @@ func _on_KickMenu_id_pressed(id):
 	if abilityTypes[id] == "Blue":
 		get_node("Sprite").modulate = Color(0,0,255)
 		kickedType = "Blue"
+		
 	self.mode = RigidBody2D.MODE_RIGID
-	var goal_position = get_node("../Goal").position
-	self.linear_velocity = ((goal_position - self.position) * kickSpeed)
+	get_node("CollisionShape2D").disabled = false
+	#TODO calculate the right goal based on the team kicking
+	var goal_position = get_node("../Goal").global_position
+	self.linear_velocity = ((goal_position - self.global_position) * kickSpeed)
+	
 	selecting = false
 
 func find_attacker(attackAction):
@@ -184,17 +197,10 @@ func find_attacker(attackAction):
 		return playerInPossession
 	if attackAction == "tackle":
 		#Find player being controlled
-			for player in players:
-				if player.controlling == true:
-					return player
+		return controllingPlayer
 
 func find_blocker():
-	#Find all players
-	var players = SceneController.allPlayers
-	#Find player being controlled
-	for player in players:
-		if player.controlling == true:
-			return player
+	return controllingPlayer
 
 func calc_intercept_damage(interceptor):
 	var baseDamage = 10
@@ -204,7 +210,7 @@ func calc_intercept_damage(interceptor):
 	interceptor.get_node("Health Bar").update_healthbar(interceptor.HP)
 	kicking = false
 	enemyPossession = true
-	possessionNode = interceptor.get_node("Position2D")
+	SceneController.emit_signal("inPossession", interceptor)
 	interceptor.intercepting = false
 
 func _on_TackleMenu_id_pressed(id):
@@ -222,6 +228,7 @@ func calc_tackle_damage(tackledType):
 		target.HP -= totalDamage	
 		target.get_node("Health Bar").update_healthbar(target.HP)
 		target.start_steal_cooldown()
+		SceneController.emit_signal("inPossession", controllingPlayer)
 		enemyPossession = false
 		dribbling = true
 	else:

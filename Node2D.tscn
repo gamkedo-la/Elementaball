@@ -64,7 +64,6 @@ radius = 42.2346
 ] instance=ExtResource( 1 )]
 position = Vector2( -66.992, 63.1879 )
 controlling = true
-inPossession = true
 fieldPosition = "PlayerCenter"
 starting_stats = ExtResource( 10 )
 
@@ -94,19 +93,20 @@ items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Sw
 items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping Wave", null, 0, false, false, 1, 0, null, "", false, "Flame Wall", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
-position = Vector2( 159.743, 67.7977 )
+position = Vector2( 159.34, 67.8276 )
 
 [node name="Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( 517.111, 47.2662 )
-frame = 5
+frame = 1
 
 [node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
 show_behind_parent = true
 position = Vector2( -191.427, 48.3257 )
 frames = SubResource( 9 )
+frame = 7
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 396.039, 62.225 )

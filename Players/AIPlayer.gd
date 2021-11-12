@@ -36,8 +36,8 @@ func _ready():
 	defenseZone = get_node("../" + fieldPosition)
 	SceneController.connect("inPossession", self, "set_possession")
 	SceneController.connect("controlling", self, "set_control")
-	if inPossession:
-		SceneController.emit_signal("inPossession", self)
+	if controlling:
+		SceneController.emit_signal("controlling", self)
 		
 func initialize_stats(stats : StartingStats):
 	type = stats.type
@@ -79,7 +79,6 @@ func set_possession(player):
 		inPossession = true
 	else:
 		inPossession = false
-	print(player)
 		
 func set_control(player):
 	if player == self:
@@ -102,8 +101,8 @@ func _try_steal():
 	intercepting = false
 	ball.kicking = false
 	ball.dribbling = false
+	SceneController.emit_signal("inPossession", self)
 	ball.enemyPossession = true
-	ball.possessionNode = get_node("Position2D")
 	start_steal_cooldown()
 
 func start_steal_cooldown():
