@@ -36,8 +36,6 @@ func _ready():
 	defenseZone = get_node("../" + fieldPosition)
 	SceneController.connect("inPossession", self, "set_possession")
 	SceneController.connect("controlling", self, "set_control")
-	if controlling:
-		SceneController.emit_signal("controlling", self)
 		
 func initialize_stats(stats : StartingStats):
 	type = stats.type
@@ -99,10 +97,7 @@ func _try_steal():
 	ball.calc_tackle_damage(type)
 	yield(ball, "calculated")
 	intercepting = false
-	ball.kicking = false
-	ball.dribbling = false
 	SceneController.emit_signal("inPossession", self)
-	ball.enemyPossession = true
 	start_steal_cooldown()
 
 func start_steal_cooldown():
