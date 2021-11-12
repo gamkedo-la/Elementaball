@@ -24,6 +24,7 @@ var allPlayers = []
 
 func _ready():
 	set_process(true)
+	playerTeam = get_tree().get_nodes_in_group("player_team")
 
 func _process(delta):
 	if Input.is_action_pressed("ui_exit"):

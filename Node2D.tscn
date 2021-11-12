@@ -14,7 +14,7 @@
 [ext_resource path="res://Art/Sprites/green_enemy_idle.png" type="Texture" id=12]
 [ext_resource path="res://Players/green_player_stats.tres" type="Resource" id=13]
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=1]
 radius = 42.2346
 
 [node name="Main" type="Node2D"]
@@ -116,37 +116,37 @@ follow_viewport_enable = true
 position = Vector2( 245.542, -67.7737 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyRight"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="EnemyCenter" type="Area2D" parent="."]
 position = Vector2( 395.009, 64.195 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCenter"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="EnemyLeft" type="Area2D" parent="."]
 position = Vector2( 236.921, 190.329 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyLeft"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="PlayerLeft" type="Area2D" parent="."]
 position = Vector2( 63.0682, -67.7737 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeft"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="PlayerRight" type="Area2D" parent="."]
 position = Vector2( 57.5017, 190.467 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRight"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="PlayerCenter" type="Area2D" parent="."]
 position = Vector2( -68.4368, 62.467 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCenter"]
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
