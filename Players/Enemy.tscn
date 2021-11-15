@@ -21,7 +21,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -6.26877, -0.363762 )
+position = Vector2( -8.5517, -0.586487 )
 
 [node name="InterceptArea" parent="." instance=ExtResource( 3 )]
 

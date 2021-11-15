@@ -173,13 +173,13 @@ func _on_KickMenu_id_pressed(id):
 	attacker = find_attacker("kick")
 	
 	if abilityTypes[id] == "Green":
-		get_node("Sprite").modulate = Color(0,255,0)
+		#get_node("Sprite").modulate = Color(0,255,0)
 		kickedType = "Green"
 	if abilityTypes[id] == "Red":
-		get_node("Sprite").modulate = Color(255,0,0)
+		#get_node("Sprite").modulate = Color(255,0,0)
 		kickedType = "Red"
 	if abilityTypes[id] == "Blue":
-		get_node("Sprite").modulate = Color(0,0,255)
+		#get_node("Sprite").modulate = Color(0,0,255)
 		kickedType = "Blue"
 	
 	#Calculate where the shot will go and whether it hits or misses
@@ -206,6 +206,7 @@ func _on_KickMenu_id_pressed(id):
 	self.mode = RigidBody2D.MODE_RIGID
 	get_node("CollisionShape2D").disabled = false
 	set_linear_velocity((possibleShots[shotIndex] - self.global_position) * kickSpeed)
+	apply_torque_impulse(rng.randf_range(500, 2000))
 
 func find_attacker(attackAction):
 	#Find all players
