@@ -59,15 +59,15 @@ func _physics_process(delta):
 			
 		#TODO if ball is out of range, returns to assigned zone
 		else:
-			defend_zone() 
-		
+			defend_zone()
+		update()
 		#TODO: Add offensive AI - running toward goal, passing, kicking
 		
 func defend_zone():
 	if(inDefenseZone == false): 
 		destination = defenseZone.global_position
 		velocity = (destination-self.position).normalized()*speed; 
-		_move_to_target()
+		_move_to_target("defenseZone")
 	else:
 		#TODO moves between ball and their own goal within assigned zone
 		velocity = (self.position).normalized()*speed;
@@ -86,10 +86,27 @@ func set_control(player):
 
 
 func intercept():
-	destination = ball.global_position
-	#the enemy moves toward the ball TODO: while blocking own goal
-	velocity = (destination-self.position).normalized()*speed;
-	_move_to_target()
+	if destination != to_local(ball.global_position):
+		#TODO make this player find their own goal
+		var goalPosition = Vector2()
+		goalPosition = get_node("../Goal").global_position
+		destination = Geometry.get_closest_point_to_segment_2d (Vector2.ZERO, to_local(ball.position), to_local(goalPosition))
+		#the enemy moves toward the ball TODO: while blocking own goal
+	velocity = (destination-Vector2.ZERO).normalized()*speed;
+	_move_to_target("intercept")
+
+func _draw():
+	draw_line(Vector2.ZERO, destination, Color(255,255,255), 1)
+
+func _move_to_target(targetType):
+	var distance2Target = destination.distance_to(Vector2.ZERO); 
+	if(distance2Target > 10): 
+		move_and_slide(velocity);
+	elif (targetType == "intercept" and destination != to_local(ball.global_position)):
+		destination = to_local(ball.global_position)
+	elif (destination == to_local(ball.global_position) and ball.kicking == false and stealCooldown == false):
+		_try_steal();
+		
 
 func _try_steal():
 	stealCooldown = true
@@ -108,10 +125,12 @@ func start_steal_cooldown():
 
 func _on_InterceptArea_body_entered(body):
 	if body == ball.playerInPossession and ball.enemyPossession == false:
+		print("Intercepting")
 		intercepting = true
 
 func _on_InterceptArea_body_exited(body):
 	if body == ball.playerInPossession and ball.enemyPossession == false:
+		print("Not Intercepting")
 		intercepting = false
 
 func _on_DefenseZone_body_entered(body):
@@ -127,9 +146,4 @@ func _check_collisions():
 		var collider = collision.collider
 		return collider.name
 		
-func _move_to_target():
-	var distance2Target = destination.distance_to(self.position); 
-	if(distance2Target > 20): 
-		move_and_slide(velocity);
-	elif (destination == ball.global_position and ball.kicking == false and stealCooldown == false):
-		_try_steal();
+

@@ -37,37 +37,36 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/Control/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 424.0
+margin_right = 330.0
 margin_bottom = 190.0
 
 [node name="MenuButtons" type="VBoxContainer" parent="MainMenu/Control/MarginContainer/HBoxContainer"]
-margin_right = 414.0
+margin_right = 320.0
 margin_bottom = 180.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Title" type="HBoxContainer" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons"]
-margin_right = 414.0
+margin_right = 320.0
 margin_bottom = 60.0
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Title"]
-margin_left = 47.0
-margin_right = 367.0
+margin_right = 320.0
 margin_bottom = 60.0
 texture = ExtResource( 3 )
 stretch_mode = 5
 
 [node name="Start" type="HBoxContainer" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons"]
 margin_top = 64.0
-margin_right = 414.0
+margin_right = 320.0
 margin_bottom = 86.0
 alignment = 1
 
 [node name="Button" type="Button" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start"]
 self_modulate = Color( 0, 0.498039, 0.623529, 1 )
-margin_left = 164.0
-margin_right = 250.0
+margin_left = 117.0
+margin_right = 203.0
 margin_bottom = 22.0
 custom_fonts/font = SubResource( 1 )
 text = "New Game"

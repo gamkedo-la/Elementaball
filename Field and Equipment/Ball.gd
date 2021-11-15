@@ -45,6 +45,12 @@ func _physics_process(delta):
 		
 	if groundball == true:
 		check_groundball_collisions()
+	update()
+
+func _draw():
+	var goalPosition = get_node("../Goal").global_position
+	draw_line(Vector2.ZERO, to_local(goalPosition), Color(0,255,255), 1)
+	update()
 
 		
 func _input(event):
