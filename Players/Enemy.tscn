@@ -18,8 +18,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 7.00803
-height = 9.13697
+radius = 5.73978
+height = 23.1125
 
 [sub_resource type="Animation" id=2]
 resource_name = "Tackle"
@@ -78,7 +78,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.148666, -0.743263 ), Vector2( 0.594597, -0.520287 ), Vector2( -0.964783, -0.0422516 ), Vector2( -0.303909, -0.197098 ), Vector2( -3.78267, 0.495148 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
+"values": [ Vector2( 0.148666, -0.743263 ), Vector2( 0.928307, 5.15279 ), Vector2( -5.13615, 9.96906 ), Vector2( -2.97359, 8.14565 ), Vector2( -2.61469, 4.16596 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("EnemyCollider:rotation_degrees")
@@ -87,10 +87,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 1.62307, 85.2222, 81.9966, 0.663645, 1.20974 ]
+"values": [ 1.62307, 1.13498, 85.2222, 81.9966, 0.663645, 1.20974 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Position2D:position")
@@ -193,7 +193,7 @@ tracks/11/keys = {
 position = Vector2( 185.723, 70.8173 )
 collision_mask = 3
 script = ExtResource( 2 )
-speed = 300
+speed = 150
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.0787811, -0.0796051 )
