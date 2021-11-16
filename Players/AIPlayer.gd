@@ -55,8 +55,9 @@ func initialize_stats(stats : StartingStats):
 	
 	get_node("Health Bar").update_healthbar(maxHP)
 
-func _physics_process(delta):	
+func _physics_process(delta):		
 	if controlling == false:
+		
 		#if the enemy's defense range collides with the ball
 		if intercepting == true:
 			intercept()

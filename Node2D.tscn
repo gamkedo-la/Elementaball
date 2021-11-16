@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Players/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Field and Equipment/Ball.tscn" type="PackedScene" id=2]
@@ -8,10 +8,8 @@
 [ext_resource path="res://Field and Equipment/ParallaxBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Camera2D.gd" type="Script" id=7]
 [ext_resource path="res://Art/Sprites/enemy_goal.png" type="Texture" id=8]
-[ext_resource path="res://Art/Sprites/dragito_enemy_idle.png" type="Texture" id=9]
 [ext_resource path="res://Players/blue_player_stats.tres" type="Resource" id=10]
 [ext_resource path="res://Players/red_player_stats.tres" type="Resource" id=11]
-[ext_resource path="res://Art/Sprites/green_enemy_idle.png" type="Texture" id=12]
 [ext_resource path="res://Players/green_player_stats.tres" type="Resource" id=13]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -92,16 +90,10 @@ position = Vector2( 236.524, 189.648 )
 fieldPosition = "EnemyLeft"
 starting_stats = ExtResource( 13 )
 
-[node name="Sprite" parent="Enemy3" index="0"]
-texture = ExtResource( 12 )
-
 [node name="Enemy2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 244.682, -68.4794 )
 fieldPosition = "EnemyRight"
 starting_stats = ExtResource( 11 )
-
-[node name="Sprite" parent="Enemy2" index="0"]
-texture = ExtResource( 9 )
 
 [node name="EnemyCollider" parent="Enemy2" index="1"]
 rotation = 1.52987
