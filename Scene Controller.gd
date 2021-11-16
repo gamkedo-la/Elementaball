@@ -3,6 +3,7 @@ extends Node
 signal goalScored(kicker)
 signal inPossession(player)
 signal controlling(player)
+signal tackling(trueOrFalse)
 
 #All the players on the field
 var playerCenter
