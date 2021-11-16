@@ -1,16 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Art/Sprites/dragito_enemy_idle.png" type="Texture" id=1]
+[ext_resource path="res://Art/Sprites/blue_enemy_idle.png" type="Texture" id=1]
 [ext_resource path="res://Players/AIPlayer.gd" type="Script" id=2]
 [ext_resource path="res://Players/BallInterceptArea.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/health_bar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/Sprites/blue_enemy_tackle/blue_enemy_tackle4.png" type="Texture" id=5]
+[ext_resource path="res://Art/Sprites/blue_enemy_tackle/blue_enemy_tackle2.png" type="Texture" id=6]
+[ext_resource path="res://Art/Sprites/blue_enemy_tackle/blue_enemy_tackle1.png" type="Texture" id=7]
+[ext_resource path="res://Art/Sprites/blue_enemy_tackle/blue_enemy_tackle3.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 1.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -27,7 +31,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.8 ),
+"times": PoolRealArray( 0, 0.1, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 150, 300, 150 ]
@@ -39,8 +43,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "check_steal"
@@ -61,16 +65,7 @@ tracks/1/keys = {
 "method": "check_steal"
 }, {
 "args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
 "method": "tackle_ended"
-}, {
-"args": [  ],
-"method": "check_steal"
 } ]
 }
 tracks/2/type = "value"
@@ -188,10 +183,10 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 4, 5 ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
 [node name="Enemy" type="KinematicBody2D"]
@@ -203,22 +198,24 @@ speed = 300
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.0787811, -0.0796051 )
 frames = SubResource( 3 )
+frame = 5
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
-position = Vector2( 0.148666, -0.743263 )
-rotation = 0.0283279
+position = Vector2( -0.161148, 0.0360641 )
+rotation = 0.0211139
 shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -8.5517, -0.586487 )
+position = Vector2( -8.71283, -0.550415 )
 
 [node name="InterceptArea" parent="." instance=ExtResource( 3 )]
+position = Vector2( -0.161133, 0.0360718 )
 
 [node name="Health Bar" parent="." instance=ExtResource( 4 )]
-margin_left = -73.3222
-margin_top = -46.9349
-margin_right = -73.3222
-margin_bottom = -46.9349
+margin_left = -73.4833
+margin_top = -46.8988
+margin_right = -73.4833
+margin_bottom = -46.8988
 
 [node name="Health Bar" parent="Health Bar" index="0"]
 margin_left = 65.5849
@@ -227,6 +224,7 @@ margin_right = 81.5849
 margin_bottom = 28.4094
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.75
 anims/Tackle = SubResource( 2 )
 
 [editable path="Health Bar"]
