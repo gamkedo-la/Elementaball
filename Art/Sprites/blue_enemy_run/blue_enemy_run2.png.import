@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blue_enemy_prototype.png-e5a0c06144e3f0d09a254c1457846cb1.stex"
+path="res://.import/blue_enemy_run2.png-8403b2979d0c732e25728f3f38e0cf7b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/blue_enemy_prototype.png"
-dest_files=[ "res://.import/blue_enemy_prototype.png-e5a0c06144e3f0d09a254c1457846cb1.stex" ]
+source_file="res://Art/Sprites/blue_enemy_run/blue_enemy_run2.png"
+dest_files=[ "res://.import/blue_enemy_run2.png-8403b2979d0c732e25728f3f38e0cf7b.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

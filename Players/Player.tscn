@@ -1,8 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Players/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/blue_idle.png" type="Texture" id=2]
 [ext_resource path="res://UI/health_bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Players/AnimationPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Players/AnimationTree.tscn" type="PackedScene" id=5]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Blue Idle"
+
+[sub_resource type="Animation" id=4]
+resource_name = "Blue Run"
+
+[sub_resource type="Animation" id=5]
+resource_name = "Blue Tackle"
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.79665
@@ -15,17 +28,25 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="AnimationTree" parent="." instance=ExtResource( 5 )]
+parameters/playback = SubResource( 2 )
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 4 )]
+"anims/Blue Idle" = SubResource( 3 )
+"anims/Blue Run" = SubResource( 4 )
+"anims/Blue Tackle" = SubResource( 5 )
+
 [node name="Health Bar" parent="." instance=ExtResource( 3 )]
-margin_left = -8.3085
-margin_top = -23.1578
-margin_right = -8.3085
-margin_bottom = -23.1578
+margin_left = -8.75441
+margin_top = -22.4966
+margin_right = -8.75441
+margin_bottom = -22.4966
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 8.613, -0.877659 )
+position = Vector2( 9.80875, -1.23588 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

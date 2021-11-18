@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource( 1 )
+characterName = "Green"
 type = "Green"
 HP = 60
 maxHP = 60

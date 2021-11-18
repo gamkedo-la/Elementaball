@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
 #Variables for movement
-var velocity = Vector2()
+var velocity = Vector2.ZERO
 var destination = Vector2()
+var previousPosition = global_position
 
 #States for defense
 var intercepting = false
@@ -21,6 +22,7 @@ export var fieldPosition : String
 
 #All the starting stats from the Starting Stats class of resources
 export var starting_stats : Resource
+var characterName : String = "Name"
 var type : String = "Type"
 var HP : int
 var maxHP = 50
@@ -32,6 +34,14 @@ var ability2 : Resource
 var ability3 : Resource
 var ability4 : Resource
 
+#All the animation stats
+var animStates: Resource
+var idleAnim : String
+var runningAnim : String
+var tackleAnim : String
+var kickAnim : String
+var aniMachine
+
 onready var ball = get_node("../Ball")
 
 func _ready():
@@ -40,8 +50,11 @@ func _ready():
 	SceneController.connect("inPossession", self, "set_possession")
 	SceneController.connect("controlling", self, "set_control")
 	SceneController.connect("tackling", self, "toggle_tackling")
+	aniMachine = $AnimationTree["parameters/playback"]
+	
 		
 func initialize_stats(stats : StartingStats):
+	characterName = stats.characterName
 	type = stats.type
 	HP = stats.HP
 	maxHP = stats.maxHP
@@ -53,9 +66,19 @@ func initialize_stats(stats : StartingStats):
 	ability3 = stats.ability3
 	ability4 = stats.ability4
 	
+	animStates = stats.animStates
+	
+	if self.is_in_group("enemy_team"):
+		characterName = characterName + " Enemy"
+	
+	idleAnim = characterName + " Idle"
+	runningAnim = characterName + " Run"
+	tackleAnim = characterName + " Tackle"
+	kickAnim = characterName + " Kick"
+	
 	get_node("Health Bar").update_healthbar(maxHP)
 
-func _physics_process(delta):		
+func _physics_process(delta):
 	if controlling == false:
 		
 		#if the enemy's defense range collides with the ball
@@ -68,6 +91,13 @@ func _physics_process(delta):
 		update()
 		#TODO: Add offensive AI - running toward goal, passing, kicking
 		
+	if velocity.length() == 0:
+		aniMachine.travel(idleAnim)
+		print("Idle")
+	if velocity.length() > 0:
+		aniMachine.travel(runningAnim)
+		print("Running")
+
 func defend_zone():
 	if(inDefenseZone == false): 
 		destination = defenseZone.global_position
@@ -75,7 +105,7 @@ func defend_zone():
 		_move_to_target("defenseZone")
 	else:
 		#TODO moves between ball and their own goal within assigned zone
-		velocity = (self.position).normalized()*speed;
+		velocity = Vector2.ZERO
 
 func set_possession(player):
 	if player == self:
@@ -113,6 +143,7 @@ func _move_to_target(targetType):
 		_try_steal();
 	elif distance2Target > 5:
 		move_and_slide(velocity)
+	else: velocity = Vector2.ZERO
 		
 
 func _try_steal():
@@ -121,7 +152,7 @@ func _try_steal():
 	SceneController.emit_signal("tackling", true)
 	ball.target = ball.playerInPossession
 	destination = to_local(ball.playerInPossession.global_position)
-	get_node("AnimationPlayer").play("Tackle")
+	aniMachine.travel(tackleAnim)
 
 func toggle_tackling(trueOrFalse):
 		tacklingInProgress = trueOrFalse

@@ -3,6 +3,7 @@ extends Resource
 
 class_name StartingStats
 
+export var characterName : String = "Name"
 export var type : String = "Type"
 
 export var HP : int
@@ -14,3 +15,5 @@ export var ability1 : Resource
 export var ability2 : Resource
 export var ability3 : Resource
 export var ability4 : Resource
+
+export var animStates : Resource

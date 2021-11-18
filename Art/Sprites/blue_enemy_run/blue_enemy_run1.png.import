@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ballplaceholder.png-7a0d168555b97e1e79f5b5449fd8f0c7.stex"
+path="res://.import/blue_enemy_run1.png-1284bdd41ffa39bccb253e597fd43ced.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/ballplaceholder.png"
-dest_files=[ "res://.import/ballplaceholder.png-7a0d168555b97e1e79f5b5449fd8f0c7.stex" ]
+source_file="res://Art/Sprites/blue_enemy_run/blue_enemy_run1.png"
+dest_files=[ "res://.import/blue_enemy_run1.png-1284bdd41ffa39bccb253e597fd43ced.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
