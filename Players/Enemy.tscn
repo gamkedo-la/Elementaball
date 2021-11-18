@@ -50,8 +50,8 @@ frames = SubResource( 3 )
 animation = "Blue Enemy Idle"
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
-position = Vector2( -0.161148, 0.0360641 )
-rotation = 0.0211139
+position = Vector2( -7.91602, 0.695878 )
+rotation = 0.0222567
 shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
