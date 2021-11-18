@@ -42,7 +42,7 @@ height = 18.1092
 position = Vector2( 185.723, 70.8173 )
 collision_mask = 3
 script = ExtResource( 2 )
-speed = 150
+speed = 300
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1.05083, -1.02803 )
@@ -50,21 +50,21 @@ frames = SubResource( 3 )
 animation = "Blue Enemy Idle"
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
-position = Vector2( -7.91602, 0.695878 )
-rotation = 0.0222567
+position = Vector2( -2.61469, 4.16596 )
+rotation = 0.0115828
 shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -8.71283, -0.550415 )
 
 [node name="InterceptArea" parent="." instance=ExtResource( 3 )]
-position = Vector2( -0.161133, 0.0360718 )
+position = Vector2( -0.540016, 0.162682 )
 
 [node name="Health Bar" parent="." instance=ExtResource( 4 )]
-margin_left = -73.4833
-margin_top = -46.8988
-margin_right = -73.4833
-margin_bottom = -46.8988
+margin_left = -73.8622
+margin_top = -46.7722
+margin_right = -73.8622
+margin_bottom = -46.7722
 
 [node name="Health Bar" parent="Health Bar" index="0"]
 margin_left = 65.5849

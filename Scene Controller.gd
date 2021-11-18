@@ -4,6 +4,7 @@ signal goalScored(kicker)
 signal inPossession(player)
 signal controlling(player)
 signal tackling(trueOrFalse)
+signal blocking(trueOrFalse)
 
 #All the players on the field
 var playerCenter

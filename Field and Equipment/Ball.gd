@@ -135,7 +135,8 @@ func player_block(tackledType):
 			abilityTypes.append(ability.type)
 	blockMenu.popup()
 	blockMenu.rect_position = controllingPlayer.global_position	
-		
+	
+	SceneController.emit_signal("blocking", true)	
 	yield(self, "blocked")
 		
 	var damageReduction = calc_damage_reduction(tackledType)
@@ -262,6 +263,7 @@ func _on_BlockMenu_id_pressed(id):
 	blockedType = abilityTypes[id]
 	selecting = false
 	emit_signal("blocked")
+	SceneController.emit_signal("blocking", false)
 
 func calc_power_modifier(baseDamage):
 	baseDamage += attacker.power

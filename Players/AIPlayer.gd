@@ -9,6 +9,7 @@ var previousPosition = global_position
 var intercepting = false
 var inDefenseZone = true
 var tacklingInProgress = false
+var blockingInProgress = false
 var tacklerIsSelf = false
 var stealCooldown = false
 var defenseZone
@@ -50,6 +51,7 @@ func _ready():
 	SceneController.connect("inPossession", self, "set_possession")
 	SceneController.connect("controlling", self, "set_control")
 	SceneController.connect("tackling", self, "toggle_tackling")
+	SceneController.connect("blocking", self, "toggle_blocking")
 	aniMachine = $AnimationTree["parameters/playback"]
 	
 		
@@ -138,7 +140,7 @@ func _move_to_target(targetType):
 		move_and_slide(velocity);
 	elif (targetType == "intercept" and destination != to_local(ball.global_position)):
 		destination = ballPosition 
-	elif (destination == ballPosition and ball.kicking == false and stealCooldown == false):
+	elif (destination == ballPosition and ball.kicking == false and stealCooldown == false and tacklingInProgress == false):
 		_try_steal();
 	elif distance2Target > 5:
 		move_and_slide(velocity)
@@ -155,9 +157,14 @@ func _try_steal():
 
 func toggle_tackling(trueOrFalse):
 		tacklingInProgress = trueOrFalse
+		
+func toggle_blocking(trueOrFalse):
+		blockingInProgress = trueOrFalse
 
 func tackle_ended():
 	if inPossession == false:
+		if blockingInProgress:
+			yield(SceneController, "blocking")
 		tacklerIsSelf = false
 		SceneController.emit_signal("tackling", false)
 		reset_intercept()
