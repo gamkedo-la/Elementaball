@@ -90,13 +90,13 @@ func _physics_process(delta):
 			defend_zone()
 		update()
 		#TODO: Add offensive AI - running toward goal, passing, kicking
-		
-	if velocity.length() == 0:
+	
+	if tacklingInProgress and tacklerIsSelf:
+		aniMachine.travel(tackleAnim)
+	elif velocity.length() == 0:
 		aniMachine.travel(idleAnim)
-		print("Idle")
-	if velocity.length() > 0:
+	elif velocity.length() > 0:
 		aniMachine.travel(runningAnim)
-		print("Running")
 
 func defend_zone():
 	if(inDefenseZone == false): 
@@ -130,16 +130,15 @@ func intercept(type = "normal"):
 		_move_to_target("intercept")
 
 func _move_to_target(targetType):
-	var distance2Target = destination.distance_to(Vector2.ZERO); 
-	if(tacklingInProgress and tacklerIsSelf == false):
-		yield(SceneController, "tackling")
-	elif(destination != to_local(ball.global_position) and distance2Target > 10): 
+	var distance2Target = destination.distance_to(Vector2.ZERO);
+	var ballPosition = to_local(ball.global_position)
+	if(destination != ballPosition and distance2Target > 10): 
 		move_and_slide(velocity);
-	elif(destination == to_local(ball.global_position) and distance2Target > 50): 
+	elif(destination == ballPosition  and distance2Target > 50): 
 		move_and_slide(velocity);
 	elif (targetType == "intercept" and destination != to_local(ball.global_position)):
-		destination = to_local(ball.global_position)
-	elif (destination == to_local(ball.global_position) and ball.kicking == false and stealCooldown == false):
+		destination = ballPosition 
+	elif (destination == ballPosition and ball.kicking == false and stealCooldown == false):
 		_try_steal();
 	elif distance2Target > 5:
 		move_and_slide(velocity)

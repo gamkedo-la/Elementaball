@@ -45,26 +45,26 @@ script = ExtResource( 2 )
 speed = 150
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -5.19917, -0.27803 )
+position = Vector2( 1.05083, -1.02803 )
 frames = SubResource( 3 )
 animation = "Blue Enemy Idle"
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
-position = Vector2( -9.20431, 0.528442 )
-rotation = 0.0283279
+position = Vector2( -0.161148, 0.0360641 )
+rotation = 0.0211139
 shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -17.0613, 1.41577 )
+position = Vector2( -8.71283, -0.550415 )
 
 [node name="InterceptArea" parent="." instance=ExtResource( 3 )]
 position = Vector2( -0.161133, 0.0360718 )
 
 [node name="Health Bar" parent="." instance=ExtResource( 4 )]
-margin_left = -78.8579
-margin_top = -45.853
-margin_right = -78.8579
-margin_bottom = -45.853
+margin_left = -73.4833
+margin_top = -46.8988
+margin_right = -73.4833
+margin_bottom = -46.8988
 
 [node name="Health Bar" parent="Health Bar" index="0"]
 margin_left = 65.5849

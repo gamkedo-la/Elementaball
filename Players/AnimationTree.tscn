@@ -15,11 +15,11 @@ animation = "Blue Enemy Tackle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=6]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=7]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
 
 [sub_resource type="AnimationNodeStateMachine" id=10]
 "states/Blue Enemy Idle/node" = SubResource( 1 )
@@ -27,8 +27,8 @@ animation = "Blue Enemy Tackle"
 "states/Blue Enemy Run/node" = SubResource( 2 )
 "states/Blue Enemy Run/position" = Vector2( 675, 100 )
 "states/Blue Enemy Tackle/node" = SubResource( 3 )
-"states/Blue Enemy Tackle/position" = Vector2( 338, 134 )
-transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 4 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 5 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 6 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 7 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 8 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 9 ) ]
+"states/Blue Enemy Tackle/position" = Vector2( 340, 134 )
+transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 4 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 5 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 6 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 8 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 9 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 12 ) ]
 start_node = "Blue Enemy Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=11]
