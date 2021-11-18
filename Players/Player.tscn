@@ -46,7 +46,7 @@ margin_bottom = -22.4966
 texture = ExtResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 9.80875, -1.23588 )
+position = Vector2( 10.0255, -0.903961 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

@@ -129,9 +129,6 @@ starting_stats = ExtResource( 10 )
 [node name="EnemyCollider" parent="Enemy2" index="1"]
 rotation = 1.52987
 
-[node name="Position2D" parent="Enemy2" index="2"]
-position = Vector2( -11.7001, 3.85023 )
-
 [node name="AnimationTree" parent="Enemy2" index="6"]
 parameters/playback = SubResource( 4 )
 

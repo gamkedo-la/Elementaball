@@ -176,6 +176,7 @@ func score_goal():
 	dribbling = true
 
 func _on_KickMenu_id_pressed(id):
+	AudioQueen.emit_signal("playSound", "Menu Select")
 	selecting = false
 	attacker = find_attacker("kick")
 	
@@ -240,6 +241,7 @@ func calc_intercept_damage(interceptor):
 	interceptor.intercepting = false
 
 func _on_TackleMenu_id_pressed(id):
+	AudioQueen.emit_signal("playSound", "Menu Select")
 	attacker = find_attacker("tackle")
 	calc_tackle_damage(abilityTypes[id])
 	selecting = false
@@ -259,6 +261,7 @@ func calc_tackle_damage(tackledType):
 		player_block(tackledType)
 	
 func _on_BlockMenu_id_pressed(id):
+	AudioQueen.emit_signal("playSound", "Menu Select")
 	blocker = find_blocker()
 	blockedType = abilityTypes[id]
 	selecting = false

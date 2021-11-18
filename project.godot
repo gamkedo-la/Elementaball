@@ -33,6 +33,7 @@ config/icon="res://Art/Sprites/icon.png"
 [autoload]
 
 SceneController="*res://Scene Controller.tscn"
+AudioQueen="*res://Sounds/AudioQueen.tscn"
 
 [display]
 
