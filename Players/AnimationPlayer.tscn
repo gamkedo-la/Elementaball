@@ -4,7 +4,7 @@
 resource_name = "Blue Enemy Idle"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "values": [ "Blue Enemy Idle" ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Position2D:position")
+tracks/1/path = NodePath("ThingsToFlip/Position2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -57,7 +57,7 @@ tracks/1/keys = {
 "values": [ 1.62307, 1.13498, 1.43747, 0.663645, 1.20974 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Position2D:position")
+tracks/2/path = NodePath("ThingsToFlip/Position2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -69,7 +69,7 @@ tracks/2/keys = {
 "values": [ Vector2( -17.0613, 1.41577 ), Vector2( -17.3374, 1.26561 ), Vector2( -15.8752, 1.18845 ), Vector2( -17.5503, 0.699898 ), Vector2( -9.09171, -0.423805 ), Vector2( -8.42532, -0.843346 ), Vector2( -8.71283, -0.550415 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Position2D:rotation_degrees")
+tracks/3/path = NodePath("ThingsToFlip/Position2D:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -81,7 +81,7 @@ tracks/3/keys = {
 "values": [ 0.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimatedSprite:frame")
+tracks/4/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -93,7 +93,7 @@ tracks/4/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("AnimatedSprite:animation")
+tracks/5/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -177,7 +177,7 @@ tracks/3/keys = {
 "values": [ 1.62307, 1.13498, 85.2222, 81.9966, 0.663645, 1.20974 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Position2D:position")
+tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -189,7 +189,7 @@ tracks/4/keys = {
 "values": [ Vector2( -8.5517, -0.586487 ), Vector2( -7.65979, -1.40407 ), Vector2( -9.36783, -0.480103 ), Vector2( -8.70696, -0.634941 ), Vector2( -9.09171, -0.423805 ), Vector2( -8.42532, -0.843346 ), Vector2( -8.71283, -0.550415 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Position2D:rotation_degrees")
+tracks/5/path = NodePath("ThingsToFlip/Position2D:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -261,7 +261,7 @@ tracks/10/keys = {
 "values": [  ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("AnimatedSprite:frame")
+tracks/11/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -273,7 +273,7 @@ tracks/11/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("AnimatedSprite:animation")
+tracks/12/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -285,7 +285,7 @@ tracks/12/keys = {
 "values": [ "Blue Enemy Tackle" ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("AnimatedSprite:position")
+tracks/13/path = NodePath("ThingsToFlip/AnimatedSprite:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false

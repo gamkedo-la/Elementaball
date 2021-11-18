@@ -62,7 +62,7 @@ func _input(event):
 
 func set_possession(player):
 	playerInPossession = player
-	possessionNode = player.get_node("Position2D")
+	possessionNode = player.get_node("ThingsToFlip/Position2D")
 	if player in get_tree().get_nodes_in_group("player_team"):
 		dribbling = true
 		enemyPossession = false

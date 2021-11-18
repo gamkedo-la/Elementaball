@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 #Variables for movement
 var velocity = Vector2.ZERO
+onready var initialScale = scale
 var destination = Vector2()
 var previousPosition = global_position
 
@@ -92,6 +93,16 @@ func _physics_process(delta):
 			defend_zone()
 		update()
 		#TODO: Add offensive AI - running toward goal, passing, kicking
+		
+		if velocity.x > 0.1:
+			$ThingsToFlip.scale.x = -1
+			if $EnemyCollider:
+				$EnemyCollider.scale.x = -1
+		
+		elif velocity.x < -0.1:
+			$ThingsToFlip.scale.x = 1
+			if $EnemyCollider:
+				$EnemyCollider.scale.x = 1
 	
 	if tacklingInProgress and tacklerIsSelf:
 		aniMachine.travel(tackleAnim)
@@ -99,6 +110,7 @@ func _physics_process(delta):
 		aniMachine.travel(idleAnim)
 	elif velocity.length() > 0:
 		aniMachine.travel(runningAnim)
+
 
 func defend_zone():
 	if(inDefenseZone == false): 
@@ -134,7 +146,7 @@ func intercept(type = "normal"):
 func _move_to_target(targetType):
 	var distance2Target = destination.distance_to(Vector2.ZERO);
 	var ballPosition = to_local(ball.global_position)
-	if(destination != ballPosition and distance2Target > 10): 
+	if(destination != ballPosition and distance2Target > 30): 
 		move_and_slide(velocity);
 	elif(destination == ballPosition  and distance2Target > 50): 
 		move_and_slide(velocity);
@@ -142,7 +154,7 @@ func _move_to_target(targetType):
 		destination = ballPosition 
 	elif (destination == ballPosition and ball.kicking == false and stealCooldown == false and tacklingInProgress == false):
 		_try_steal();
-	elif distance2Target > 5:
+	elif distance2Target > 30:
 		move_and_slide(velocity)
 	else: velocity = Vector2.ZERO
 		

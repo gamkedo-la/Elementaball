@@ -14,6 +14,12 @@
 [ext_resource path="res://Players/AnimationPlayer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Players/AnimationTree.tscn" type="PackedScene" id=13]
 
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.73978
+height = 18.1092
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 11 ) ],
@@ -32,39 +38,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 5.73978
-height = 18.1092
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
-
 [node name="Enemy" type="KinematicBody2D"]
-position = Vector2( 185.723, 70.8173 )
 collision_mask = 3
 script = ExtResource( 2 )
-speed = 300
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 1.05083, -1.02803 )
-frames = SubResource( 3 )
-animation = "Blue Enemy Idle"
-
-[node name="EnemyCollider" type="CollisionShape2D" parent="."]
-position = Vector2( -2.61469, 4.16596 )
-rotation = 0.0115828
-shape = SubResource( 1 )
-
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -8.71283, -0.550415 )
+speed = 150
 
 [node name="InterceptArea" parent="." instance=ExtResource( 3 )]
-position = Vector2( -0.540016, 0.162682 )
+position = Vector2( -0.161133, 0.0360718 )
 
 [node name="Health Bar" parent="." instance=ExtResource( 4 )]
-margin_left = -73.8622
-margin_top = -46.7722
-margin_right = -73.8622
-margin_bottom = -46.7722
+margin_left = -73.4833
+margin_top = -46.8988
+margin_right = -73.4833
+margin_bottom = -46.8988
 
 [node name="Health Bar" parent="Health Bar" index="0"]
 margin_left = 65.5849
@@ -72,10 +58,25 @@ margin_top = 24.4094
 margin_right = 81.5849
 margin_bottom = 28.4094
 
+[node name="EnemyCollider" type="CollisionShape2D" parent="."]
+position = Vector2( -0.161148, 0.0360641 )
+rotation = 0.0211139
+shape = SubResource( 1 )
+
 [node name="AnimationPlayer" parent="." instance=ExtResource( 12 )]
 
 [node name="AnimationTree" parent="." instance=ExtResource( 13 )]
 active = true
 parameters/playback = SubResource( 5 )
+
+[node name="ThingsToFlip" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
+position = Vector2( 1.05083, -1.02803 )
+frames = SubResource( 3 )
+animation = "Blue Enemy Idle"
+
+[node name="Position2D" type="Position2D" parent="ThingsToFlip"]
+position = Vector2( -8.71283, -0.550415 )
 
 [editable path="Health Bar"]

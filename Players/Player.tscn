@@ -28,6 +28,12 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="Health Bar" parent="." instance=ExtResource( 3 )]
+margin_left = -8.75441
+margin_top = -22.4966
+margin_right = -8.75441
+margin_bottom = -22.4966
+
 [node name="AnimationTree" parent="." instance=ExtResource( 5 )]
 parameters/playback = SubResource( 2 )
 
@@ -36,17 +42,13 @@ parameters/playback = SubResource( 2 )
 "anims/Blue Run" = SubResource( 4 )
 "anims/Blue Tackle" = SubResource( 5 )
 
-[node name="Health Bar" parent="." instance=ExtResource( 3 )]
-margin_left = -8.75441
-margin_top = -22.4966
-margin_right = -8.75441
-margin_bottom = -22.4966
-
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 10.0255, -0.903961 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="ThingsToFlip" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ThingsToFlip"]
+texture = ExtResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="ThingsToFlip"]
+position = Vector2( 10.0255, -0.903961 )
