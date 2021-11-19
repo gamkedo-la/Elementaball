@@ -146,18 +146,25 @@ func intercept(type = "normal"):
 func _move_to_target(targetType):
 	var distance2Target = destination.distance_to(Vector2.ZERO);
 	var ballPosition = to_local(ball.global_position)
-	if(destination != ballPosition and distance2Target > 30): 
-		move_and_slide(velocity);
+	var tackleTarget = to_local(ball.playerInPossession.global_position)
+	if(destination == tackleTarget and distance2Target > 30): 
+		check_and_slide(distance2Target)
 	elif(destination == ballPosition  and distance2Target > 50): 
-		move_and_slide(velocity);
+		check_and_slide(distance2Target)
 	elif (targetType == "intercept" and destination != to_local(ball.global_position)):
 		destination = ballPosition 
 	elif (destination == ballPosition and ball.kicking == false and stealCooldown == false and tacklingInProgress == false):
 		_try_steal();
 	elif distance2Target > 30:
-		move_and_slide(velocity)
+		check_and_slide(distance2Target)
 	else: velocity = Vector2.ZERO
 		
+
+func check_and_slide(distance2Target, delta = get_physics_process_delta_time()):
+	if distance2Target >= velocity.length() * delta:
+		move_and_slide(velocity)
+	else:
+		move_and_slide(position.direction_to(destination) * distance2Target * 1/delta)
 
 func _try_steal():
 	tacklerIsSelf = true
