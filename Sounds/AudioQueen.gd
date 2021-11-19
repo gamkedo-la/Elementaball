@@ -6,4 +6,5 @@ func _ready():
 	connect("playSound", self, "play_sound")
 
 func play_sound(sound):
-	get_node(sound).play()
+	if get_node(sound):
+		get_node(sound).play()

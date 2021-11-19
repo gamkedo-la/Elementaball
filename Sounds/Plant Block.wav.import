@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Plant Block.wav-78e6e9af1eef88144768e45da46d89cb.sample"
+
+[deps]
+
+source_file="res://Sounds/Plant Block.wav"
+dest_files=[ "res://.import/Plant Block.wav-78e6e9af1eef88144768e45da46d89cb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

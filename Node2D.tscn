@@ -36,7 +36,7 @@ inPossession = true
 fieldPosition = "PlayerCenter"
 starting_stats = ExtResource( 10 )
 
-[node name="AnimationTree" parent="Player" index="0"]
+[node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 5 )
 
 [node name="Player2" parent="." groups=[
@@ -46,7 +46,7 @@ position = Vector2( 63.3513, -69.4719 )
 fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
-[node name="AnimationTree" parent="Player2" index="0"]
+[node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 6 )
 
 [node name="Player3" parent="." groups=[
@@ -56,7 +56,7 @@ position = Vector2( 58.5892, 190.068 )
 fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
-[node name="AnimationTree" parent="Player3" index="0"]
+[node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 7 )
 
 [node name="Popup" parent="." instance=ExtResource( 3 )]
@@ -106,7 +106,7 @@ position = Vector2( 396.039, 62.225 )
 fieldPosition = "EnemyCenter"
 starting_stats = ExtResource( 10 )
 
-[node name="AnimationTree" parent="Enemy" index="6"]
+[node name="AnimationTree" parent="Enemy" index="4"]
 parameters/playback = SubResource( 2 )
 
 [node name="Enemy3" parent="." groups=[
@@ -116,7 +116,7 @@ position = Vector2( 236.524, 189.648 )
 fieldPosition = "EnemyLeft"
 starting_stats = ExtResource( 10 )
 
-[node name="AnimationTree" parent="Enemy3" index="6"]
+[node name="AnimationTree" parent="Enemy3" index="4"]
 parameters/playback = SubResource( 3 )
 
 [node name="Enemy2" parent="." groups=[
@@ -126,10 +126,10 @@ position = Vector2( 244.682, -68.4794 )
 fieldPosition = "EnemyRight"
 starting_stats = ExtResource( 10 )
 
-[node name="EnemyCollider" parent="Enemy2" index="1"]
+[node name="EnemyCollider" parent="Enemy2" index="2"]
 rotation = 1.52987
 
-[node name="AnimationTree" parent="Enemy2" index="6"]
+[node name="AnimationTree" parent="Enemy2" index="4"]
 parameters/playback = SubResource( 4 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]

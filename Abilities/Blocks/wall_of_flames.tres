@@ -7,3 +7,4 @@ script = ExtResource( 1 )
 name = "Wall of Flames"
 type = "Red"
 action = "Block"
+sound = "Fire Block"

@@ -7,3 +7,4 @@ script = ExtResource( 1 )
 name = "Flame Kick"
 type = "Red"
 action = "Kick"
+sound = "Fire Kick"

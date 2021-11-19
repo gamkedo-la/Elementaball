@@ -7,3 +7,4 @@ script = ExtResource( 1 )
 name = "Flame Tackle"
 type = "Red"
 action = "Tackle"
+sound = "Fire Tackle"

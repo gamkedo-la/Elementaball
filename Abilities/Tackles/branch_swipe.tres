@@ -7,3 +7,4 @@ script = ExtResource( 1 )
 name = "Branch Swipe"
 type = "Green"
 action = "Tackle"
+sound = "Plant Tackle"

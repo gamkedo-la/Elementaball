@@ -7,3 +7,4 @@ script = ExtResource( 1 )
 name = "Thorn Wall"
 type = "Green"
 action = "Block"
+sound = "Plant Block"

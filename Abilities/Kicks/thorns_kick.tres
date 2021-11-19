@@ -7,3 +7,4 @@ script = ExtResource( 1 )
 name = "Thorns Kick"
 type = "Green"
 action = "Kick"
+sound = "Plant Kick"

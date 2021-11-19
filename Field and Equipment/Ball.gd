@@ -9,7 +9,7 @@ var blocker
 var selecting = false
 
 #Variables for abilities
-var abilityTypes = []
+var menuAbilities = []
 var kickedType
 var blockedType
 var target
@@ -90,11 +90,11 @@ func player_kick():
 	#Add the kick abilities available for the player to the menu
 	#TODO: Make a default (no element) kick ability and calculate damage for it
 	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
-	abilityTypes = []
+	menuAbilities = []
 	for ability in abilities:
 		if ability.action == "Kick":
 			kickMenu.add_item(ability.name)
-			abilityTypes.append(ability.type)
+			menuAbilities.append(ability)
 	kickMenu.popup()
 	kickMenu.rect_position = playerInPossession.global_position
 
@@ -111,11 +111,11 @@ func player_steal():
 		#Add the tackle abilities available for the player to the menu
 		#TODO: Make a default (no element) tackle ability and calculate damage for it
 		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
-		abilityTypes = []
+		menuAbilities = []
 		for ability in abilities:
 			if ability.action == "Tackle":
 				tackleMenu.add_item(ability.name)
-				abilityTypes.append(ability.type)
+				menuAbilities.append(ability)
 		tackleMenu.popup()
 		tackleMenu.rect_position = controllingPlayer.global_position
 
@@ -128,11 +128,11 @@ func player_block(tackledType):
 	#Add the block abilities available for the player to the menu
 	#TODO: Make a default (no element) block ability and calculate damage reduction for it
 	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
-	abilityTypes = []
+	menuAbilities = []
 	for ability in abilities:
 		if ability.action == "Block":
 			blockMenu.add_item(ability.name)
-			abilityTypes.append(ability.type)
+			menuAbilities.append(ability)
 	blockMenu.popup()
 	blockMenu.rect_position = controllingPlayer.global_position	
 	
@@ -176,19 +176,20 @@ func score_goal():
 	dribbling = true
 
 func _on_KickMenu_id_pressed(id):
-	AudioQueen.emit_signal("playSound", "Menu Select")
 	selecting = false
 	attacker = find_attacker("kick")
 	
-	if abilityTypes[id] == "Green":
+	if menuAbilities[id].type == "Green":
 		#get_node("Sprite").modulate = Color(0,255,0)
 		kickedType = "Green"
-	if abilityTypes[id] == "Red":
+	if menuAbilities[id].type == "Red":
 		#get_node("Sprite").modulate = Color(255,0,0)
 		kickedType = "Red"
-	if abilityTypes[id] == "Blue":
+	if menuAbilities[id].type == "Blue":
 		#get_node("Sprite").modulate = Color(0,0,255)
 		kickedType = "Blue"
+		
+	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
 	
 	#Calculate where the shot will go and whether it hits or misses
 	var goal_position
@@ -241,9 +242,9 @@ func calc_intercept_damage(interceptor):
 	interceptor.intercepting = false
 
 func _on_TackleMenu_id_pressed(id):
-	AudioQueen.emit_signal("playSound", "Menu Select")
+	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
 	attacker = find_attacker("tackle")
-	calc_tackle_damage(abilityTypes[id])
+	calc_tackle_damage(menuAbilities[id].type)
 	selecting = false
 	
 func calc_tackle_damage(tackledType):
@@ -261,9 +262,9 @@ func calc_tackle_damage(tackledType):
 		player_block(tackledType)
 	
 func _on_BlockMenu_id_pressed(id):
-	AudioQueen.emit_signal("playSound", "Menu Select")
+	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
 	blocker = find_blocker()
-	blockedType = abilityTypes[id]
+	blockedType = menuAbilities[id].type
 	selecting = false
 	emit_signal("blocked")
 	SceneController.emit_signal("blocking", false)

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Plant Kick.wav-2b4533dde32c07654fb758a8fe0f6157.sample"
+
+[deps]
+
+source_file="res://Sounds/Plant Kick.wav"
+dest_files=[ "res://.import/Plant Kick.wav-2b4533dde32c07654fb758a8fe0f6157.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

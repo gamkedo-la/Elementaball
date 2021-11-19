@@ -7,3 +7,4 @@ script = ExtResource( 1 )
 name = "Tail Swipe"
 type = "Blue"
 action = "Tackle"
+sound = "Water Tackle"
