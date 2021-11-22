@@ -14,6 +14,7 @@ var blockingInProgress = false
 var tacklerIsSelf = false
 var stealCooldown = false
 var defenseZone
+var myOpponent = "opposing_team"
 
 #States for offense
 export var controlling = false
@@ -73,6 +74,9 @@ func initialize_stats(stats : StartingStats):
 	
 	if self.is_in_group("enemy_team"):
 		characterName = characterName + " Enemy"
+		myOpponent = "player_team"
+	else:
+		myOpponent = "enemy_team"
 	
 	idleAnim = characterName + " Idle"
 	runningAnim = characterName + " Run"
@@ -84,15 +88,26 @@ func initialize_stats(stats : StartingStats):
 func _physics_process(delta):
 	if controlling == false:
 		
+		if inPossession:
+			return
+		
 		#if the enemy's defense range collides with the ball
 		if intercepting == true:
+			#print("intercepting")
 			intercept()
 			
-		#TODO if ball is out of range, returns to assigned zone
+		#If nobody has the ball, try to get it.
+		elif !ball.playerInPossession:
+			destination = ball.global_position
+			velocity = (destination-self.position).normalized()*speed;
+		
+		#If ball is out of range, returns to assigned zone
 		else:
 			defend_zone()
 		update()
 		#TODO: Add offensive AI - running toward goal, passing, kicking
+		
+		velocity = move_and_slide(velocity)
 		
 		if velocity.x > 0.1:
 			$ThingsToFlip.scale.x = -1
@@ -115,11 +130,17 @@ func _physics_process(delta):
 func defend_zone():
 	if(inDefenseZone == false): 
 		destination = defenseZone.global_position
-		velocity = (destination-self.position).normalized()*speed; 
-		_move_to_target("defenseZone")
+		velocity = (destination-self.position).normalized()*speed;
+		#print("returning to defense zone")
 	else:
-		#TODO moves between ball and their own goal within assigned zone
-		velocity = Vector2.ZERO
+		#Moves between ball and their own goal within assigned zone	
+		var goalPosition = Vector2()
+		goalPosition = get_node("../Goal").global_position
+		destination = Geometry.get_closest_point_to_segment_2d (Vector2.ZERO, to_local(ball.position), to_local(goalPosition))
+		velocity = (destination-Vector2.ZERO).normalized()*speed;
+		#print("guarding defense zone")
+		
+	check_and_slide()
 
 func set_possession(player):
 	if player == self:
@@ -135,9 +156,8 @@ func set_control(player):
 
 
 func intercept(type = "normal"):
-	if destination == to_local(ball.playerInPossession.global_position):
-		_move_to_target("tackle")
-	elif destination != to_local(ball.global_position):
+	var distance2Target = destination.distance_to(Vector2.ZERO);
+	if destination != to_local(ball.global_position):
 		reset_intercept()
 	else:
 		velocity = (destination-Vector2.ZERO).normalized()*speed;
@@ -146,25 +166,19 @@ func intercept(type = "normal"):
 func _move_to_target(targetType):
 	var distance2Target = destination.distance_to(Vector2.ZERO);
 	var ballPosition = to_local(ball.global_position)
-	var tackleTarget = to_local(ball.playerInPossession.global_position)
-	if(destination == tackleTarget and distance2Target > 30): 
-		check_and_slide(distance2Target)
-	elif(destination == ballPosition  and distance2Target > 50): 
-		check_and_slide(distance2Target)
-	elif (targetType == "intercept" and destination != to_local(ball.global_position)):
-		destination = ballPosition 
-	elif (destination == ballPosition and ball.kicking == false and stealCooldown == false and tacklingInProgress == false):
-		_try_steal();
-	elif distance2Target > 30:
-		check_and_slide(distance2Target)
-	else: velocity = Vector2.ZERO
+	if ball.playerInPossession:
+		if (targetType == "intercept" and destination != ballPosition):
+			destination = ballPosition
+			check_and_slide()
+		elif distance2Target >= 20:
+			check_and_slide()
+		elif (destination == ballPosition and ball.kicking == false and stealCooldown == false and tacklingInProgress == false):
+			_try_steal();
+	else: check_and_slide()
 		
 
-func check_and_slide(distance2Target, delta = get_physics_process_delta_time()):
-	if distance2Target >= velocity.length() * delta:
-		move_and_slide(velocity)
-	else:
-		move_and_slide(position.direction_to(destination) * distance2Target * 1/delta)
+func check_and_slide(distance2Target = destination.distance_to(Vector2.ZERO), delta = get_physics_process_delta_time()):
+	return
 
 func _try_steal():
 	tacklerIsSelf = true
@@ -172,6 +186,7 @@ func _try_steal():
 	SceneController.emit_signal("tackling", true)
 	ball.target = ball.playerInPossession
 	destination = to_local(ball.playerInPossession.global_position)
+	check_and_slide()
 	aniMachine.travel(tackleAnim)
 
 func toggle_tackling(trueOrFalse):
@@ -193,12 +208,16 @@ func reset_intercept():
 	var goalPosition = Vector2()
 	goalPosition = get_node("../Goal").global_position
 	destination = Geometry.get_closest_point_to_segment_2d (Vector2.ZERO, to_local(ball.position), to_local(goalPosition))
-	#the enemy moves toward the ball TODO: while blocking own goal
+	#the enemy moves toward the ball
 	velocity = (destination-Vector2.ZERO).normalized()*speed;
 	_move_to_target("intercept")
 	
 func check_steal():
-	if _check_collisions() and ("Player" in _check_collisions() or "Ball" in _check_collisions()):
+	print("checking for successful steal")
+	if _check_collisions():
+		print("there was a collision")
+	if _check_collisions() and _check_collisions().is_in_group(myOpponent):
+		print("steal successful")
 		ball.calc_tackle_damage(type)
 		yield(ball, "calculated")
 		intercepting = false
@@ -213,11 +232,11 @@ func start_steal_cooldown():
 	stealCooldown = false
 
 func _on_InterceptArea_body_entered(body):
-	if body == ball.playerInPossession and ball.enemyPossession == false:
+	if body == ball.playerInPossession and body.is_in_group(myOpponent):
 		intercepting = true
 
 func _on_InterceptArea_body_exited(body):
-	if body == ball.playerInPossession and ball.enemyPossession == false:
+	if body == ball.playerInPossession and body.is_in_group(myOpponent):
 		intercepting = false
 
 func _on_DefenseZone_body_entered(body):
@@ -231,6 +250,6 @@ func _check_collisions():
 	if slide_count:
 		var collision = get_slide_collision(slide_count - 1)
 		var collider = collision.collider
-		return collider.name
+		return collider
 		
 
