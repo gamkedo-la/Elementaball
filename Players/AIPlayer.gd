@@ -117,12 +117,12 @@ func _physics_process(delta):
 		
 		if velocity.x > 0.1:
 			$ThingsToFlip.scale.x = -1
-			if $EnemyCollider:
+			if has_node("EnemyCollider"): # players don't have this
 				$EnemyCollider.scale.x = -1
 		
 		elif velocity.x < -0.1:
 			$ThingsToFlip.scale.x = 1
-			if $EnemyCollider:
+			if has_node("EnemyCollider"): # players don't have this
 				$EnemyCollider.scale.x = 1
 
 	if tacklingInProgress and tacklerIsSelf:
