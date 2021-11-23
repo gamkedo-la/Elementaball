@@ -46,6 +46,7 @@ window/stretch/aspect="keep"
 [global]
 
 "v sync"=false
+full=false
 
 [importer_defaults]
 
