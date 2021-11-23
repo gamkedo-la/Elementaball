@@ -1,14 +1,14 @@
 extends KinematicBody2D
 
 #Variables for movement
-var velocity = Vector2.ZERO
+var velocity = Vector2()
 onready var initialScale = scale
 var destination = Vector2()
-var previousPosition = global_position
+var previousPosition = position
 
 #States for defense
+var onDefense = false
 var intercepting = false
-var inDefenseZone = true
 var tacklingInProgress = false
 var blockingInProgress = false
 var tacklerIsSelf = false
@@ -17,6 +17,7 @@ var defenseZone
 var myOpponent = "opposing_team"
 
 #States for offense
+var onOffense = false
 export var controlling = false
 export var inPossession = false
 var timer
@@ -86,27 +87,32 @@ func initialize_stats(stats : StartingStats):
 	get_node("Health Bar").update_healthbar(maxHP)
 
 func _physics_process(delta):
-	if controlling == false:
+	if controlling == false and ball.selecting == false:
 		
-		if inPossession:
-			return
-		
-		#if the enemy's defense range collides with the ball
-		if intercepting == true:
-			#print("intercepting")
-			intercept()
-			
 		#If nobody has the ball, try to get it.
-		elif !ball.playerInPossession:
-			destination = ball.global_position
+		if !ball.playerInPossession:
+			destination = ball.position
 			velocity = (destination-self.position).normalized()*speed;
 		
-		#If ball is out of range, returns to assigned zone
-		else:
-			defend_zone()
-		update()
-		#TODO: Add offensive AI - running toward goal, passing, kicking
+		#TODO add offense states
+		if onOffense:
+			if inPossession:
+				pass
+			
+			velocity = Vector2()
 		
+		if onDefense:
+			#if the enemy's defense range collides with the ball
+			if intercepting == true:
+				#print("intercepting")
+				intercept()
+			
+			#If ball is out of range, returns to assigned zone
+			else:
+				defend_zone()
+			update()
+			#TODO: Add offensive AI - running toward goal, passing, kicking
+			
 		velocity = move_and_slide(velocity)
 		
 		if velocity.x > 0.1:
@@ -118,7 +124,7 @@ func _physics_process(delta):
 			$ThingsToFlip.scale.x = 1
 			if $EnemyCollider:
 				$EnemyCollider.scale.x = 1
-	
+
 	if tacklingInProgress and tacklerIsSelf:
 		aniMachine.travel(tackleAnim)
 	elif velocity.length() == 0:
@@ -128,18 +134,9 @@ func _physics_process(delta):
 
 
 func defend_zone():
-	if(inDefenseZone == false): 
-		destination = defenseZone.global_position
-		velocity = (destination-self.position).normalized()*speed;
-		#print("returning to defense zone")
-	else:
-		#Moves between ball and their own goal within assigned zone	
-		var goalPosition = Vector2()
-		goalPosition = get_node("../Goal").global_position
-		destination = Geometry.get_closest_point_to_segment_2d (Vector2.ZERO, to_local(ball.position), to_local(goalPosition))
-		velocity = (destination-Vector2.ZERO).normalized()*speed;
-		#print("guarding defense zone")
-		
+	destination = defenseZone.get_node("Path2D").curve.get_closest_point(ball.position)
+	
+	velocity = (destination-self.position).normalized()*speed;	
 	check_and_slide()
 
 func set_possession(player):
@@ -147,6 +144,13 @@ func set_possession(player):
 		inPossession = true
 	else:
 		inPossession = false
+	
+	if player.is_in_group(myOpponent):
+		onDefense = true
+		onOffense = false
+	else:
+		onDefense = false
+		onOffense = true
 		
 func set_control(player):
 	if player == self:
@@ -156,36 +160,38 @@ func set_control(player):
 
 
 func intercept(type = "normal"):
-	var distance2Target = destination.distance_to(Vector2.ZERO);
-	if destination != to_local(ball.global_position):
+	var distance2Target = destination.distance_to(self.position);
+	if destination != ball.position and destination != ball.playerInPossession.position:
 		reset_intercept()
 	else:
-		velocity = (destination-Vector2.ZERO).normalized()*speed;
-		_move_to_target("intercept")
+		_move_to_target()
 
-func _move_to_target(targetType):
-	var distance2Target = destination.distance_to(Vector2.ZERO);
-	var ballPosition = to_local(ball.global_position)
+func _move_to_target():
+	var distance2Target = destination.distance_to(self.position);
+	var ballPosition = ball.position
 	if ball.playerInPossession:
-		if (targetType == "intercept" and destination != ballPosition):
+		if (distance2Target <= 32 and destination != ballPosition):
 			destination = ballPosition
 			check_and_slide()
-		elif distance2Target >= 20:
+		elif distance2Target >= 32:
 			check_and_slide()
 		elif (destination == ballPosition and ball.kicking == false and stealCooldown == false and tacklingInProgress == false):
 			_try_steal();
 	else: check_and_slide()
 		
 
-func check_and_slide(distance2Target = destination.distance_to(Vector2.ZERO), delta = get_physics_process_delta_time()):
-	return
+func check_and_slide(distance2Target = destination.distance_to(self.position), delta = get_physics_process_delta_time()):
+	if distance2Target >= velocity.length() * delta:
+		velocity = (destination-self.position).normalized()*speed;
+	else:
+		velocity = Vector2()
 
 func _try_steal():
 	tacklerIsSelf = true
 	stealCooldown = true
 	SceneController.emit_signal("tackling", true)
 	ball.target = ball.playerInPossession
-	destination = to_local(ball.playerInPossession.global_position)
+	destination = ball.playerInPossession.position
 	check_and_slide()
 	aniMachine.travel(tackleAnim)
 
@@ -206,11 +212,11 @@ func tackle_ended():
 func reset_intercept():
 	#TODO make this player find their own goal
 	var goalPosition = Vector2()
-	goalPosition = get_node("../Goal").global_position
-	destination = Geometry.get_closest_point_to_segment_2d (Vector2.ZERO, to_local(ball.position), to_local(goalPosition))
+	goalPosition = get_node("../Goal").position
+	destination = Geometry.get_closest_point_to_segment_2d (self.position, ball.position, goalPosition)
 	#the enemy moves toward the ball
-	velocity = (destination-Vector2.ZERO).normalized()*speed;
-	_move_to_target("intercept")
+	velocity = (destination-self.position).normalized()*speed;
+	_move_to_target()
 	
 func check_steal():
 	print("checking for successful steal")
@@ -238,12 +244,6 @@ func _on_InterceptArea_body_entered(body):
 func _on_InterceptArea_body_exited(body):
 	if body == ball.playerInPossession and body.is_in_group(myOpponent):
 		intercepting = false
-
-func _on_DefenseZone_body_entered(body):
-	inDefenseZone = true
-	
-func _on_DefenseZone_body_exited(body):
-	inDefenseZone = false
 	
 func _check_collisions():
 	var slide_count = get_slide_count()

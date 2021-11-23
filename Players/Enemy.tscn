@@ -18,19 +18,19 @@
 radius = 5.73978
 height = 18.1092
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 11 ) ],
-"loop": false,
-"name": "Blue Enemy Run",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "Blue Enemy Tackle",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "Blue Enemy Run",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
@@ -67,7 +67,7 @@ shape = SubResource( 1 )
 
 [node name="AnimationTree" parent="." instance=ExtResource( 13 )]
 active = true
-parameters/playback = SubResource( 5 )
+parameters/playback = SubResource( 2 )
 
 [node name="ThingsToFlip" type="Node2D" parent="."]
 

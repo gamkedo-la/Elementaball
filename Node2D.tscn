@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Players/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Field and Equipment/Ball.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Field and Equipment/ParallaxBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Camera2D.gd" type="Script" id=7]
 [ext_resource path="res://Art/Sprites/enemy_goal.png" type="Texture" id=8]
+[ext_resource path="res://Players/Defense Zones/EnemyRight.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Players/blue_player_stats.tres" type="Resource" id=10]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
@@ -22,8 +23,22 @@
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=6]
 
-[sub_resource type="CircleShape2D" id=7]
-radius = 42.2346
+[sub_resource type="Curve2D" id=7]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array( 5.04538, -46.2493, -5.04538, 46.2493, 194.625, -74.5095, -10.9317, -24.386, 10.9317, 24.386, 222.19, 4.62045, 18.4343, 0.853422, -18.4343, -0.853422, 294.006, 32.4625, 1.32096, 26.4882, -1.32096, -26.4882, 553.701, 4.62045, 5.28384, 9.24986, -5.28384, -9.24986, 497.844, -90.2901, 0, 0, 0, 0, 216.044, -110.084, 0, 0, 0, 0, 195.363, -74.8359 )
+}
+
+[sub_resource type="Curve2D" id=8]
+_data = {
+"points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, 221.673, 114.382, 5.04538, -46.2493, -5.04538, 46.2493, 191.106, 131.953, -10.9317, -24.386, 10.9317, 24.386, 222.768, 207.825, 18.4343, 0.853422, -18.4343, -0.853422, 306.75, 248.065, 1.32096, 26.4882, -1.32096, -26.4882, 475.409, 244.544, 5.28384, 9.24986, -5.28384, -9.24986, 458.954, 105.836, 0, 0, 0, 0, 289.254, 95.3713, 0, 0, 0, 0, 221.673, 114.382 )
+}
+
+[sub_resource type="Curve2D" id=9]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, 307.137, 19.5446, 5.04538, -46.2493, -5.04538, 46.2493, 272.217, 67.9539, -10.9317, -24.386, 10.9317, 24.386, 298.236, 128.12, 18.4343, 0.853422, -18.4343, -0.853422, 405.732, 167.539, 1.32096, 26.4882, -1.32096, -26.4882, 589.229, 181.37, 5.28384, 9.24986, -5.28384, -9.24986, 532.4, -13.6504, 0, 0, 0, 0, 411.894, -17.1082, 0, 0, 0, 0, 306.452, 18.853 )
+}
 
 [node name="Main" type="Node2D"]
 
@@ -148,41 +163,29 @@ parameters/playback = SubResource( 6 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 follow_viewport_enable = true
 
-[node name="EnemyRight" type="Area2D" parent="."]
-position = Vector2( 245.542, -67.7737 )
+[node name="EnemyRight" parent="." instance=ExtResource( 9 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyRight"]
-shape = SubResource( 7 )
+[node name="Path2D" parent="EnemyRight" index="0"]
+curve = SubResource( 7 )
 
-[node name="EnemyCenter" type="Area2D" parent="."]
-position = Vector2( 395.009, 64.195 )
+[node name="EnemyLeft" parent="." instance=ExtResource( 9 )]
+scale = Vector2( 0.84652, 0.829782 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCenter"]
-shape = SubResource( 7 )
+[node name="Path2D" parent="EnemyLeft" index="0"]
+scale = Vector2( 1.34164, 1.14235 )
+curve = SubResource( 8 )
 
-[node name="EnemyLeft" type="Area2D" parent="."]
-position = Vector2( 236.921, 190.329 )
+[node name="EnemyCenter" parent="." instance=ExtResource( 9 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyLeft"]
-shape = SubResource( 7 )
+[node name="Path2D" parent="EnemyCenter" index="0"]
+curve = SubResource( 9 )
 
-[node name="PlayerLeft" type="Area2D" parent="."]
-position = Vector2( 63.0682, -67.7737 )
+[node name="PlayerLeft" parent="." instance=ExtResource( 9 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeft"]
-shape = SubResource( 7 )
+[node name="PlayerRight" parent="." instance=ExtResource( 9 )]
+scale = Vector2( 0.84652, 0.829783 )
 
-[node name="PlayerRight" type="Area2D" parent="."]
-position = Vector2( 57.5017, 190.467 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRight"]
-shape = SubResource( 7 )
-
-[node name="PlayerCenter" type="Area2D" parent="."]
-position = Vector2( -68.4368, 62.467 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCenter"]
-shape = SubResource( 7 )
+[node name="PlayerCenter" parent="." instance=ExtResource( 9 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -198,18 +201,6 @@ margin = Vector2( 200, 100 )
 [connection signal="body_exited" from="Enemy3/InterceptArea" to="Enemy3" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_entered"]
 [connection signal="body_exited" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_exited"]
-[connection signal="body_entered" from="EnemyRight" to="Enemy2" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="EnemyRight" to="Enemy2" method="_on_DefenseZone_body_exited"]
-[connection signal="body_entered" from="EnemyCenter" to="Enemy" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="EnemyCenter" to="Enemy" method="_on_DefenseZone_body_exited"]
-[connection signal="body_entered" from="EnemyLeft" to="Enemy3" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="EnemyLeft" to="Enemy3" method="_on_DefenseZone_body_exited"]
-[connection signal="body_entered" from="PlayerLeft" to="Player2" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="PlayerLeft" to="Player2" method="_on_DefenseZone_body_exited"]
-[connection signal="body_entered" from="PlayerRight" to="Player3" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="PlayerRight" to="Player3" method="_on_DefenseZone_body_exited"]
-[connection signal="body_entered" from="PlayerCenter" to="Player" method="_on_DefenseZone_body_entered"]
-[connection signal="body_exited" from="PlayerCenter" to="Player" method="_on_DefenseZone_body_exited"]
 
 [editable path="Player"]
 [editable path="Player2"]
@@ -227,3 +218,6 @@ margin = Vector2( 200, 100 )
 [editable path="Enemy2/InterceptArea"]
 [editable path="Enemy2/Health Bar"]
 [editable path="ParallaxBackground"]
+[editable path="EnemyRight"]
+[editable path="EnemyLeft"]
+[editable path="EnemyCenter"]
