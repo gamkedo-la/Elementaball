@@ -178,20 +178,7 @@ func score_goal():
 	dribbling = true
 
 func _on_KickMenu_id_pressed(id):
-	selecting = false
-	attacker = find_attacker("kick")
-	
-	if menuAbilities[id].type == "Green":
-		#get_node("Sprite").modulate = Color(0,255,0)
-		kickedType = "Green"
-	if menuAbilities[id].type == "Red":
-		#get_node("Sprite").modulate = Color(255,0,0)
-		kickedType = "Red"
-	if menuAbilities[id].type == "Blue":
-		#get_node("Sprite").modulate = Color(0,0,255)
-		kickedType = "Blue"
-		
-	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
+	initialize_kick(id)
 	
 	#Calculate where the shot will go and whether it hits or misses
 	var goal_position
@@ -218,6 +205,46 @@ func _on_KickMenu_id_pressed(id):
 	get_node("CollisionShape2D").disabled = false
 	set_linear_velocity((possibleShots[shotIndex] - self.global_position) * kickSpeed)
 	apply_torque_impulse(rng.randf_range(500, 2000))
+
+func _on_PassMenu_id_pressed(id):
+	initialize_kick(id)
+	
+	var openTeammates = get_tree().get_nodes_in_group(attacker.myTeam)
+	for player in openTeammates:
+		if player == attacker:
+			openTeammates.erase(player)
+	var nearestMate
+	var mateDistance = 99999
+	for player in openTeammates:
+		if player.position.distance_to(attacker.position) < mateDistance:
+			mateDistance = player.position.distance_to(attacker.position)
+			nearestMate = player
+	
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	SceneController.emit_signal("inPossession", null)
+	kicking = true
+	self.mode = RigidBody2D.MODE_RIGID
+	get_node("CollisionShape2D").disabled = false
+	set_linear_velocity((nearestMate.position - self.global_position) * kickSpeed)
+	apply_torque_impulse(rng.randf_range(500, 2000))		
+	
+	
+func initialize_kick(id):
+	selecting = false
+	attacker = find_attacker("kick")
+	
+	if menuAbilities[id].type == "Green":
+		#get_node("Sprite").modulate = Color(0,255,0)
+		kickedType = "Green"
+	if menuAbilities[id].type == "Red":
+		#get_node("Sprite").modulate = Color(255,0,0)
+		kickedType = "Red"
+	if menuAbilities[id].type == "Blue":
+		#get_node("Sprite").modulate = Color(0,0,255)
+		kickedType = "Blue"
+		
+	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
 
 func find_attacker(attackAction):
 	if attackAction == "kick":
@@ -314,3 +341,6 @@ func calc_damage_reduction(attackType):
 	elif attackType == "Blue" and blockedType == "Blue":
 		damageReduction = 0.75
 	return damageReduction
+
+
+

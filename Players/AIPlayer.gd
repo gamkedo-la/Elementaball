@@ -19,6 +19,7 @@ var myOpponent = "opposing_team"
 #States for offense
 var onOffense = false
 var myGoal
+var myTeam
 export var controlling = false
 export var inPossession = false
 var timer
@@ -77,9 +78,11 @@ func initialize_stats(stats : StartingStats):
 	if self.is_in_group("enemy_team"):
 		characterName = characterName + " Enemy"
 		myOpponent = "player_team"
+		myTeam = "enemy_team"
 		myGoal = get_node("../Enemy Goal")
 	else:
 		myOpponent = "enemy_team"
+		myTeam = "player_team"
 		myGoal = get_node("../Goal")
 	
 	idleAnim = characterName + " Idle"
@@ -139,7 +142,9 @@ func pass_and_shoot():
 	if distance2Goal >= 300:
 		destination = Vector2(myGoal.position.x, self.position.y)
 		velocity = (destination-self.position).normalized()*speed
-	elif distance2Goal <= 50:
+	elif distance2Goal < 300 and distance2Goal > 200:
+		try_pass()	
+	elif distance2Goal <= 200:
 		try_kick()
 	
 	check_and_slide()
@@ -207,6 +212,15 @@ func check_and_slide(distance2Target = destination.distance_to(self.position), d
 		velocity = Vector2()
 
 func try_kick():
+	prekick()
+	#TODO make this and pass randomly select an ability from those available
+	ball._on_KickMenu_id_pressed(0)
+
+func try_pass():
+	prekick()
+	ball._on_PassMenu_id_pressed(0)
+	
+func prekick():
 	if ball.kicking == false:
 		#Bring up the Kick Menu
 		var kickMenu = get_node("../Popup/KickMenu")
@@ -220,7 +234,6 @@ func try_kick():
 			if ability.action == "Kick":
 				kickMenu.add_item(ability.name)
 				ball.menuAbilities.append(ability)
-		ball._on_KickMenu_id_pressed(0)
 
 func _try_steal():
 	tacklerIsSelf = true

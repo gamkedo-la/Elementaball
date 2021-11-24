@@ -81,12 +81,6 @@ parameters/playback = SubResource( 3 )
 [node name="KickMenu" parent="Popup" index="0"]
 items = [ "Thorns Kick", null, 0, false, false, 0, 0, null, "", false, "Fireball Kick", null, 0, false, false, 1, 0, null, "", false, "Spray Throw", null, 0, false, false, 2, 0, null, "", false ]
 
-[node name="TackleMenu" parent="Popup" index="1"]
-items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Swipe", null, 0, false, false, 1, 0, null, "", false, "Flame Tackle", null, 0, false, false, 2, 0, null, "", false ]
-
-[node name="BlockMenu" parent="Popup" index="2"]
-items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping Wave", null, 0, false, false, 1, 0, null, "", false, "Flame Wall", null, 0, false, false, 2, 0, null, "", false ]
-
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 159.34, 67.8276 )
 
@@ -219,6 +213,7 @@ __meta__ = {
 }
 
 [connection signal="id_pressed" from="Popup/KickMenu" to="Ball" method="_on_KickMenu_id_pressed"]
+[connection signal="id_pressed" from="Popup/PassMenu" to="Ball" method="_on_PassMenu_id_pressed"]
 [connection signal="id_pressed" from="Popup/TackleMenu" to="Ball" method="_on_TackleMenu_id_pressed"]
 [connection signal="id_pressed" from="Popup/BlockMenu" to="Ball" method="_on_BlockMenu_id_pressed"]
 [connection signal="body_entered" from="Enemy/InterceptArea" to="Enemy" method="_on_InterceptArea_body_entered"]

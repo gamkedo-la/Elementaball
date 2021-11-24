@@ -21,6 +21,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PassMenu" type="PopupMenu" parent="."]
+margin_top = 0.0558777
+margin_right = 86.0
+margin_bottom = 52.0559
+custom_fonts/font = ExtResource( 1 )
+items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick", null, 0, false, false, 1, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TackleMenu" type="PopupMenu" parent="."]
 margin_top = 0.0558777
 margin_right = 86.0
