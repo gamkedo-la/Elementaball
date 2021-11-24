@@ -103,8 +103,6 @@ func _physics_process(_delta):
 				pass_and_shoot()
 			else:
 				get_in_position()
-			
-			velocity = Vector2()
 		
 		if onDefense:
 			#if the enemy's defense range collides with the ball
@@ -148,6 +146,14 @@ func pass_and_shoot():
 	check_and_slide()
 	
 func get_in_position():
+	var distance2Goal = position.distance_to(myGoal.position)
+	var myZoneY = defenseZone.position.y
+	if distance2Goal >= 300:
+		destination = Vector2(myGoal.position.x, myZoneY)
+		velocity = (destination-self.position).normalized()*speed
+	else:
+		destination = Vector2(myGoal.position.x, myZoneY)
+		velocity = (destination-self.position).normalized()*speed
 	
 	check_and_slide()
 
@@ -199,7 +205,7 @@ func _move_to_target():
 
 func check_and_slide(distance2Target = destination.distance_to(self.position), delta = get_physics_process_delta_time()):
 	if distance2Target >= velocity.length() * delta:
-		velocity = (destination-self.position).normalized()*speed;
+		return
 	else:
 		velocity = Vector2()
 

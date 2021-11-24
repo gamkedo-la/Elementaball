@@ -166,20 +166,26 @@ parameters/playback = SubResource( 6 )
 follow_viewport_enable = true
 
 [node name="EnemyRight" parent="." instance=ExtResource( 9 )]
+position = Vector2( 378.666, -102.779 )
 
 [node name="Path2D" parent="EnemyRight" index="0"]
+position = Vector2( -376.967, 69.7091 )
 curve = SubResource( 7 )
 
 [node name="EnemyLeft" parent="." instance=ExtResource( 9 )]
+position = Vector2( 409.333, 250.436 )
 scale = Vector2( 0.84652, 0.829782 )
 
 [node name="Path2D" parent="EnemyLeft" index="0"]
+position = Vector2( -420.807, -239.543 )
 scale = Vector2( 1.34164, 1.14235 )
 curve = SubResource( 8 )
 
 [node name="EnemyCenter" parent="." instance=ExtResource( 9 )]
+position = Vector2( 395.263, 61.9086 )
 
 [node name="Path2D" parent="EnemyCenter" index="0"]
+position = Vector2( -388.913, -74.6078 )
 curve = SubResource( 9 )
 
 [node name="PlayerLeft" parent="." instance=ExtResource( 9 )]
