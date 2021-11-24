@@ -37,4 +37,3 @@ func _process(delta):
 		if playerIndex > 2:
 			playerIndex = 0
 		emit_signal("controlling", playerTeam[playerIndex])
-		print(playerIndex)

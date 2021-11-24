@@ -18,6 +18,7 @@ var myOpponent = "opposing_team"
 
 #States for offense
 var onOffense = false
+var myGoal
 export var controlling = false
 export var inPossession = false
 var timer
@@ -76,8 +77,10 @@ func initialize_stats(stats : StartingStats):
 	if self.is_in_group("enemy_team"):
 		characterName = characterName + " Enemy"
 		myOpponent = "player_team"
+		myGoal = get_node("../Enemy Goal")
 	else:
 		myOpponent = "enemy_team"
+		myGoal = get_node("../Goal")
 	
 	idleAnim = characterName + " Idle"
 	runningAnim = characterName + " Run"
@@ -97,7 +100,9 @@ func _physics_process(delta):
 		#TODO add offense states
 		if onOffense:
 			if inPossession:
-				pass
+				pass_and_shoot()
+			else:
+				get_in_position()
 			
 			velocity = Vector2()
 		
@@ -111,7 +116,6 @@ func _physics_process(delta):
 			else:
 				defend_zone()
 			update()
-			#TODO: Add offensive AI - running toward goal, passing, kicking
 			
 		velocity = move_and_slide(velocity)
 		
@@ -132,6 +136,13 @@ func _physics_process(delta):
 	elif velocity.length() > 0:
 		aniMachine.travel(runningAnim)
 
+func pass_and_shoot():
+	
+	check_and_slide()
+	
+func get_in_position():
+	
+	check_and_slide()
 
 func defend_zone():
 	destination = defenseZone.get_node("Path2D").curve.get_closest_point(ball.position)
@@ -210,20 +221,17 @@ func tackle_ended():
 		reset_intercept()
 		
 func reset_intercept():
-	#TODO make this player find their own goal
 	var goalPosition = Vector2()
-	goalPosition = get_node("../Goal").position
+	goalPosition = myGoal
 	destination = Geometry.get_closest_point_to_segment_2d (self.position, ball.position, goalPosition)
 	#the enemy moves toward the ball
 	velocity = (destination-self.position).normalized()*speed;
 	_move_to_target()
 	
 func check_steal():
-	print("checking for successful steal")
-	if _check_collisions():
-		print("there was a collision")
+	#print("checking for successful steal")
 	if _check_collisions() and _check_collisions().is_in_group(myOpponent):
-		print("steal successful")
+		#print("steal successful")
 		ball.calc_tackle_damage(type)
 		yield(ball, "calculated")
 		intercepting = false
