@@ -24,7 +24,7 @@ func _ready():
 	SceneController.connect("controlling", self, "set_targets")
 	set_targets(get_node("../Player"))
 
-func _process(delta):
+func _process(_delta):
 	if !targets:
 		return
 	# Keep the camera centered between the targets

@@ -89,7 +89,7 @@ func initialize_stats(stats : StartingStats):
 	
 	get_node("Health Bar").update_healthbar(maxHP)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if controlling == false and ball.selecting == false:
 		
 		#If nobody has the ball, try to get it.
@@ -137,6 +137,13 @@ func _physics_process(delta):
 		aniMachine.travel(runningAnim)
 
 func pass_and_shoot():
+	var distance2Goal = position.distance_to(myGoal.position)
+	if distance2Goal >= 300:
+		destination = myGoal.position
+		velocity = (Vector2(destination.x, self.position.y)-self.position).normalized()*speed
+	else:
+		destination = myGoal.position
+		velocity = (Vector2(destination.x, self.position.y)-self.position).normalized()*speed	
 	
 	check_and_slide()
 	
@@ -170,8 +177,7 @@ func set_control(player):
 		controlling = false
 
 
-func intercept(type = "normal"):
-	var distance2Target = destination.distance_to(self.position);
+func intercept():
 	if destination != ball.position and destination != ball.playerInPossession.position:
 		reset_intercept()
 	else:
@@ -222,7 +228,7 @@ func tackle_ended():
 		
 func reset_intercept():
 	var goalPosition = Vector2()
-	goalPosition = myGoal
+	goalPosition = myGoal.position
 	destination = Geometry.get_closest_point_to_segment_2d (self.position, ball.position, goalPosition)
 	#the enemy moves toward the ball
 	velocity = (destination-self.position).normalized()*speed;

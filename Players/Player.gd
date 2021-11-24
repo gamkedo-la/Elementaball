@@ -8,7 +8,7 @@ func _ready():
 	playerTeam = get_tree().get_nodes_in_group("player_team")
 	
 #This handles player motion. The other actions are calculated in the Ball script.
-func _physics_process(delta):
+func _physics_process(_delta):
 	if controlling == true and get_node("../Ball").selecting == false:
 		if Input.is_action_pressed("ui_right"):
 			motion.x = speed

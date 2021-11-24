@@ -33,7 +33,7 @@ func _ready():
 	set_physics_process(true)
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if dribbling == true:
 		dribbling()
 
@@ -51,7 +51,7 @@ func _draw():
 	pass
 
 		
-func _input(event):
+func _input(_event):
 	if playerInPossession == controllingPlayer and Input.is_action_just_pressed("ui_kick") and selecting == false:
 		player_kick()
 		
@@ -216,9 +216,6 @@ func _on_KickMenu_id_pressed(id):
 	apply_torque_impulse(rng.randf_range(500, 2000))
 
 func find_attacker(attackAction):
-	#Find all players
-	var players = SceneController.allPlayers
-
 	if attackAction == "kick":
 		#Find player in possession
 		return playerInPossession
@@ -272,7 +269,6 @@ func calc_power_modifier(baseDamage):
 	return baseDamage
 	
 func calc_element_damage(attackType, defenderType, baseDamage):
-	var totalDamage
 	if attackType == "Green" and defenderType == "Green":
 		totalDamage = baseDamage
 	elif attackType == "Green" and defenderType == "Red":
