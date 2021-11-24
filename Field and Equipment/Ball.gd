@@ -60,12 +60,16 @@ func _input(_event):
 
 func set_possession(player):
 	playerInPossession = player
-	possessionNode = player.get_node("ThingsToFlip/Position2D")
-	if player in get_tree().get_nodes_in_group("player_team"):
-		dribbling = true
-		enemyPossession = false
+	if player != null:
+		possessionNode = player.get_node("ThingsToFlip/Position2D")
+		if player in get_tree().get_nodes_in_group("player_team"):
+			dribbling = true
+			enemyPossession = false
+		else:
+			enemyPossession = true
+			dribbling = false
 	else:
-		enemyPossession = true
+		enemyPossession = false
 		dribbling = false
 	
 func set_control(player):
@@ -208,7 +212,7 @@ func _on_KickMenu_id_pressed(id):
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var shotIndex = rng.randf_range(0, 2)
-	dribbling = false
+	SceneController.emit_signal("inPossession", null)
 	kicking = true
 	self.mode = RigidBody2D.MODE_RIGID
 	get_node("CollisionShape2D").disabled = false

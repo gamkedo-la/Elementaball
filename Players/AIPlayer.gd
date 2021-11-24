@@ -137,11 +137,10 @@ func _physics_process(_delta):
 func pass_and_shoot():
 	var distance2Goal = position.distance_to(myGoal.position)
 	if distance2Goal >= 300:
-		destination = myGoal.position
-		velocity = (Vector2(destination.x, self.position.y)-self.position).normalized()*speed
-	else:
-		destination = myGoal.position
-		velocity = (Vector2(destination.x, self.position.y)-self.position).normalized()*speed	
+		destination = Vector2(myGoal.position.x, self.position.y)
+		velocity = (destination-self.position).normalized()*speed
+	elif distance2Goal <= 50:
+		try_kick()
 	
 	check_and_slide()
 	
@@ -169,7 +168,7 @@ func set_possession(player):
 	else:
 		inPossession = false
 	
-	if player.is_in_group(myOpponent):
+	if player != null and player.is_in_group(myOpponent):
 		onDefense = true
 		onOffense = false
 	else:
@@ -181,7 +180,6 @@ func set_control(player):
 		controlling = true
 	else:
 		controlling = false
-
 
 func intercept():
 	if destination != ball.position and destination != ball.playerInPossession.position:
@@ -202,12 +200,27 @@ func _move_to_target():
 			_try_steal();
 	else: check_and_slide()
 		
-
 func check_and_slide(distance2Target = destination.distance_to(self.position), delta = get_physics_process_delta_time()):
 	if distance2Target >= velocity.length() * delta:
 		return
 	else:
 		velocity = Vector2()
+
+func try_kick():
+	if ball.kicking == false:
+		#Bring up the Kick Menu
+		var kickMenu = get_node("../Popup/KickMenu")
+		kickMenu.clear()
+		var player = self
+		#Add the kick abilities available for the player to the menu
+		#TODO: Make a default (no element) kick ability and calculate damage for it
+		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
+		ball.menuAbilities = []
+		for ability in abilities:
+			if ability.action == "Kick":
+				kickMenu.add_item(ability.name)
+				ball.menuAbilities.append(ability)
+		ball._on_KickMenu_id_pressed(0)
 
 func _try_steal():
 	tacklerIsSelf = true
