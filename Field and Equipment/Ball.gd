@@ -55,6 +55,9 @@ func _input(_event):
 	if playerInPossession == controllingPlayer and Input.is_action_just_pressed("ui_kick") and selecting == false:
 		player_kick()
 		
+	if playerInPossession == controllingPlayer and Input.is_action_just_pressed("ui_pass") and selecting == false:
+		player_pass()
+		
 	if enemyPossession == true and Input.is_action_just_pressed("ui_steal") and selecting == false:
 		player_steal()
 
@@ -87,6 +90,23 @@ func player_kick():
 	#Bring up the Kick Menu
 	selecting = true
 	var kickMenu = get_node("../Popup/KickMenu")
+	kickMenu.clear()
+	var player = playerInPossession
+	#Add the kick abilities available for the player to the menu
+	#TODO: Make a default (no element) kick ability and calculate damage for it
+	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
+	menuAbilities = []
+	for ability in abilities:
+		if ability.action == "Kick":
+			kickMenu.add_item(ability.name)
+			menuAbilities.append(ability)
+	kickMenu.popup()
+	kickMenu.rect_position = playerInPossession.global_position
+	
+func player_pass():
+	#Bring up the Kick Menu
+	selecting = true
+	var kickMenu = get_node("../Popup/PassMenu")
 	kickMenu.clear()
 	var player = playerInPossession
 	#Add the kick abilities available for the player to the menu
@@ -225,9 +245,10 @@ func _on_PassMenu_id_pressed(id):
 	SceneController.emit_signal("inPossession", null)
 	kicking = true
 	self.mode = RigidBody2D.MODE_RIGID
-	get_node("CollisionShape2D").disabled = false
 	set_linear_velocity((nearestMate.position - self.global_position) * kickSpeed)
-	apply_torque_impulse(rng.randf_range(500, 2000))		
+	apply_torque_impulse(rng.randf_range(500, 2000))
+	yield(get_tree().create_timer(0.1), "timeout")
+	get_node("CollisionShape2D").disabled = false
 	
 	
 func initialize_kick(id):

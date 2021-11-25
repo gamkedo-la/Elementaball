@@ -248,6 +248,19 @@ func try_pass():
 	var moveChosen = rng.randi_range(0, ball.menuAbilities.size()-1)
 	ball._on_PassMenu_id_pressed(moveChosen)
 	
+func find_receiver():
+	var openTeammates = get_tree().get_nodes_in_group(myTeam)
+	for player in openTeammates:
+		if player == self:
+			openTeammates.erase(player)
+
+	for player in openTeammates:
+		var matePosition = player.position.distance_to(myGoal.position)
+		var myPosition = self.position.distance_to(myGoal.position)
+		if matePosition < myPosition:
+			return true
+	return false
+
 func prekick():
 	if ball.kicking == false:
 		#Bring up the Kick Menu
