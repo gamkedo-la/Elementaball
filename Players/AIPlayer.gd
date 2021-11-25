@@ -22,6 +22,7 @@ var myGoal
 var myTeam
 export var controlling = false
 export var inPossession = false
+var possessionPosition
 var go2Secondary = false #Has receivers alternate between a primary and secondary position
 var timer
 
@@ -143,14 +144,14 @@ func _physics_process(_delta):
 
 func pass_and_shoot():
 	var distance2Goal = position.distance_to(myGoal.position)
-	if distance2Goal >= 300:
-		destination = Vector2(myGoal.position.x, self.position.y)
-		velocity = (destination-self.position).normalized()*speed
-	elif distance2Goal < 300 and distance2Goal > 200:
+	var distanceFromPossession = possessionPosition.distance_to(self.position)
+	if distance2Goal > 200 and distanceFromPossession >= 150:
 		try_pass()	
 	elif distance2Goal <= 200:
 		try_kick()
 	
+	destination = Vector2(myGoal.position.x, self.position.y)
+	velocity = (destination-self.position).normalized()*speed
 	check_and_slide()
 	
 func get_in_position():
@@ -189,6 +190,7 @@ func defend_zone():
 func set_possession(player):
 	if player == self:
 		inPossession = true
+		possessionPosition = self.position
 	else:
 		inPossession = false
 	
@@ -199,6 +201,7 @@ func set_possession(player):
 		else:
 			onDefense = false
 			onOffense = true
+			intercepting = false
 	else:
 		onDefense = false
 		onOffense = false

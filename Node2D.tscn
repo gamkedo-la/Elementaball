@@ -47,7 +47,7 @@ _data = {
 [node name="Player" parent="." groups=[
 "player_team",
 ] instance=ExtResource( 1 )]
-position = Vector2( -66.992, 63.1879 )
+position = Vector2( 30.116, 64.0788 )
 controlling = true
 inPossession = true
 fieldPosition = "PlayerCenter"
@@ -59,7 +59,7 @@ parameters/playback = SubResource( 1 )
 [node name="Player2" parent="." groups=[
 "player_team",
 ] instance=ExtResource( 1 )]
-position = Vector2( 63.3513, -69.4719 )
+position = Vector2( -131.756, -84.6172 )
 fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
@@ -69,7 +69,7 @@ parameters/playback = SubResource( 2 )
 [node name="Player3" parent="." groups=[
 "player_team",
 ] instance=ExtResource( 1 )]
-position = Vector2( 58.5892, 190.068 )
+position = Vector2( -221.153, 231.049 )
 fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
@@ -145,7 +145,7 @@ parameters/playback = SubResource( 4 )
 [node name="Enemy3" parent="." groups=[
 "enemy_team",
 ] instance=ExtResource( 4 )]
-position = Vector2( 236.524, 189.648 )
+position = Vector2( 526.957, 213.702 )
 fieldPosition = "EnemyLeft"
 starting_stats = ExtResource( 10 )
 
@@ -155,7 +155,7 @@ parameters/playback = SubResource( 5 )
 [node name="Enemy2" parent="." groups=[
 "enemy_team",
 ] instance=ExtResource( 4 )]
-position = Vector2( 244.682, -68.4794 )
+position = Vector2( 443.352, -77.3884 )
 fieldPosition = "EnemyRight"
 starting_stats = ExtResource( 10 )
 

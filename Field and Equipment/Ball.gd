@@ -286,7 +286,6 @@ func calc_intercept_damage(interceptor):
 	interceptor.get_node("Health Bar").update_healthbar(interceptor.HP)
 	kicking = false
 	SceneController.emit_signal("inPossession", interceptor)
-	interceptor.intercepting = false
 
 func _on_TackleMenu_id_pressed(id):
 	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
