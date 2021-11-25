@@ -81,6 +81,15 @@ parameters/playback = SubResource( 3 )
 [node name="KickMenu" parent="Popup" index="0"]
 items = [ "Thorns Kick", null, 0, false, false, 0, 0, null, "", false, "Fireball Kick", null, 0, false, false, 1, 0, null, "", false, "Spray Throw", null, 0, false, false, 2, 0, null, "", false ]
 
+[node name="PassMenu" parent="Popup" index="1"]
+items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="TackleMenu" parent="Popup" index="2"]
+items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Swipe", null, 0, false, false, 1, 0, null, "", false, "Flame Tackle", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="BlockMenu" parent="Popup" index="3"]
+items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping Wave", null, 0, false, false, 1, 0, null, "", false, "Flame Wall", null, 0, false, false, 2, 0, null, "", false ]
+
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 159.34, 67.8276 )
 

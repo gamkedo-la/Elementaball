@@ -213,12 +213,17 @@ func check_and_slide(distance2Target = destination.distance_to(self.position), d
 
 func try_kick():
 	prekick()
-	#TODO make this and pass randomly select an ability from those available
-	ball._on_KickMenu_id_pressed(0)
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var moveChosen = rng.randi_range(0, ball.menuAbilities.size()-1)
+	ball._on_KickMenu_id_pressed(moveChosen)
 
 func try_pass():
 	prekick()
-	ball._on_PassMenu_id_pressed(0)
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var moveChosen = rng.randi_range(0, ball.menuAbilities.size()-1)
+	ball._on_PassMenu_id_pressed(moveChosen)
 	
 func prekick():
 	if ball.kicking == false:
