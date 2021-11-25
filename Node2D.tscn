@@ -175,11 +175,28 @@ position = Vector2( 378.666, -102.779 )
 position = Vector2( -376.967, 69.7091 )
 curve = SubResource( 7 )
 
+[node name="PlayerLeft" parent="." instance=ExtResource( 9 )]
+position = Vector2( -56.2786, -106.06 )
+scale = Vector2( -1, 1 )
+
+[node name="Path2D" parent="PlayerLeft" index="0"]
+position = Vector2( -376.967, 69.7091 )
+curve = SubResource( 7 )
+
 [node name="EnemyLeft" parent="." instance=ExtResource( 9 )]
 position = Vector2( 409.333, 250.436 )
 scale = Vector2( 0.84652, 0.829782 )
 
 [node name="Path2D" parent="EnemyLeft" index="0"]
+position = Vector2( -420.807, -239.543 )
+scale = Vector2( 1.34164, 1.14235 )
+curve = SubResource( 8 )
+
+[node name="PlayerRight" parent="." instance=ExtResource( 9 )]
+position = Vector2( -51.2799, 256.587 )
+scale = Vector2( -1, 0.829782 )
+
+[node name="Path2D" parent="PlayerRight" index="0"]
 position = Vector2( -420.807, -239.543 )
 scale = Vector2( 1.34164, 1.14235 )
 curve = SubResource( 8 )
@@ -191,12 +208,13 @@ position = Vector2( 395.263, 61.9086 )
 position = Vector2( -388.913, -74.6078 )
 curve = SubResource( 9 )
 
-[node name="PlayerLeft" parent="." instance=ExtResource( 9 )]
-
-[node name="PlayerRight" parent="." instance=ExtResource( 9 )]
-scale = Vector2( 0.84652, 0.829783 )
-
 [node name="PlayerCenter" parent="." instance=ExtResource( 9 )]
+position = Vector2( -80.3572, 56.239 )
+scale = Vector2( -1, 1 )
+
+[node name="Path2D" parent="PlayerCenter" index="0"]
+position = Vector2( -388.913, -74.6078 )
+curve = SubResource( 9 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -250,5 +268,8 @@ __meta__ = {
 [editable path="Enemy2/Health Bar"]
 [editable path="ParallaxBackground"]
 [editable path="EnemyRight"]
+[editable path="PlayerLeft"]
 [editable path="EnemyLeft"]
+[editable path="PlayerRight"]
 [editable path="EnemyCenter"]
+[editable path="PlayerCenter"]

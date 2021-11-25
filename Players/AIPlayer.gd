@@ -22,9 +22,13 @@ var myGoal
 var myTeam
 export var controlling = false
 export var inPossession = false
+var go2Secondary = false #Has receivers alternate between a primary and secondary position
 var timer
 
 export var fieldPosition : String
+var rng = RandomNumberGenerator.new()
+var randomDistanceX = 0
+var randomDistanceY = 0
 
 #All the starting stats from the Starting Stats class of resources
 export var starting_stats : Resource
@@ -150,15 +154,30 @@ func pass_and_shoot():
 	check_and_slide()
 	
 func get_in_position():
-	var distance2Goal = position.distance_to(myGoal.position)
 	var myZoneY = defenseZone.position.y
-	if distance2Goal >= 300:
-		destination = Vector2(myGoal.position.x, myZoneY)
-		velocity = (destination-self.position).normalized()*speed
-	else:
-		destination = Vector2(myGoal.position.x, myZoneY)
-		velocity = (destination-self.position).normalized()*speed
+	var goal2Ball = Vector2(ball.position.x, myZoneY).distance_to(Vector2(myGoal.position.x, myZoneY))
+	var distance2Dest = position.distance_to(destination)
+	var leftOrRight
 	
+	if myTeam == "player_team":
+		leftOrRight = 1
+	else:
+		leftOrRight = -1
+	
+	if distance2Dest <= 64:
+		go2Secondary = not go2Secondary
+		rng.randomize()
+		randomDistanceX = rng.randi_range(50, 125)
+		randomDistanceY = rng.randi_range(50, 125)
+		if "PlayerRight" in defenseZone.name or "EnemyLeft" in defenseZone.name:
+			randomDistanceY = -randomDistanceY
+	
+	if go2Secondary:
+		destination = Vector2((ball.playerInPossession.position.x + randomDistanceX + goal2Ball/2)*leftOrRight, myZoneY+randomDistanceY)
+	else:
+		destination = Vector2((ball.playerInPossession.position.x + randomDistanceX + goal2Ball/10)*leftOrRight, myZoneY+randomDistanceY)
+	
+	velocity = (destination-self.position).normalized()*(speed/2)
 	check_and_slide()
 
 func defend_zone():
@@ -173,12 +192,16 @@ func set_possession(player):
 	else:
 		inPossession = false
 	
-	if player != null and player.is_in_group(myOpponent):
-		onDefense = true
-		onOffense = false
+	if player != null: 
+		if player.is_in_group(myOpponent):
+			onDefense = true
+			onOffense = false
+		else:
+			onDefense = false
+			onOffense = true
 	else:
 		onDefense = false
-		onOffense = true
+		onOffense = false
 		
 func set_control(player):
 	if player == self:
