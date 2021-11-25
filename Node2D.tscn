@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Players/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Field and Equipment/Ball.tscn" type="PackedScene" id=2]
@@ -28,18 +28,36 @@
 [sub_resource type="Curve2D" id=7]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 5.04538, -46.2493, -5.04538, 46.2493, 194.625, -74.5095, -10.9317, -24.386, 10.9317, 24.386, 222.19, 4.62045, 18.4343, 0.853422, -18.4343, -0.853422, 294.006, 32.4625, 1.32096, 26.4882, -1.32096, -26.4882, 553.701, 4.62045, 5.28384, 9.24986, -5.28384, -9.24986, 497.844, -90.2901, 0, 0, 0, 0, 216.044, -110.084, 0, 0, 0, 0, 195.363, -74.8359 )
+"points": PoolVector2Array( 5.04538, -46.2493, -5.04538, 46.2493, 217.615, -36.3129, -10.9317, -24.386, 10.9317, 24.386, 234.005, 8.12406, 18.4343, 0.853422, -18.4343, -0.853422, 303.018, 31.6495, 1.32096, 26.4882, -1.32096, -26.4882, 554.482, 8.55972, 5.28384, 9.24986, -5.28384, -9.24986, 528.603, -74.2151, 0, 0, 0, 0, 272.394, -67.2446, 0, 0, 0, 0, 218.046, -37.1842 )
 }
 
 [sub_resource type="Curve2D" id=8]
 _data = {
-"points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, 221.673, 114.382, 5.04538, -46.2493, -5.04538, 46.2493, 191.106, 131.953, -10.9317, -24.386, 10.9317, 24.386, 222.768, 207.825, 18.4343, 0.853422, -18.4343, -0.853422, 306.75, 248.065, 1.32096, 26.4882, -1.32096, -26.4882, 475.409, 244.544, 5.28384, 9.24986, -5.28384, -9.24986, 458.954, 105.836, 0, 0, 0, 0, 289.254, 95.3713, 0, 0, 0, 0, 221.673, 114.382 )
+"points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, 245.759, 64.7881, 5.04538, -46.2493, -5.04538, 46.2493, 199.547, 128.086, -10.9317, -24.386, 10.9317, 24.386, 237.933, 174.504, 18.4343, 0.853422, -18.4343, -0.853422, 312.841, 190.329, 1.32096, 26.4882, -1.32096, -26.4882, 479.801, 190.856, 5.28384, 9.24986, -5.28384, -9.24986, 447.751, 57.9308, 0, 0, 0, 0, 283.772, 66.898, 0, 0, 0, 0, 246.504, 65.3156 )
 }
 
 [sub_resource type="Curve2D" id=9]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, 307.137, 19.5446, 5.04538, -46.2493, -5.04538, 46.2493, 272.217, 67.9539, -10.9317, -24.386, 10.9317, 24.386, 298.236, 128.12, 18.4343, 0.853422, -18.4343, -0.853422, 405.732, 167.539, 1.32096, 26.4882, -1.32096, -26.4882, 589.229, 181.37, 5.28384, 9.24986, -5.28384, -9.24986, 532.4, -13.6504, 0, 0, 0, 0, 411.894, -17.1082, 0, 0, 0, 0, 306.452, 18.853 )
+"points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, 302.744, 23.0241, 5.04538, -46.2493, -5.04538, 46.2493, 274.532, 69.6518, -10.9317, -24.386, 10.9317, 24.386, 298.64, 128.196, 18.4343, 0.853422, -18.4343, -0.853422, 406.357, 167.052, 1.32096, 26.4882, -1.32096, -26.4882, 588.964, 151.509, 5.28384, 9.24986, -5.28384, -9.24986, 537.67, -3.39834, 0, 0, 0, 0, 416.616, -7.02494, 0, 0, 0, 0, 301.718, 21.4698 )
+}
+
+[sub_resource type="Curve2D" id=10]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, -56.3614, -73.1828, 5.04538, -46.2493, -5.04538, 46.2493, -113.191, -53.1275, -10.9317, -24.386, 10.9317, 24.386, -132.362, -7.48445, 18.4343, 0.853422, -18.4343, -0.853422, 1.15265, 4.27211, 1.32096, 26.4882, -1.32096, -26.4882, 187.787, -9.40556, 5.28384, 9.24986, -5.28384, -9.24986, 136.493, -48.7801, 0, 0, 0, 0, -51.243, -71.0578, 0, 0, 0, 0, -54.3206, -71.0578 )
+}
+
+[sub_resource type="Curve2D" id=11]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, -60.8834, -94.3779, 5.04538, -46.2493, -5.04538, 46.2493, -102.89, -36.2834, -10.9317, -24.386, 10.9317, 24.386, -99.6591, 3.53427, 18.4343, 0.853422, -18.4343, -0.853422, 33.471, 15.2837, 1.32096, 26.4882, -1.32096, -26.4882, 243.506, -34.9778, 5.28384, 9.24986, -5.28384, -9.24986, 246.738, -102.864, 0, 0, 0, 0, -60.2371, -93.0724, 0, 0, 0, 0, -60.2371, -94.3779 )
+}
+
+[sub_resource type="Curve2D" id=12]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, -389.099, -109.713, 5.04538, -46.2493, -5.04538, 46.2493, -560.359, -105.797, -10.9317, -24.386, 10.9317, 24.386, -598.488, 39.1133, 18.4343, 0.853422, -18.4343, -0.853422, -332.228, 18.2254, 1.32096, 26.4882, -1.32096, -26.4882, -265.663, -10.4955, 5.28384, 9.24986, -5.28384, -9.24986, -294.098, -85.5615, 0, 0, 0, 0, -387.16, -108.408, 0, 0, 0, 0, -296.037, -86.867 )
 }
 
 [node name="Main" type="Node2D"]
@@ -175,28 +193,11 @@ position = Vector2( 378.666, -102.779 )
 position = Vector2( -376.967, 69.7091 )
 curve = SubResource( 7 )
 
-[node name="PlayerLeft" parent="." instance=ExtResource( 9 )]
-position = Vector2( -56.2786, -106.06 )
-scale = Vector2( -1, 1 )
-
-[node name="Path2D" parent="PlayerLeft" index="0"]
-position = Vector2( -376.967, 69.7091 )
-curve = SubResource( 7 )
-
 [node name="EnemyLeft" parent="." instance=ExtResource( 9 )]
 position = Vector2( 409.333, 250.436 )
 scale = Vector2( 0.84652, 0.829782 )
 
 [node name="Path2D" parent="EnemyLeft" index="0"]
-position = Vector2( -420.807, -239.543 )
-scale = Vector2( 1.34164, 1.14235 )
-curve = SubResource( 8 )
-
-[node name="PlayerRight" parent="." instance=ExtResource( 9 )]
-position = Vector2( -51.2799, 256.587 )
-scale = Vector2( -1, 0.829782 )
-
-[node name="Path2D" parent="PlayerRight" index="0"]
 position = Vector2( -420.807, -239.543 )
 scale = Vector2( 1.34164, 1.14235 )
 curve = SubResource( 8 )
@@ -208,13 +209,24 @@ position = Vector2( 395.263, 61.9086 )
 position = Vector2( -388.913, -74.6078 )
 curve = SubResource( 9 )
 
+[node name="PlayerLeft" parent="." instance=ExtResource( 9 )]
+position = Vector2( -58.6899, -21.2132 )
+
+[node name="Path2D" parent="PlayerLeft" index="0"]
+curve = SubResource( 10 )
+
+[node name="PlayerRight" parent="." instance=ExtResource( 9 )]
+position = Vector2( -146.316, 211.065 )
+
+[node name="Path2D" parent="PlayerRight" index="0"]
+curve = SubResource( 11 )
+
 [node name="PlayerCenter" parent="." instance=ExtResource( 9 )]
-position = Vector2( -80.3572, 56.239 )
-scale = Vector2( -1, 1 )
+position = Vector2( -99.1784, 72.3968 )
 
 [node name="Path2D" parent="PlayerCenter" index="0"]
-position = Vector2( -388.913, -74.6078 )
-curve = SubResource( 9 )
+position = Vector2( 471.218, 7.49155 )
+curve = SubResource( 12 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -268,8 +280,8 @@ __meta__ = {
 [editable path="Enemy2/Health Bar"]
 [editable path="ParallaxBackground"]
 [editable path="EnemyRight"]
-[editable path="PlayerLeft"]
 [editable path="EnemyLeft"]
-[editable path="PlayerRight"]
 [editable path="EnemyCenter"]
+[editable path="PlayerLeft"]
+[editable path="PlayerRight"]
 [editable path="PlayerCenter"]
