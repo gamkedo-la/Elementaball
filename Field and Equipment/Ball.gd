@@ -45,6 +45,7 @@ func _physics_process(_delta):
 		
 	if groundball == true:
 		check_groundball_collisions()
+		
 	update()
 
 func _draw():
@@ -192,6 +193,10 @@ func check_kick_collisions():
 			#TODO: If ball collides with goal, score a point
 			if body.name == "Goal" or body.name == "Enemy Goal":
 				score_goal()
+
+
+func out_of_bounds():
+	get_tree().change_scene(get_tree().current_scene.filename)
 
 func score_goal():
 	kicking = false
@@ -362,5 +367,8 @@ func calc_damage_reduction(attackType):
 		damageReduction = 0.75
 	return damageReduction
 
-
-
+func _on_Boundary_Line_body_entered(body):
+	if body.is_in_group("all_players") and body.inPossession:
+		out_of_bounds()
+	if body == self:
+		out_of_bounds()

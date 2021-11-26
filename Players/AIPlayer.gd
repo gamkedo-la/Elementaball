@@ -142,6 +142,7 @@ func _physics_process(_delta):
 	elif velocity.length() > 0:
 		aniMachine.travel(runningAnim)
 
+				
 func pass_and_shoot():
 	var distance2Goal = position.distance_to(myGoal.position)
 	var distanceFromPossession = possessionPosition.distance_to(self.position)
