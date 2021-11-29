@@ -133,13 +133,18 @@ items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping W
 position = Vector2( 159.34, 67.8276 )
 collision_mask = 5
 
-[node name="Goal" parent="." instance=ExtResource( 5 )]
+[node name="Goal" parent="." groups=[
+"goal",
+] instance=ExtResource( 5 )]
 show_behind_parent = true
 position = Vector2( 517.111, 47.2662 )
 frame = 1
 
-[node name="Goal" parent="Goal" index="0"]
-collision_mask = 3
+[node name="Goal" parent="Goal" index="0" groups=[
+"goal",
+]]
+collision_layer = 4
+collision_mask = 1
 
 [node name="Position2D" type="Position2D" parent="Goal"]
 position = Vector2( 63.113, 35.2653 )
@@ -147,14 +152,20 @@ position = Vector2( 63.113, 35.2653 )
 [node name="Position2D2" type="Position2D" parent="Goal"]
 position = Vector2( 31.28, -82.489 )
 
-[node name="Enemy Goal" parent="." instance=ExtResource( 5 )]
+[node name="Enemy Goal" parent="." groups=[
+"goal",
+] instance=ExtResource( 5 )]
 show_behind_parent = true
 position = Vector2( -191.427, 48.3257 )
 texture = ExtResource( 8 )
 frame = 0
 
-[node name="Goal" parent="Enemy Goal" index="0"]
-collision_mask = 3
+[node name="Goal" parent="Enemy Goal" index="0" groups=[
+"goal",
+]]
+position = Vector2( 0.0634766, -8.38073 )
+collision_layer = 4
+collision_mask = 1
 
 [node name="CollisionShape2D" parent="Enemy Goal/Goal" index="0"]
 position = Vector2( 2.33832, -32.6637 )
@@ -294,6 +305,14 @@ collision_mask = 3
 "boundary",
 ]]
 position = Vector2( -223.562, 82.9747 )
+rotation = 0.317148
+shape = SubResource( 14 )
+one_way_collision_margin = 4.8
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Boundary Line" groups=[
+"boundary",
+]]
+position = Vector2( -259.794, 86.5451 )
 rotation = 0.317148
 shape = SubResource( 14 )
 one_way_collision_margin = 4.8

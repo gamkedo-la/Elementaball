@@ -199,8 +199,7 @@ func out_of_bounds():
 	get_tree().change_scene(get_tree().current_scene.filename)
 
 func score_goal():
-	kicking = false
-	dribbling = true
+	get_tree().change_scene(get_tree().current_scene.filename)
 
 func _on_KickMenu_id_pressed(id):
 	initialize_kick(id)
@@ -372,3 +371,8 @@ func _on_Boundary_Line_body_entered(body):
 		out_of_bounds()
 	if body == self:
 		out_of_bounds()
+
+
+func _on_GoalBoundaryDetector_body_entered(body):
+	if "Goal" in body.name:
+		score_goal()
