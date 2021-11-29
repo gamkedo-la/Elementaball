@@ -5,6 +5,7 @@ signal inPossession(player)
 signal controlling(player)
 signal tackling(trueOrFalse)
 signal blocking(trueOrFalse)
+signal outOfBounds()
 
 #All the players on the field
 var playerCenter

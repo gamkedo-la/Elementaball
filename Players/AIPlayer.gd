@@ -26,6 +26,10 @@ var possessionPosition
 var go2Secondary = false #Has receivers alternate between a primary and secondary position
 var timer
 
+var outOfBounds = false
+var throwInPlayer
+var throwInPoint
+
 export var fieldPosition : String
 var rng = RandomNumberGenerator.new()
 var randomDistanceX = 0
@@ -62,6 +66,7 @@ func _ready():
 	SceneController.connect("controlling", self, "set_control")
 	SceneController.connect("tackling", self, "toggle_tackling")
 	SceneController.connect("blocking", self, "toggle_blocking")
+	SceneController.connect("outOfBounds", self, "out_of_bounds")
 	aniMachine = $AnimationTree["parameters/playback"]
 	
 		
@@ -98,7 +103,22 @@ func initialize_stats(stats : StartingStats):
 	get_node("Health Bar").update_healthbar(maxHP)
 
 func _physics_process(_delta):
-	if controlling == false and ball.selecting == false:
+	if outOfBounds:
+		if throwInPlayer == self:
+			self.position = throwInPoint
+			SceneController.emit_signal("inPossession", self)
+			if controlling == false:
+				yield(get_tree().create_timer(3.0), "timeout")
+				ball.throwingIn = true
+				try_pass()
+				outOfBounds = false
+		
+		if onOffense:
+			get_in_position()
+			
+		if onDefense: 
+			defend_zone()
+	elif controlling == false and ball.selecting == false:
 		
 		#If nobody has the ball, try to get it.
 		if !ball.playerInPossession:
@@ -213,6 +233,46 @@ func set_control(player):
 	else:
 		controlling = false
 
+func out_of_bounds():
+	if outOfBounds == false:
+		ball.outOfBounds = true
+		outOfBounds = true
+		var throwInTeam
+		if ball.lastInPossession.is_in_group("player_team"):
+			throwInTeam = "enemy_team"
+			if self.is_in_group("player_team"):
+				onDefense = true
+				onOffense = false
+			if self.is_in_group("enemy_team"):
+				onOffense = true
+				onDefense = false
+		else:
+			throwInTeam = "player_team" 
+			if self.is_in_group("player_team"):
+				onDefense = false
+				onOffense = true
+			if self.is_in_group("enemy_team"):
+				onOffense = false
+				onDefense = true
+		
+		var closestDistance = 9999
+		var closestPlayer
+		for player in get_tree().get_nodes_in_group(throwInTeam):
+			if player.position.distance_to(ball.position) < closestDistance:
+				closestDistance = player.position.distance_to(ball.position)
+				closestPlayer = player
+				
+		throwInPlayer = closestPlayer
+		
+		closestDistance = 9999
+		var closestPosition
+		for point in get_tree().get_nodes_in_group("throw_in_positions"):
+			if point.position.distance_to(ball.position) < closestDistance:
+				closestDistance = point.position.distance_to(ball.position)
+				closestPosition = point
+				
+		throwInPoint = closestPosition.position
+
 func intercept():
 	if destination != ball.position and destination != ball.playerInPossession.position:
 		reset_intercept()
@@ -250,7 +310,7 @@ func try_pass():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var moveChosen = rng.randi_range(0, ball.menuAbilities.size()-1)
-	ball._on_PassMenu_id_pressed(moveChosen)
+	ball._on_PassMenu_id_pressed(moveChosen, self)
 	
 func find_receiver():
 	var openTeammates = get_tree().get_nodes_in_group(myTeam)

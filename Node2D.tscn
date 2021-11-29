@@ -309,14 +309,6 @@ rotation = 0.317148
 shape = SubResource( 14 )
 one_way_collision_margin = 4.8
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Boundary Line" groups=[
-"boundary",
-]]
-position = Vector2( -259.794, 86.5451 )
-rotation = 0.317148
-shape = SubResource( 14 )
-one_way_collision_margin = 4.8
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary Line" groups=[
 "boundary",
 ]]
@@ -360,6 +352,58 @@ script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Throw In Points" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Throw In Points" groups=[
+"throw_in_positions",
+]]
+position = Vector2( -192.55, -84.9487 )
+
+[node name="Position2D2" type="Position2D" parent="Throw In Points" groups=[
+"throw_in_positions",
+]]
+position = Vector2( -285.41, 168.867 )
+
+[node name="Position2D3" type="Position2D" parent="Throw In Points" groups=[
+"throw_in_positions",
+]]
+position = Vector2( -23.7842, -162.921 )
+
+[node name="Position2D4" type="Position2D" parent="Throw In Points" groups=[
+"throw_in_positions",
+]]
+position = Vector2( 161.732, -162.921 )
+
+[node name="Position2D5" type="Position2D" parent="Throw In Points" groups=[
+"throw_in_positions",
+]]
+position = Vector2( 376.979, -156.975 )
+
+[node name="Position2D6" type="Position2D" parent="Throw In Points" groups=[
+"throw_in_positions",
+]]
+position = Vector2( 528.008, -84.4337 )
+
+[node name="Position2D7" type="Position2D" parent="Throw In Points" groups=[
+"throw_in_positions",
+]]
+position = Vector2( 604.117, 193.841 )
+
+[node name="Position2D8" type="Position2D" parent="Throw In Points" groups=[
+"throw_in_positions",
+]]
+position = Vector2( 456.655, 338.924 )
+
+[node name="Position2D9" type="Position2D" parent="Throw In Points" groups=[
+"throw_in_positions",
+]]
+position = Vector2( 170.057, 344.87 )
+
+[node name="Position2D10" type="Position2D" parent="Throw In Points" groups=[
+"throw_in_positions",
+]]
+position = Vector2( -162.921, 338.924 )
 
 [connection signal="id_pressed" from="Popup/KickMenu" to="Ball" method="_on_KickMenu_id_pressed"]
 [connection signal="id_pressed" from="Popup/PassMenu" to="Ball" method="_on_PassMenu_id_pressed"]

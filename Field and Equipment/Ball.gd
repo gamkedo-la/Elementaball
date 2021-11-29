@@ -2,6 +2,8 @@ extends RigidBody2D
 
 #Variables to signal what the player is doing
 var groundball = true
+var outOfBounds = false
+var throwingIn = false
 var dribbling = false
 var kicking = false
 var attacker
@@ -23,6 +25,7 @@ var totalDamage
 var enemyPossession = false
 var possessionNode
 var playerInPossession
+var lastInPossession
 onready var controllingPlayer = get_node("../Player")
 
 export var kickSpeed = 1
@@ -65,6 +68,7 @@ func _input(_event):
 func set_possession(player):
 	playerInPossession = player
 	if player != null:
+		lastInPossession = player
 		possessionNode = player.get_node("ThingsToFlip/Position2D")
 		if player in get_tree().get_nodes_in_group("player_team"):
 			dribbling = true
@@ -196,7 +200,7 @@ func check_kick_collisions():
 
 
 func out_of_bounds():
-	get_tree().change_scene(get_tree().current_scene.filename)
+	SceneController.emit_signal("outOfBounds")
 
 func score_goal():
 	get_tree().change_scene(get_tree().current_scene.filename)
@@ -230,18 +234,18 @@ func _on_KickMenu_id_pressed(id):
 	set_linear_velocity((possibleShots[shotIndex] - self.global_position) * kickSpeed)
 	apply_torque_impulse(rng.randf_range(500, 2000))
 
-func _on_PassMenu_id_pressed(id):
+func _on_PassMenu_id_pressed(id, kicker):
 	initialize_kick(id)
 	
-	var openTeammates = get_tree().get_nodes_in_group(attacker.myTeam)
+	var openTeammates = get_tree().get_nodes_in_group(kicker.myTeam)
 	for player in openTeammates:
-		if player == attacker:
+		if player == kicker:
 			openTeammates.erase(player)
 	var nearestMate
 	var mateDistance = 99999
 	for player in openTeammates:
-		if player.position.distance_to(attacker.position) < mateDistance:
-			mateDistance = player.position.distance_to(attacker.position)
+		if player.position.distance_to(kicker.position) < mateDistance:
+			mateDistance = player.position.distance_to(kicker.position)
 			nearestMate = player
 	
 	var rng = RandomNumberGenerator.new()
@@ -367,10 +371,14 @@ func calc_damage_reduction(attackType):
 	return damageReduction
 
 func _on_Boundary_Line_body_entered(body):
-	if body.is_in_group("all_players") and body.inPossession:
-		out_of_bounds()
-	if body == self:
-		out_of_bounds()
+	if throwingIn and outOfBounds:
+		outOfBounds = false
+	
+	if not outOfBounds:
+		if body.is_in_group("all_players") and body.inPossession:
+			out_of_bounds()
+		if body == self:
+			out_of_bounds()
 
 
 func _on_GoalBoundaryDetector_body_entered(body):
