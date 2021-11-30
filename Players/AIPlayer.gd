@@ -109,9 +109,10 @@ func _physics_process(_delta):
 			SceneController.emit_signal("inPossession", self)
 			if controlling == false:
 				yield(get_tree().create_timer(3.0), "timeout")
-				ball.throwingIn = true
-				try_pass()
-				outOfBounds = false
+				if ball.throwingIn == false:
+					ball.throwingIn = true
+					try_pass()
+					outOfBounds = false
 		
 		if onOffense:
 			get_in_position()
@@ -193,12 +194,12 @@ func get_in_position():
 		randomDistanceY = rng.randi_range(50, 125)
 		if "PlayerRight" in defenseZone.name or "EnemyLeft" in defenseZone.name:
 			randomDistanceY = -randomDistanceY
-	
-	if go2Secondary:
-		destination = Vector2((ball.playerInPossession.position.x + randomDistanceX + goal2Ball/2)*leftOrRight, myZoneY+randomDistanceY)
-	else:
-		destination = Vector2((ball.playerInPossession.position.x + randomDistanceX + goal2Ball/10)*leftOrRight, myZoneY+randomDistanceY)
-	
+	if ball.playerInPossession:
+		if go2Secondary:
+			destination = Vector2((ball.playerInPossession.position.x + randomDistanceX + goal2Ball/2)*leftOrRight, myZoneY+randomDistanceY)
+		else:
+			destination = Vector2((ball.playerInPossession.position.x + randomDistanceX + goal2Ball/10)*leftOrRight, myZoneY+randomDistanceY)
+		
 	velocity = (destination-self.position).normalized()*(speed/2)
 	check_and_slide()
 
