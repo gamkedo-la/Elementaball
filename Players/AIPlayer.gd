@@ -109,16 +109,22 @@ func _physics_process(_delta):
 			SceneController.emit_signal("inPossession", self)
 			if controlling == false:
 				yield(get_tree().create_timer(3.0), "timeout")
-				if ball.throwingIn == false:
+				if ball.throwingIn == false and controlling == false:
 					ball.throwingIn = true
 					try_pass()
-					outOfBounds = false
-		
-		if onOffense:
+					for player in get_tree().get_nodes_in_group("all_players"): 
+						player.outOfBounds = false
+					yield(get_tree().create_timer(1.0), "timeout")
+				
+		if onOffense and throwInPlayer != self:
 			get_in_position()
 			
 		if onDefense: 
 			defend_zone()
+		
+		if controlling == false:
+			velocity = move_and_slide(velocity)
+			
 	elif controlling == false and ball.selecting == false:
 		
 		#If nobody has the ball, try to get it.
@@ -167,7 +173,7 @@ func _physics_process(_delta):
 func pass_and_shoot():
 	var distance2Goal = position.distance_to(myGoal.position)
 	var distanceFromPossession = possessionPosition.distance_to(self.position)
-	if distance2Goal > 200 and distanceFromPossession >= 150:
+	if distanceFromPossession >= 200:
 		try_pass()	
 	elif distance2Goal <= 200:
 		try_kick()
@@ -236,7 +242,6 @@ func set_control(player):
 
 func out_of_bounds():
 	if outOfBounds == false:
-		ball.outOfBounds = true
 		outOfBounds = true
 		var throwInTeam
 		if ball.lastInPossession.is_in_group("player_team"):

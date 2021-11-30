@@ -31,7 +31,8 @@ func _process(_delta):
 
 	var pos = Vector2.ZERO
 	for target in targets:
-		pos += target.position
+		if target != null:
+			pos += target.get_position()
 	pos /= targets.size()
 	position = lerp(position, pos, move_speed)
 	

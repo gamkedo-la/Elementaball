@@ -416,6 +416,7 @@ position = Vector2( -162.921, 338.924 )
 [connection signal="body_entered" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_entered"]
 [connection signal="body_exited" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_entered"]
+[connection signal="body_exited" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_exited"]
 [connection signal="pressed" from="GUICanvasLayer/MuteButton" to="GUICanvasLayer/MuteButton" method="_on_MuteButton_pressed"]
 
 [editable path="Player"]

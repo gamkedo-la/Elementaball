@@ -200,6 +200,7 @@ func check_kick_collisions():
 
 
 func out_of_bounds():
+	outOfBounds = true
 	SceneController.emit_signal("outOfBounds")
 
 func score_goal():
@@ -371,16 +372,22 @@ func calc_damage_reduction(attackType):
 	return damageReduction
 
 func _on_Boundary_Line_body_entered(body):
-	if throwingIn and outOfBounds:
-		outOfBounds = false
-	
 	if not outOfBounds:
 		if body.is_in_group("all_players") and body.inPossession:
 			out_of_bounds()
 		if body == self:
 			out_of_bounds()
 
+func _on_Boundary_Line_body_exited(body):
+	if throwingIn and outOfBounds:
+		if body == self:
+			print("not out of bounds anymore")
+			outOfBounds = false
+			throwingIn = false
 
 func _on_GoalBoundaryDetector_body_entered(body):
 	if "Goal" in body.name:
 		score_goal()
+
+
+
