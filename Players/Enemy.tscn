@@ -16,7 +16,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.73978
-height = 18.1092
+height = 18.4876
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -41,25 +41,23 @@ animations = [ {
 [node name="Enemy" type="KinematicBody2D"]
 collision_mask = 3
 script = ExtResource( 2 )
-speed = 150
+speed = 300
 
 [node name="InterceptArea" parent="." instance=ExtResource( 3 )]
-position = Vector2( -0.161133, 0.0360718 )
+position = Vector2( 0.126373, -0.256859 )
 
 [node name="Health Bar" parent="." instance=ExtResource( 4 )]
-margin_left = -73.4833
-margin_top = -46.8988
-margin_right = -73.4833
-margin_bottom = -46.8988
+margin_top = -21.406
+margin_bottom = -21.406
 
 [node name="Health Bar" parent="Health Bar" index="0"]
-margin_left = 65.5849
-margin_top = 24.4094
-margin_right = 81.5849
-margin_bottom = 28.4094
+margin_left = -8.02715
+margin_top = -2.67572
+margin_right = 7.97285
+margin_bottom = 3.32428
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
-position = Vector2( -0.161148, 0.0360641 )
+position = Vector2( 0.126343, 0.33773 )
 rotation = 0.0211139
 shape = SubResource( 1 )
 
@@ -72,11 +70,10 @@ parameters/playback = SubResource( 2 )
 [node name="ThingsToFlip" type="Node2D" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
-position = Vector2( 1.05083, -1.02803 )
 frames = SubResource( 3 )
 animation = "Blue Enemy Idle"
 
 [node name="Position2D" type="Position2D" parent="ThingsToFlip"]
-position = Vector2( -8.71283, -0.550415 )
+position = Vector2( 1.41581, -0.707909 )
 
 [editable path="Health Bar"]

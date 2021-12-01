@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "Blue Enemy Idle"
 loop = true
 tracks/0/type = "value"
@@ -15,21 +15,8 @@ tracks/0/keys = {
 "update": 1,
 "values": [ "Blue Enemy Idle" ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("ThingsToFlip/Position2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -8.71283, -0.550415 ), Vector2( -8.71283, -0.550415 ) ]
-}
 
-[sub_resource type="Animation" id=1]
-resource_name = "Blue Enemy Run"
+[sub_resource type="Animation" id=2]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -41,8 +28,8 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -9.20431, 0.528442 ), Vector2( -8.58242, 0.313988 ), Vector2( -7.14497, 1.13774 ), Vector2( -2.61469, 4.16596 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
+"update": 1,
+"values": [ Vector2( 6.27285, -1.25738 ), Vector2( 9.87112, -1.07499 ), Vector2( 10.118, -0.449659 ), Vector2( 9.8861, -0.596247 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("EnemyCollider:rotation_degrees")
@@ -53,23 +40,23 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 1.62307, 1.13498, 1.43747, 0.663645, 1.20974 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ThingsToFlip/Position2D:position")
+tracks/2/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -17.0613, 1.41577 ), Vector2( -17.3374, 1.26561 ), Vector2( -15.8752, 1.18845 ), Vector2( -17.5503, 0.699898 ), Vector2( -9.09171, -0.423805 ), Vector2( -8.42532, -0.843346 ), Vector2( -8.71283, -0.550415 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ThingsToFlip/Position2D:rotation_degrees")
+tracks/3/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -77,11 +64,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
+"update": 1,
+"values": [ "Blue Enemy Run" ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -90,23 +77,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "Blue Enemy Run" ]
+"values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Blue Enemy Tackle"
+[sub_resource type="Animation" id=3]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:speed")
@@ -161,8 +135,8 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.148666, -0.743263 ), Vector2( 0.928307, 5.15279 ), Vector2( -5.13615, 9.96906 ), Vector2( -2.97359, 8.14565 ), Vector2( -2.61469, 4.16596 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
+"update": 1,
+"values": [ Vector2( 0.148666, -0.743263 ), Vector2( 0.928307, 5.15279 ), Vector2( 2.00716, 9.96906 ), Vector2( 0.00278926, 9.3362 ), Vector2( 3.53649, 3.76911 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("EnemyCollider:rotation_degrees")
@@ -173,11 +147,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 1.62307, 1.13498, 85.2222, 81.9966, 0.663645, 1.20974 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
+tracks/4/path = NodePath("InterceptArea:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -186,10 +160,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -8.5517, -0.586487 ), Vector2( -7.65979, -1.40407 ), Vector2( -9.36783, -0.480103 ), Vector2( -8.70696, -0.634941 ), Vector2( -9.09171, -0.423805 ), Vector2( -8.42532, -0.843346 ), Vector2( -8.71283, -0.550415 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0.891907, -0.817585 ), Vector2( -0.816132, 0.106384 ), Vector2( -0.155266, -0.0484543 ), Vector2( -0.540016, 0.162682 ), Vector2( 0.126373, -0.256859 ), Vector2( -0.161133, 0.0360718 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("ThingsToFlip/Position2D:rotation_degrees")
+tracks/5/path = NodePath("InterceptArea:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -201,104 +175,44 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Health Bar:rect_position")
+tracks/6/path = NodePath(".:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -73.3222, -46.9349 ), Vector2( -72.4303, -47.7525 ), Vector2( -74.1383, -46.8285 ), Vector2( -73.4775, -46.9834 ), Vector2( -73.8622, -46.7722 ), Vector2( -73.1958, -47.1918 ), Vector2( -73.4833, -46.8988 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Health Bar:rect_rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("InterceptArea:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0.891907, -0.817585 ), Vector2( -0.816132, 0.106384 ), Vector2( -0.155266, -0.0484543 ), Vector2( -0.540016, 0.162682 ), Vector2( 0.126373, -0.256859 ), Vector2( -0.161133, 0.0360718 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("InterceptArea:rotation_degrees")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath(".:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
 "times": PoolRealArray(  ),
 "transitions": PoolRealArray(  ),
 "update": 0,
 "values": [  ]
 }
-tracks/11/type = "value"
-tracks/11/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
+tracks/7/type = "value"
+tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
-tracks/12/type = "value"
-tracks/12/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
+tracks/8/type = "value"
+tracks/8/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "Blue Enemy Tackle" ]
 }
-tracks/13/type = "value"
-tracks/13/path = NodePath("ThingsToFlip/AnimatedSprite:position")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1.05083, -1.02803 ) ]
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer"]
 playback_speed = 0.75
-"anims/Blue Enemy Idle" = SubResource( 4 )
-"anims/Blue Enemy Run" = SubResource( 1 )
-"anims/Blue Enemy Tackle" = SubResource( 2 )
+"anims/Blue Enemy Idle" = SubResource( 1 )
+"anims/Blue Enemy Run" = SubResource( 2 )
+"anims/Blue Enemy Tackle" = SubResource( 3 )
