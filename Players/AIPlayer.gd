@@ -102,11 +102,14 @@ func initialize_stats(stats : StartingStats):
 	
 	get_node("Health Bar").update_healthbar(maxHP)
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if outOfBounds:
 		if throwInPlayer == self:
-			move_and_slide(throwInPoint)
 			SceneController.emit_signal("inPossession", self)
+			if self.position != throwInPoint:
+				self.position = throwInPoint
+				destination = throwInPoint
+				check_and_slide()
 			if controlling == false:
 				yield(get_tree().create_timer(3.0), "timeout")
 				if ball.throwingIn == false and controlling == false:

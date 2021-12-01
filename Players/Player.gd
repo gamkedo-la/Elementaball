@@ -12,7 +12,6 @@ func _physics_process(_delta):
 	if controlling == true and get_node("../Ball").selecting == false:
 		if Input.is_action_pressed("ui_right"):
 			motion.x = speed
-		
 		elif Input.is_action_pressed("ui_left"):
 			motion.x = -speed
 		

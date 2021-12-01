@@ -34,6 +34,7 @@ func _process(_delta):
 		get_tree().quit()
 		
 	if Input.is_action_just_pressed("ui_next_player"):
+		playerTeam = get_tree().get_nodes_in_group("player_team")
 		playerIndex += 1
 		if playerIndex > 2:
 			playerIndex = 0
