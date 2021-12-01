@@ -7,13 +7,6 @@ signal tackling(trueOrFalse)
 signal blocking(trueOrFalse)
 signal outOfBounds()
 
-#All the players on the field
-var playerCenter
-var playerLeft
-var playerRight
-var enemyCenter
-var enemyLeft
-var enemyRight
 var playerIndex = 0
 
 #Array of the player controlled team
@@ -28,6 +21,7 @@ var allPlayers = []
 func _ready():
 	set_process(true)
 	playerTeam = get_tree().get_nodes_in_group("player_team")
+	connect("inPossession", self, "possession_control")
 
 func _process(_delta):
 	if Input.is_action_pressed("ui_exit"):
@@ -39,3 +33,7 @@ func _process(_delta):
 		if playerIndex > 2:
 			playerIndex = 0
 		emit_signal("controlling", playerTeam[playerIndex])
+
+func possession_control(player):
+	if player in playerTeam:
+		emit_signal("controlling", player)

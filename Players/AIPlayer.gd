@@ -105,8 +105,8 @@ func initialize_stats(stats : StartingStats):
 func _physics_process(delta):
 	if outOfBounds:
 		if throwInPlayer == self:
-			SceneController.emit_signal("inPossession", self)
 			if self.position != throwInPoint:
+				SceneController.emit_signal("inPossession", self)
 				self.position = throwInPoint
 				destination = throwInPoint
 				check_and_slide()
