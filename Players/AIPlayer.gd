@@ -105,7 +105,7 @@ func initialize_stats(stats : StartingStats):
 func _physics_process(_delta):
 	if outOfBounds:
 		if throwInPlayer == self:
-			translate(to_local(throwInPoint))
+			move_and_slide(throwInPoint)
 			SceneController.emit_signal("inPossession", self)
 			if controlling == false:
 				yield(get_tree().create_timer(3.0), "timeout")
