@@ -272,6 +272,7 @@ curve = SubResource( 12 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+smoothing_enabled = true
 script = ExtResource( 7 )
 margin = Vector2( 200, 100 )
 
