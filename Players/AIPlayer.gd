@@ -103,67 +103,83 @@ func initialize_stats(stats : StartingStats):
 	get_node("Health Bar").update_healthbar(maxHP)
 
 func _physics_process(delta):
-	if outOfBounds:
-		if throwInPlayer == self:
-			if self.position != throwInPoint:
-				SceneController.emit_signal("inPossession", self)
-				self.position = throwInPoint
-				destination = throwInPoint
-				check_and_slide()
-			if controlling == false:
-				yield(get_tree().create_timer(3.0), "timeout")
-				if ball.throwingIn == false and controlling == false:
-					ball.throwingIn = true
-					try_pass()
-					for player in get_tree().get_nodes_in_group("all_players"): 
-						player.outOfBounds = false
-					yield(get_tree().create_timer(1.0), "timeout")
-				
-		if onOffense and throwInPlayer != self:
-			get_in_position()
-			
-		if onDefense: 
-			defend_zone()
+	if controlling == true and get_node("../Ball").selecting == false:
+		if Input.is_action_pressed("ui_right"):
+			velocity.x = speed
+		elif Input.is_action_pressed("ui_left"):
+			velocity.x = -speed
 		
-		if controlling == false:
-			velocity = move_and_slide(velocity)
-			
-	elif controlling == false and ball.selecting == false:
+		elif Input.is_action_pressed("ui_up"):
+			velocity.y = -speed
 		
-		#If nobody has the ball, try to get it.
-		if !ball.playerInPossession:
-			destination = ball.position
-			velocity = (destination-self.position).normalized()*speed;
-		
-		#TODO add offense states
-		if onOffense:
-			if inPossession:
-				pass_and_shoot()
-			else:
+		elif Input.is_action_pressed("ui_down"):
+			velocity.y = speed
+		else:
+			velocity.x = 0
+			velocity.y = 0
+	
+	elif controlling == false:
+		if outOfBounds:
+			if throwInPlayer == self:
+				if self.position != throwInPoint:
+					SceneController.emit_signal("inPossession", self)
+					self.position = throwInPoint
+					destination = throwInPoint
+					check_and_slide()
+				if controlling == false:
+					yield(get_tree().create_timer(3.0), "timeout")
+					if ball.throwingIn == false and controlling == false:
+						ball.throwingIn = true
+						try_pass()
+						for player in get_tree().get_nodes_in_group("all_players"): 
+							player.outOfBounds = false
+						yield(get_tree().create_timer(1.0), "timeout")
+					
+			if onOffense and throwInPlayer != self:
 				get_in_position()
-		
-		if onDefense:
-			#if the enemy's defense range collides with the ball
-			if intercepting == true:
-				#print("intercepting")
-				intercept()
-			
-			#If ball is out of range, returns to assigned zone
-			else:
+				
+			if onDefense: 
 				defend_zone()
-			update()
 			
-		velocity = move_and_slide(velocity)
-		
-		if velocity.x > 0.1:
-			$ThingsToFlip.scale.x = 1
-			if has_node("EnemyCollider"): # players don't have this
-				$EnemyCollider.scale.x = 1
-		
-		elif velocity.x < -0.1:
-			$ThingsToFlip.scale.x = -1
-			if has_node("EnemyCollider"): # players don't have this
-				$EnemyCollider.scale.x = -1
+			if controlling == false:
+				velocity = move_and_slide(velocity)
+				
+		elif ball.selecting == false:
+			
+			#If nobody has the ball, try to get it.
+			if !ball.playerInPossession:
+				destination = ball.position
+				velocity = (destination-self.position).normalized()*speed;
+			
+			#TODO add offense states
+			if onOffense:
+				if inPossession:
+					pass_and_shoot()
+				else:
+					get_in_position()
+			
+			if onDefense:
+				#if the enemy's defense range collides with the ball
+				if intercepting == true:
+					#print("intercepting")
+					intercept()
+				
+				#If ball is out of range, returns to assigned zone
+				else:
+					defend_zone()
+				update()
+				
+	velocity = move_and_slide(velocity)
+	
+	if velocity.x > 0.1:
+		$ThingsToFlip.scale.x = 1
+		if has_node("EnemyCollider"): # players don't have this
+			$EnemyCollider.scale.x = 1
+	
+	elif velocity.x < -0.1:
+		$ThingsToFlip.scale.x = -1
+		if has_node("EnemyCollider"): # players don't have this
+			$EnemyCollider.scale.x = -1
 
 	if tacklingInProgress and tacklerIsSelf:
 		aniMachine.travel(tackleAnim)

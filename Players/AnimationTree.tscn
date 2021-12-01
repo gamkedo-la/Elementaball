@@ -1,41 +1,69 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=21 format=2]
 
-[sub_resource type="AnimationNodeAnimation" id=1]
-animation = "Blue Enemy Idle"
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "Blue Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=2]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Blue Enemy Run"
 
-[sub_resource type="AnimationNodeAnimation" id=3]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Blue Enemy Tackle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=4]
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Blue Idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=5]
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Blue Run"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=6]
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Blue Tackle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=7]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=10]
-"states/Blue Enemy Idle/node" = SubResource( 1 )
-"states/Blue Enemy Idle/position" = Vector2( 456, 38 )
-"states/Blue Enemy Run/node" = SubResource( 2 )
-"states/Blue Enemy Run/position" = Vector2( 675, 100 )
-"states/Blue Enemy Tackle/node" = SubResource( 3 )
-"states/Blue Enemy Tackle/position" = Vector2( 340, 134 )
-transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 4 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 5 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 6 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 7 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 8 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 9 ) ]
-start_node = "Blue Enemy Idle"
-graph_offset = Vector2( -121.613, 0 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=13]
+"states/Blue Enemy Idle/node" = SubResource( 4 )
+"states/Blue Enemy Idle/position" = Vector2( 445, 49 )
+"states/Blue Enemy Run/node" = SubResource( 5 )
+"states/Blue Enemy Run/position" = Vector2( 675, 100 )
+"states/Blue Enemy Tackle/node" = SubResource( 6 )
+"states/Blue Enemy Tackle/position" = Vector2( 339, 136 )
+"states/Blue Idle/node" = SubResource( 14 )
+"states/Blue Idle/position" = Vector2( 891.478, 49 )
+"states/Blue Run/node" = SubResource( 15 )
+"states/Blue Run/position" = Vector2( 1097.48, 125.821 )
+"states/Blue Tackle/node" = SubResource( 16 )
+"states/Blue Tackle/position" = Vector2( 824.478, 166.821 )
+transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 7 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 8 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 9 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 10 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 11 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 12 ), "Blue Idle", "Blue Run", SubResource( 17 ), "Blue Run", "Blue Tackle", SubResource( 18 ), "Blue Tackle", "Blue Idle", SubResource( 19 ), "Blue Idle", "Blue Tackle", SubResource( 20 ), "Blue Tackle", "Blue Run", SubResource( 21 ), "Blue Run", "Blue Idle", SubResource( 22 ) ]
+start_node = "Blue Enemy Idle"
+graph_offset = Vector2( -45.5218, -17.1792 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 [node name="AnimationTree" type="AnimationTree"]
-tree_root = SubResource( 10 )
+tree_root = SubResource( 13 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 11 )
+parameters/playback = SubResource( 23 )

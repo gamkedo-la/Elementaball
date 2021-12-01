@@ -13,7 +13,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "Blue Enemy Idle" ]
+"values": [ "default" ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -208,7 +208,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "Blue Enemy Tackle" ]
+"values": [ "blue tackle" ]
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer"]
