@@ -9,6 +9,7 @@ var kicking = false
 var attacker
 var blocker
 var selecting = false
+var goalScoring = false
 
 #Variables for abilities
 var menuAbilities = []
@@ -193,10 +194,7 @@ func check_kick_collisions():
 					kicking = false
 					SceneController.emit_signal("inPossession", body)
 					body.intercepting = false
-			
-			#TODO: If ball collides with goal, score a point
-			if body.name == "Goal" or body.name == "Enemy Goal":
-				score_goal()
+				
 
 
 func out_of_bounds():
@@ -205,6 +203,7 @@ func out_of_bounds():
 
 func score_goal():
 	SceneController.emit_signal("goalScored", attacker)
+	out_of_bounds()
 
 func _on_KickMenu_id_pressed(id):
 	initialize_kick(id)
@@ -387,7 +386,9 @@ func _on_Boundary_Line_body_exited(body):
 
 func _on_GoalBoundaryDetector_body_entered(body):
 	if "Goal" in body.name:
-		score_goal()
+		if goalScoring == false:
+			goalScoring = true
+			score_goal()
 
 
 

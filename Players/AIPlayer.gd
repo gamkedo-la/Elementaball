@@ -126,6 +126,7 @@ func _physics_process(delta):
 					self.position = throwInPoint
 					destination = throwInPoint
 					check_and_slide()
+					ball.goalScoring = false
 				if controlling == false:
 					yield(get_tree().create_timer(3.0), "timeout")
 					if ball.throwingIn == false and controlling == false:
