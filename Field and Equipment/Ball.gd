@@ -204,7 +204,7 @@ func out_of_bounds():
 	SceneController.emit_signal("outOfBounds")
 
 func score_goal():
-	get_tree().change_scene(get_tree().current_scene.filename)
+	SceneController.emit_signal("goalScored", attacker)
 
 func _on_KickMenu_id_pressed(id):
 	initialize_kick(id)
