@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Players/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Field and Equipment/Ball.tscn" type="PackedScene" id=2]
@@ -7,13 +7,15 @@
 [ext_resource path="res://Field and Equipment/Goal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Field and Equipment/ParallaxBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Camera2D.gd" type="Script" id=7]
-[ext_resource path="res://Art/Sprites/enemy_goal.png" type="Texture" id=8]
+[ext_resource path="res://Art/Sprites/Equipment/enemy_goal.png" type="Texture" id=8]
 [ext_resource path="res://Players/Defense Zones/EnemyRight.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Players/blue_player_stats.tres" type="Resource" id=10]
 [ext_resource path="res://UI/MuteButton.gd" type="Script" id=11]
 [ext_resource path="res://Art/UI/speaker_on.png" type="Texture" id=12]
 [ext_resource path="res://Fonts/new_pixellari_font.tres" type="DynamicFont" id=13]
 [ext_resource path="res://ScoreBoard.gd" type="Script" id=14]
+[ext_resource path="res://Art/Sprites/Equipment/water_ball.png" type="Texture" id=15]
+[ext_resource path="res://BallEffects.gd" type="Script" id=16]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -21,11 +23,40 @@
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 48, 16 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 15 )
+region = Rect2( 48, 0, 48, 16 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 15 )
+region = Rect2( 96, 0, 48, 16 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 15 )
+region = Rect2( 144, 0, 48, 16 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "water ball",
+"speed": 10.0
+} ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
 [sub_resource type="Curve2D" id=7]
 resource_local_to_scene = true
@@ -131,6 +162,16 @@ items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Sw
 [node name="BlockMenu" parent="Popup" index="3"]
 items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping Wave", null, 0, false, false, 1, 0, null, "", false, "Flame Wall", null, 0, false, false, 2, 0, null, "", false ]
 
+[node name="BallEffects" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 153.505, 67.5925 )
+z_index = 3
+frames = SubResource( 19 )
+animation = "water ball"
+frame = 2
+playing = true
+script = ExtResource( 16 )
+
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( 159.34, 67.8276 )
 z_index = 2
@@ -192,7 +233,7 @@ margin_top = -21.0
 margin_bottom = -21.0
 
 [node name="AnimationTree" parent="Enemy" index="4"]
-parameters/playback = SubResource( 4 )
+parameters/playback = SubResource( 20 )
 
 [node name="Enemy3" parent="." groups=[
 "all_players",
@@ -207,7 +248,7 @@ margin_top = -21.0
 margin_bottom = -21.0
 
 [node name="AnimationTree" parent="Enemy3" index="4"]
-parameters/playback = SubResource( 5 )
+parameters/playback = SubResource( 21 )
 
 [node name="Enemy2" parent="." groups=[
 "all_players",
@@ -225,7 +266,7 @@ margin_bottom = -21.0
 rotation = 1.52987
 
 [node name="AnimationTree" parent="Enemy2" index="4"]
-parameters/playback = SubResource( 6 )
+parameters/playback = SubResource( 22 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 follow_viewport_enable = true

@@ -16,6 +16,7 @@ var menuAbilities = []
 var kickedType
 var blockedType
 var target
+var ballEffects
 
 #Variables for damage calculation phase
 signal blocked
@@ -32,6 +33,7 @@ onready var controllingPlayer = get_node("../Player")
 export var kickSpeed = 1
 
 func _ready():
+	ballEffects = get_node("../BallEffects")
 	SceneController.connect("inPossession", self, "set_possession")
 	SceneController.connect("controlling", self, "set_control")
 	set_physics_process(true)
@@ -69,6 +71,7 @@ func _input(_event):
 func set_possession(player):
 	playerInPossession = player
 	if player != null:
+		ballEffects.visible = false
 		lastInPossession = player
 		possessionNode = player.get_node("ThingsToFlip/Position2D")
 		if player in get_tree().get_nodes_in_group("player_team"):
@@ -80,6 +83,7 @@ func set_possession(player):
 	else:
 		enemyPossession = false
 		dribbling = false
+	
 	
 func set_control(player):
 	controllingPlayer = player
@@ -232,7 +236,7 @@ func _on_KickMenu_id_pressed(id):
 	self.mode = RigidBody2D.MODE_RIGID
 	get_node("CollisionShape2D").disabled = false
 	set_linear_velocity((possibleShots[shotIndex] - self.global_position) * kickSpeed)
-	apply_torque_impulse(rng.randf_range(500, 2000))
+	#apply_torque_impulse(rng.randf_range(500, 2000))
 
 func _on_PassMenu_id_pressed(id, kicker):
 	initialize_kick(id)
@@ -254,7 +258,7 @@ func _on_PassMenu_id_pressed(id, kicker):
 	kicking = true
 	self.mode = RigidBody2D.MODE_RIGID
 	set_linear_velocity((nearestMate.position - self.global_position) * kickSpeed)
-	apply_torque_impulse(rng.randf_range(500, 2000))
+	#apply_torque_impulse(rng.randf_range(500, 2000))
 	yield(get_tree().create_timer(0.1), "timeout")
 	get_node("CollisionShape2D").disabled = false
 	
@@ -270,7 +274,8 @@ func initialize_kick(id):
 		#get_node("Sprite").modulate = Color(255,0,0)
 		kickedType = "Red"
 	if menuAbilities[id].type == "Blue":
-		#get_node("Sprite").modulate = Color(0,0,255)
+		ballEffects.visible = true
+		ballEffects.animation = "water ball"
 		kickedType = "Blue"
 		
 	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
@@ -380,7 +385,6 @@ func _on_Boundary_Line_body_entered(body):
 func _on_Boundary_Line_body_exited(body):
 	if throwingIn and outOfBounds:
 		if body == self:
-			print("not out of bounds anymore")
 			outOfBounds = false
 			throwingIn = false
 
