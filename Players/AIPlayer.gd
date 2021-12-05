@@ -104,19 +104,17 @@ func initialize_stats(stats : StartingStats):
 
 func _physics_process(delta):
 	if controlling == true and get_node("../Ball").selecting == false:
+		velocity.x = 0
+		velocity.y = 0
+		
 		if Input.is_action_pressed("ui_right"):
 			velocity.x = speed
-		elif Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("ui_left"):
 			velocity.x = -speed
-		
-		elif Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("ui_up"):
 			velocity.y = -speed
-		
-		elif Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("ui_down"):
 			velocity.y = speed
-		else:
-			velocity.x = 0
-			velocity.y = 0
 	
 	elif controlling == false:
 		if outOfBounds:
