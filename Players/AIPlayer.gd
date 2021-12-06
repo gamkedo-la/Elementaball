@@ -124,15 +124,15 @@ func _physics_process(delta):
 					self.position = throwInPoint
 					destination = throwInPoint
 					check_and_slide()
+					get_node("../Throw In Boundary/CollisionPolygon2D").disabled = false
 					ball.goalScoring = false
-				if controlling == false:
-					yield(get_tree().create_timer(3.0), "timeout")
-					if ball.throwingIn == false and controlling == false:
-						ball.throwingIn = true
-						try_pass()
-						for player in get_tree().get_nodes_in_group("all_players"): 
-							player.outOfBounds = false
-						yield(get_tree().create_timer(1.0), "timeout")
+				if ball.throwingIn == false:
+					ball.throwingIn = true 
+					if controlling == false:
+						yield(get_tree().create_timer(3.0), "timeout")
+						if controlling == false:	
+							try_pass()
+							yield(get_tree().create_timer(1.0), "timeout")
 					
 			if onOffense and throwInPlayer != self:
 				get_in_position()
@@ -396,9 +396,7 @@ func reset_intercept():
 	_move_to_target()
 	
 func check_steal():
-	#print("checking for successful steal")
-	if _check_collisions() and _check_collisions().is_in_group(myOpponent):
-		#print("steal successful")
+	if _check_collisions() and _check_collisions() == ball.playerInPossession:
 		ball.calc_tackle_damage(type)
 		yield(ball, "calculated")
 		intercepting = false

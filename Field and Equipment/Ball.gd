@@ -54,6 +54,7 @@ func _physics_process(_delta):
 		
 	update()
 
+#Just for debugging if needed.
 func _draw():
 	pass
 
@@ -233,12 +234,13 @@ func _on_KickMenu_id_pressed(id):
 	var shotIndex = rng.randf_range(0, 2)
 	SceneController.emit_signal("inPossession", null)
 	kicking = true
+	get_node("../Throw In Boundary/CollisionPolygon2D").disabled = true
 	self.mode = RigidBody2D.MODE_RIGID
 	get_node("CollisionShape2D").disabled = false
 	set_linear_velocity((possibleShots[shotIndex] - self.global_position) * kickSpeed)
 	#apply_torque_impulse(rng.randf_range(500, 2000))
 
-func _on_PassMenu_id_pressed(id, kicker):
+func _on_PassMenu_id_pressed(id, kicker = playerInPossession):
 	initialize_kick(id)
 	
 	var openTeammates = get_tree().get_nodes_in_group(kicker.myTeam)
@@ -252,10 +254,12 @@ func _on_PassMenu_id_pressed(id, kicker):
 			mateDistance = player.position.distance_to(kicker.position)
 			nearestMate = player
 	
+	print(nearestMate.name)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	SceneController.emit_signal("inPossession", null)
 	kicking = true
+	get_node("../Throw In Boundary/CollisionPolygon2D").disabled = true
 	self.mode = RigidBody2D.MODE_RIGID
 	set_linear_velocity((nearestMate.position - self.global_position) * kickSpeed)
 	#apply_torque_impulse(rng.randf_range(500, 2000))
@@ -387,6 +391,9 @@ func _on_Boundary_Line_body_exited(body):
 		if body == self:
 			outOfBounds = false
 			throwingIn = false
+			yield(get_tree().create_timer(1.0), "timeout")
+			for player in get_tree().get_nodes_in_group("all_players"): 
+				player.outOfBounds = false
 
 func _on_GoalBoundaryDetector_body_entered(body):
 	if "Goal" in body.name:

@@ -17,95 +17,95 @@
 [ext_resource path="res://Art/Sprites/Equipment/water_ball.png" type="Texture" id=15]
 [ext_resource path="res://BallEffects.gd" type="Script" id=16]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=28]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 15 )
 region = Rect2( 48, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 15 )
 region = Rect2( 96, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 15 )
 region = Rect2( 144, 0, 48, 16 )
 
-[sub_resource type="SpriteFrames" id=19]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "water ball",
 "speed": 10.0
 } ]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=30]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=31]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
 
-[sub_resource type="Curve2D" id=33]
+[sub_resource type="Curve2D" id=12]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 5.04538, -46.2493, -5.04538, 46.2493, 217.615, -36.3129, -10.9317, -24.386, 10.9317, 24.386, 234.005, 8.12406, 18.4343, 0.853422, -18.4343, -0.853422, 303.018, 31.6495, 1.32096, 26.4882, -1.32096, -26.4882, 554.482, 8.55972, 5.28384, 9.24986, -5.28384, -9.24986, 528.603, -74.2151, 0, 0, 0, 0, 272.394, -67.2446, 0, 0, 0, 0, 218.046, -37.1842 )
 }
 
-[sub_resource type="Curve2D" id=34]
+[sub_resource type="Curve2D" id=13]
 _data = {
 "points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, 245.759, 64.7881, 5.04538, -46.2493, -5.04538, 46.2493, 199.547, 128.086, -10.9317, -24.386, 10.9317, 24.386, 237.933, 174.504, 18.4343, 0.853422, -18.4343, -0.853422, 312.841, 190.329, 1.32096, 26.4882, -1.32096, -26.4882, 479.801, 190.856, 5.28384, 9.24986, -5.28384, -9.24986, 447.751, 57.9308, 0, 0, 0, 0, 283.772, 66.898, 0, 0, 0, 0, 246.504, 65.3156 )
 }
 
-[sub_resource type="Curve2D" id=35]
+[sub_resource type="Curve2D" id=14]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, 302.744, 23.0241, 5.04538, -46.2493, -5.04538, 46.2493, 274.532, 69.6518, -10.9317, -24.386, 10.9317, 24.386, 298.64, 128.196, 18.4343, 0.853422, -18.4343, -0.853422, 406.357, 167.052, 1.32096, 26.4882, -1.32096, -26.4882, 588.964, 151.509, 5.28384, 9.24986, -5.28384, -9.24986, 537.67, -3.39834, 0, 0, 0, 0, 416.616, -7.02494, 0, 0, 0, 0, 301.718, 21.4698 )
 }
 
-[sub_resource type="Curve2D" id=36]
+[sub_resource type="Curve2D" id=15]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, -56.3614, -73.1828, 5.04538, -46.2493, -5.04538, 46.2493, -113.191, -53.1275, -10.9317, -24.386, 10.9317, 24.386, -132.362, -7.48445, 18.4343, 0.853422, -18.4343, -0.853422, 1.15265, 4.27211, 1.32096, 26.4882, -1.32096, -26.4882, 187.787, -9.40556, 5.28384, 9.24986, -5.28384, -9.24986, 136.493, -48.7801, 0, 0, 0, 0, -51.243, -71.0578, 0, 0, 0, 0, -54.3206, -71.0578 )
 }
 
-[sub_resource type="Curve2D" id=37]
+[sub_resource type="Curve2D" id=16]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, -60.8834, -94.3779, 5.04538, -46.2493, -5.04538, 46.2493, -102.89, -36.2834, -10.9317, -24.386, 10.9317, 24.386, -99.6591, 3.53427, 18.4343, 0.853422, -18.4343, -0.853422, 33.471, 15.2837, 1.32096, 26.4882, -1.32096, -26.4882, 243.506, -34.9778, 5.28384, 9.24986, -5.28384, -9.24986, 246.738, -102.864, 0, 0, 0, 0, -60.2371, -93.0724, 0, 0, 0, 0, -60.2371, -94.3779 )
 }
 
-[sub_resource type="Curve2D" id=38]
+[sub_resource type="Curve2D" id=17]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, -389.099, -109.713, 5.04538, -46.2493, -5.04538, 46.2493, -560.359, -105.797, -10.9317, -24.386, 10.9317, 24.386, -598.488, 39.1133, 18.4343, 0.853422, -18.4343, -0.853422, -332.228, 18.2254, 1.32096, 26.4882, -1.32096, -26.4882, -265.663, -10.4955, 5.28384, 9.24986, -5.28384, -9.24986, -294.098, -85.5615, 0, 0, 0, 0, -387.16, -108.408, 0, 0, 0, 0, -296.037, -86.867 )
 }
 
-[sub_resource type="RectangleShape2D" id=39]
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 17.9827, 749.178 )
 
-[sub_resource type="RectangleShape2D" id=40]
+[sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 4.43129, 227.178 )
 
-[sub_resource type="RectangleShape2D" id=41]
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 4.43129, 236.379 )
 
-[sub_resource type="RectangleShape2D" id=42]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 4.43129, 306.322 )
 
-[sub_resource type="RectangleShape2D" id=43]
+[sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 4.43129, 465.953 )
 
 [node name="Main" type="Node2D"]
@@ -122,10 +122,7 @@ fieldPosition = "PlayerCenter"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimationTree" parent="Player" index="1"]
-parameters/playback = SubResource( 27 )
-
-[node name="EnemyCollider" parent="Player" index="3"]
-position = Vector2( -0.159099, -0.198006 )
+parameters/playback = SubResource( 1 )
 
 [node name="Player2" parent="." groups=[
 "all_players",
@@ -137,10 +134,7 @@ fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimationTree" parent="Player2" index="1"]
-parameters/playback = SubResource( 28 )
-
-[node name="EnemyCollider" parent="Player2" index="3"]
-position = Vector2( -0.159099, -0.198006 )
+parameters/playback = SubResource( 2 )
 
 [node name="Player3" parent="." groups=[
 "all_players",
@@ -152,10 +146,7 @@ fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimationTree" parent="Player3" index="1"]
-parameters/playback = SubResource( 29 )
-
-[node name="EnemyCollider" parent="Player3" index="3"]
-position = Vector2( -0.159099, -0.198006 )
+parameters/playback = SubResource( 3 )
 
 [node name="Popup" parent="." instance=ExtResource( 3 )]
 
@@ -175,8 +166,9 @@ items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping W
 visible = false
 position = Vector2( 153.505, 67.5925 )
 z_index = 3
-frames = SubResource( 19 )
+frames = SubResource( 8 )
 animation = "water ball"
+frame = 3
 playing = true
 script = ExtResource( 16 )
 
@@ -235,13 +227,21 @@ position = Vector2( -77.3624, 59.4233 )
 position = Vector2( 396.039, 62.225 )
 fieldPosition = "EnemyCenter"
 starting_stats = ExtResource( 10 )
+speed = 150
+
+[node name="InterceptArea" parent="Enemy" index="0"]
+position = Vector2( 0, 0 )
 
 [node name="Health Bar" parent="Enemy" index="1"]
 margin_top = -21.0
 margin_bottom = -21.0
 
+[node name="EnemyCollider" parent="Enemy" index="2"]
+position = Vector2( 0.148666, -0.743263 )
+rotation = 0.0283279
+
 [node name="AnimationTree" parent="Enemy" index="4"]
-parameters/playback = SubResource( 30 )
+parameters/playback = SubResource( 9 )
 
 [node name="Enemy3" parent="." groups=[
 "all_players",
@@ -256,7 +256,7 @@ margin_top = -21.0
 margin_bottom = -21.0
 
 [node name="AnimationTree" parent="Enemy3" index="4"]
-parameters/playback = SubResource( 31 )
+parameters/playback = SubResource( 10 )
 
 [node name="Enemy2" parent="." groups=[
 "all_players",
@@ -274,7 +274,7 @@ margin_bottom = -21.0
 rotation = 1.52987
 
 [node name="AnimationTree" parent="Enemy2" index="4"]
-parameters/playback = SubResource( 32 )
+parameters/playback = SubResource( 11 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 follow_viewport_enable = true
@@ -284,7 +284,7 @@ position = Vector2( 378.666, -102.779 )
 
 [node name="Path2D" parent="EnemyRight" index="0"]
 position = Vector2( -376.967, 69.7091 )
-curve = SubResource( 33 )
+curve = SubResource( 12 )
 
 [node name="EnemyLeft" parent="." instance=ExtResource( 9 )]
 position = Vector2( 409.333, 250.436 )
@@ -293,33 +293,33 @@ scale = Vector2( 0.84652, 0.829782 )
 [node name="Path2D" parent="EnemyLeft" index="0"]
 position = Vector2( -420.807, -239.543 )
 scale = Vector2( 1.34164, 1.14235 )
-curve = SubResource( 34 )
+curve = SubResource( 13 )
 
 [node name="EnemyCenter" parent="." instance=ExtResource( 9 )]
 position = Vector2( 395.263, 61.9086 )
 
 [node name="Path2D" parent="EnemyCenter" index="0"]
 position = Vector2( -388.913, -74.6078 )
-curve = SubResource( 35 )
+curve = SubResource( 14 )
 
 [node name="PlayerLeft" parent="." instance=ExtResource( 9 )]
 position = Vector2( -58.6899, -21.2132 )
 
 [node name="Path2D" parent="PlayerLeft" index="0"]
-curve = SubResource( 36 )
+curve = SubResource( 15 )
 
 [node name="PlayerRight" parent="." instance=ExtResource( 9 )]
 position = Vector2( -146.316, 211.065 )
 
 [node name="Path2D" parent="PlayerRight" index="0"]
-curve = SubResource( 37 )
+curve = SubResource( 16 )
 
 [node name="PlayerCenter" parent="." instance=ExtResource( 9 )]
 position = Vector2( -99.1784, 72.3968 )
 
 [node name="Path2D" parent="PlayerCenter" index="0"]
 position = Vector2( 471.218, 7.49155 )
-curve = SubResource( 38 )
+curve = SubResource( 17 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -332,22 +332,22 @@ margin = Vector2( 200, 100 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Outer Walls"]
 position = Vector2( -369.751, 108.122 )
 rotation = 0.41189
-shape = SubResource( 39 )
+shape = SubResource( 18 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Outer Walls"]
 position = Vector2( 695.451, 114.796 )
 rotation = -0.408474
-shape = SubResource( 39 )
+shape = SubResource( 18 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Outer Walls"]
 position = Vector2( 164.185, -197.556 )
 rotation = -1.56684
-shape = SubResource( 39 )
+shape = SubResource( 18 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Outer Walls"]
 position = Vector2( 110.384, 447.11 )
 rotation = -1.56684
-shape = SubResource( 39 )
+shape = SubResource( 18 )
 
 [node name="Boundary Line" type="Area2D" parent="."]
 collision_layer = 4
@@ -358,7 +358,7 @@ collision_mask = 3
 ]]
 position = Vector2( -223.562, 82.9747 )
 rotation = 0.317148
-shape = SubResource( 40 )
+shape = SubResource( 19 )
 one_way_collision_margin = 4.8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary Line" groups=[
@@ -366,7 +366,7 @@ one_way_collision_margin = 4.8
 ]]
 position = Vector2( 544.451, 88.7962 )
 rotation = -0.32115
-shape = SubResource( 41 )
+shape = SubResource( 20 )
 one_way_collision_margin = 5.0
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary Line" groups=[
@@ -374,7 +374,7 @@ one_way_collision_margin = 5.0
 ]]
 position = Vector2( 154.094, -131.966 )
 rotation = -1.56684
-shape = SubResource( 42 )
+shape = SubResource( 21 )
 one_way_collision_margin = 5.0
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary Line" groups=[
@@ -382,7 +382,7 @@ one_way_collision_margin = 5.0
 ]]
 position = Vector2( 166.536, 301.964 )
 rotation = -1.56684
-shape = SubResource( 43 )
+shape = SubResource( 22 )
 one_way_collision_margin = 5.0
 
 [node name="GUICanvasLayer" type="CanvasLayer" parent="."]
@@ -445,12 +445,12 @@ __meta__ = {
 [node name="Position2D" type="Position2D" parent="Throw In Points" groups=[
 "throw_in_positions",
 ]]
-position = Vector2( -192.55, -84.9487 )
+position = Vector2( -208.596, -89.6681 )
 
 [node name="Position2D2" type="Position2D" parent="Throw In Points" groups=[
 "throw_in_positions",
 ]]
-position = Vector2( -285.41, 168.867 )
+position = Vector2( -314.222, 212.032 )
 
 [node name="Position2D3" type="Position2D" parent="Throw In Points" groups=[
 "throw_in_positions",
@@ -465,32 +465,39 @@ position = Vector2( 161.732, -162.921 )
 [node name="Position2D5" type="Position2D" parent="Throw In Points" groups=[
 "throw_in_positions",
 ]]
-position = Vector2( 376.979, -156.975 )
+position = Vector2( 378.867, -160.75 )
 
 [node name="Position2D6" type="Position2D" parent="Throw In Points" groups=[
 "throw_in_positions",
 ]]
-position = Vector2( 528.008, -84.4337 )
+position = Vector2( 535.559, -85.3776 )
 
 [node name="Position2D7" type="Position2D" parent="Throw In Points" groups=[
 "throw_in_positions",
 ]]
-position = Vector2( 604.117, 193.841 )
+position = Vector2( 637.153, 191.953 )
 
 [node name="Position2D8" type="Position2D" parent="Throw In Points" groups=[
 "throw_in_positions",
 ]]
-position = Vector2( 456.655, 338.924 )
+position = Vector2( 463.262, 347.419 )
 
 [node name="Position2D9" type="Position2D" parent="Throw In Points" groups=[
 "throw_in_positions",
 ]]
-position = Vector2( 170.057, 344.87 )
+position = Vector2( 171.945, 348.646 )
 
 [node name="Position2D10" type="Position2D" parent="Throw In Points" groups=[
 "throw_in_positions",
 ]]
-position = Vector2( -162.921, 338.924 )
+position = Vector2( -162.921, 345.531 )
+
+[node name="Throw In Boundary" type="StaticBody2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Throw In Boundary"]
+polygon = PoolVector2Array( -168.208, -142.01, -337.162, 329.927, 644.468, 326.152, 495.335, -152.392, -148.387, -152.392, -152.162, -130.683, 471.739, -130.683, 607.656, 295.948, -289.024, 296.892, -154.05, -125.964, -148.387, -152.392 )
+disabled = true
 
 [connection signal="id_pressed" from="Popup/KickMenu" to="Ball" method="_on_KickMenu_id_pressed"]
 [connection signal="id_pressed" from="Popup/PassMenu" to="Ball" method="_on_PassMenu_id_pressed"]
