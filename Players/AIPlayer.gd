@@ -27,6 +27,7 @@ var go2Secondary = false #Has receivers alternate between a primary and secondar
 var timer
 
 var outOfBounds = false
+var offField = false
 var throwInPlayer
 var throwInPoint
 
@@ -103,7 +104,7 @@ func initialize_stats(stats : StartingStats):
 	get_node("Health Bar").update_healthbar(maxHP)
 
 func _physics_process(delta):
-	if controlling == true and get_node("../Ball").selecting == false:
+	if controlling == true and ball.selecting == false:
 		velocity.x = 0
 		velocity.y = 0
 		
@@ -116,59 +117,70 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_down"):
 			velocity.y = speed
 	
-	elif controlling == false:
-		if outOfBounds:
-			if throwInPlayer == self:
-				if self.position != throwInPoint:
-					SceneController.emit_signal("inPossession", self)
-					self.position = throwInPoint
-					destination = throwInPoint
-					check_and_slide()
-					get_node("../Throw In Boundary/CollisionPolygon2D").disabled = false
-					ball.goalScoring = false
-				if ball.throwingIn == false:
-					ball.throwingIn = true 
-					if controlling == false:
-						yield(get_tree().create_timer(3.0), "timeout")
-						if controlling == false:	
-							try_pass()
-							yield(get_tree().create_timer(1.0), "timeout")
-					
+	if outOfBounds:
+		if throwInPlayer == self:
+			if ball.throwingIn == false:
+				SceneController.emit_signal("inPossession", self)
+				
+				#move self to throw in point
+				self.position = throwInPoint
+				destination = throwInPoint
+				check_and_slide()
+				
+				#Enable the boundary so the player can't cross into the field when throwing in
+				get_node("../Throw In Boundary/CollisionPolygon2D").disabled = false
+				ball.goalScoring = false
+				
+				ball.throwingIn = true
+				#Player controlled character stops here, player can throw or pass
+				 
+				if controlling == false:
+					yield(get_tree().create_timer(3.0), "timeout")
+					if controlling == false:	
+						try_pass()
+						yield(get_tree().create_timer(1.0), "timeout")
+		elif ball.throwingIn == false:
+			#move self back onto field
+			self.position = defenseZone.position
+			destination = defenseZone.position
+			check_and_slide()
+			
+		if controlling == false:
 			if onOffense and throwInPlayer != self:
 				get_in_position()
 				
 			if onDefense: 
 				defend_zone()
 			
-			if controlling == false:
+			if ball.selecting == false:
 				velocity = move_and_slide(velocity)
 				
-		elif ball.selecting == false:
+	elif ball.selecting == false and controlling == false:
+		
+		#If nobody has the ball, try to get it.
+		if !ball.playerInPossession:
+			destination = ball.position
+			velocity = (destination-self.position).normalized()*speed;
+		
+		#TODO add offense states
+		if onOffense:
+			if inPossession:
+				pass_and_shoot()
+			else:
+				get_in_position()
+		
+		if onDefense:
+			#if the enemy's defense range collides with the ball
+			if intercepting == true:
+				intercept()
 			
-			#If nobody has the ball, try to get it.
-			if !ball.playerInPossession:
-				destination = ball.position
-				velocity = (destination-self.position).normalized()*speed;
-			
-			#TODO add offense states
-			if onOffense:
-				if inPossession:
-					pass_and_shoot()
-				else:
-					get_in_position()
-			
-			if onDefense:
-				#if the enemy's defense range collides with the ball
-				if intercepting == true:
-					#print("intercepting")
-					intercept()
+			#If ball is out of range, returns to assigned zone
+			else:
+				defend_zone()
+			update()
 				
-				#If ball is out of range, returns to assigned zone
-				else:
-					defend_zone()
-				update()
-				
-	velocity = move_and_slide(velocity)
+	if ball.selecting == false:
+		velocity = move_and_slide(velocity)
 	
 	if velocity.x > 0.1:
 		$ThingsToFlip.scale.x = 1
@@ -224,7 +236,7 @@ func get_in_position():
 		else:
 			destination = Vector2((ball.playerInPossession.position.x + randomDistanceX + goal2Ball/10)*leftOrRight, myZoneY+randomDistanceY)
 		
-	velocity = (destination-self.position).normalized()*(speed/2)
+	velocity = (destination-self.position).normalized()*(speed*.75)
 	check_and_slide()
 
 func defend_zone():
@@ -295,7 +307,8 @@ func out_of_bounds():
 				closestDistance = point.position.distance_to(ball.position)
 				closestPosition = point
 				
-		throwInPoint = closestPosition.position
+		if closestPosition:
+			throwInPoint = closestPosition.position
 
 func intercept():
 	if destination != ball.position and destination != ball.playerInPossession.position:

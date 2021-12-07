@@ -199,11 +199,10 @@ func check_kick_collisions():
 					kicking = false
 					SceneController.emit_signal("inPossession", body)
 					body.intercepting = false
-				
-
 
 func out_of_bounds():
 	outOfBounds = true
+	print("out of bounds")
 	SceneController.emit_signal("outOfBounds")
 
 func score_goal():
@@ -380,20 +379,25 @@ func calc_damage_reduction(attackType):
 	return damageReduction
 
 func _on_Boundary_Line_body_entered(body):
-	if not outOfBounds:
-		if body.is_in_group("all_players") and body.inPossession:
-			out_of_bounds()
-		if body == self:
-			out_of_bounds()
-
-func _on_Boundary_Line_body_exited(body):
 	if throwingIn and outOfBounds:
-		if body == self:
+		if body == self and playerInPossession == null:
+			print("in bounds")
 			outOfBounds = false
-			throwingIn = false
 			yield(get_tree().create_timer(1.0), "timeout")
 			for player in get_tree().get_nodes_in_group("all_players"): 
 				player.outOfBounds = false
+			throwingIn = false
+	elif body.is_in_group("all_players") and body.offField == true:
+		body.offField = false
+
+func _on_Boundary_Line_body_exited(body):			
+	if not outOfBounds:
+		if body.is_in_group("all_players") and body.inPossession:
+			out_of_bounds()
+		elif body.is_in_group("all_players") and body.offField == false:
+			body.offField = true
+		if body == self and playerInPossession == null:
+			out_of_bounds()
 
 func _on_GoalBoundaryDetector_body_entered(body):
 	if "Goal" in body.name:
