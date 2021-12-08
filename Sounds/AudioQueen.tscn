@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sounds/Menu Select.wav" type="AudioStream" id=1]
 [ext_resource path="res://Sounds/AudioQueen.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Sounds/Plant Kick.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/Water Kick.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sounds/Plant Block.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/Fire Tackle.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/Water Tackle.wav" type="AudioStream" id=9]
 
 [node name="Audio Queen" type="Node2D"]
 script = ExtResource( 2 )
@@ -17,6 +19,10 @@ volume_db = 1.0
 
 [node name="Fire Block" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = 1.0
+
+[node name="Fire Tackle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 volume_db = 1.0
 
 [node name="Plant Block" type="AudioStreamPlayer" parent="."]
@@ -33,4 +39,8 @@ volume_db = 1.0
 
 [node name="Water Kick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = 1.0
+
+[node name="Water Tackle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 volume_db = 1.0
