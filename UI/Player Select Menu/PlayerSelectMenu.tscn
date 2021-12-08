@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Art/multicolor_pitch.png" type="Texture" id=1]
+[ext_resource path="res://UI/Buttons.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/Sprites/blue_idle.png" type="Texture" id=3]
+
+[sub_resource type="Theme" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FieldImage" type="TextureRect" parent="CanvasLayer/VBoxContainer"]
+margin_right = 341.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+theme = SubResource( 1 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="PitchSelect" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 54.0
+margin_right = 91.0
+margin_bottom = 76.0
+buttonName = "Select Pitch"
+
+[node name="Players Container" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+margin_top = 148.0
+margin_right = 341.0
+margin_bottom = 180.0
+
+[node name="RightFieldSprite" type="TextureRect" parent="CanvasLayer/VBoxContainer/Players Container"]
+margin_right = 16.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="RightFieldSelect" parent="CanvasLayer/VBoxContainer/Players Container" instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_top = 0.0
+margin_right = 111.0
+margin_bottom = 22.0
+
+[node name="RightFieldSprite2" type="TextureRect" parent="CanvasLayer/VBoxContainer/Players Container"]
+margin_left = 115.0
+margin_right = 131.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="RightFieldSelect2" parent="CanvasLayer/VBoxContainer/Players Container" instance=ExtResource( 2 )]
+margin_left = 135.0
+margin_top = 0.0
+margin_right = 226.0
+margin_bottom = 22.0
+
+[node name="RightFieldSprite3" type="TextureRect" parent="CanvasLayer/VBoxContainer/Players Container"]
+margin_left = 230.0
+margin_right = 246.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="RightFieldSelect3" parent="CanvasLayer/VBoxContainer/Players Container" instance=ExtResource( 2 )]
+margin_left = 250.0
+margin_top = 0.0
+margin_right = 341.0
+margin_bottom = 22.0
