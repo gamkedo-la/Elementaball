@@ -3,8 +3,10 @@ extends Resource
 
 class_name StartingStats
 
+export var speciesName : String = "Species Name"
 export var characterName : String = "Name"
 export var type : String = "Type"
+export var sprite : Texture
 
 export var HP : int
 export var maxHP : int

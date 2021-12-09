@@ -61,15 +61,14 @@ var aniMachine
 onready var ball = get_node("../Ball")
 
 func _ready():
+	aniMachine = $AnimationTree["parameters/playback"]
 	initialize_stats(starting_stats)
 	defenseZone = get_node("../" + fieldPosition)
 	SceneController.connect("inPossession", self, "set_possession")
 	SceneController.connect("controlling", self, "set_control")
 	SceneController.connect("tackling", self, "toggle_tackling")
 	SceneController.connect("blocking", self, "toggle_blocking")
-	SceneController.connect("outOfBounds", self, "out_of_bounds")
-	aniMachine = $AnimationTree["parameters/playback"]
-	
+	SceneController.connect("outOfBounds", self, "out_of_bounds")	
 		
 func initialize_stats(stats : StartingStats):
 	characterName = stats.characterName
@@ -100,6 +99,7 @@ func initialize_stats(stats : StartingStats):
 	runningAnim = characterName + " Run"
 	tackleAnim = characterName + " Tackle"
 	kickAnim = characterName + " Kick"
+	print(idleAnim)
 	
 	get_node("Health Bar").update_healthbar(maxHP)
 

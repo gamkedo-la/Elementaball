@@ -1,14 +1,17 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://Players/StartingStats.gd" type="Script" id=1]
 [ext_resource path="res://Abilities/Kicks/thorns_kick.tres" type="Resource" id=2]
 [ext_resource path="res://Abilities/Blocks/thorn_wall.tres" type="Resource" id=3]
 [ext_resource path="res://Abilities/Tackles/branch_swipe.tres" type="Resource" id=4]
+[ext_resource path="res://Art/Sprites/green_idle.png" type="Texture" id=5]
 
 [resource]
 script = ExtResource( 1 )
+speciesName = "Green Twigs"
 characterName = "Green"
 type = "Green"
+sprite = ExtResource( 5 )
 HP = 60
 maxHP = 60
 agility = 2

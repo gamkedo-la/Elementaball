@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Players/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/blue_idle.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Art/Sprites/blue_run/blue_run3.png" type="Texture" id=11]
 [ext_resource path="res://Art/Sprites/blue_run/blue_run2.png" type="Texture" id=12]
 [ext_resource path="res://Players/BallInterceptArea.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Art/Sprites/dragito_enemy_idle.png" type="Texture" id=14]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -43,7 +44,7 @@ tracks/1/keys = {
 "values": [ Vector2( -0.159099, -0.198006 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "Blue Run"
 length = 0.4
 loop = true
@@ -108,7 +109,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 resource_name = "Blue Tackle"
 length = 0.6
 tracks/0/type = "value"
@@ -251,6 +252,11 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 14 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "red idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "blue run",
@@ -281,8 +287,8 @@ parameters/playback = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." instance=ExtResource( 4 )]
 "anims/Blue Idle" = SubResource( 2 )
-"anims/Blue Run" = SubResource( 7 )
-"anims/Blue Tackle" = SubResource( 8 )
+"anims/Blue Run" = SubResource( 3 )
+"anims/Blue Tackle" = SubResource( 4 )
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.159099, -0.198006 )
