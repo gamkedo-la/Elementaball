@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Players/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Field and Equipment/Ball.tscn" type="PackedScene" id=2]
@@ -17,248 +17,20 @@
 [ext_resource path="res://Art/Sprites/Equipment/water_ball.png" type="Texture" id=15]
 [ext_resource path="res://BallEffects.gd" type="Script" id=16]
 [ext_resource path="res://UI/Player Select Menu/PlayerSelectMenu.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Players/red_player_stats.tres" type="Resource" id=18]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=22]
 
-[sub_resource type="Animation" id=19]
-resource_name = "Red Idle"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "red idle" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
-[sub_resource type="Animation" id=20]
-resource_name = "Red Run"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("EnemyCollider:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 6.27285, -1.25738 ), Vector2( 9.87112, -1.07499 ), Vector2( 10.118, -0.449659 ), Vector2( 9.8861, -0.596247 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("EnemyCollider:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1.62307, 1.13498, 1.43747, 0.663645, 1.20974 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 1 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "blue run" ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
-}
-
-[sub_resource type="Animation" id=21]
-resource_name = "Red Tackle"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:speed")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 150, 300, 150 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
-"method": "tackle_ended"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("EnemyCollider:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1.62307, -91.6483, 85.2222, 2.31795, 0.663645, 1.20974 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("InterceptArea:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0.891907, -0.817585 ), Vector2( -0.816132, 0.106384 ), Vector2( -0.155266, -0.0484543 ), Vector2( -0.540016, 0.162682 ), Vector2( 0.126373, -0.256859 ), Vector2( -0.161133, 0.0360718 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("InterceptArea:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0, 1, 2, 3, 4, 5 ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "blue tackle" ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("EnemyCollider:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.628354, 1.69188 ), Vector2( 0.313375, 9.88136 ), Vector2( 2.51823, 0.746936 ), Vector2( -0.316592, 0.116977 ) ]
-}
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
-
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 15 )
 region = Rect2( 48, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 15 )
 region = Rect2( 96, 0, 48, 16 )
 
@@ -273,7 +45,7 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 7 ) ],
 "loop": true,
 "name": "water ball",
 "speed": 10.0
@@ -325,34 +97,7 @@ extents = Vector2( 17.9827, 749.178 )
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." groups=[
-"all_players",
-"player_team",
-] instance=ExtResource( 1 )]
-position = Vector2( 30.116, 64.0788 )
-collision_mask = 3
-controlling = true
-inPossession = true
-fieldPosition = "PlayerCenter"
-starting_stats = ExtResource( 18 )
-
-[node name="AnimationTree" parent="Player" index="1"]
-parameters/playback = SubResource( 1 )
-
-[node name="AnimationPlayer" parent="Player" index="2"]
-"anims/Red Idle" = SubResource( 19 )
-"anims/Red Run" = SubResource( 20 )
-"anims/Red Tackle" = SubResource( 21 )
-
-[node name="EnemyCollider" parent="Player" index="3"]
-rotation = 0.0211139
-
-[node name="AnimatedSprite" parent="Player/ThingsToFlip" index="1"]
-animation = "red idle"
-frame = 1
-
-[node name="InterceptArea" parent="Player" index="5"]
-position = Vector2( -0.161133, 0.0360718 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="Player2" parent="." groups=[
 "all_players",
@@ -364,7 +109,7 @@ fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimationTree" parent="Player2" index="1"]
-parameters/playback = SubResource( 2 )
+parameters/playback = SubResource( 22 )
 
 [node name="Player3" parent="." groups=[
 "all_players",
@@ -376,7 +121,7 @@ fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimationTree" parent="Player3" index="1"]
-parameters/playback = SubResource( 3 )
+parameters/playback = SubResource( 23 )
 
 [node name="Popup" parent="." instance=ExtResource( 3 )]
 
@@ -398,6 +143,7 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 8 )
 animation = "water ball"
+frame = 1
 playing = true
 script = ExtResource( 16 )
 
@@ -716,7 +462,6 @@ disabled = true
 [connection signal="body_exited" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_exited"]
 [connection signal="pressed" from="GUICanvasLayer/MuteButton" to="GUICanvasLayer/MuteButton" method="_on_MuteButton_pressed"]
 
-[editable path="Player"]
 [editable path="Player2"]
 [editable path="Player3"]
 [editable path="Popup"]
