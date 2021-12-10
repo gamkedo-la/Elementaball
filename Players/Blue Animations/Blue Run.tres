@@ -1,0 +1,66 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "Blue Run"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemyCollider:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 6.27285, -1.25738 ), Vector2( 9.87112, -1.07499 ), Vector2( 10.118, -0.449659 ), Vector2( 9.8861, -0.596247 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("EnemyCollider:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1.62307, 1.13498, 1.43747, 0.663645, 1.20974 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "blue run" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
+}

@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
-[sub_resource type="Animation" id=1]
+[ext_resource path="res://Players/Blue Animations/Blue Idle.tres" type="Animation" id=1]
+[ext_resource path="res://Players/Blue Animations/Blue Run.tres" type="Animation" id=2]
+[ext_resource path="res://Players/Blue Animations/Blue Tackle.tres" type="Animation" id=3]
+
+[sub_resource type="Animation" id=50]
 resource_name = "Blue Enemy Idle"
 loop = true
 tracks/0/type = "value"
@@ -16,7 +20,7 @@ tracks/0/keys = {
 "values": [ "default" ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=51]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -80,7 +84,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=52]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:speed")
@@ -211,8 +215,95 @@ tracks/8/keys = {
 "values": [ "blue tackle" ]
 }
 
+[sub_resource type="Animation" id=53]
+resource_name = "Red Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "red idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("EnemyCollider:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.159099, -0.198006 ) ]
+}
+
+[sub_resource type="Animation" id=54]
+resource_name = "Red Run"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "red idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("EnemyCollider:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.159099, -0.198006 ) ]
+}
+
+[sub_resource type="Animation" id=55]
+resource_name = "Red Tackle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "red idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("EnemyCollider:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.159099, -0.198006 ) ]
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer"]
 playback_speed = 0.75
-"anims/Blue Enemy Idle" = SubResource( 1 )
-"anims/Blue Enemy Run" = SubResource( 2 )
-"anims/Blue Enemy Tackle" = SubResource( 3 )
+"anims/Blue Enemy Idle" = SubResource( 50 )
+"anims/Blue Enemy Run" = SubResource( 51 )
+"anims/Blue Enemy Tackle" = SubResource( 52 )
+"anims/Blue Idle" = ExtResource( 1 )
+"anims/Blue Run" = ExtResource( 2 )
+"anims/Blue Tackle" = ExtResource( 3 )
+"anims/Red Idle" = SubResource( 53 )
+"anims/Red Run" = SubResource( 54 )
+"anims/Red Tackle" = SubResource( 55 )

@@ -19,6 +19,7 @@ var enemyTeam = []
 var allPlayers = []
 
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	set_process(true)
 	playerTeam = get_tree().get_nodes_in_group("player_team")
 	connect("inPossession", self, "possession_control")
