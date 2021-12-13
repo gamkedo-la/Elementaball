@@ -15,10 +15,10 @@ __meta__ = {
 }
 
 [node name="Minus" type="Button" parent="."]
-margin_right = 20.0
-margin_bottom = 12.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
+margin_right = 17.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 custom_fonts/font = ExtResource( 2 )
 text = "<"
 __meta__ = {
@@ -26,10 +26,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 24.0
+margin_left = 21.0
 margin_top = 3.0
-margin_right = 64.0
-margin_bottom = 9.0
+margin_right = 52.0
+margin_bottom = 11.0
 size_flags_horizontal = 2
 custom_fonts/font = ExtResource( 2 )
 text = "Label"
@@ -38,9 +38,11 @@ __meta__ = {
 }
 
 [node name="Plus" type="Button" parent="."]
-margin_left = 68.0
+margin_left = 71.0
 margin_right = 88.0
-margin_bottom = 12.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 custom_fonts/font = ExtResource( 2 )
 text = ">"
 

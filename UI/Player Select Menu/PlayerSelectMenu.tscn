@@ -44,7 +44,7 @@ __meta__ = {
 }
 
 [node name="Top Margin" type="MarginContainer" parent="SelectionMenuPopup/SelectionMenuContainer"]
-margin_right = 312.0
+margin_right = 349.0
 margin_bottom = 5.0
 rect_min_size = Vector2( 0, 5 )
 __meta__ = {
@@ -53,13 +53,13 @@ __meta__ = {
 
 [node name="MarginContainer3" type="MarginContainer" parent="SelectionMenuPopup/SelectionMenuContainer"]
 margin_top = 9.0
-margin_right = 312.0
+margin_right = 349.0
 margin_bottom = 49.0
-custom_constants/margin_left = 106
+custom_constants/margin_left = 125
 
 [node name="TopRowContainer" type="HBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer/MarginContainer3"]
-margin_left = 106.0
-margin_right = 312.0
+margin_left = 125.0
+margin_right = 349.0
 margin_bottom = 40.0
 
 [node name="FieldImage" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer"]
@@ -73,9 +73,9 @@ stretch_mode = 6
 
 [node name="CloseButton" type="Button" parent="SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer"]
 margin_left = 104.0
-margin_top = 14.0
-margin_right = 156.0
-margin_bottom = 26.0
+margin_top = 13.0
+margin_right = 145.0
+margin_bottom = 27.0
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 8 )
 text = "Start"
@@ -84,19 +84,23 @@ __meta__ = {
 }
 
 [node name="PitchSelect" parent="SelectionMenuPopup/SelectionMenuContainer" instance=ExtResource( 2 )]
-margin_left = 112.0
+margin_left = 138.0
 margin_top = 53.0
-margin_right = 200.0
-margin_bottom = 65.0
+margin_right = 211.0
+margin_bottom = 67.0
 buttonName = "Select Pitch"
 
+[node name="Plus" parent="SelectionMenuPopup/SelectionMenuContainer/PitchSelect" index="2"]
+margin_left = 56.0
+margin_right = 73.0
+
 [node name="PlayersContainer" type="VBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer"]
-margin_top = 69.0
-margin_right = 312.0
-margin_bottom = 169.0
+margin_top = 71.0
+margin_right = 349.0
+margin_bottom = 175.0
 
 [node name="CenterFieldSprite" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer"]
-margin_right = 312.0
+margin_right = 349.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 texture = ExtResource( 3 )
@@ -104,25 +108,29 @@ expand = true
 stretch_mode = 6
 
 [node name="CenterFieldSelect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer" instance=ExtResource( 2 )]
-margin_left = 112.0
+margin_left = 138.0
 margin_top = 36.0
-margin_right = 200.0
-margin_bottom = 48.0
+margin_right = 211.0
+margin_bottom = 50.0
 buttonName = "Center Fielder"
 
+[node name="Plus" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSelect" index="2"]
+margin_left = 56.0
+margin_right = 73.0
+
 [node name="VBoxContainer" type="HBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer"]
-margin_top = 52.0
-margin_right = 312.0
-margin_bottom = 100.0
+margin_top = 54.0
+margin_right = 349.0
+margin_bottom = 104.0
 alignment = 1
 
 [node name="LeftField" type="VBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer"]
-margin_left = 11.0
-margin_right = 131.0
-margin_bottom = 48.0
+margin_left = 77.0
+margin_right = 170.0
+margin_bottom = 50.0
 
 [node name="LeftFieldSprite" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField"]
-margin_right = 120.0
+margin_right = 93.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 16, 32 )
 texture = ExtResource( 3 )
@@ -131,31 +139,25 @@ stretch_mode = 6
 
 [node name="LeftFieldSelect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField" instance=ExtResource( 2 )]
 margin_top = 36.0
-margin_right = 120.0
-margin_bottom = 48.0
+margin_right = 93.0
+margin_bottom = 50.0
 buttonName = "Left Wing"
 
 [node name="Label" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect" index="1"]
-margin_right = 96.0
+margin_right = 72.0
 text = "Left Wing"
 
 [node name="Plus" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect" index="2"]
-margin_left = 100.0
-margin_right = 120.0
-
-[node name="Center Margin" type="MarginContainer" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer"]
-margin_left = 135.0
-margin_right = 168.382
-margin_bottom = 48.0
-rect_min_size = Vector2( 33.382, 0 )
+margin_left = 76.0
+margin_right = 93.0
 
 [node name="RightField" type="VBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer"]
-margin_left = 172.0
-margin_right = 300.0
-margin_bottom = 48.0
+margin_left = 174.0
+margin_right = 272.0
+margin_bottom = 50.0
 
 [node name="RightFieldSprite" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField"]
-margin_right = 128.0
+margin_right = 98.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 16, 32 )
 texture = ExtResource( 3 )
@@ -164,17 +166,17 @@ stretch_mode = 6
 
 [node name="RightFieldSelect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField" instance=ExtResource( 2 )]
 margin_top = 36.0
-margin_right = 128.0
-margin_bottom = 48.0
+margin_right = 98.0
+margin_bottom = 50.0
 buttonName = "Right Wing"
 
 [node name="Label" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect" index="1"]
-margin_right = 104.0
+margin_right = 77.0
 text = "Right Wing"
 
 [node name="Plus" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect" index="2"]
-margin_left = 108.0
-margin_right = 128.0
+margin_left = 81.0
+margin_right = 98.0
 
 [connection signal="pressed" from="SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PitchSelect" to="." method="_on_PitchSelect_change"]

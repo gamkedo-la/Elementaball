@@ -1,7 +1,7 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://Fonts/dogica.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/8-bit-hud.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 8
+size = 5
 font_data = ExtResource( 1 )
