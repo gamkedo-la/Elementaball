@@ -145,6 +145,7 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 8 )
 animation = "water ball"
+frame = 2
 playing = true
 script = ExtResource( 16 )
 
@@ -343,7 +344,8 @@ layer = 10
 [node name="PlayerSelectMenu" parent="GUICanvasLayer" instance=ExtResource( 17 )]
 pause_mode = 2
 margin_left = 0.0
-margin_right = 0.0
+margin_right = 297.0
+margin_bottom = 187.0
 
 [node name="MuteButton" type="ToolButton" parent="GUICanvasLayer"]
 margin_left = 305.799

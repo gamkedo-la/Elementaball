@@ -12,9 +12,8 @@
 [sub_resource type="Theme" id=1]
 
 [node name="PlayerSelectMenu" type="Control"]
-margin_left = 112.0
-margin_right = 112.0
-margin_bottom = 32.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -23,6 +22,8 @@ selectablePlayers = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
 
 [node name="SelectionMenuPopup" type="PopupPanel" parent="."]
 visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,43 +40,38 @@ __meta__ = {
 }
 
 [node name="Top Margin" type="MarginContainer" parent="SelectionMenuPopup/SelectionMenuContainer"]
-margin_right = 289.0
+margin_right = 312.0
 margin_bottom = 5.0
 rect_min_size = Vector2( 0, 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopRowContainer" type="HBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="SelectionMenuPopup/SelectionMenuContainer"]
 margin_top = 9.0
-margin_right = 289.0
-margin_bottom = 59.0
+margin_right = 312.0
+margin_bottom = 49.0
+custom_constants/margin_left = 106
 
-[node name="MarginContainer" type="MarginContainer" parent="SelectionMenuPopup/SelectionMenuContainer/TopRowContainer"]
-margin_bottom = 50.0
-size_flags_horizontal = 2
+[node name="TopRowContainer" type="HBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer/MarginContainer3"]
+margin_left = 106.0
+margin_right = 312.0
+margin_bottom = 40.0
 
-[node name="MarginContainer3" type="MarginContainer" parent="SelectionMenuPopup/SelectionMenuContainer/TopRowContainer"]
-margin_left = 44.0
-margin_right = 44.0
-margin_bottom = 50.0
-size_flags_horizontal = 2
-
-[node name="FieldImage" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/TopRowContainer"]
-margin_left = 88.0
-margin_right = 188.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 100, 50 )
+[node name="FieldImage" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer"]
+margin_right = 100.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 40 )
 theme = SubResource( 1 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
-[node name="CloseButton" type="Button" parent="SelectionMenuPopup/SelectionMenuContainer/TopRowContainer"]
-margin_left = 192.0
-margin_top = 19.0
-margin_right = 244.0
-margin_bottom = 31.0
+[node name="CloseButton" type="Button" parent="SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer"]
+margin_left = 104.0
+margin_top = 14.0
+margin_right = 156.0
+margin_bottom = 26.0
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 8 )
 text = "Start"
@@ -83,26 +79,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer2" type="MarginContainer" parent="SelectionMenuPopup/SelectionMenuContainer/TopRowContainer"]
-margin_left = 248.0
-margin_right = 248.0
-margin_bottom = 50.0
-size_flags_horizontal = 2
-
 [node name="PitchSelect" parent="SelectionMenuPopup/SelectionMenuContainer" instance=ExtResource( 2 )]
-margin_left = 100.0
-margin_top = 63.0
-margin_right = 188.0
-margin_bottom = 75.0
+margin_left = 112.0
+margin_top = 53.0
+margin_right = 200.0
+margin_bottom = 65.0
 buttonName = "Select Pitch"
 
 [node name="PlayersContainer" type="VBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer"]
-margin_top = 79.0
-margin_right = 289.0
-margin_bottom = 179.0
+margin_top = 69.0
+margin_right = 312.0
+margin_bottom = 169.0
 
 [node name="CenterFieldSprite" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer"]
-margin_right = 289.0
+margin_right = 312.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 texture = ExtResource( 3 )
@@ -110,20 +100,21 @@ expand = true
 stretch_mode = 6
 
 [node name="CenterFieldSelect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer" instance=ExtResource( 2 )]
-margin_left = 100.0
+margin_left = 112.0
 margin_top = 36.0
-margin_right = 188.0
+margin_right = 200.0
 margin_bottom = 48.0
 buttonName = "Center Fielder"
 
 [node name="VBoxContainer" type="HBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer"]
 margin_top = 52.0
-margin_right = 289.0
+margin_right = 312.0
 margin_bottom = 100.0
 alignment = 1
 
 [node name="LeftField" type="VBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer"]
-margin_right = 120.0
+margin_left = 11.0
+margin_right = 131.0
 margin_bottom = 48.0
 
 [node name="LeftFieldSprite" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField"]
@@ -149,14 +140,14 @@ margin_left = 100.0
 margin_right = 120.0
 
 [node name="Center Margin" type="MarginContainer" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer"]
-margin_left = 124.0
-margin_right = 157.382
+margin_left = 135.0
+margin_right = 168.382
 margin_bottom = 48.0
 rect_min_size = Vector2( 33.382, 0 )
 
 [node name="RightField" type="VBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer"]
-margin_left = 161.0
-margin_right = 289.0
+margin_left = 172.0
+margin_right = 300.0
 margin_bottom = 48.0
 
 [node name="RightFieldSprite" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField"]
@@ -181,7 +172,7 @@ text = "Right Wing"
 margin_left = 108.0
 margin_right = 128.0
 
-[connection signal="pressed" from="SelectionMenuPopup/SelectionMenuContainer/TopRowContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PitchSelect" to="." method="_on_PitchSelect_change"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSelect" to="." method="_on_CenterFieldSelect_change"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect" to="." method="_on_LeftFieldSelect_change"]
