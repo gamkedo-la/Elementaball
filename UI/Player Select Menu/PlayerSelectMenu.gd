@@ -1,6 +1,7 @@
 extends Control
 
 export(Array, Resource) var selectablePlayers
+export(Array, Resource) var selectablePitches
 
 var pitchIndex = 0
 var centerIndex = 0
@@ -19,7 +20,9 @@ onready var rightSprite = get_node("SelectionMenuPopup/SelectionMenuContainer/Pl
 onready var rightText = get_node("SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect/Label")
 onready var rightPlayer = get_node("../../Player3")
 
-onready var pitchSprite = get_node("SelectionMenuPopup/SelectionMenuContainer/TopRowContainer/FieldImage")
+onready var pitchSprite = get_node("SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/FieldImage")
+onready var pitchText = get_node("SelectionMenuPopup/SelectionMenuContainer/PitchSelect/Label")
+onready var gamePitch = get_node("../../ParallaxBackground/Sprite")
 
 var main
 
@@ -55,7 +58,6 @@ func _on_LeftFieldSelect_change(direction):
 	leftText.text = selectablePlayers[leftIndex].speciesName
 	leftPlayer.starting_stats = selectablePlayers[leftIndex]
 	leftPlayer.initialize_stats(leftPlayer.starting_stats)
-	print(get_node("../../Player2").type)
 
 
 func _on_CloseButton_pressed():
@@ -64,4 +66,9 @@ func _on_CloseButton_pressed():
 
 
 func _on_PitchSelect_change(direction):
-	pass
+	pitchIndex += direction
+	if pitchIndex > selectablePitches.size() - 1:
+		pitchIndex = 0
+	pitchSprite.texture = selectablePitches[pitchIndex].sprite
+	gamePitch.texture = pitchSprite.texture
+	pitchText.text = selectablePitches[pitchIndex].name

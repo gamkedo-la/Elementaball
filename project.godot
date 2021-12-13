@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://Abilities/Abilities.gd"
 }, {
 "base": "Resource",
+"class": "Pitches",
+"language": "GDScript",
+"path": "res://Art/pitches.gd"
+}, {
+"base": "Resource",
 "class": "StartingStats",
 "language": "GDScript",
 "path": "res://Players/StartingStats.gd"
 } ]
 _global_script_class_icons={
 "Abilities": "",
+"Pitches": "",
 "StartingStats": ""
 }
 
