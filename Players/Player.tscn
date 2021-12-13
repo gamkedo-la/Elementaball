@@ -16,32 +16,45 @@
 [ext_resource path="res://Art/Sprites/dragito_enemy_idle.png" type="Texture" id=14]
 [ext_resource path="res://Players/red_player_stats.tres" type="Resource" id=15]
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=1]
 animation = "Blue Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=2]
 animation = "Blue Enemy Run"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=3]
 animation = "Blue Enemy Tackle"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "Blue Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Blue Run"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Blue Tackle"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Red Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Red Run"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Red Tackle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
@@ -69,45 +82,32 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=28]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=31]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=32]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id=34]
-"states/Blue Enemy Idle/node" = SubResource( 7 )
+[sub_resource type="AnimationNodeStateMachine" id=28]
+"states/Blue Enemy Idle/node" = SubResource( 1 )
 "states/Blue Enemy Idle/position" = Vector2( 445, 49 )
-"states/Blue Enemy Run/node" = SubResource( 8 )
+"states/Blue Enemy Run/node" = SubResource( 2 )
 "states/Blue Enemy Run/position" = Vector2( 675, 100 )
-"states/Blue Enemy Tackle/node" = SubResource( 9 )
+"states/Blue Enemy Tackle/node" = SubResource( 3 )
 "states/Blue Enemy Tackle/position" = Vector2( 339, 136 )
-"states/Blue Idle/node" = SubResource( 10 )
+"states/Blue Idle/node" = SubResource( 4 )
 "states/Blue Idle/position" = Vector2( 891.478, 49 )
-"states/Blue Run/node" = SubResource( 11 )
+"states/Blue Run/node" = SubResource( 5 )
 "states/Blue Run/position" = Vector2( 1097.48, 125.821 )
-"states/Blue Tackle/node" = SubResource( 12 )
+"states/Blue Tackle/node" = SubResource( 6 )
 "states/Blue Tackle/position" = Vector2( 824.478, 166.821 )
-"states/Red Idle/node" = SubResource( 13 )
+"states/Red Idle/node" = SubResource( 7 )
 "states/Red Idle/position" = Vector2( 1268.81, 39 )
-"states/Red Run/node" = SubResource( 14 )
+"states/Red Run/node" = SubResource( 8 )
 "states/Red Run/position" = Vector2( 1497.81, 91.8208 )
-"states/Red Tackle/node" = SubResource( 15 )
+"states/Red Tackle/node" = SubResource( 9 )
 "states/Red Tackle/position" = Vector2( 1324.81, 155.821 )
-transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 16 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 17 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 18 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 19 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 20 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 21 ), "Blue Idle", "Blue Run", SubResource( 22 ), "Blue Run", "Blue Tackle", SubResource( 23 ), "Blue Tackle", "Blue Idle", SubResource( 24 ), "Blue Idle", "Blue Tackle", SubResource( 25 ), "Blue Tackle", "Blue Run", SubResource( 26 ), "Blue Run", "Blue Idle", SubResource( 27 ), "Red Idle", "Red Run", SubResource( 28 ), "Red Run", "Red Tackle", SubResource( 29 ), "Red Tackle", "Red Idle", SubResource( 30 ), "Red Idle", "Red Tackle", SubResource( 31 ), "Red Tackle", "Red Run", SubResource( 32 ), "Red Run", "Red Idle", SubResource( 33 ) ]
+transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 10 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 11 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 12 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 13 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 14 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 15 ), "Blue Idle", "Blue Run", SubResource( 16 ), "Blue Run", "Blue Tackle", SubResource( 17 ), "Blue Tackle", "Blue Idle", SubResource( 18 ), "Blue Idle", "Blue Tackle", SubResource( 19 ), "Blue Tackle", "Blue Run", SubResource( 20 ), "Blue Run", "Blue Idle", SubResource( 21 ), "Red Idle", "Red Run", SubResource( 22 ), "Red Run", "Red Tackle", SubResource( 23 ), "Red Tackle", "Red Idle", SubResource( 24 ), "Red Idle", "Red Tackle", SubResource( 25 ), "Red Tackle", "Red Run", SubResource( 26 ), "Red Run", "Red Idle", SubResource( 27 ) ]
 start_node = "Blue Enemy Idle"
 graph_offset = Vector2( 314.879, -17.1792 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
-[sub_resource type="Animation" id=35]
+[sub_resource type="Animation" id=30]
 resource_name = "Blue Enemy Idle"
 loop = true
 tracks/0/type = "value"
@@ -123,7 +123,7 @@ tracks/0/keys = {
 "values": [ "default" ]
 }
 
-[sub_resource type="Animation" id=36]
+[sub_resource type="Animation" id=31]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -187,7 +187,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
 }
 
-[sub_resource type="Animation" id=37]
+[sub_resource type="Animation" id=32]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:speed")
@@ -318,7 +318,7 @@ tracks/8/keys = {
 "values": [ "blue tackle" ]
 }
 
-[sub_resource type="Animation" id=38]
+[sub_resource type="Animation" id=33]
 resource_name = "Blue Idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
@@ -330,7 +330,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "default" ]
+"values": [ "blue idle" ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("EnemyCollider:position")
@@ -345,7 +345,7 @@ tracks/1/keys = {
 "values": [ Vector2( -0.159099, -0.198006 ) ]
 }
 
-[sub_resource type="Animation" id=39]
+[sub_resource type="Animation" id=34]
 resource_name = "Blue Run"
 length = 0.4
 loop = true
@@ -410,7 +410,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
 }
 
-[sub_resource type="Animation" id=40]
+[sub_resource type="Animation" id=35]
 resource_name = "Blue Tackle"
 length = 0.6
 tracks/0/type = "value"
@@ -542,7 +542,7 @@ tracks/8/keys = {
 "values": [ Vector2( 0.628354, 1.69188 ), Vector2( 0.313375, 9.88136 ), Vector2( 2.51823, 0.746936 ), Vector2( -0.316592, 0.116977 ) ]
 }
 
-[sub_resource type="Animation" id=41]
+[sub_resource type="Animation" id=36]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
@@ -569,7 +569,7 @@ tracks/1/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="Animation" id=37]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -618,7 +618,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "blue run" ]
+"values": [ "red idle" ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
@@ -633,7 +633,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
 }
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=38]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:speed")
@@ -749,7 +749,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "blue tackle" ]
+"values": [ "red idle" ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("EnemyCollider:position")
@@ -764,20 +764,20 @@ tracks/8/keys = {
 "values": [ Vector2( 0.628354, 1.69188 ), Vector2( 0.313375, 9.88136 ), Vector2( 2.51823, 0.746936 ), Vector2( -0.316592, 0.116977 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=39]
 radius = 6.55289
 height = 16.0149
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=40]
 animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "red idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "blue run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "red idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
@@ -814,33 +814,35 @@ margin_right = -8.75441
 margin_bottom = -22.4966
 
 [node name="AnimationTree" parent="." instance=ExtResource( 5 )]
-tree_root = SubResource( 34 )
+tree_root = SubResource( 28 )
 active = true
-parameters/playback = SubResource( 1 )
+parameters/playback = SubResource( 29 )
 
 [node name="AnimationPlayer" parent="." instance=ExtResource( 4 )]
-"anims/Blue Enemy Idle" = SubResource( 35 )
-"anims/Blue Enemy Run" = SubResource( 36 )
-"anims/Blue Enemy Tackle" = SubResource( 37 )
-"anims/Blue Idle" = SubResource( 38 )
-"anims/Blue Run" = SubResource( 39 )
-"anims/Blue Tackle" = SubResource( 40 )
-"anims/Red Idle" = SubResource( 41 )
-"anims/Red Run" = SubResource( 42 )
-"anims/Red Tackle" = SubResource( 43 )
+"anims/Blue Enemy Idle" = SubResource( 30 )
+"anims/Blue Enemy Run" = SubResource( 31 )
+"anims/Blue Enemy Tackle" = SubResource( 32 )
+"anims/Blue Idle" = SubResource( 33 )
+"anims/Blue Run" = SubResource( 34 )
+"anims/Blue Tackle" = SubResource( 35 )
+"anims/Red Idle" = SubResource( 36 )
+"anims/Red Run" = SubResource( 37 )
+"anims/Red Tackle" = SubResource( 38 )
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.159099, -0.198006 )
 rotation = 0.0211139
-shape = SubResource( 5 )
+shape = SubResource( 39 )
 
 [node name="ThingsToFlip" type="Node2D" parent="."]
 
 [node name="Position2D" type="Position2D" parent="ThingsToFlip"]
-position = Vector2( 1.41581, -0.707909 )
+position = Vector2( 8.49488, 0.23597 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
-frames = SubResource( 6 )
+frames = SubResource( 40 )
+animation = "red idle"
+frame = 1
 
 [node name="InterceptArea" parent="." instance=ExtResource( 13 )]
 position = Vector2( -0.161133, 0.0360718 )

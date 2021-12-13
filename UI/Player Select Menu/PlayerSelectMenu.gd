@@ -55,6 +55,7 @@ func _on_LeftFieldSelect_change(direction):
 	leftText.text = selectablePlayers[leftIndex].speciesName
 	leftPlayer.starting_stats = selectablePlayers[leftIndex]
 	leftPlayer.initialize_stats(leftPlayer.starting_stats)
+	print(get_node("../../Player2").type)
 
 
 func _on_CloseButton_pressed():
