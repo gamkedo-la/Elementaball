@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Players/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/blue_idle.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Players/BallInterceptArea.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Art/Sprites/dragito_enemy_idle.png" type="Texture" id=14]
 [ext_resource path="res://Players/red_player_stats.tres" type="Resource" id=15]
+[ext_resource path="res://Art/Sprites/green_idle.png" type="Texture" id=16]
+[ext_resource path="res://Art/Sprites/green_run_1.png" type="Texture" id=17]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "Blue Idle"
@@ -33,6 +35,15 @@ animation = "Blue Run"
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Blue Tackle"
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "Green Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "Green Run"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "Green Tackle"
 
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Red Idle"
@@ -82,6 +93,19 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id=28]
 "states/Blue Enemy Idle/node" = SubResource( 1 )
 "states/Blue Enemy Idle/position" = Vector2( 445, 49 )
@@ -95,15 +119,21 @@ switch_mode = 2
 "states/Blue Run/position" = Vector2( 1097.48, 125.821 )
 "states/Blue Tackle/node" = SubResource( 6 )
 "states/Blue Tackle/position" = Vector2( 824.478, 166.821 )
+"states/Green Idle/node" = SubResource( 42 )
+"states/Green Idle/position" = Vector2( 1698.83, 22.8208 )
+"states/Green Run/node" = SubResource( 43 )
+"states/Green Run/position" = Vector2( 1856.83, 74.8208 )
+"states/Green Tackle/node" = SubResource( 44 )
+"states/Green Tackle/position" = Vector2( 1671.83, 135.821 )
 "states/Red Idle/node" = SubResource( 7 )
 "states/Red Idle/position" = Vector2( 1268.81, 39 )
 "states/Red Run/node" = SubResource( 8 )
 "states/Red Run/position" = Vector2( 1497.81, 91.8208 )
 "states/Red Tackle/node" = SubResource( 9 )
 "states/Red Tackle/position" = Vector2( 1324.81, 155.821 )
-transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 10 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 11 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 12 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 13 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 14 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 15 ), "Blue Idle", "Blue Run", SubResource( 16 ), "Blue Run", "Blue Tackle", SubResource( 17 ), "Blue Tackle", "Blue Idle", SubResource( 18 ), "Blue Idle", "Blue Tackle", SubResource( 19 ), "Blue Tackle", "Blue Run", SubResource( 20 ), "Blue Run", "Blue Idle", SubResource( 21 ), "Red Idle", "Red Run", SubResource( 22 ), "Red Run", "Red Tackle", SubResource( 23 ), "Red Tackle", "Red Idle", SubResource( 24 ), "Red Idle", "Red Tackle", SubResource( 25 ), "Red Tackle", "Red Run", SubResource( 26 ), "Red Run", "Red Idle", SubResource( 27 ) ]
+transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 10 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 11 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 12 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 13 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 14 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 15 ), "Blue Idle", "Blue Run", SubResource( 16 ), "Blue Run", "Blue Tackle", SubResource( 17 ), "Blue Tackle", "Blue Idle", SubResource( 18 ), "Blue Idle", "Blue Tackle", SubResource( 19 ), "Blue Tackle", "Blue Run", SubResource( 20 ), "Blue Run", "Blue Idle", SubResource( 21 ), "Red Idle", "Red Run", SubResource( 22 ), "Red Run", "Red Tackle", SubResource( 23 ), "Red Tackle", "Red Idle", SubResource( 24 ), "Red Idle", "Red Tackle", SubResource( 25 ), "Red Tackle", "Red Run", SubResource( 26 ), "Red Run", "Red Idle", SubResource( 27 ), "Green Idle", "Green Run", SubResource( 45 ), "Green Run", "Green Tackle", SubResource( 46 ), "Green Tackle", "Green Idle", SubResource( 47 ), "Green Idle", "Green Tackle", SubResource( 48 ), "Green Tackle", "Green Run", SubResource( 49 ), "Green Run", "Green Idle", SubResource( 50 ) ]
 start_node = "Blue Enemy Idle"
-graph_offset = Vector2( 314.879, -17.1792 )
+graph_offset = Vector2( 1081.83, -17.1792 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
@@ -119,7 +149,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ "default" ]
 }
 
@@ -151,28 +181,28 @@ tracks/1/keys = {
 "values": [ 1.62307, 1.13498, 1.43747, 0.663645, 1.20974 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/2/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "Blue Enemy Run" ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/3/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "Blue Enemy Run" ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
@@ -294,28 +324,28 @@ tracks/6/keys = {
 "values": [  ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ "blue tackle" ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/8/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "blue tackle" ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
 [sub_resource type="Animation" id=33]
@@ -329,7 +359,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ "blue idle" ]
 }
 tracks/1/type = "value"
@@ -374,28 +404,28 @@ tracks/1/keys = {
 "values": [ 1.62307, 1.13498, 1.43747, 0.663645, 1.20974 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/2/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 1 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "blue run" ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/3/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "blue run" ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 1 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
@@ -506,28 +536,28 @@ tracks/5/keys = {
 "values": [  ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/6/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ "blue tackle" ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "blue tackle" ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("EnemyCollider:position")
@@ -542,8 +572,8 @@ tracks/8/keys = {
 "values": [ Vector2( 0.628354, 1.69188 ), Vector2( 0.313375, 9.88136 ), Vector2( 2.51823, 0.746936 ), Vector2( -0.316592, 0.116977 ) ]
 }
 
-[sub_resource type="Animation" id=36]
-loop = true
+[sub_resource type="Animation" id=41]
+resource_name = "Green Idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -553,11 +583,11 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "red idle" ]
+"update": 0,
+"values": [ "green idle" ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/1/path = NodePath("EnemyCollider:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -565,8 +595,35 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
+"values": [ Vector2( -0.159099, -0.198006 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
 "values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "red idle" ]
 }
 
 [sub_resource type="Animation" id=37]
@@ -597,28 +654,28 @@ tracks/1/keys = {
 "values": [ 1.62307, 1.13498, 1.43747, 0.663645, 1.20974 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/2/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 1 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "red idle" ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/3/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "red idle" ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 1 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
@@ -728,28 +785,28 @@ tracks/5/keys = {
 "values": [  ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/6/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ "red idle" ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "red idle" ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("EnemyCollider:position")
@@ -789,6 +846,16 @@ animations = [ {
 "loop": true,
 "name": "blue idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "green run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "green idle",
+"speed": 5.0
 } ]
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -825,24 +892,23 @@ parameters/playback = SubResource( 29 )
 "anims/Blue Idle" = SubResource( 33 )
 "anims/Blue Run" = SubResource( 34 )
 "anims/Blue Tackle" = SubResource( 35 )
+"anims/Green Idle" = SubResource( 41 )
 "anims/Red Idle" = SubResource( 36 )
 "anims/Red Run" = SubResource( 37 )
 "anims/Red Tackle" = SubResource( 38 )
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.159099, -0.198006 )
-rotation = 0.0211139
+rotation = 0.0283279
 shape = SubResource( 39 )
 
 [node name="ThingsToFlip" type="Node2D" parent="."]
 
 [node name="Position2D" type="Position2D" parent="ThingsToFlip"]
-position = Vector2( 8.49488, 0.23597 )
+position = Vector2( 1.41581, -0.707909 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
 frames = SubResource( 40 )
-animation = "red idle"
-frame = 1
+animation = "blue idle"
 
 [node name="InterceptArea" parent="." instance=ExtResource( 13 )]
-position = Vector2( -0.161133, 0.0360718 )

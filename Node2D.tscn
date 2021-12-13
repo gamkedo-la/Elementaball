@@ -106,10 +106,6 @@ inPossession = false
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
 
-[node name="AnimatedSprite" parent="Player/ThingsToFlip" index="1"]
-animation = "blue idle"
-frame = 0
-
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( -131.756, -84.6172 )
 controlling = false
@@ -118,10 +114,6 @@ fieldPosition = "PlayerLeft"
 
 [node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 2 )
-
-[node name="AnimatedSprite" parent="Player2/ThingsToFlip" index="1"]
-animation = "blue idle"
-frame = 0
 
 [node name="Player3" parent="." instance=ExtResource( 1 )]
 position = Vector2( -221.153, 231.049 )
@@ -132,10 +124,6 @@ starting_stats = ExtResource( 10 )
 
 [node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 3 )
-
-[node name="AnimatedSprite" parent="Player3/ThingsToFlip" index="1"]
-animation = "blue idle"
-frame = 0
 
 [node name="Popup" parent="." instance=ExtResource( 3 )]
 
@@ -157,7 +145,6 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 8 )
 animation = "water ball"
-frame = 3
 playing = true
 script = ExtResource( 16 )
 
