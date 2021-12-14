@@ -18,4 +18,6 @@ export var ability2 : Resource
 export var ability3 : Resource
 export var ability4 : Resource
 
+export(Array, Resource) var selectableAbilities
+
 export var animStates : Resource

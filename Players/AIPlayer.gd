@@ -49,6 +49,7 @@ var ability1 : Resource
 var ability2 : Resource
 var ability3 : Resource
 var ability4 : Resource
+export(Array, Resource) var selectableAbilities
 
 #All the animation stats
 var animStates: Resource
@@ -59,6 +60,12 @@ var kickAnim : String
 var aniMachine
 
 onready var ball = get_node("../Ball")
+
+#variables for changing abilities
+var ability1Index = 0
+var ability2Index = 0
+var ability3Index = 0
+var ability4Index = 0
 
 func _ready():
 	aniMachine = $AnimationTree["parameters/playback"]
@@ -82,6 +89,7 @@ func initialize_stats(stats : StartingStats):
 	ability2 = stats.ability2
 	ability3 = stats.ability3
 	ability4 = stats.ability4
+	selectableAbilities = stats.selectableAbilities
 	
 	animStates = stats.animStates
 	
@@ -437,4 +445,34 @@ func _check_collisions():
 		var collider = collision.collider
 		return collider
 		
+func _on_Ability1_change(direction, buttons):
+	ability1Index += direction
+	if ability1Index > selectableAbilities.size() - 1:
+		ability1Index = 0
+	
+	buttons.get_node("Label").text = selectableAbilities[ability1Index].name
+	ability1 = selectableAbilities[ability1Index]
 
+func _on_Ability2_change(direction, buttons):
+	ability2Index += direction
+	if ability2Index > selectableAbilities.size() - 1:
+		ability2Index = 0
+	
+	buttons.get_node("Label").text = selectableAbilities[ability2Index].name
+	ability2 = selectableAbilities[ability2Index]
+	
+func _on_Ability3_change(direction, buttons):
+	ability3Index += direction
+	if ability3Index > selectableAbilities.size() - 1:
+		ability3Index = 0
+	
+	buttons.get_node("Label").text = selectableAbilities[ability3Index].name
+	ability3 = selectableAbilities[ability3Index]
+	
+func _on_Ability4_change(direction, buttons):
+	ability4Index += direction
+	if ability4Index > selectableAbilities.size() - 1:
+		ability4Index = 0
+	
+	buttons.get_node("Label").text = selectableAbilities[ability4Index].name
+	ability4 = selectableAbilities[ability4Index]

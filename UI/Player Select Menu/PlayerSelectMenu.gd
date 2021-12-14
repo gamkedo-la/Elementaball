@@ -30,45 +30,47 @@ func _ready():
 	get_tree().paused = true
 	$SelectionMenuPopup.show()
 
-func _on_CenterFieldSelect_change(direction):
+func _on_CenterFieldSelect_change(direction, buttons):
 	centerIndex += direction
 	if centerIndex > 2:
 		centerIndex = 0
 	centerSprite.texture = selectablePlayers[centerIndex].sprite
-	centerText.text = selectablePlayers[centerIndex].speciesName
+	buttons.get_node("Label").text = selectablePlayers[centerIndex].speciesName
 	centerPlayer.starting_stats = selectablePlayers[centerIndex]
 	centerPlayer.initialize_stats(centerPlayer.starting_stats)
 
 
-func _on_RightFieldSelect_change(direction):
+func _on_RightFieldSelect_change(direction, buttons):
 	rightIndex += direction
 	if rightIndex > 2:
 		rightIndex = 0
 	rightSprite.texture = selectablePlayers[rightIndex].sprite
-	rightText.text = selectablePlayers[rightIndex].speciesName
+	buttons.get_node("Label").text = selectablePlayers[rightIndex].speciesName
 	rightPlayer.starting_stats = selectablePlayers[rightIndex]
 	rightPlayer.initialize_stats(rightPlayer.starting_stats)
 	
 
-func _on_LeftFieldSelect_change(direction):
+func _on_LeftFieldSelect_change(direction, buttons):
 	leftIndex += direction
 	if leftIndex > 2:
 		leftIndex = 0
 	leftSprite.texture = selectablePlayers[leftIndex].sprite
-	leftText.text = selectablePlayers[leftIndex].speciesName
+	buttons.get_node("Label").text = selectablePlayers[leftIndex].speciesName
 	leftPlayer.starting_stats = selectablePlayers[leftIndex]
 	leftPlayer.initialize_stats(leftPlayer.starting_stats)
 
-
-func _on_CloseButton_pressed():
-	$SelectionMenuPopup.hide()
-	get_tree().paused = false
-
-
-func _on_PitchSelect_change(direction):
+func _on_PitchSelect_change(direction, buttons):
 	pitchIndex += direction
 	if pitchIndex > selectablePitches.size() - 1:
 		pitchIndex = 0
 	pitchSprite.texture = selectablePitches[pitchIndex].sprite
 	gamePitch.texture = pitchSprite.texture
-	pitchText.text = selectablePitches[pitchIndex].name
+	buttons.get_node("Label").text = selectablePitches[pitchIndex].name
+	
+func _on_CloseButton_pressed():
+	$SelectionMenuPopup.hide()
+	$AbilityMenuPopup.show()
+
+func _on_StartButton_pressed():
+	$AbilityMenuPopup.hide()
+	get_tree().paused = false

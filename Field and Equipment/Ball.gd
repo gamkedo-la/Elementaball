@@ -107,10 +107,11 @@ func player_kick():
 	#TODO: Make a default (no element) kick ability and calculate damage for it
 	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
 	menuAbilities = []
-	for ability in abilities:
-		if ability.action == "Kick":
-			kickMenu.add_item(ability.name)
-			menuAbilities.append(ability)
+	if abilities.size() > 0:
+		for ability in abilities:
+			if ability.action == "Kick":
+				kickMenu.add_item(ability.name)
+				menuAbilities.append(ability)
 	kickMenu.popup()
 	kickMenu.rect_position = playerInPossession.global_position
 	
@@ -145,10 +146,11 @@ func player_steal():
 		#TODO: Make a default (no element) tackle ability and calculate damage for it
 		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
 		menuAbilities = []
-		for ability in abilities:
-			if ability.action == "Tackle":
-				tackleMenu.add_item(ability.name)
-				menuAbilities.append(ability)
+		if abilities.size() > 0:
+			for ability in abilities:
+				if ability.action == "Tackle":
+					tackleMenu.add_item(ability.name)
+					menuAbilities.append(ability)
 		tackleMenu.popup()
 		tackleMenu.rect_position = controllingPlayer.global_position
 
@@ -162,10 +164,11 @@ func player_block(tackledType):
 	#TODO: Make a default (no element) block ability and calculate damage reduction for it
 	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
 	menuAbilities = []
-	for ability in abilities:
-		if ability.action == "Block":
-			blockMenu.add_item(ability.name)
-			menuAbilities.append(ability)
+	if abilities.size() > 0:
+		for ability in abilities:
+			if ability.action == "Block":
+				blockMenu.add_item(ability.name)
+				menuAbilities.append(ability)
 	blockMenu.popup()
 	blockMenu.rect_position = controllingPlayer.global_position	
 	

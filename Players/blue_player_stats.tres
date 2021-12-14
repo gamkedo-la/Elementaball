@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=12 format=2]
 
 [ext_resource path="res://Players/StartingStats.gd" type="Script" id=1]
 [ext_resource path="res://Abilities/Tackles/tail_swipe.tres" type="Resource" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://Abilities/Tackles/branch_swipe.tres" type="Resource" id=4]
 [ext_resource path="res://Abilities/Blocks/sweeping_wave.tres" type="Resource" id=5]
 [ext_resource path="res://Art/Sprites/blue_idle.png" type="Texture" id=6]
+[ext_resource path="res://Abilities/Tackles/flame_tackle.tres" type="Resource" id=7]
+[ext_resource path="res://Abilities/Blocks/thorn_wall.tres" type="Resource" id=8]
+[ext_resource path="res://Abilities/Kicks/thorns_kick.tres" type="Resource" id=9]
+[ext_resource path="res://Abilities/Blocks/wall_of_flames.tres" type="Resource" id=10]
+[ext_resource path="res://Abilities/Kicks/flame_kick.tres" type="Resource" id=11]
 
 [resource]
 script = ExtResource( 1 )
@@ -22,3 +27,4 @@ ability1 = ExtResource( 3 )
 ability2 = ExtResource( 2 )
 ability3 = ExtResource( 5 )
 ability4 = ExtResource( 4 )
+selectableAbilities = [ ExtResource( 5 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 2 ) ]

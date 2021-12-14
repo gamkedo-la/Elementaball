@@ -25,7 +25,6 @@ selectablePlayers = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
 selectablePitches = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ) ]
 
 [node name="SelectionMenuPopup" type="PopupPanel" parent="."]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -78,7 +77,7 @@ margin_right = 145.0
 margin_bottom = 27.0
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 8 )
-text = "Start"
+text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -178,11 +177,240 @@ text = "Right Wing"
 margin_left = 81.0
 margin_right = 98.0
 
+[node name="AbilityMenuPopup" type="PopupPanel" parent="."]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 316.0
+margin_bottom = 176.0
+custom_constants/margin_left = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectionMenuContainer" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer"]
+margin_left = 12.0
+margin_right = 312.0
+margin_bottom = 172.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top Margin" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer"]
+margin_right = 300.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 0, 5 )
+custom_constants/margin_top = 4
+custom_constants/margin_left = 111
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/Top Margin"]
+margin_left = 111.0
+margin_top = 4.0
+margin_right = 152.0
+margin_bottom = 18.0
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 8 )
+text = "Start"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer"]
+margin_top = 22.0
+margin_right = 300.0
+margin_bottom = 158.0
+
+[node name="PlayersContainer" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer"]
+margin_right = 208.0
+margin_bottom = 136.0
+size_flags_horizontal = 2
+custom_constants/separation = 20
+
+[node name="CenterField" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer"]
+margin_right = 208.0
+margin_bottom = 32.0
+
+[node name="CenterFieldSprite" type="TextureRect" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField"]
+margin_right = 16.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField"]
+margin_left = 20.0
+margin_right = 208.0
+margin_bottom = 32.0
+custom_constants/margin_left = 38
+
+[node name="CenterAbilitySelect" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer"]
+margin_left = 38.0
+margin_right = 188.0
+margin_bottom = 32.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect"]
+margin_right = 73.0
+margin_bottom = 32.0
+
+[node name="Ability1" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2" instance=ExtResource( 2 )]
+margin_right = 73.0
+margin_bottom = 14.0
+buttonName = "Ability 1"
+
+[node name="Ability2" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2" instance=ExtResource( 2 )]
+margin_top = 18.0
+margin_right = 73.0
+margin_bottom = 32.0
+buttonName = "Ability 2"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect"]
+margin_left = 77.0
+margin_right = 150.0
+margin_bottom = 32.0
+
+[node name="Ability3" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 73.0
+margin_bottom = 14.0
+buttonName = "Ability 3"
+
+[node name="Ability4" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 18.0
+margin_right = 73.0
+margin_bottom = 32.0
+buttonName = "Ability 4"
+
+[node name="LeftField" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer"]
+margin_top = 52.0
+margin_right = 208.0
+margin_bottom = 84.0
+
+[node name="LeftField" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField"]
+margin_right = 16.0
+margin_bottom = 32.0
+
+[node name="LeftFieldSprite" type="TextureRect" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/LeftField"]
+margin_right = 16.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField"]
+margin_left = 20.0
+margin_right = 208.0
+margin_bottom = 32.0
+custom_constants/margin_left = 38
+
+[node name="LeftAbilitySelect" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer"]
+margin_left = 38.0
+margin_right = 188.0
+margin_bottom = 32.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect"]
+margin_right = 73.0
+margin_bottom = 32.0
+
+[node name="Ability1" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer2" instance=ExtResource( 2 )]
+margin_right = 73.0
+margin_bottom = 14.0
+buttonName = "Ability 1"
+
+[node name="Ability2" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer2" instance=ExtResource( 2 )]
+margin_top = 18.0
+margin_right = 73.0
+margin_bottom = 32.0
+buttonName = "Ability 2"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect"]
+margin_left = 77.0
+margin_right = 150.0
+margin_bottom = 32.0
+
+[node name="Ability3" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 73.0
+margin_bottom = 14.0
+buttonName = "Ability 3"
+
+[node name="Ability4" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 18.0
+margin_right = 73.0
+margin_bottom = 32.0
+buttonName = "Ability 4"
+
+[node name="RightField" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer"]
+margin_top = 104.0
+margin_right = 208.0
+margin_bottom = 136.0
+
+[node name="LeftField" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField"]
+margin_right = 16.0
+margin_bottom = 32.0
+
+[node name="LeftFieldSprite" type="TextureRect" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/LeftField"]
+margin_right = 16.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 16, 32 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField"]
+margin_left = 20.0
+margin_right = 208.0
+margin_bottom = 32.0
+custom_constants/margin_left = 38
+
+[node name="RightAbilitySelect" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer"]
+margin_left = 38.0
+margin_right = 188.0
+margin_bottom = 32.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect"]
+margin_right = 73.0
+margin_bottom = 32.0
+
+[node name="Ability1" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2" instance=ExtResource( 2 )]
+margin_right = 73.0
+margin_bottom = 14.0
+buttonName = "Ability 1"
+
+[node name="Ability2" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2" instance=ExtResource( 2 )]
+margin_top = 18.0
+margin_right = 73.0
+margin_bottom = 32.0
+buttonName = "Ability 2"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect"]
+margin_left = 77.0
+margin_right = 150.0
+margin_bottom = 32.0
+
+[node name="Ability3" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 73.0
+margin_bottom = 14.0
+buttonName = "Ability 3"
+
+[node name="Ability4" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 18.0
+margin_right = 73.0
+margin_bottom = 32.0
+buttonName = "Ability 4"
+
 [connection signal="pressed" from="SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PitchSelect" to="." method="_on_PitchSelect_change"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSelect" to="." method="_on_CenterFieldSelect_change"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect" to="." method="_on_LeftFieldSelect_change"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect" to="." method="_on_RightFieldSelect_change"]
+[connection signal="pressed" from="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/Top Margin/StartButton" to="." method="_on_StartButton_pressed"]
 
 [editable path="SelectionMenuPopup/SelectionMenuContainer/PitchSelect"]
 [editable path="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSelect"]
