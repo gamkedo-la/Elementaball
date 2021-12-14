@@ -105,11 +105,11 @@ func player_kick():
 	var player = playerInPossession
 	#Add the kick abilities available for the player to the menu
 	#TODO: Make a default (no element) kick ability and calculate damage for it
-	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
+	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,player.defaultKick]
 	menuAbilities = []
 	if abilities.size() > 0:
 		for ability in abilities:
-			if ability.action == "Kick":
+			if ability != null and ability.action == "Kick":
 				kickMenu.add_item(ability.name)
 				menuAbilities.append(ability)
 	kickMenu.popup()
@@ -123,10 +123,10 @@ func player_pass():
 	var player = playerInPossession
 	#Add the kick abilities available for the player to the menu
 	#TODO: Make a default (no element) kick ability and calculate damage for it
-	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
+	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4, player.defaultKick]
 	menuAbilities = []
 	for ability in abilities:
-		if ability.action == "Kick":
+		if ability != null and ability.action == "Kick":
 			kickMenu.add_item(ability.name)
 			menuAbilities.append(ability)
 	kickMenu.popup()
@@ -144,11 +144,11 @@ func player_steal():
 		var player = controllingPlayer
 		#Add the tackle abilities available for the player to the menu
 		#TODO: Make a default (no element) tackle ability and calculate damage for it
-		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
+		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,player.defaultTackle]
 		menuAbilities = []
 		if abilities.size() > 0:
 			for ability in abilities:
-				if ability.action == "Tackle":
+				if ability != null and ability.action == "Tackle":
 					tackleMenu.add_item(ability.name)
 					menuAbilities.append(ability)
 		tackleMenu.popup()
@@ -162,11 +162,11 @@ func player_block(tackledType):
 	var player = controllingPlayer
 	#Add the block abilities available for the player to the menu
 	#TODO: Make a default (no element) block ability and calculate damage reduction for it
-	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
+	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,player.defaultBlock]
 	menuAbilities = []
 	if abilities.size() > 0:
 		for ability in abilities:
-			if ability.action == "Block":
+			if ability != null and ability.action == "Block":
 				blockMenu.add_item(ability.name)
 				menuAbilities.append(ability)
 	blockMenu.popup()
@@ -273,6 +273,8 @@ func initialize_kick(id):
 	selecting = false
 	attacker = find_attacker("kick")
 	
+	if menuAbilities[id].type == "None":
+		kickedType = "None"
 	if menuAbilities[id].type == "Green":
 		#get_node("Sprite").modulate = Color(0,255,0)
 		kickedType = "Green"
@@ -357,10 +359,12 @@ func calc_element_damage(attackType, defenderType, baseDamage):
 		totalDamage = (baseDamage*2)
 	elif attackType == "Blue" and defenderType == "Blue":
 		totalDamage = baseDamage
+	else:
+		totalDamage = baseDamage
 	return totalDamage
 	
 func calc_damage_reduction(attackType):
-	var damageReduction
+	var damageReduction = 0
 	if attackType == "Green" and blockedType == "Green":
 		damageReduction = 0.75
 	elif attackType == "Green" and blockedType == "Red":

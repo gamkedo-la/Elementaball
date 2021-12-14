@@ -23,7 +23,4 @@ maxHP = 50
 agility = 2
 power = 3
 speed = 150
-ability1 = ExtResource( 2 )
-ability2 = ExtResource( 3 )
-ability3 = ExtResource( 4 )
 selectableAbilities = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 11 ) ]

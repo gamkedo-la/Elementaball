@@ -49,6 +49,9 @@ var ability1 : Resource
 var ability2 : Resource
 var ability3 : Resource
 var ability4 : Resource
+var defaultKick = load("res://Abilities/Kicks/default_kick.tres")
+var defaultBlock = load("res://Abilities/Blocks/default_block.tres")
+var defaultTackle = load("res://Abilities/Tackles/default_tackle.tres")
 export(Array, Resource) var selectableAbilities
 
 #All the animation stats
@@ -377,10 +380,10 @@ func prekick():
 		var player = self
 		#Add the kick abilities available for the player to the menu
 		#TODO: Make a default (no element) kick ability and calculate damage for it
-		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4]
+		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,defaultKick]
 		ball.menuAbilities = []
 		for ability in abilities:
-			if ability.action == "Kick":
+			if ability != null and ability.action == "Kick":
 				kickMenu.add_item(ability.name)
 				ball.menuAbilities.append(ability)
 

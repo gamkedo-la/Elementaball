@@ -29,6 +29,12 @@ var main
 func _ready():
 	get_tree().paused = true
 	$SelectionMenuPopup.show()
+	centerPlayer.starting_stats = selectablePlayers[centerIndex]
+	centerPlayer.initialize_stats(centerPlayer.starting_stats)
+	rightPlayer.starting_stats = selectablePlayers[rightIndex]
+	rightPlayer.initialize_stats(rightPlayer.starting_stats)
+	leftPlayer.starting_stats = selectablePlayers[leftIndex]
+	leftPlayer.initialize_stats(leftPlayer.starting_stats)
 
 func _on_CenterFieldSelect_change(direction, buttons):
 	centerIndex += direction
