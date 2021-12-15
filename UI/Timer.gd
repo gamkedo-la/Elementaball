@@ -18,6 +18,11 @@ func _ready():
 func _process(delta):
 	_calc_minutes()
 	self.text = "1st Half " + time
+	
+	if Input.is_action_pressed("time_hack"):
+		timer.stop()
+		timer.set_wait_time(5)
+		timer.start()
 		
 func _on_timer_timeout():
 	if scoreBoard.blueScore > scoreBoard.redScore:
