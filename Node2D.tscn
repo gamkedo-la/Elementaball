@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Players/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Field and Equipment/Ball.tscn" type="PackedScene" id=2]
@@ -12,8 +12,7 @@
 [ext_resource path="res://Players/blue_player_stats.tres" type="Resource" id=10]
 [ext_resource path="res://UI/MuteButton.gd" type="Script" id=11]
 [ext_resource path="res://Art/UI/speaker_on.png" type="Texture" id=12]
-[ext_resource path="res://Fonts/new_pixellari_font.tres" type="DynamicFont" id=13]
-[ext_resource path="res://ScoreBoard.gd" type="Script" id=14]
+[ext_resource path="res://UI/ScoreBoard.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Art/Sprites/Equipment/water_ball.png" type="Texture" id=15]
 [ext_resource path="res://BallEffects.gd" type="Script" id=16]
 [ext_resource path="res://UI/Player Select Menu/PlayerSelectMenu.tscn" type="PackedScene" id=17]
@@ -139,7 +138,7 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 8 )
 animation = "water ball"
-frame = 2
+frame = 3
 playing = true
 script = ExtResource( 16 )
 
@@ -336,23 +335,6 @@ polygon = PoolVector2Array( -155.747, -130.053, 471.564, -130.719, 607.871, 298.
 layer = 10
 
 [node name="PlayerSelectMenu" parent="GUICanvasLayer" instance=ExtResource( 17 )]
-pause_mode = 2
-margin_right = 297.0
-margin_bottom = 187.0
-
-[node name="MarginContainer" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup" index="0"]
-margin_right = 613.0
-margin_bottom = 363.0
-
-[node name="SelectionMenuContainer" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer" index="0"]
-margin_right = 609.0
-margin_bottom = 359.0
-
-[node name="Top Margin" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer" index="0"]
-margin_right = 597.0
-
-[node name="HBoxContainer" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer" index="1"]
-margin_right = 597.0
 
 [node name="MuteButton" type="ToolButton" parent="GUICanvasLayer"]
 margin_left = 305.799
@@ -369,42 +351,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreBoard" type="ColorRect" parent="GUICanvasLayer"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -56.0
-margin_right = 56.0
-margin_bottom = 13.0
-color = Color( 0.137255, 0.137255, 0.137255, 0.384314 )
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BlueScore" type="RichTextLabel" parent="GUICanvasLayer/ScoreBoard"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 0.374573
-margin_top = -6.87796
-margin_right = 67.3746
-margin_bottom = 10.122
-custom_fonts/mono_font = ExtResource( 13 )
-custom_fonts/normal_font = ExtResource( 13 )
-text = "Blue: 5"
-
-[node name="RedScore" type="RichTextLabel" parent="GUICanvasLayer/ScoreBoard"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 57.123
-margin_top = -6.3161
-margin_right = 124.123
-margin_bottom = 10.6839
-custom_fonts/mono_font = ExtResource( 13 )
-custom_fonts/normal_font = ExtResource( 13 )
-text = "Red: 3"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ScoreBoard" parent="GUICanvasLayer" instance=ExtResource( 13 )]
 
 [node name="Throw In Points" type="Node2D" parent="."]
 
@@ -481,18 +428,7 @@ script = ExtResource( 18 )
 [connection signal="body_exited" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_entered"]
 [connection signal="body_exited" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_exited"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2/Ability1" to="Player" method="_on_Ability1_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2/Ability2" to="Player" method="_on_Ability2_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer/Ability3" to="Player" method="_on_Ability3_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer/Ability4" to="Player" method="_on_Ability4_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer2/Ability1" to="Player2" method="_on_Ability1_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer2/Ability2" to="Player2" method="_on_Ability2_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer/Ability3" to="Player2" method="_on_Ability3_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer/Ability4" to="Player2" method="_on_Ability4_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2/Ability1" to="Player3" method="_on_Ability1_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2/Ability2" to="Player3" method="_on_Ability2_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer/Ability3" to="Player3" method="_on_Ability3_change"]
-[connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer/Ability4" to="Player3" method="_on_Ability4_change"]
+[connection signal="pressed" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/Top Margin/StartButton" to="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" method="_on_StartButton_pressed"]
 [connection signal="pressed" from="GUICanvasLayer/MuteButton" to="GUICanvasLayer/MuteButton" method="_on_MuteButton_pressed"]
 
 [editable path="Player"]
@@ -519,7 +455,4 @@ script = ExtResource( 18 )
 [editable path="PlayerRight"]
 [editable path="PlayerCenter"]
 [editable path="GUICanvasLayer/PlayerSelectMenu"]
-[editable path="GUICanvasLayer/PlayerSelectMenu/SelectionMenuPopup/SelectionMenuContainer/PitchSelect"]
-[editable path="GUICanvasLayer/PlayerSelectMenu/SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSelect"]
-[editable path="GUICanvasLayer/PlayerSelectMenu/SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect"]
-[editable path="GUICanvasLayer/PlayerSelectMenu/SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect"]
+[editable path="GUICanvasLayer/ScoreBoard"]

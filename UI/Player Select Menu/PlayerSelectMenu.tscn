@@ -18,8 +18,11 @@
 [sub_resource type="Theme" id=1]
 
 [node name="PlayerSelectMenu" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 297.0
+margin_bottom = 187.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -92,10 +95,6 @@ margin_right = 211.0
 margin_bottom = 67.0
 buttonName = "Select Pitch"
 
-[node name="Plus" parent="SelectionMenuPopup/SelectionMenuContainer/PitchSelect" index="2"]
-margin_left = 56.0
-margin_right = 73.0
-
 [node name="PlayersContainer" type="VBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer"]
 margin_top = 71.0
 margin_right = 349.0
@@ -115,10 +114,6 @@ margin_top = 36.0
 margin_right = 211.0
 margin_bottom = 50.0
 buttonName = "Center Fielder"
-
-[node name="Plus" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSelect" index="2"]
-margin_left = 56.0
-margin_right = 73.0
 
 [node name="VBoxContainer" type="HBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer"]
 margin_top = 54.0
@@ -145,14 +140,6 @@ margin_right = 93.0
 margin_bottom = 50.0
 buttonName = "Left Wing"
 
-[node name="Label" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect" index="1"]
-margin_right = 72.0
-text = "Left Wing"
-
-[node name="Plus" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect" index="2"]
-margin_left = 76.0
-margin_right = 93.0
-
 [node name="RightField" type="VBoxContainer" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer"]
 margin_left = 174.0
 margin_right = 272.0
@@ -172,14 +159,6 @@ margin_right = 98.0
 margin_bottom = 50.0
 buttonName = "Right Wing"
 
-[node name="Label" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect" index="1"]
-margin_right = 77.0
-text = "Right Wing"
-
-[node name="Plus" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect" index="2"]
-margin_left = 81.0
-margin_right = 98.0
-
 [node name="AbilityMenuPopup" type="PopupPanel" parent="."]
 visible = true
 anchor_right = 1.0
@@ -191,8 +170,8 @@ __meta__ = {
 [node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 316.0
-margin_bottom = 176.0
+margin_right = 613.0
+margin_bottom = 363.0
 custom_constants/margin_left = 12
 __meta__ = {
 "_edit_use_anchors_": false
@@ -200,14 +179,14 @@ __meta__ = {
 
 [node name="SelectionMenuContainer" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer"]
 margin_left = 12.0
-margin_right = 312.0
-margin_bottom = 172.0
+margin_right = 609.0
+margin_bottom = 359.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Top Margin" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer"]
-margin_right = 300.0
+margin_right = 597.0
 margin_bottom = 18.0
 rect_min_size = Vector2( 0, 5 )
 custom_constants/margin_top = 4
@@ -227,7 +206,7 @@ text = "Start"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer"]
 margin_top = 22.0
-margin_right = 300.0
+margin_right = 597.0
 margin_bottom = 158.0
 
 [node name="PlayersContainer" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer"]
@@ -420,8 +399,3 @@ buttonName = "Ability 4"
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect" to="." method="_on_LeftFieldSelect_change"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect" to="." method="_on_RightFieldSelect_change"]
 [connection signal="pressed" from="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/Top Margin/StartButton" to="." method="_on_StartButton_pressed"]
-
-[editable path="SelectionMenuPopup/SelectionMenuContainer/PitchSelect"]
-[editable path="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSelect"]
-[editable path="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect"]
-[editable path="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect"]

@@ -19,8 +19,7 @@ func score_goal(kicker):
 	refresh_score()
 	
 func refresh_score():
-	print(redScore)
 	blueScoreText = "Blue: " + str(blueScore)
 	redScoreText = "Red: " + str(redScore)
-	$BlueScore.set_text(blueScoreText)
-	$RedScore.set_text(redScoreText)
+	get_node("HBoxContainer/BlueScore").set_text(blueScoreText)
+	get_node("HBoxContainer/RedScore").set_text(redScoreText)
