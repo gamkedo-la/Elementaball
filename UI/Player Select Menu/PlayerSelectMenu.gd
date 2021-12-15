@@ -8,6 +8,10 @@ var centerIndex = 0
 var leftIndex = 0
 var rightIndex = 0
 
+signal centerSpriteChange (sprite)
+signal leftSpriteChange (sprite)
+signal rightSpriteChange (sprite)
+
 onready var centerSprite = get_node("SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSprite")
 onready var centerText = get_node("SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSelect/Label")
 onready var centerPlayer = get_node("../../Player")
@@ -41,6 +45,7 @@ func _on_CenterFieldSelect_change(direction, buttons):
 	if centerIndex > 2:
 		centerIndex = 0
 	centerSprite.texture = selectablePlayers[centerIndex].sprite
+	emit_signal("centerSpriteChange", selectablePlayers[centerIndex].sprite)
 	buttons.get_node("Label").text = selectablePlayers[centerIndex].speciesName
 	centerPlayer.starting_stats = selectablePlayers[centerIndex]
 	centerPlayer.initialize_stats(centerPlayer.starting_stats)
@@ -51,6 +56,7 @@ func _on_RightFieldSelect_change(direction, buttons):
 	if rightIndex > 2:
 		rightIndex = 0
 	rightSprite.texture = selectablePlayers[rightIndex].sprite
+	emit_signal("rightSpriteChange", selectablePlayers[rightIndex].sprite)
 	buttons.get_node("Label").text = selectablePlayers[rightIndex].speciesName
 	rightPlayer.starting_stats = selectablePlayers[rightIndex]
 	rightPlayer.initialize_stats(rightPlayer.starting_stats)
@@ -61,6 +67,7 @@ func _on_LeftFieldSelect_change(direction, buttons):
 	if leftIndex > 2:
 		leftIndex = 0
 	leftSprite.texture = selectablePlayers[leftIndex].sprite
+	emit_signal("leftSpriteChange", selectablePlayers[leftIndex].sprite)
 	buttons.get_node("Label").text = selectablePlayers[leftIndex].speciesName
 	leftPlayer.starting_stats = selectablePlayers[leftIndex]
 	leftPlayer.initialize_stats(leftPlayer.starting_stats)

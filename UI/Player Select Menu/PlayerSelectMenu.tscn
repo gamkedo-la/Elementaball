@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Art/multicolor_pitch.png" type="Texture" id=1]
 [ext_resource path="res://UI/Buttons.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://Art/red_pitch.tres" type="Resource" id=9]
 [ext_resource path="res://Art/blue_pitch.tres" type="Resource" id=10]
 [ext_resource path="res://Art/multicolor_pitch.tres" type="Resource" id=11]
+[ext_resource path="res://UI/Player Select Menu/CenterFieldSprite.gd" type="Script" id=12]
+[ext_resource path="res://UI/Player Select Menu/LeftFieldSprite.gd" type="Script" id=13]
+[ext_resource path="res://UI/Player Select Menu/RightFieldSprite.gd" type="Script" id=14]
 
 [sub_resource type="Theme" id=1]
 
@@ -244,6 +247,7 @@ rect_min_size = Vector2( 16, 32 )
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 12 )
 
 [node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField"]
 margin_left = 20.0
@@ -303,6 +307,7 @@ rect_min_size = Vector2( 16, 32 )
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 13 )
 
 [node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField"]
 margin_left = 20.0
@@ -351,17 +356,18 @@ margin_top = 104.0
 margin_right = 208.0
 margin_bottom = 136.0
 
-[node name="LeftField" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField"]
+[node name="RightField" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField"]
 margin_right = 16.0
 margin_bottom = 32.0
 
-[node name="LeftFieldSprite" type="TextureRect" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/LeftField"]
+[node name="RightFieldSprite" type="TextureRect" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/RightField"]
 margin_right = 16.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 16, 32 )
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 14 )
 
 [node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField"]
 margin_left = 20.0
@@ -405,6 +411,9 @@ margin_right = 73.0
 margin_bottom = 32.0
 buttonName = "Ability 4"
 
+[connection signal="centerSpriteChange" from="." to="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/CenterFieldSprite" method="_on_PlayerSelectMenu_centerSpriteChange"]
+[connection signal="leftSpriteChange" from="." to="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/LeftField/LeftFieldSprite" method="_on_PlayerSelectMenu_leftSpriteChange"]
+[connection signal="rightSpriteChange" from="." to="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/RightField/RightFieldSprite" method="_on_PlayerSelectMenu_rightSpriteChange"]
 [connection signal="pressed" from="SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/CloseButton" to="." method="_on_CloseButton_pressed"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PitchSelect" to="." method="_on_PitchSelect_change"]
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSelect" to="." method="_on_CenterFieldSelect_change"]
