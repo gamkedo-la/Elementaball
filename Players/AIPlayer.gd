@@ -242,7 +242,6 @@ func get_in_position():
 		rng.randomize()
 		randomDistanceX = rng.randi_range(50, 125)
 		randomDistanceY = rng.randi_range(50, 125)
-		randomDistanceY = 50
 		if "PlayerRight" in defenseZone.name or "EnemyLeft" in defenseZone.name:
 			randomDistanceY = -randomDistanceY
 	if ball.playerInPossession:
@@ -252,10 +251,8 @@ func get_in_position():
 			destination = Vector2((ball.playerInPossession.position.x + goal2Ball/10)*leftOrRight, myZoneY)
 		
 		if check_for_interceptor():
-			if myGoal.position.y < self.position.y:
-				destination.y -= 50	
-			else:
-				destination.y += 50	
+			var newDestination = (self.position - ball.position).normalized()
+			destination += newDestination.rotated(PI/2)
 		
 	velocity = (destination-self.position).normalized()*(speed*.75)
 	check_and_slide()
@@ -264,7 +261,7 @@ func check_for_interceptor():
 	var space_state = get_world_2d().direct_space_state
 	var result = space_state.intersect_ray(position,
 				ball.position,
-				[self])
+				[self, ball, ball.playerInPossession])
 	if result:
 		return true
 	else:

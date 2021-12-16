@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Players/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Field and Equipment/Ball.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://UI/MuteButton.gd" type="Script" id=11]
 [ext_resource path="res://Art/UI/speaker_on.png" type="Texture" id=12]
 [ext_resource path="res://UI/ScoreBoard.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Players/AnimationPlayer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Art/Sprites/Equipment/water_ball.png" type="Texture" id=15]
 [ext_resource path="res://BallEffects.gd" type="Script" id=16]
 [ext_resource path="res://UI/Player Select Menu/PlayerSelectMenu.tscn" type="PackedScene" id=17]
@@ -108,6 +109,8 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
 
+[node name="AnimationPlayer" parent="Player" instance=ExtResource( 14 )]
+
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( -131.756, -84.6172 )
 controlling = false
@@ -131,6 +134,15 @@ parameters/playback = SubResource( 3 )
 
 [node name="KickMenu" parent="Popup" index="0"]
 items = [ "Thorns Kick", null, 0, false, false, 0, 0, null, "", false, "Fireball Kick", null, 0, false, false, 1, 0, null, "", false, "Spray Throw", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="PassMenu" parent="Popup" index="1"]
+items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="TackleMenu" parent="Popup" index="2"]
+items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Swipe", null, 0, false, false, 1, 0, null, "", false, "Flame Tackle", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="BlockMenu" parent="Popup" index="3"]
+items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping Wave", null, 0, false, false, 1, 0, null, "", false, "Flame Wall", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="BallEffects" type="AnimatedSprite" parent="."]
 visible = false
@@ -444,8 +456,8 @@ script = ExtResource( 18 )
 [connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer/Ability3" to="Player3" method="_on_Ability3_change"]
 [connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer/Ability4" to="Player3" method="_on_Ability4_change"]
 [connection signal="pressed" from="GUICanvasLayer/MuteButton" to="GUICanvasLayer/MuteButton" method="_on_MuteButton_pressed"]
-[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" method="_on_Timer_gameOver"]
 [connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/XTeamWon" method="_on_Timer_gameOver"]
+[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" method="_on_Timer_gameOver"]
 
 [editable path="Player"]
 [editable path="Player2"]

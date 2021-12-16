@@ -126,14 +126,14 @@ switch_mode = 2
 "states/Green Tackle/node" = SubResource( 44 )
 "states/Green Tackle/position" = Vector2( 1671.83, 135.821 )
 "states/Red Idle/node" = SubResource( 7 )
-"states/Red Idle/position" = Vector2( 1268.81, 39 )
+"states/Red Idle/position" = Vector2( 1271.81, 40 )
 "states/Red Run/node" = SubResource( 8 )
 "states/Red Run/position" = Vector2( 1497.81, 91.8208 )
 "states/Red Tackle/node" = SubResource( 9 )
 "states/Red Tackle/position" = Vector2( 1324.81, 155.821 )
 transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 10 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 11 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 12 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 13 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 14 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 15 ), "Blue Idle", "Blue Run", SubResource( 16 ), "Blue Run", "Blue Tackle", SubResource( 17 ), "Blue Tackle", "Blue Idle", SubResource( 18 ), "Blue Idle", "Blue Tackle", SubResource( 19 ), "Blue Tackle", "Blue Run", SubResource( 20 ), "Blue Run", "Blue Idle", SubResource( 21 ), "Red Idle", "Red Run", SubResource( 22 ), "Red Run", "Red Tackle", SubResource( 23 ), "Red Tackle", "Red Idle", SubResource( 24 ), "Red Idle", "Red Tackle", SubResource( 25 ), "Red Tackle", "Red Run", SubResource( 26 ), "Red Run", "Red Idle", SubResource( 27 ), "Green Idle", "Green Run", SubResource( 45 ), "Green Run", "Green Tackle", SubResource( 46 ), "Green Tackle", "Green Idle", SubResource( 47 ), "Green Idle", "Green Tackle", SubResource( 48 ), "Green Tackle", "Green Run", SubResource( 49 ), "Green Run", "Green Idle", SubResource( 50 ) ]
 start_node = "Blue Enemy Idle"
-graph_offset = Vector2( 1081.83, -17.1792 )
+graph_offset = Vector2( 1115.23, -17.1792 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
