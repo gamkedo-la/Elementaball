@@ -73,10 +73,15 @@ var ability4Index = 0
 func _ready():
 	aniMachine = $AnimationTree["parameters/playback"]
 	defenseZone = get_node("../" + fieldPosition)
+# warning-ignore:return_value_discarded
 	SceneController.connect("inPossession", self, "set_possession")
+# warning-ignore:return_value_discarded
 	SceneController.connect("controlling", self, "set_control")
+# warning-ignore:return_value_discarded
 	SceneController.connect("tackling", self, "toggle_tackling")
+# warning-ignore:return_value_discarded
 	SceneController.connect("blocking", self, "toggle_blocking")
+# warning-ignore:return_value_discarded
 	SceneController.connect("outOfBounds", self, "out_of_bounds")
 	initialize_stats(starting_stats)
 		
@@ -113,7 +118,7 @@ func initialize_stats(stats : StartingStats):
 	
 	get_node("Health Bar").update_healthbar(maxHP)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if controlling == true and ball.selecting == false:
 		velocity.x = 0
 		velocity.y = 0
@@ -237,16 +242,33 @@ func get_in_position():
 		rng.randomize()
 		randomDistanceX = rng.randi_range(50, 125)
 		randomDistanceY = rng.randi_range(50, 125)
+		randomDistanceY = 50
 		if "PlayerRight" in defenseZone.name or "EnemyLeft" in defenseZone.name:
 			randomDistanceY = -randomDistanceY
 	if ball.playerInPossession:
 		if go2Secondary:
-			destination = Vector2((ball.playerInPossession.position.x + randomDistanceX + goal2Ball/2)*leftOrRight, myZoneY+randomDistanceY)
+			destination = Vector2((ball.playerInPossession.position.x + goal2Ball/2)*leftOrRight, myGoal.position.y)
 		else:
-			destination = Vector2((ball.playerInPossession.position.x + randomDistanceX + goal2Ball/10)*leftOrRight, myZoneY+randomDistanceY)
+			destination = Vector2((ball.playerInPossession.position.x + goal2Ball/10)*leftOrRight, myZoneY)
+		
+		if check_for_interceptor():
+			if myGoal.position.y < self.position.y:
+				destination.y -= 50	
+			else:
+				destination.y += 50	
 		
 	velocity = (destination-self.position).normalized()*(speed*.75)
 	check_and_slide()
+
+func check_for_interceptor():
+	var space_state = get_world_2d().direct_space_state
+	var result = space_state.intersect_ray(position,
+				ball.position,
+				[self])
+	if result:
+		return true
+	else:
+		return false	
 
 func defend_zone():
 	destination = defenseZone.get_node("Path2D").curve.get_closest_point(ball.position)
@@ -346,14 +368,14 @@ func check_and_slide(distance2Target = destination.distance_to(self.position), d
 
 func try_kick():
 	prekick()
-	var rng = RandomNumberGenerator.new()
+	rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var moveChosen = rng.randi_range(0, ball.menuAbilities.size()-1)
 	ball._on_KickMenu_id_pressed(moveChosen)
 
 func try_pass():
 	prekick()
-	var rng = RandomNumberGenerator.new()
+	rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var moveChosen = rng.randi_range(0, ball.menuAbilities.size()-1)
 	ball._on_PassMenu_id_pressed(moveChosen, self)

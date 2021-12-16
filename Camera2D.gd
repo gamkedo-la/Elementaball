@@ -21,6 +21,7 @@ onready var screen_size = get_viewport_rect().size
 func _ready():
 	ball = get_node("../Ball")
 	add_target(ball)
+# warning-ignore:return_value_discarded
 	SceneController.connect("controlling", self, "set_targets")
 	set_targets(get_node("../Player"))
 

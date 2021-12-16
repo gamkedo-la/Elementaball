@@ -15,7 +15,7 @@ func _ready():
 	add_child(timer) #to process
 	timer.set_wait_time(t)
 	
-func _process(delta):
+func _process(_delta):
 	_calc_minutes()
 	self.text = "1st Half " + time
 	

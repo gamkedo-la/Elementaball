@@ -4,6 +4,7 @@ var blueScore = 0
 var redScore = 0
 
 func _ready():
+# warning-ignore:return_value_discarded
 	SceneController.connect("goalScored", self, "score_goal")
 	
 func score_goal(kicker):

@@ -8,6 +8,7 @@ var redScore = 0
 
 func _ready():
 	refresh_score()
+# warning-ignore:return_value_discarded
 	SceneController.connect("goalScored", self, "score_goal")
 	
 func score_goal(kicker):

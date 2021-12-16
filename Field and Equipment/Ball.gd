@@ -30,11 +30,13 @@ var playerInPossession
 var lastInPossession
 onready var controllingPlayer = get_node("../Player")
 
-export var kickSpeed = 1
+export var kickSpeed = 500
 
 func _ready():
 	ballEffects = get_node("../BallEffects")
+# warning-ignore:return_value_discarded
 	SceneController.connect("inPossession", self, "set_possession")
+# warning-ignore:return_value_discarded
 	SceneController.connect("controlling", self, "set_control")
 	set_physics_process(true)
 	
@@ -240,7 +242,7 @@ func _on_KickMenu_id_pressed(id):
 	get_node("../Throw In Boundary/CollisionPolygon2D").disabled = true
 	self.mode = RigidBody2D.MODE_RIGID
 	get_node("CollisionShape2D").disabled = false
-	set_linear_velocity((possibleShots[shotIndex] - self.global_position) * kickSpeed)
+	set_linear_velocity((possibleShots[shotIndex] - self.global_position).normalized() * kickSpeed)
 	#apply_torque_impulse(rng.randf_range(500, 2000))
 
 func _on_PassMenu_id_pressed(id, kicker = playerInPossession):
@@ -264,7 +266,7 @@ func _on_PassMenu_id_pressed(id, kicker = playerInPossession):
 	kicking = true
 	get_node("../Throw In Boundary/CollisionPolygon2D").disabled = true
 	self.mode = RigidBody2D.MODE_RIGID
-	set_linear_velocity((nearestMate.position - self.global_position) * kickSpeed)
+	set_linear_velocity((nearestMate.position - self.global_position).normalized() * kickSpeed)
 	#apply_torque_impulse(rng.randf_range(500, 2000))
 	yield(get_tree().create_timer(0.1), "timeout")
 	get_node("CollisionShape2D").disabled = false
@@ -389,7 +391,6 @@ func calc_damage_reduction(attackType):
 func _on_Boundary_Line_body_entered(body):
 	if throwingIn and outOfBounds:
 		if body == self and playerInPossession == null:
-			print("in bounds")
 			outOfBounds = false
 			yield(get_tree().create_timer(1.0), "timeout")
 			for player in get_tree().get_nodes_in_group("all_players"): 
