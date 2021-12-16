@@ -127,7 +127,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_down"):
 			velocity.y = speed
 	
-	if outOfBounds:
+	if ball.outOfBounds:
 		if throwInPlayer == self:
 			if ball.throwingIn == false:
 				SceneController.emit_signal("inPossession", self)
@@ -139,7 +139,6 @@ func _physics_process(delta):
 				
 				#Enable the boundary so the player can't cross into the field when throwing in
 				get_node("../Throw In Boundary/CollisionPolygon2D").disabled = false
-				ball.goalScoring = false
 				
 				ball.throwingIn = true
 				#Player controlled character stops here, player can throw or pass

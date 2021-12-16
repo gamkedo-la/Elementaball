@@ -211,6 +211,7 @@ func out_of_bounds():
 func score_goal():
 	SceneController.emit_signal("goalScored", attacker)
 	out_of_bounds()
+	goalScoring = false
 
 func _on_KickMenu_id_pressed(id):
 	initialize_kick(id)

@@ -1,10 +1,15 @@
 extends Node
 
+# warning-ignore:unused_signal
 signal goalScored(kicker)
+# warning-ignore:unused_signal
 signal inPossession(player)
 signal controlling(player)
+# warning-ignore:unused_signal
 signal tackling(trueOrFalse)
+# warning-ignore:unused_signal
 signal blocking(trueOrFalse)
+# warning-ignore:unused_signal
 signal outOfBounds()
 
 var playerIndex = 0
@@ -22,6 +27,7 @@ func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	set_process(true)
 	playerTeam = get_tree().get_nodes_in_group("player_team")
+# warning-ignore:return_value_discarded
 	connect("inPossession", self, "possession_control")
 
 func _process(_delta):
