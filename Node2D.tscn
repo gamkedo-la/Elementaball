@@ -109,6 +109,12 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
 
+[node name="EnemyCollider" parent="Player" index="3"]
+rotation = 0.0211139
+
+[node name="InterceptArea" parent="Player" index="5"]
+position = Vector2( -0.161133, 0.0360718 )
+
 [node name="AnimationPlayer" parent="Player" instance=ExtResource( 14 )]
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]

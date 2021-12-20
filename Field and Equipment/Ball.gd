@@ -135,26 +135,7 @@ func player_pass():
 	kickMenu.rect_position = playerInPossession.global_position
 
 func player_steal():
-	#If player is colliding with an enemy, that enemy becomes the target
-	if controllingPlayer._check_player_collisions("Enemy") != null:
-		target = controllingPlayer._check_player_collisions("Enemy")
-		
-		#Bring up the Tackle Menu to let the player choose an ability
-		selecting = true
-		var tackleMenu = get_node("../Popup/TackleMenu")
-		tackleMenu.clear()
-		var player = controllingPlayer
-		#Add the tackle abilities available for the player to the menu
-		#TODO: Make a default (no element) tackle ability and calculate damage for it
-		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,player.defaultTackle]
-		menuAbilities = []
-		if abilities.size() > 0:
-			for ability in abilities:
-				if ability != null and ability.action == "Tackle":
-					tackleMenu.add_item(ability.name)
-					menuAbilities.append(ability)
-		tackleMenu.popup()
-		tackleMenu.rect_position = controllingPlayer.global_position
+	controllingPlayer._try_steal()
 
 func player_block(tackledType):
 	selecting = true

@@ -438,12 +438,30 @@ func reset_intercept():
 	
 func check_steal():
 	if _check_collisions() and _check_collisions() == ball.playerInPossession:
-		ball.calc_tackle_damage(type)
-		yield(ball, "calculated")
-		intercepting = false
-		tacklerIsSelf = false
-		SceneController.emit_signal("inPossession", self)
-		SceneController.emit_signal("tackling", false)
+		if self.controlling:
+			#Bring up the Tackle Menu to let the player choose an ability
+			ball.selecting = true
+			var tackleMenu = get_node("../Popup/TackleMenu")
+			tackleMenu.clear()
+			var player = ball.controllingPlayer
+			#Add the tackle abilities available for the player to the menu
+			#TODO: Make a default (no element) tackle ability and calculate damage for it
+			var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,player.defaultTackle]
+			ball.menuAbilities = []
+			if abilities.size() > 0:
+				for ability in abilities:
+					if ability != null and ability.action == "Tackle":
+						tackleMenu.add_item(ability.name)
+						ball.menuAbilities.append(ability)
+			tackleMenu.popup()
+			tackleMenu.rect_position = self.global_position
+		else:
+			ball.calc_tackle_damage(type)
+			yield(ball, "calculated")
+			intercepting = false
+			tacklerIsSelf = false
+			SceneController.emit_signal("inPossession", self)
+			SceneController.emit_signal("tackling", false)
 	start_steal_cooldown()
 
 func start_steal_cooldown():
