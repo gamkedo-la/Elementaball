@@ -17,4 +17,8 @@ func update_healthbar(value):
 		healthbar.texture_progress = barYellow
 	if value < healthbar.max_value * 0.35:
 		healthbar.texture_progress = barRed
+	if value <= 0:
+		if get_parent() == get_node("../../Ball").playerInPossession:
+			SceneController.emit_signal("inPossession", null)
+		get_parent().queue_free()
 	healthbar.value = value
