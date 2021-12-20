@@ -212,7 +212,7 @@ starting_stats = ExtResource( 10 )
 speed = 150
 
 [node name="InterceptArea" parent="Enemy" index="0"]
-position = Vector2( 0, 0 )
+position = Vector2( -0.161133, 0.0360718 )
 
 [node name="Health Bar" parent="Enemy" index="1"]
 margin_top = -21.0
@@ -220,10 +220,13 @@ margin_bottom = -21.0
 
 [node name="EnemyCollider" parent="Enemy" index="2"]
 position = Vector2( -0.159099, -0.198006 )
-rotation = 0.0283279
 
 [node name="AnimationTree" parent="Enemy" index="4"]
 parameters/playback = SubResource( 9 )
+
+[node name="AnimatedSprite" parent="Enemy/ThingsToFlip" index="0"]
+animation = "Blue Enemy Tackle"
+frame = 5
 
 [node name="Enemy3" parent="." groups=[
 "all_players",
@@ -232,6 +235,10 @@ parameters/playback = SubResource( 9 )
 position = Vector2( 526.957, 213.702 )
 fieldPosition = "EnemyLeft"
 starting_stats = ExtResource( 10 )
+speed = 150
+
+[node name="InterceptArea" parent="Enemy3" index="0"]
+position = Vector2( -0.161133, 0.0360718 )
 
 [node name="Health Bar" parent="Enemy3" index="1"]
 margin_top = -21.0
@@ -242,6 +249,10 @@ position = Vector2( -0.159099, -0.198006 )
 
 [node name="AnimationTree" parent="Enemy3" index="4"]
 parameters/playback = SubResource( 10 )
+
+[node name="AnimatedSprite" parent="Enemy3/ThingsToFlip" index="0"]
+animation = "Blue Enemy Tackle"
+frame = 5
 
 [node name="Enemy2" parent="." groups=[
 "all_players",
@@ -456,8 +467,8 @@ script = ExtResource( 18 )
 [connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer/Ability3" to="Player3" method="_on_Ability3_change"]
 [connection signal="change" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer/Ability4" to="Player3" method="_on_Ability4_change"]
 [connection signal="pressed" from="GUICanvasLayer/MuteButton" to="GUICanvasLayer/MuteButton" method="_on_MuteButton_pressed"]
-[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/XTeamWon" method="_on_Timer_gameOver"]
 [connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" method="_on_Timer_gameOver"]
+[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/XTeamWon" method="_on_Timer_gameOver"]
 
 [editable path="Player"]
 [editable path="Player2"]
