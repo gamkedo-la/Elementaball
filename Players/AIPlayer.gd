@@ -470,6 +470,8 @@ func _on_Ability1_change(direction, buttons):
 	ability1Index += direction
 	if ability1Index > selectableAbilities.size() - 1:
 		ability1Index = 0
+	if ability1Index < 0:
+		ability1Index = selectableAbilities.size() - 1
 	
 	buttons.get_node("Label").text = selectableAbilities[ability1Index].name
 	ability1 = selectableAbilities[ability1Index]
@@ -478,7 +480,9 @@ func _on_Ability2_change(direction, buttons):
 	ability2Index += direction
 	if ability2Index > selectableAbilities.size() - 1:
 		ability2Index = 0
-	
+	if ability2Index < 0:
+		ability2Index = selectableAbilities.size() - 1
+		
 	buttons.get_node("Label").text = selectableAbilities[ability2Index].name
 	ability2 = selectableAbilities[ability2Index]
 	
@@ -486,7 +490,9 @@ func _on_Ability3_change(direction, buttons):
 	ability3Index += direction
 	if ability3Index > selectableAbilities.size() - 1:
 		ability3Index = 0
-	
+	if ability3Index < 0:
+		ability3Index = selectableAbilities.size() - 1
+			
 	buttons.get_node("Label").text = selectableAbilities[ability3Index].name
 	ability3 = selectableAbilities[ability3Index]
 	

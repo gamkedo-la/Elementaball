@@ -42,8 +42,10 @@ func _ready():
 
 func _on_CenterFieldSelect_change(direction, buttons):
 	centerIndex += direction
-	if centerIndex > 2:
+	if centerIndex > selectablePlayers.size() - 1:
 		centerIndex = 0
+	if centerIndex < 0:
+		centerIndex = selectablePlayers.size() - 1
 	centerSprite.texture = selectablePlayers[centerIndex].sprite
 	emit_signal("centerSpriteChange", selectablePlayers[centerIndex].sprite)
 	buttons.get_node("Label").text = selectablePlayers[centerIndex].speciesName
@@ -53,8 +55,10 @@ func _on_CenterFieldSelect_change(direction, buttons):
 
 func _on_RightFieldSelect_change(direction, buttons):
 	rightIndex += direction
-	if rightIndex > 2:
+	if rightIndex > selectablePlayers.size() - 1:
 		rightIndex = 0
+	if rightIndex < 0:
+		rightIndex = selectablePlayers.size() - 1
 	rightSprite.texture = selectablePlayers[rightIndex].sprite
 	emit_signal("rightSpriteChange", selectablePlayers[rightIndex].sprite)
 	buttons.get_node("Label").text = selectablePlayers[rightIndex].speciesName
@@ -64,8 +68,10 @@ func _on_RightFieldSelect_change(direction, buttons):
 
 func _on_LeftFieldSelect_change(direction, buttons):
 	leftIndex += direction
-	if leftIndex > 2:
+	if leftIndex > selectablePlayers.size() - 1:
 		leftIndex = 0
+	if leftIndex < 0:
+		leftIndex = selectablePlayers.size() - 1
 	leftSprite.texture = selectablePlayers[leftIndex].sprite
 	emit_signal("leftSpriteChange", selectablePlayers[leftIndex].sprite)
 	buttons.get_node("Label").text = selectablePlayers[leftIndex].speciesName
@@ -76,6 +82,8 @@ func _on_PitchSelect_change(direction, buttons):
 	pitchIndex += direction
 	if pitchIndex > selectablePitches.size() - 1:
 		pitchIndex = 0
+	if pitchIndex < 0:
+		pitchIndex = selectablePitches.size() - 1
 	pitchSprite.texture = selectablePitches[pitchIndex].sprite
 	gamePitch.texture = pitchSprite.texture
 	buttons.get_node("Label").text = selectablePitches[pitchIndex].name
