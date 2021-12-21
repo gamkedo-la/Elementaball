@@ -112,9 +112,6 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
 
-[node name="EnemyCollider" parent="Player" index="3"]
-rotation = 0.0211139
-
 [node name="InterceptArea" parent="Player" index="5"]
 position = Vector2( -0.161133, 0.0360718 )
 
@@ -165,7 +162,6 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 8 )
 animation = "water ball"
-frame = 2
 playing = true
 script = ExtResource( 16 )
 
@@ -478,8 +474,8 @@ script = ExtResource( 18 )
 [connection signal="body_exited" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_entered"]
 [connection signal="body_exited" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_exited"]
-[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" method="_on_Timer_gameOver"]
 [connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/XTeamWon" method="_on_Timer_gameOver"]
+[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" method="_on_Timer_gameOver"]
 [connection signal="about_to_show" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup" to="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup" method="_on_AbilityMenuPopup_about_to_show"]
 [connection signal="pressed" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/Top Margin/StartButton" to="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" method="_on_StartButton_pressed"]
 [connection signal="initializeMenu" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2/AbilityMenu1" to="Player/AbilityHandler" method="_on_AbilityMenu1_initializeMenu"]
