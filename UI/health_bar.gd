@@ -20,5 +20,9 @@ func update_healthbar(value):
 	if value <= 0:
 		if get_parent() == get_node("../../Ball").playerInPossession:
 			SceneController.emit_signal("inPossession", null)
-		get_parent().queue_free()
+		if get_parent().is_in_group("player_team"):
+			SceneController.emit_signal("knockout", "blue")
+		else:
+			SceneController.emit_signal("knockout", "red")
+		get_parent().call_deferred("free")
 	healthbar.value = value

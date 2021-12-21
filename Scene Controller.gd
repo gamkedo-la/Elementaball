@@ -11,6 +11,10 @@ signal tackling(trueOrFalse)
 signal blocking(trueOrFalse)
 # warning-ignore:unused_signal
 signal outOfBounds()
+# warning-ignore:unused_signal
+signal knockout(team)
+# warning-ignore:unused_signal
+signal allKO(winningTeam)
 
 var playerIndex = 0
 
