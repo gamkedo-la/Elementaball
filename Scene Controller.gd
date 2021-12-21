@@ -44,7 +44,7 @@ func _process(_delta):
 func next_player():
 	playerTeam = get_tree().get_nodes_in_group("player_team")
 	playerIndex += 1
-	if playerIndex > 2:
+	if playerIndex > playerTeam.size() - 1:
 		playerIndex = 0
 	emit_signal("controlling", playerTeam[playerIndex])	
 

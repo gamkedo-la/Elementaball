@@ -22,9 +22,11 @@ func update_healthbar(value):
 			SceneController.emit_signal("knockout", "blue")
 		else:
 			SceneController.emit_signal("knockout", "red")
+		yield(get_tree(), "idle_frame")
 		if get_parent() == get_node("../../Ball").playerInPossession:
 			SceneController.emit_signal("inPossession", null)
 		if get_parent().controlling:
 			SceneController.next_player()
+		
 		get_parent().call_deferred("free")
 	healthbar.value = value

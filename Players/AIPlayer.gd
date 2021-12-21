@@ -208,7 +208,7 @@ func _physics_process(_delta):
 
 	if tacklingInProgress and tacklerIsSelf:
 		aniMachine.travel(tackleAnim)
-	elif velocity.length() == 0:
+	elif velocity.length() == 0 or ball.selecting:
 		aniMachine.travel(idleAnim)
 	elif velocity.length() > 0:
 		aniMachine.travel(runningAnim)
@@ -303,7 +303,7 @@ func out_of_bounds():
 	if outOfBounds == false:
 		outOfBounds = true
 		var throwInTeam
-		if ball.lastInPossession.is_in_group("player_team"):
+		if ball.lastInPossession == "player_team":
 			throwInTeam = "enemy_team"
 			if self.is_in_group("player_team"):
 				onDefense = true

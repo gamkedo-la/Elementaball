@@ -75,7 +75,10 @@ func set_possession(player):
 	playerInPossession = player
 	if player != null:
 		ballEffects.visible = false
-		lastInPossession = player
+		if player.is_in_group("player_team"):
+			lastInPossession = "player_team"
+		else:
+			lastInPossession = "enemy_team"
 		possessionNode = player.get_node("ThingsToFlip/Position2D")
 		if player in get_tree().get_nodes_in_group("player_team"):
 			dribbling = true
@@ -296,6 +299,7 @@ func _on_TackleMenu_id_pressed(id):
 	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
 	attacker = find_attacker("tackle")
 	calc_tackle_damage(menuAbilities[id].type)
+	yield(get_tree(), "idle_frame")
 	selecting = false
 	
 func calc_tackle_damage(tackledType):
