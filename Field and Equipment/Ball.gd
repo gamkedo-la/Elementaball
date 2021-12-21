@@ -239,8 +239,8 @@ func _on_PassMenu_id_pressed(id, kicker = playerInPossession):
 		if player.position.distance_to(kicker.position) < mateDistance:
 			mateDistance = player.position.distance_to(kicker.position)
 			nearestMate = player
-	
-	print(nearestMate.name)
+	if nearestMate == null:
+		nearestMate = kicker.myGoal
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	SceneController.emit_signal("inPossession", null)

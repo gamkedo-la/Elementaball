@@ -245,10 +245,11 @@ func get_in_position():
 		if "PlayerRight" in defenseZone.name or "EnemyLeft" in defenseZone.name:
 			randomDistanceY = -randomDistanceY
 	if ball.playerInPossession:
+		var myPosX = ball.playerInPossession.position.x
 		if go2Secondary:
-			destination = Vector2((ball.playerInPossession.position.x + goal2Ball/2)*leftOrRight, myGoal.position.y)
+			destination = Vector2((myPosX + goal2Ball/2)*leftOrRight, myGoal.position.y)
 		else:
-			destination = Vector2((ball.playerInPossession.position.x + goal2Ball/10)*leftOrRight, myZoneY)
+			destination = Vector2((myPosX + goal2Ball/10)*leftOrRight, myZoneY)
 		
 		if check_for_interceptor():
 			var newDestination = (self.position - ball.position).normalized()
