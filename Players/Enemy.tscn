@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Art/Sprites/blue_enemy_idle.png" type="Texture" id=1]
 [ext_resource path="res://Players/AIPlayer.gd" type="Script" id=2]
@@ -12,30 +12,29 @@
 [ext_resource path="res://Art/Sprites/blue_enemy_run/blue_enemy_run1.png" type="Texture" id=10]
 [ext_resource path="res://Art/Sprites/blue_enemy_run/blue_enemy_run2.png" type="Texture" id=11]
 [ext_resource path="res://Players/AnimationPlayer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Players/SteeringNode.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.73978
 height = 18.4876
 
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=2]
 animation = "Blue Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=3]
 animation = "Blue Enemy Run"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "Blue Enemy Tackle"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Blue Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Blue Run"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Blue Tackle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=7]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
 
@@ -46,47 +45,44 @@ animation = "Blue Tackle"
 [sub_resource type="AnimationNodeStateMachineTransition" id=11]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=13]
-"states/Blue Enemy Idle/node" = SubResource( 4 )
+[sub_resource type="AnimationNodeStateMachine" id=20]
+"states/Blue Enemy Idle/node" = SubResource( 2 )
 "states/Blue Enemy Idle/position" = Vector2( 445, 49 )
-"states/Blue Enemy Run/node" = SubResource( 5 )
+"states/Blue Enemy Run/node" = SubResource( 3 )
 "states/Blue Enemy Run/position" = Vector2( 675, 100 )
-"states/Blue Enemy Tackle/node" = SubResource( 6 )
+"states/Blue Enemy Tackle/node" = SubResource( 4 )
 "states/Blue Enemy Tackle/position" = Vector2( 339, 136 )
-"states/Blue Idle/node" = SubResource( 14 )
+"states/Blue Idle/node" = SubResource( 5 )
 "states/Blue Idle/position" = Vector2( 891.478, 49 )
-"states/Blue Run/node" = SubResource( 15 )
+"states/Blue Run/node" = SubResource( 6 )
 "states/Blue Run/position" = Vector2( 1097.48, 125.821 )
-"states/Blue Tackle/node" = SubResource( 16 )
+"states/Blue Tackle/node" = SubResource( 7 )
 "states/Blue Tackle/position" = Vector2( 824.478, 166.821 )
-transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 7 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 8 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 9 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 10 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 11 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 12 ), "Blue Idle", "Blue Run", SubResource( 17 ), "Blue Run", "Blue Tackle", SubResource( 18 ), "Blue Tackle", "Blue Idle", SubResource( 19 ), "Blue Idle", "Blue Tackle", SubResource( 20 ), "Blue Tackle", "Blue Run", SubResource( 21 ), "Blue Run", "Blue Idle", SubResource( 22 ) ]
+transitions = [ "Blue Enemy Idle", "Blue Enemy Run", SubResource( 8 ), "Blue Enemy Run", "Blue Enemy Tackle", SubResource( 9 ), "Blue Enemy Tackle", "Blue Enemy Run", SubResource( 10 ), "Blue Enemy Idle", "Blue Enemy Tackle", SubResource( 11 ), "Blue Enemy Tackle", "Blue Enemy Idle", SubResource( 12 ), "Blue Enemy Run", "Blue Enemy Idle", SubResource( 13 ), "Blue Idle", "Blue Run", SubResource( 14 ), "Blue Run", "Blue Tackle", SubResource( 15 ), "Blue Tackle", "Blue Idle", SubResource( 16 ), "Blue Idle", "Blue Tackle", SubResource( 17 ), "Blue Tackle", "Blue Run", SubResource( 18 ), "Blue Run", "Blue Idle", SubResource( 19 ) ]
 start_node = "Blue Enemy Idle"
 graph_offset = Vector2( -45.5218, -17.1792 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=22]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "Blue Enemy Tackle",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 11 ) ],
 "loop": false,
 "name": "Blue Enemy Run",
@@ -96,12 +92,19 @@ animations = [ {
 "loop": true,
 "name": "Blue Enemy Idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Blue Enemy Tackle",
+"speed": 1.0
 } ]
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_mask = 3
 script = ExtResource( 2 )
 speed = 300
+
+[node name="SteeringNode" parent="." instance=ExtResource( 13 )]
 
 [node name="InterceptArea" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0.126373, -0.256859 )
@@ -117,22 +120,22 @@ margin_right = 7.97285
 margin_bottom = 3.32428
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
-position = Vector2( 0.126343, 0.33773 )
+position = Vector2( -0.159099, -0.198006 )
 rotation = 0.0211139
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." instance=ExtResource( 12 )]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 13 )
+tree_root = SubResource( 20 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 2 )
+parameters/playback = SubResource( 21 )
 
 [node name="ThingsToFlip" type="Node2D" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
-frames = SubResource( 3 )
+frames = SubResource( 22 )
 animation = "Blue Enemy Idle"
 
 [node name="Position2D" type="Position2D" parent="ThingsToFlip"]

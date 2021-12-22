@@ -162,6 +162,7 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 8 )
 animation = "water ball"
+frame = 2
 playing = true
 script = ExtResource( 16 )
 
@@ -222,17 +223,14 @@ fieldPosition = "EnemyCenter"
 starting_stats = ExtResource( 10 )
 speed = 150
 
-[node name="InterceptArea" parent="Enemy" index="0"]
+[node name="InterceptArea" parent="Enemy" index="1"]
 position = Vector2( -0.161133, 0.0360718 )
 
-[node name="Health Bar" parent="Enemy" index="1"]
+[node name="Health Bar" parent="Enemy" index="2"]
 margin_top = -21.0
 margin_bottom = -21.0
 
-[node name="EnemyCollider" parent="Enemy" index="2"]
-position = Vector2( -0.159099, -0.198006 )
-
-[node name="AnimationTree" parent="Enemy" index="4"]
+[node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 9 )
 
 [node name="AnimatedSprite" parent="Enemy/ThingsToFlip" index="0"]
@@ -248,17 +246,14 @@ fieldPosition = "EnemyLeft"
 starting_stats = ExtResource( 10 )
 speed = 150
 
-[node name="InterceptArea" parent="Enemy3" index="0"]
+[node name="InterceptArea" parent="Enemy3" index="1"]
 position = Vector2( -0.161133, 0.0360718 )
 
-[node name="Health Bar" parent="Enemy3" index="1"]
+[node name="Health Bar" parent="Enemy3" index="2"]
 margin_top = -21.0
 margin_bottom = -21.0
 
-[node name="EnemyCollider" parent="Enemy3" index="2"]
-position = Vector2( -0.159099, -0.198006 )
-
-[node name="AnimationTree" parent="Enemy3" index="4"]
+[node name="AnimationTree" parent="Enemy3" index="5"]
 parameters/playback = SubResource( 10 )
 
 [node name="AnimatedSprite" parent="Enemy3/ThingsToFlip" index="0"]
@@ -273,15 +268,14 @@ position = Vector2( 443.352, -77.3884 )
 fieldPosition = "EnemyRight"
 starting_stats = ExtResource( 10 )
 
-[node name="Health Bar" parent="Enemy2" index="1"]
+[node name="Health Bar" parent="Enemy2" index="2"]
 margin_top = -21.0
 margin_bottom = -21.0
 
-[node name="EnemyCollider" parent="Enemy2" index="2"]
-position = Vector2( -0.159099, -0.198006 )
+[node name="EnemyCollider" parent="Enemy2" index="3"]
 rotation = 1.52987
 
-[node name="AnimationTree" parent="Enemy2" index="4"]
+[node name="AnimationTree" parent="Enemy2" index="5"]
 parameters/playback = SubResource( 11 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]

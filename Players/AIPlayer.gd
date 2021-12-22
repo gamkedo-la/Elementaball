@@ -9,6 +9,7 @@ var previousPosition = position
 #States for defense
 var onDefense = false
 var intercepting = false
+var enemyInZone
 var tacklingInProgress = false
 var blockingInProgress = false
 var tacklerIsSelf = false
@@ -165,7 +166,8 @@ func _physics_process(_delta):
 				defend_zone()
 			
 			if ball.selecting == false:
-				velocity = move_and_slide(velocity)
+				#velocity = move_and_slide(velocity)
+				check_and_slide(velocity)
 				
 	elif ball.selecting == false and controlling == false:
 		
@@ -247,27 +249,16 @@ func get_in_position():
 		if go2Secondary:
 			destination = Vector2((myPosX + goal2Ball/2)*leftOrRight, myGoal.position.y)
 		else:
-			destination = Vector2((myPosX + goal2Ball/10)*leftOrRight, myZoneY)
-		
-		if check_for_interceptor():
-			var newDestination = (self.position - ball.position).normalized()
-			destination += newDestination.rotated(PI/2)
+			destination = Vector2((myPosX + goal2Ball/7)*leftOrRight, myZoneY)
 		
 	velocity = (destination-self.position).normalized()*(speed*.75)
 	check_and_slide()
 
-func check_for_interceptor():
-	var space_state = get_world_2d().direct_space_state
-	var result = space_state.intersect_ray(position,
-				ball.position,
-				[self, ball, ball.playerInPossession])
-	if result:
-		return true
-	else:
-		return false	
-
 func defend_zone():
 	destination = defenseZone.get_node("Path2D").curve.get_closest_point(ball.position)
+	
+	if enemyInZone:
+		destination = defenseZone.get_node("Path2D").curve.get_closest_point(enemyInZone.position)
 	
 	velocity = (destination-self.position).normalized()*speed;	
 	check_and_slide()
@@ -356,11 +347,9 @@ func _move_to_target():
 			_try_steal();
 	else: check_and_slide()
 		
-func check_and_slide(distance2Target = destination.distance_to(self.position), delta = get_physics_process_delta_time()):
-	if distance2Target >= velocity.length() * delta:
-		return
-	else:
-		velocity = Vector2()
+func check_and_slide(delta = get_physics_process_delta_time()):
+	if $SteeringNode:
+		$SteeringNode.steer(delta)
 
 func try_kick():
 	prekick()
@@ -471,11 +460,15 @@ func start_steal_cooldown():
 func _on_InterceptArea_body_entered(body):
 	if body == ball.playerInPossession and body.is_in_group(myOpponent):
 		intercepting = true
+	elif body.is_in_group(myOpponent):
+		enemyInZone = body
 
 func _on_InterceptArea_body_exited(body):
 	if body == ball.playerInPossession and body.is_in_group(myOpponent):
 		intercepting = false
-	
+	elif body.is_in_group(myOpponent):
+		enemyInZone = body
+		
 func _check_collisions():
 	var slide_count = get_slide_count()
 	if slide_count:
