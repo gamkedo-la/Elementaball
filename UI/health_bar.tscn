@@ -1,10 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/health_bar_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Art/Sprites/player_pointer.png" type="Texture" id=2]
 [ext_resource path="res://Art/UI/health_bar_foreground.png" type="Texture" id=3]
 [ext_resource path="res://UI/health_bar.gd" type="Script" id=4]
 
 [sub_resource type="StreamTexture" id=1]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -25,3 +34,8 @@ texture_progress = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 7.8745, -10.0794 )
+frames = SubResource( 2 )

@@ -119,6 +119,9 @@ margin_top = -2.67572
 margin_right = 7.97285
 margin_bottom = 3.32428
 
+[node name="AnimatedSprite" parent="Health Bar" index="1"]
+position = Vector2( -0.14843, -11.9671 )
+
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.159099, -0.198006 )
 rotation = 0.0211139

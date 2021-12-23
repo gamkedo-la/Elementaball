@@ -113,6 +113,9 @@ inPossession = false
 starting_stats = ExtResource( 10 )
 selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 
+[node name="AnimatedSprite" parent="Player/Health Bar" index="1"]
+visible = true
+
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
 
@@ -167,7 +170,6 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 8 )
 animation = "water ball"
-frame = 1
 playing = true
 script = ExtResource( 16 )
 
@@ -232,8 +234,19 @@ speed = 150
 position = Vector2( -0.161133, 0.0360718 )
 
 [node name="Health Bar" parent="Enemy" index="2"]
-margin_top = -21.0
-margin_bottom = -21.0
+margin_left = -9.35443
+margin_top = -23.0045
+margin_right = -9.35443
+margin_bottom = -23.0045
+
+[node name="Health Bar" parent="Enemy/Health Bar" index="0"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 16.0
+margin_bottom = 6.0
+
+[node name="AnimatedSprite" parent="Enemy/Health Bar" index="1"]
+position = Vector2( 7.8787, -8.25085 )
 
 [node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 9 )
@@ -493,6 +506,7 @@ script = ExtResource( 18 )
 [connection signal="pressed" from="GUICanvasLayer/MuteButton" to="GUICanvasLayer/MuteButton" method="_on_MuteButton_pressed"]
 
 [editable path="Player"]
+[editable path="Player/Health Bar"]
 [editable path="Player2"]
 [editable path="Player3"]
 [editable path="Popup"]

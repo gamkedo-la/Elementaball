@@ -285,8 +285,10 @@ func set_possession(player):
 func set_control(player):
 	if player == self:
 		controlling = true
+		get_node("Health Bar/AnimatedSprite").visible = true
 	else:
 		controlling = false
+		get_node("Health Bar/AnimatedSprite").visible = false
 
 func out_of_bounds():
 	if outOfBounds == false:
