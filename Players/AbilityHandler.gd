@@ -18,9 +18,12 @@ func _on_AbilityMenu1_initializeMenu(menu):
 
 func populate_menu(menu):
 	menu.clear()
-	menu.add_item("Select Ability")
 	for ability in selectableAbilities:
 		menu.add_item(ability.name)
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var selectedIndex = rng.randf_range(0, selectableAbilities.size()-1)
+	menu.select(selectedIndex)
 
 func populate_all_menus():
 	var allMenus = [abilityMenu1, abilityMenu2, abilityMenu3, abilityMenu4]
