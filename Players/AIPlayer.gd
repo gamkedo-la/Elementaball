@@ -219,7 +219,7 @@ func pass_and_shoot():
 	var distanceFromPossession = possessionPosition.distance_to(self.position)
 	if distanceFromPossession >= 200:
 		try_pass()	
-	elif distance2Goal <= 200:
+	elif distance2Goal <= 100:
 		try_kick()
 	
 	destination = Vector2(myGoal.position.x, self.position.y)
@@ -247,11 +247,11 @@ func get_in_position():
 	if ball.playerInPossession:
 		var myPosX = ball.playerInPossession.position.x
 		if go2Secondary:
-			destination = Vector2((myPosX + goal2Ball/2)*leftOrRight, myGoal.position.y)
+			destination = Vector2(myPosX + (goal2Ball*0.75*leftOrRight), myGoal.position.y)
 		else:
-			destination = Vector2((myPosX + goal2Ball/7)*leftOrRight, myZoneY)
+			destination = Vector2(myPosX + (goal2Ball*0.25*leftOrRight), myZoneY)
 		
-	velocity = (destination-self.position).normalized()*(speed*.75)
+	velocity = (destination-self.position).normalized()*(speed)
 	check_and_slide()
 
 func defend_zone():
