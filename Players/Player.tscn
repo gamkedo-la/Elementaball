@@ -876,6 +876,9 @@ margin_top = -22.4966
 margin_right = -8.75441
 margin_bottom = -22.4966
 
+[node name="AnimatedSprite" parent="Health Bar" index="1"]
+frame = 4
+
 [node name="AnimationTree" parent="." instance=ExtResource( 5 )]
 tree_root = SubResource( 37 )
 active = true
@@ -910,3 +913,5 @@ animation = "blue idle"
 [node name="InterceptArea" parent="." instance=ExtResource( 13 )]
 
 [node name="SteeringNode" parent="." instance=ExtResource( 18 )]
+
+[editable path="Health Bar"]
