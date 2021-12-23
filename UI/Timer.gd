@@ -17,7 +17,7 @@ func _ready():
 	
 func _process(_delta):
 	_calc_minutes()
-	self.text = "1st Half " + time
+	self.text = "Time Left " + time
 	
 	if Input.is_action_pressed("time_hack"):
 		timer.stop()

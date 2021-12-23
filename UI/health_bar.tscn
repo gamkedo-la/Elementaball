@@ -75,5 +75,5 @@ __meta__ = {
 visible = false
 position = Vector2( 7.95325, -17.2452 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
