@@ -2,7 +2,7 @@ extends Node2D
 
 
 onready var player = get_parent()
-onready var boundary = get_node("../../BoundaryLine")
+onready var boundary = get_node("../../Boundary Line")
 
 onready var max_speed = player.speed
 export var steer_force = 0.05

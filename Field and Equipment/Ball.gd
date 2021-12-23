@@ -325,7 +325,8 @@ func _on_BlockMenu_id_pressed(id):
 	SceneController.emit_signal("blocking", false)
 
 func calc_power_modifier(baseDamage):
-	baseDamage += attacker.power
+	if attacker:
+		baseDamage += attacker.power
 	return baseDamage
 	
 func calc_element_damage(attackType, defenderType, baseDamage):

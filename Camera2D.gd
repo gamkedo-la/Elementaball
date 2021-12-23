@@ -53,6 +53,7 @@ func _process(_delta):
 func set_targets(player):
 	if not player in targets:
 		targets = [player, ball]
+	set_process(true)
 
 func add_target(target):
 	if not target in targets:
