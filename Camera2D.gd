@@ -32,8 +32,9 @@ func _process(_delta):
 
 	var pos = Vector2.ZERO
 	for target in targets:
-		if target != null and target.position != null:
-			pos += target.get_position()
+		if target != null: 
+			if target.position != null:
+				pos += target.get_position()
 	pos /= targets.size()
 	position = lerp(position, pos, move_speed)
 	
@@ -52,6 +53,7 @@ func _process(_delta):
 func set_targets(player):
 	if not player in targets:
 		targets = [player, ball]
+	set_process(true)
 
 func add_target(target):
 	if not target in targets:

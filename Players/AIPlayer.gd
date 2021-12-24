@@ -9,6 +9,7 @@ var previousPosition = position
 #States for defense
 var onDefense = false
 var intercepting = false
+var enemyInZone
 var tacklingInProgress = false
 var blockingInProgress = false
 var tacklerIsSelf = false
@@ -64,12 +65,6 @@ var aniMachine
 
 onready var ball = get_node("../Ball")
 
-#variables for changing abilities
-var ability1Index = 0
-var ability2Index = 0
-var ability3Index = 0
-var ability4Index = 0
-
 func _ready():
 	aniMachine = $AnimationTree["parameters/playback"]
 	defenseZone = get_node("../" + fieldPosition)
@@ -98,6 +93,10 @@ func initialize_stats(stats : StartingStats):
 	ability3 = stats.ability3
 	ability4 = stats.ability4
 	selectableAbilities = stats.selectableAbilities
+	
+	if has_node("AbilityHandler"):
+		$AbilityHandler.selectableAbilities = selectableAbilities
+		$AbilityHandler.populate_all_menus()
 	
 	animStates = stats.animStates
 	
@@ -167,7 +166,8 @@ func _physics_process(_delta):
 				defend_zone()
 			
 			if ball.selecting == false:
-				velocity = move_and_slide(velocity)
+				#velocity = move_and_slide(velocity)
+				check_and_slide(velocity)
 				
 	elif ball.selecting == false and controlling == false:
 		
@@ -208,7 +208,7 @@ func _physics_process(_delta):
 
 	if tacklingInProgress and tacklerIsSelf:
 		aniMachine.travel(tackleAnim)
-	elif velocity.length() == 0:
+	elif velocity.length() == 0 or ball.selecting:
 		aniMachine.travel(idleAnim)
 	elif velocity.length() > 0:
 		aniMachine.travel(runningAnim)
@@ -219,7 +219,7 @@ func pass_and_shoot():
 	var distanceFromPossession = possessionPosition.distance_to(self.position)
 	if distanceFromPossession >= 200:
 		try_pass()	
-	elif distance2Goal <= 200:
+	elif distance2Goal <= 100:
 		try_kick()
 	
 	destination = Vector2(myGoal.position.x, self.position.y)
@@ -245,30 +245,20 @@ func get_in_position():
 		if "PlayerRight" in defenseZone.name or "EnemyLeft" in defenseZone.name:
 			randomDistanceY = -randomDistanceY
 	if ball.playerInPossession:
+		var myPosX = ball.playerInPossession.position.x
 		if go2Secondary:
-			destination = Vector2((ball.playerInPossession.position.x + goal2Ball/2)*leftOrRight, myGoal.position.y)
+			destination = Vector2(myPosX + (goal2Ball*0.75*leftOrRight), myGoal.position.y)
 		else:
-			destination = Vector2((ball.playerInPossession.position.x + goal2Ball/10)*leftOrRight, myZoneY)
+			destination = Vector2(myPosX + (goal2Ball*0.25*leftOrRight), myZoneY)
 		
-		if check_for_interceptor():
-			var newDestination = (self.position - ball.position).normalized()
-			destination += newDestination.rotated(PI/2)
-		
-	velocity = (destination-self.position).normalized()*(speed*.75)
+	velocity = (destination-self.position).normalized()*(speed)
 	check_and_slide()
-
-func check_for_interceptor():
-	var space_state = get_world_2d().direct_space_state
-	var result = space_state.intersect_ray(position,
-				ball.position,
-				[self, ball, ball.playerInPossession])
-	if result:
-		return true
-	else:
-		return false	
 
 func defend_zone():
 	destination = defenseZone.get_node("Path2D").curve.get_closest_point(ball.position)
+	
+	if enemyInZone:
+		destination = defenseZone.get_node("Path2D").curve.get_closest_point(enemyInZone.position)
 	
 	velocity = (destination-self.position).normalized()*speed;	
 	check_and_slide()
@@ -295,14 +285,16 @@ func set_possession(player):
 func set_control(player):
 	if player == self:
 		controlling = true
+		get_node("Health Bar/AnimatedSprite").visible = true
 	else:
 		controlling = false
+		get_node("Health Bar/AnimatedSprite").visible = false
 
 func out_of_bounds():
 	if outOfBounds == false:
 		outOfBounds = true
 		var throwInTeam
-		if ball.lastInPossession.is_in_group("player_team"):
+		if ball.lastInPossession == "player_team":
 			throwInTeam = "enemy_team"
 			if self.is_in_group("player_team"):
 				onDefense = true
@@ -357,11 +349,9 @@ func _move_to_target():
 			_try_steal();
 	else: check_and_slide()
 		
-func check_and_slide(distance2Target = destination.distance_to(self.position), delta = get_physics_process_delta_time()):
-	if distance2Target >= velocity.length() * delta:
-		return
-	else:
-		velocity = Vector2()
+func check_and_slide(delta = get_physics_process_delta_time()):
+	if $SteeringNode:
+		$SteeringNode.steer(delta)
 
 func try_kick():
 	prekick()
@@ -438,12 +428,30 @@ func reset_intercept():
 	
 func check_steal():
 	if _check_collisions() and _check_collisions() == ball.playerInPossession:
-		ball.calc_tackle_damage(type)
-		yield(ball, "calculated")
-		intercepting = false
-		tacklerIsSelf = false
-		SceneController.emit_signal("inPossession", self)
-		SceneController.emit_signal("tackling", false)
+		if self.controlling:
+			#Bring up the Tackle Menu to let the player choose an ability
+			ball.selecting = true
+			var tackleMenu = get_node("../Popup/TackleMenu")
+			tackleMenu.clear()
+			var player = ball.controllingPlayer
+			#Add the tackle abilities available for the player to the menu
+			#TODO: Make a default (no element) tackle ability and calculate damage for it
+			var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,player.defaultTackle]
+			ball.menuAbilities = []
+			if abilities.size() > 0:
+				for ability in abilities:
+					if ability != null and ability.action == "Tackle":
+						tackleMenu.add_item(ability.name)
+						ball.menuAbilities.append(ability)
+			tackleMenu.popup()
+			tackleMenu.rect_position = self.global_position
+		else:
+			ball.calc_tackle_damage(type)
+			yield(ball, "calculated")
+			intercepting = false
+			tacklerIsSelf = false
+			SceneController.emit_signal("inPossession", self)
+			SceneController.emit_signal("tackling", false)
 	start_steal_cooldown()
 
 func start_steal_cooldown():
@@ -454,46 +462,18 @@ func start_steal_cooldown():
 func _on_InterceptArea_body_entered(body):
 	if body == ball.playerInPossession and body.is_in_group(myOpponent):
 		intercepting = true
+	elif body.is_in_group(myOpponent):
+		enemyInZone = body
 
 func _on_InterceptArea_body_exited(body):
 	if body == ball.playerInPossession and body.is_in_group(myOpponent):
 		intercepting = false
-	
+	elif body.is_in_group(myOpponent):
+		enemyInZone = body
+		
 func _check_collisions():
 	var slide_count = get_slide_count()
 	if slide_count:
 		var collision = get_slide_collision(slide_count - 1)
 		var collider = collision.collider
 		return collider
-		
-func _on_Ability1_change(direction, buttons):
-	ability1Index += direction
-	if ability1Index > selectableAbilities.size() - 1:
-		ability1Index = 0
-	
-	buttons.get_node("Label").text = selectableAbilities[ability1Index].name
-	ability1 = selectableAbilities[ability1Index]
-
-func _on_Ability2_change(direction, buttons):
-	ability2Index += direction
-	if ability2Index > selectableAbilities.size() - 1:
-		ability2Index = 0
-	
-	buttons.get_node("Label").text = selectableAbilities[ability2Index].name
-	ability2 = selectableAbilities[ability2Index]
-	
-func _on_Ability3_change(direction, buttons):
-	ability3Index += direction
-	if ability3Index > selectableAbilities.size() - 1:
-		ability3Index = 0
-	
-	buttons.get_node("Label").text = selectableAbilities[ability3Index].name
-	ability3 = selectableAbilities[ability3Index]
-	
-func _on_Ability4_change(direction, buttons):
-	ability4Index += direction
-	if ability4Index > selectableAbilities.size() - 1:
-		ability4Index = 0
-	
-	buttons.get_node("Label").text = selectableAbilities[ability4Index].name
-	ability4 = selectableAbilities[ability4Index]

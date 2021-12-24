@@ -1,5 +1,8 @@
 extends Label
 
+func _ready():
+# warning-ignore:return_value_discarded
+	SceneController.connect("allKO",self,"all_KO")
 
 func _on_Timer_gameOver(winOrLose):
 	if winOrLose == "win":
@@ -8,3 +11,9 @@ func _on_Timer_gameOver(winOrLose):
 		self.text = "You lost!"
 	if winOrLose == "draw":
 		self.text = "It's a draw!"
+
+func all_KO(winningTeam):
+	if winningTeam == "blue":
+		self.text = "You won!"
+	else:
+		self.text = "You lost!"

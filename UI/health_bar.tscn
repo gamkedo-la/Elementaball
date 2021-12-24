@@ -1,10 +1,55 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/health_bar_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Art/Sprites/player_pointer.png" type="Texture" id=2]
 [ext_resource path="res://Art/UI/health_bar_foreground.png" type="Texture" id=3]
 [ext_resource path="res://UI/health_bar.gd" type="Script" id=4]
 
 [sub_resource type="StreamTexture" id=1]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 15, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 15, 0, 15, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 30, 0, 15, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 45, 0, 15, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 60, 0, 15, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 75, 0, 15, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 90, 0, 15, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 105, 0, 15, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 120, 0, 15, 32 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -25,3 +70,10 @@ texture_progress = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 7.95325, -17.2452 )
+frames = SubResource( 2 )
+frame = 1
+playing = true

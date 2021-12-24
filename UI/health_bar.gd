@@ -17,4 +17,16 @@ func update_healthbar(value):
 		healthbar.texture_progress = barYellow
 	if value < healthbar.max_value * 0.35:
 		healthbar.texture_progress = barRed
+	if value <= 0:
+		if get_parent().is_in_group("player_team"):
+			SceneController.emit_signal("knockout", "blue")
+		else:
+			SceneController.emit_signal("knockout", "red")
+		yield(get_tree(), "idle_frame")
+		if get_parent() == get_node("../../Ball").playerInPossession:
+			SceneController.emit_signal("inPossession", null)
+		if get_parent().controlling:
+			SceneController.next_player()
+		
+		get_parent().call_deferred("free")
 	healthbar.value = value

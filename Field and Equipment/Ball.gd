@@ -75,7 +75,10 @@ func set_possession(player):
 	playerInPossession = player
 	if player != null:
 		ballEffects.visible = false
-		lastInPossession = player
+		if player.is_in_group("player_team"):
+			lastInPossession = "player_team"
+		else:
+			lastInPossession = "enemy_team"
 		possessionNode = player.get_node("ThingsToFlip/Position2D")
 		if player in get_tree().get_nodes_in_group("player_team"):
 			dribbling = true
@@ -135,26 +138,7 @@ func player_pass():
 	kickMenu.rect_position = playerInPossession.global_position
 
 func player_steal():
-	#If player is colliding with an enemy, that enemy becomes the target
-	if controllingPlayer._check_player_collisions("Enemy") != null:
-		target = controllingPlayer._check_player_collisions("Enemy")
-		
-		#Bring up the Tackle Menu to let the player choose an ability
-		selecting = true
-		var tackleMenu = get_node("../Popup/TackleMenu")
-		tackleMenu.clear()
-		var player = controllingPlayer
-		#Add the tackle abilities available for the player to the menu
-		#TODO: Make a default (no element) tackle ability and calculate damage for it
-		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,player.defaultTackle]
-		menuAbilities = []
-		if abilities.size() > 0:
-			for ability in abilities:
-				if ability != null and ability.action == "Tackle":
-					tackleMenu.add_item(ability.name)
-					menuAbilities.append(ability)
-		tackleMenu.popup()
-		tackleMenu.rect_position = controllingPlayer.global_position
+	controllingPlayer._try_steal()
 
 func player_block(tackledType):
 	selecting = true
@@ -258,8 +242,8 @@ func _on_PassMenu_id_pressed(id, kicker = playerInPossession):
 		if player.position.distance_to(kicker.position) < mateDistance:
 			mateDistance = player.position.distance_to(kicker.position)
 			nearestMate = player
-	
-	print(nearestMate.name)
+	if nearestMate == null:
+		nearestMate = kicker.myGoal
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	SceneController.emit_signal("inPossession", null)
@@ -315,6 +299,7 @@ func _on_TackleMenu_id_pressed(id):
 	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
 	attacker = find_attacker("tackle")
 	calc_tackle_damage(menuAbilities[id].type)
+	yield(get_tree(), "idle_frame")
 	selecting = false
 	
 func calc_tackle_damage(tackledType):
@@ -340,7 +325,8 @@ func _on_BlockMenu_id_pressed(id):
 	SceneController.emit_signal("blocking", false)
 
 func calc_power_modifier(baseDamage):
-	baseDamage += attacker.power
+	if attacker:
+		baseDamage += attacker.power
 	return baseDamage
 	
 func calc_element_damage(attackType, defenderType, baseDamage):
