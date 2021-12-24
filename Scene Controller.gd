@@ -35,9 +35,6 @@ func _ready():
 	connect("inPossession", self, "possession_control")
 
 func _process(_delta):
-	if Input.is_action_pressed("ui_exit"):
-		get_tree().quit()
-		
 	if Input.is_action_just_pressed("ui_next_player"):
 		next_player()
 		

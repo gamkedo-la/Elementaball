@@ -14,6 +14,7 @@ var rightIndex = 0
 signal centerSpriteChange (sprite)
 signal leftSpriteChange (sprite)
 signal rightSpriteChange (sprite)
+signal matchStarted
 
 onready var centerSprite = get_node("SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSprite")
 onready var centerText = get_node("SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/CenterFieldSelect/Label")
@@ -100,3 +101,4 @@ func _on_CloseButton_pressed():
 func _on_StartButton_pressed():
 	$AbilityMenuPopup.hide()
 	get_tree().paused = false
+	emit_signal("matchStarted")
