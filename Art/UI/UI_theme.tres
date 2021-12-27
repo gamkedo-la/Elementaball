@@ -1,11 +1,26 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=19 format=2]
 
 [ext_resource path="res://Fonts/UI_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Art/UI/button.png" type="Texture" id=2]
+[ext_resource path="res://Art/UI/menu_box.png" type="Texture" id=2]
 [ext_resource path="res://Art/UI/unpressed_button.png" type="Texture" id=3]
+[ext_resource path="res://Art/UI/pressed_button.png" type="Texture" id=4]
+[ext_resource path="res://Art/UI/focus_for_button.png" type="Texture" id=5]
+[ext_resource path="res://Art/UI/focused_button.png" type="Texture" id=6]
+[ext_resource path="res://Art/UI/health_bar_foreground.png" type="Texture" id=7]
+[ext_resource path="res://Art/UI/down_arrow.png" type="Texture" id=8]
+[ext_resource path="res://Art/UI/radio_item.png" type="Texture" id=9]
+[ext_resource path="res://Art/UI/checked_radio_item.png" type="Texture" id=10]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 20, 22 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 1.0
+margin_bottom = 3.0
 
 [sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 20, 20 )
 margin_left = 5.0
 margin_right = 5.0
@@ -21,12 +36,44 @@ margin_top = 5.0
 margin_bottom = 7.0
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 16, 16 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 20, 20 )
 margin_left = 5.0
 margin_right = 5.0
 margin_top = 4.0
 margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 1.0
+margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 16, 6 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 1.0
+margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
 
 [resource]
 default_font = ExtResource( 1 )
@@ -37,7 +84,52 @@ Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = null
-Button/styles/focus = null
+Button/styles/focus = SubResource( 4 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 1 )
 Button/styles/pressed = SubResource( 2 )
+MenuButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+MenuButton/colors/font_color_disabled = Color( 1, 1, 1, 0.3 )
+MenuButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+MenuButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+MenuButton/constants/hseparation = 3
+MenuButton/fonts/font = null
+MenuButton/styles/disabled = SubResource( 1 )
+MenuButton/styles/focus = SubResource( 4 )
+MenuButton/styles/hover = SubResource( 3 )
+MenuButton/styles/normal = SubResource( 1 )
+MenuButton/styles/pressed = SubResource( 2 )
+OptionButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+OptionButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+OptionButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+OptionButton/constants/arrow_margin = 5
+OptionButton/constants/hseparation = 2
+OptionButton/fonts/font = null
+OptionButton/icons/arrow = ExtResource( 8 )
+OptionButton/styles/disabled = null
+OptionButton/styles/focus = SubResource( 4 )
+OptionButton/styles/hover = SubResource( 3 )
+OptionButton/styles/normal = SubResource( 1 )
+OptionButton/styles/pressed = SubResource( 2 )
+Panel/styles/panel = SubResource( 7 )
+PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
+PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
+PopupMenu/colors/font_color_hover = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/colors/font_color_separator = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = null
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = ExtResource( 10 )
+PopupMenu/icons/radio_unchecked = ExtResource( 9 )
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = SubResource( 6 )
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource( 5 )
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
+PopupPanel/styles/panel = SubResource( 8 )

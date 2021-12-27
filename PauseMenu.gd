@@ -2,6 +2,9 @@ extends Control
 
 var CanPause = false
 
+func _ready():
+	get_node("PauseContainer/Resume").grab_focus()
+
 func _process(_delta):
 	if Input.is_action_just_pressed("pause") && CanPause:
 		get_tree().paused = !get_tree().paused

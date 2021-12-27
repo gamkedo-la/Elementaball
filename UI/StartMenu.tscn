@@ -641,7 +641,9 @@ tracks/0/keys = {
 font_data = ExtResource( 4 )
 
 [node name="StartMenu" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 2 )
+startButton = NodePath("MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 1 )]
 follow_viewport_enable = true

@@ -16,7 +16,11 @@ var bg_height := 85.0
 onready var plaxTween = Tween.new()
 onready var rnd = RandomNumberGenerator.new()
 
+export var startButton : NodePath
+
 func _ready():
+	get_tree().paused = true
+	get_node(startButton).grab_focus()
 	add_child(plaxTween)
 	if not plaxTween.is_connected("tween_all_completed", self, "_start_camera_animation"):
 		assert(plaxTween.connect("tween_all_completed", self, "_start_camera_animation") == OK)

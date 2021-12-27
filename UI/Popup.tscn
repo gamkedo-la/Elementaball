@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Fonts/UI_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Art/UI/label_box.png" type="Texture" id=2]
 
 [node name="Popup" type="Popup"]
 visible = true
@@ -23,21 +24,30 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="KickMenu"]
-margin_left = 28.4678
-margin_top = -8.24069
-margin_right = 80.4678
-margin_bottom = 5.75931
+margin_left = 30.57
+margin_top = -11.1839
+margin_right = 82.57
+margin_bottom = 2.81615
 custom_fonts/font = ExtResource( 1 )
 text = "Shot Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="ColorRect" parent="KickMenu/Label"]
+[node name="TextureRect" type="TextureRect" parent="KickMenu/Label"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.254902, 0.572549, 0.764706, 1 )
+margin_left = -5.0
+margin_top = -2.0
+margin_right = 5.0
+margin_bottom = -2.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PassMenu" type="PopupMenu" parent="."]
 margin_top = 0.0558777
@@ -50,21 +60,27 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="PassMenu"]
-margin_left = 28.4678
-margin_top = -8.24069
-margin_right = 80.4678
-margin_bottom = 5.75931
+margin_left = 30.57
+margin_top = -11.1839
+margin_right = 83.57
+margin_bottom = 2.81615
 custom_fonts/font = ExtResource( 1 )
 text = "Pass Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="ColorRect" parent="PassMenu/Label"]
+[node name="TextureRect" type="TextureRect" parent="PassMenu/Label"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.254902, 0.572549, 0.764706, 1 )
+margin_left = -5.0
+margin_top = -2.0
+margin_right = 5.0
+margin_bottom = -2.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
 
 [node name="TackleMenu" type="PopupMenu" parent="."]
 margin_top = 0.0558777
@@ -77,21 +93,27 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TackleMenu"]
-margin_left = 28.4678
-margin_top = -8.24069
-margin_right = 80.4678
-margin_bottom = 5.75931
+margin_left = 30.57
+margin_top = -11.1839
+margin_right = 88.57
+margin_bottom = 2.81615
 custom_fonts/font = ExtResource( 1 )
 text = "Steal Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="ColorRect" parent="TackleMenu/Label"]
+[node name="TextureRect" type="TextureRect" parent="TackleMenu/Label"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.254902, 0.572549, 0.764706, 1 )
+margin_left = -5.0
+margin_top = -2.0
+margin_right = 5.0
+margin_bottom = -2.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
 
 [node name="BlockMenu" type="PopupMenu" parent="."]
 margin_top = 0.0558777
@@ -104,18 +126,24 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="BlockMenu"]
-margin_left = 28.4678
-margin_top = -8.24069
-margin_right = 80.4678
-margin_bottom = 5.75931
+margin_left = 30.57
+margin_top = -11.1839
+margin_right = 89.57
+margin_bottom = 2.81615
 custom_fonts/font = ExtResource( 1 )
 text = "Block Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="ColorRect" parent="BlockMenu/Label"]
+[node name="TextureRect" type="TextureRect" parent="BlockMenu/Label"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.254902, 0.572549, 0.764706, 1 )
+margin_left = -5.0
+margin_top = -2.0
+margin_right = 5.0
+margin_bottom = -2.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7

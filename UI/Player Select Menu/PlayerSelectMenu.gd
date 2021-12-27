@@ -3,7 +3,6 @@ extends Control
 export(Array, Resource) var selectablePlayers
 export(Array, Resource) var selectablePitches
 
-export var closeButton : NodePath
 export var startButton : NodePath
 
 var pitchIndex = 0
@@ -36,8 +35,7 @@ var main
 
 func _ready():
 	get_tree().paused = true
-	$SelectionMenuPopup.show()
-	get_node(closeButton).grab_focus()
+	$SelectionMenuPopup.popup()
 	centerPlayer.starting_stats = selectablePlayers[centerIndex]
 	centerPlayer.initialize_stats(centerPlayer.starting_stats)
 	rightPlayer.starting_stats = selectablePlayers[rightIndex]
