@@ -24,6 +24,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	SceneController.connect("controlling", self, "set_targets")
 	SceneController.connect("inPossession", self, "set_targets")
+	SceneController.connect("knockout", self, "remove_target")
 	set_targets(get_node("../Player"))
 
 func _process(_delta):
@@ -64,6 +65,6 @@ func add_target(target):
 	if not target in targets:
 		targets.append(target)
 
-func remove_target(target):
+func remove_target(target, team):
 	if target in targets:
 		targets.remove(target)

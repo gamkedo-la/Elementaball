@@ -159,7 +159,7 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="AnimatedSprite" parent="Player/Health Bar" index="1"]
 visible = true
-frame = 2
+frame = 4
 
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
@@ -179,7 +179,7 @@ fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player2/Health Bar" index="1"]
-frame = 2
+frame = 4
 
 [node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 2 )
@@ -194,7 +194,7 @@ fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player3/Health Bar" index="1"]
-frame = 2
+frame = 4
 
 [node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 3 )
@@ -243,10 +243,10 @@ collision_layer = 4
 collision_mask = 1
 
 [node name="Position2D" type="Position2D" parent="Goal"]
-position = Vector2( 63.113, 35.2653 )
+position = Vector2( 42.9832, 3.48141 )
 
 [node name="Position2D2" type="Position2D" parent="Goal"]
-position = Vector2( 31.28, -82.489 )
+position = Vector2( 21.7448, -68.716 )
 
 [node name="Enemy Goal" parent="." groups=[
 "goal",
@@ -267,10 +267,10 @@ collision_mask = 1
 position = Vector2( 2.33832, -32.6637 )
 
 [node name="Position2D" type="Position2D" parent="Enemy Goal"]
-position = Vector2( -29.151, -102.029 )
+position = Vector2( -34.4483, -73.4235 )
 
 [node name="Position2D2" type="Position2D" parent="Enemy Goal"]
-position = Vector2( -77.3624, 59.4233 )
+position = Vector2( -66.238, -2.55529 )
 
 [node name="Enemy" parent="." groups=[
 "all_players",
@@ -298,7 +298,7 @@ margin_bottom = 6.0
 
 [node name="AnimatedSprite" parent="Enemy/Health Bar" index="1"]
 position = Vector2( 7.8787, -8.25085 )
-frame = 0
+frame = 2
 
 [node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 9 )
@@ -324,7 +324,7 @@ margin_top = -21.0
 margin_bottom = -21.0
 
 [node name="AnimatedSprite" parent="Enemy3/Health Bar" index="1"]
-frame = 0
+frame = 2
 
 [node name="AnimationTree" parent="Enemy3" index="5"]
 parameters/playback = SubResource( 10 )
@@ -346,7 +346,7 @@ margin_top = -21.0
 margin_bottom = -21.0
 
 [node name="AnimatedSprite" parent="Enemy2/Health Bar" index="1"]
-frame = 0
+frame = 2
 
 [node name="EnemyCollider" parent="Enemy2" index="3"]
 rotation = 1.52987
@@ -447,6 +447,7 @@ layer = 10
 
 [node name="ScoreBoard" parent="GUICanvasLayer" instance=ExtResource( 13 )]
 margin_bottom = 30.0
+enemyGoal = NodePath("../../Enemy Goal/Goal")
 
 [node name="BlueScore" parent="GUICanvasLayer/ScoreBoard/HBoxContainer" index="0"]
 margin_bottom = 25.0
@@ -521,6 +522,9 @@ margin_bottom = 449.0
 
 [node name="EndCondition" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 script = ExtResource( 21 )
+
+[node name="FinalScore" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer" index="1"]
+enemyGoal = NodePath("../../../../../../../../../Enemy Goal/Goal")
 
 [node name="PauseMenu" type="Control" parent="GUICanvasLayer"]
 pause_mode = 2

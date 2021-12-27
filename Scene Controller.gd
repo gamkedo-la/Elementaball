@@ -1,7 +1,7 @@
 extends Node
 
 # warning-ignore:unused_signal
-signal goalScored(kicker)
+signal goalScored(goal)
 # warning-ignore:unused_signal
 signal inPossession(player)
 signal controlling(player)
@@ -12,7 +12,7 @@ signal blocking(trueOrFalse)
 # warning-ignore:unused_signal
 signal outOfBounds()
 # warning-ignore:unused_signal
-signal knockout(team)
+signal knockout(player, team)
 # warning-ignore:unused_signal
 signal allKO(winningTeam)
 

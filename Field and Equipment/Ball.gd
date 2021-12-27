@@ -194,8 +194,8 @@ func out_of_bounds():
 	print("out of bounds")
 	SceneController.emit_signal("outOfBounds")
 
-func score_goal():
-	SceneController.emit_signal("goalScored", attacker)
+func score_goal(goal):
+	SceneController.emit_signal("goalScored", goal)
 	out_of_bounds()
 	goalScoring = false
 
@@ -400,7 +400,7 @@ func _on_GoalBoundaryDetector_body_entered(body):
 	if "Goal" in body.name:
 		if goalScoring == false:
 			goalScoring = true
-			score_goal()
+			score_goal(body)
 
 
 

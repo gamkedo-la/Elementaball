@@ -8,6 +8,8 @@ var redScore = 0
 var blueKO = 0
 var redKO = 0
 
+export var enemyGoal : NodePath
+
 func _ready():
 	refresh_score()
 # warning-ignore:return_value_discarded
@@ -15,15 +17,15 @@ func _ready():
 # warning-ignore:return_value_discarded
 	SceneController.connect("knockout", self, "record_KO")
 	
-func score_goal(kicker):
-	if kicker in get_tree().get_nodes_in_group("player_team"):
-		blueScore += 1
-	else:
+func score_goal(goal):
+	if goal == get_node(enemyGoal):
 		redScore += 1
+	else:
+		blueScore += 1
 		
 	refresh_score()
 
-func record_KO(team):
+func record_KO(player, team):
 	if team == "blue":
 		blueKO += 1
 	else:
