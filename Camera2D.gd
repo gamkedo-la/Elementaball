@@ -23,6 +23,7 @@ func _ready():
 	add_target(ball)
 # warning-ignore:return_value_discarded
 	SceneController.connect("controlling", self, "set_targets")
+	SceneController.connect("inPossession", self, "set_targets")
 	set_targets(get_node("../Player"))
 
 func _process(_delta):
@@ -51,9 +52,13 @@ func _process(_delta):
 	zoom = lerp(zoom, Vector2.ONE * zoomTarget, zoom_speed)
 
 func set_targets(player):
-	if not player in targets:
-		targets = [player, ball]
-	set_process(true)
+	if player:
+		yield(get_tree(), "idle_frame")
+		if player.inPossession:
+			targets = [player, player.myGoal]
+		else:
+			targets = [player, ball]
+		set_process(true)
 
 func add_target(target):
 	if not target in targets:

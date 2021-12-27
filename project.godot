@@ -43,8 +43,8 @@ AudioQueen="*res://Sounds/AudioQueen.tscn"
 
 [display]
 
-window/size/width=320
-window/size/height=180
+window/size/width=480
+window/size/height=270
 window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"

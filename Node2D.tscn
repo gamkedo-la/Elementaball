@@ -115,6 +115,7 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="AnimatedSprite" parent="Player/Health Bar" index="1"]
 visible = true
+frame = 3
 
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
@@ -133,6 +134,9 @@ inPossession = false
 fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
+[node name="AnimatedSprite" parent="Player2/Health Bar" index="1"]
+frame = 3
+
 [node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 2 )
 
@@ -144,6 +148,9 @@ controlling = false
 inPossession = false
 fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
+
+[node name="AnimatedSprite" parent="Player3/Health Bar" index="1"]
+frame = 3
 
 [node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 3 )
@@ -158,9 +165,6 @@ items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick
 [node name="PassMenu" parent="Popup" index="1"]
 items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick", null, 0, false, false, 1, 0, null, "", false ]
 
-[node name="TextureRect" parent="Popup/PassMenu/Label" index="0"]
-color = Color( 0.254902, 0.572549, 0.764706, 1 )
-
 [node name="TackleMenu" parent="Popup" index="2"]
 items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Swipe", null, 0, false, false, 1, 0, null, "", false, "Flame Tackle", null, 0, false, false, 2, 0, null, "", false ]
 
@@ -173,7 +177,7 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 8 )
 animation = "water ball"
-frame = 3
+frame = 2
 playing = true
 script = ExtResource( 16 )
 
@@ -251,7 +255,6 @@ margin_bottom = 6.0
 
 [node name="AnimatedSprite" parent="Enemy/Health Bar" index="1"]
 position = Vector2( 7.8787, -8.25085 )
-frame = 2
 
 [node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 9 )
@@ -276,9 +279,6 @@ position = Vector2( -0.161133, 0.0360718 )
 margin_top = -21.0
 margin_bottom = -21.0
 
-[node name="AnimatedSprite" parent="Enemy3/Health Bar" index="1"]
-frame = 2
-
 [node name="AnimationTree" parent="Enemy3" index="5"]
 parameters/playback = SubResource( 10 )
 
@@ -297,9 +297,6 @@ starting_stats = ExtResource( 10 )
 [node name="Health Bar" parent="Enemy2" index="2"]
 margin_top = -21.0
 margin_bottom = -21.0
-
-[node name="AnimatedSprite" parent="Enemy2/Health Bar" index="1"]
-frame = 2
 
 [node name="EnemyCollider" parent="Enemy2" index="3"]
 rotation = 1.52987
@@ -356,8 +353,14 @@ curve = SubResource( 17 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
 smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
 script = ExtResource( 7 )
+min_zoom = 0.5
+max_zoom = 2
 margin = Vector2( 200, 100 )
 
 [node name="Outer Walls" type="StaticBody2D" parent="."]
@@ -394,7 +397,18 @@ layer = 10
 
 [node name="ScoreBoard" parent="GUICanvasLayer" instance=ExtResource( 13 )]
 margin_bottom = 30.0
-color = Color( 0.137255, 0.137255, 0.137255, 0.384314 )
+
+[node name="BlueScore" parent="GUICanvasLayer/ScoreBoard/HBoxContainer" index="0"]
+margin_left = 123.0
+margin_right = 198.0
+
+[node name="RedScore" parent="GUICanvasLayer/ScoreBoard/HBoxContainer" index="1"]
+margin_left = 202.0
+margin_right = 277.0
+
+[node name="Timer" parent="GUICanvasLayer/ScoreBoard/HBoxContainer" index="2"]
+margin_left = 281.0
+margin_right = 356.0
 
 [node name="PlayerSelectMenu" parent="GUICanvasLayer" instance=ExtResource( 17 )]
 visible = false
@@ -405,6 +419,58 @@ startButton = NodePath("AbilityMenuPopup/MarginContainer/SelectionMenuContainer/
 [node name="AbilityMenuPopup" parent="GUICanvasLayer/PlayerSelectMenu" index="1"]
 script = ExtResource( 22 )
 closeButton = NodePath("MarginContainer/SelectionMenuContainer/Top Margin/StartButton")
+
+[node name="MarginContainer" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup" index="0"]
+margin_right = 773.0
+margin_bottom = 453.0
+
+[node name="SelectionMenuContainer" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer" index="0"]
+margin_right = 769.0
+margin_bottom = 449.0
+
+[node name="AbilityMenu1" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu2" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu3" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu4" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu1" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer2" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu2" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer2" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu3" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu4" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu1" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu2" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu3" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu4" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="MarginContainer" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" index="0"]
+margin_right = 773.0
+margin_bottom = 453.0
+
+[node name="SelectionMenuContainer" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer" index="0"]
+margin_right = 769.0
+margin_bottom = 449.0
 
 [node name="EndCondition" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 script = ExtResource( 21 )
