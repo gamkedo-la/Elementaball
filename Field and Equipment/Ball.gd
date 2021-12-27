@@ -263,10 +263,12 @@ func initialize_kick(id):
 	if menuAbilities[id].type == "None":
 		kickedType = "None"
 	if menuAbilities[id].type == "Green":
-		#get_node("Sprite").modulate = Color(0,255,0)
+		ballEffects.visible = true
+		ballEffects.animation = "plant ball"
 		kickedType = "Green"
 	if menuAbilities[id].type == "Red":
-		#get_node("Sprite").modulate = Color(255,0,0)
+		ballEffects.visible = true
+		ballEffects.animation = "fire ball"
 		kickedType = "Red"
 	if menuAbilities[id].type == "Blue":
 		ballEffects.visible = true

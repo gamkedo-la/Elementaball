@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dragito_idle.png-3824cece2bd0bc6284a85c9f02e5cbb3.stex"
+path="res://.import/fire_ball.png-a607c58c6dfd178cebb93e29aad743be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/dragito_idle.png"
-dest_files=[ "res://.import/dragito_idle.png-3824cece2bd0bc6284a85c9f02e5cbb3.stex" ]
+source_file="res://Art/Sprites/Equipment/fire_ball.png"
+dest_files=[ "res://.import/fire_ball.png-a607c58c6dfd178cebb93e29aad743be.stex" ]
 
 [params]
 

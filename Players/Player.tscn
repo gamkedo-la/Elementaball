@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Players/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/blue_idle.png" type="Texture" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://Art/Sprites/blue_run/blue_run3.png" type="Texture" id=11]
 [ext_resource path="res://Art/Sprites/blue_run/blue_run2.png" type="Texture" id=12]
 [ext_resource path="res://Players/BallInterceptArea.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Art/Sprites/dragito_enemy_idle.png" type="Texture" id=14]
+[ext_resource path="res://Art/Sprites/dragito_idle.png" type="Texture" id=14]
 [ext_resource path="res://Players/red_player_stats.tres" type="Resource" id=15]
 [ext_resource path="res://Art/Sprites/green_idle.png" type="Texture" id=16]
 [ext_resource path="res://Art/Sprites/green_run_1.png" type="Texture" id=17]
@@ -821,11 +821,25 @@ tracks/8/keys = {
 radius = 6.55289
 height = 16.0149
 
-[sub_resource type="SpriteFrames" id=50]
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=51]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "blue run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "blue idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 50 ), SubResource( 50 ) ],
+"loop": true,
+"name": "red idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
@@ -838,19 +852,9 @@ animations = [ {
 "name": "green idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "blue idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 2 ) ],
 "loop": false,
 "name": "blue tackle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "red idle",
 "speed": 5.0
 } ]
 
@@ -877,7 +881,7 @@ margin_right = -8.75441
 margin_bottom = -22.4966
 
 [node name="AnimatedSprite" parent="Health Bar" index="1"]
-frame = 4
+frame = 5
 
 [node name="AnimationTree" parent="." instance=ExtResource( 5 )]
 tree_root = SubResource( 37 )
@@ -907,7 +911,7 @@ shape = SubResource( 49 )
 position = Vector2( 11.9988, 4.74104 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
-frames = SubResource( 50 )
+frames = SubResource( 51 )
 animation = "blue idle"
 
 [node name="InterceptArea" parent="." instance=ExtResource( 13 )]
