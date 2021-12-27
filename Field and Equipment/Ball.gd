@@ -185,7 +185,11 @@ func check_kick_collisions():
 			#TODO: Calculate Enemy failing their interception and the results
 			if ("Player" in body.name or "Enemy" in body.name) and body != attacker:
 				if attacker:
-					calc_intercept_damage(body)
+					if attacker.myTeam != body.myTeam:
+						calc_intercept_damage(body)
+					else:
+						kicking = false
+						SceneController.emit_signal("inPossession", body)
 				else:
 					kicking = false
 					SceneController.emit_signal("inPossession", body)
