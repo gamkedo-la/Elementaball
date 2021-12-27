@@ -163,6 +163,8 @@ func player_block(tackledType):
 		
 	var damageReduction = calc_damage_reduction(tackledType)
 	totalDamage = ((totalDamage * damageReduction) - blocker.power)
+	if totalDamage <= 0:
+		totalDamage = 1
 	target.HP -= totalDamage	
 	target.get_node("Health Bar").update_healthbar(target.HP)
 	emit_signal("calculated")
@@ -355,7 +357,7 @@ func calc_element_damage(attackType, defenderType, baseDamage):
 	return totalDamage
 	
 func calc_damage_reduction(attackType):
-	var damageReduction = 0
+	var damageReduction = 0.9
 	if attackType == "Green" and blockedType == "Green":
 		damageReduction = 0.75
 	elif attackType == "Green" and blockedType == "Red":
