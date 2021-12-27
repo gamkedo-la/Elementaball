@@ -30,7 +30,6 @@ var allPlayers = []
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	set_process(true)
-	playerTeam = get_tree().get_nodes_in_group("player_team")
 # warning-ignore:return_value_discarded
 	connect("inPossession", self, "possession_control")
 

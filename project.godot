@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Elementaball"
-run/main_scene="res://Node2D.tscn"
+run/main_scene="res://UI/StartMenu.tscn"
 config/icon="res://Art/Sprites/icon.png"
 
 [autoload]
