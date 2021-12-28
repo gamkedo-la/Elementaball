@@ -28,6 +28,7 @@ func _ready():
 	set_targets(get_node("../Player"))
 
 func _process(_delta):
+	yield(get_tree(), "idle_frame")
 	if !targets:
 		return
 	# Keep the camera centered between the targets

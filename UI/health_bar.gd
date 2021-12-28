@@ -5,6 +5,7 @@ var barGreen = preload("res://Art/UI/health_bar_green.png")
 var barYellow = preload("res://Art/UI/health_bar_yellow.png")
 
 onready var healthbar = get_node("Health Bar")
+onready var animPlayer = get_node("StatusAnimations")
 
 func _ready():
 	if get_parent() and get_parent().get("maxHP"):
@@ -27,6 +28,12 @@ func update_healthbar(value):
 			SceneController.emit_signal("inPossession", null)
 		if get_parent().controlling:
 			SceneController.next_player()
-		
+		animPlayer.visible = true
+		animPlayer.animation = "KO"
+		animPlayer.frame = 0
+		animPlayer.playing = true
+		yield(animPlayer,"animation_finished")
 		get_parent().call_deferred("free")
 	healthbar.value = value
+
+
