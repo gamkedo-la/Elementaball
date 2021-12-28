@@ -68,4 +68,4 @@ func add_target(target):
 
 func remove_target(target, team):
 	if target in targets:
-		targets.remove(target)
+		targets.erase(target)

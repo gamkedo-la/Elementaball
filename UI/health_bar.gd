@@ -19,11 +19,6 @@ func update_healthbar(value):
 	if value < healthbar.max_value * 0.35:
 		healthbar.texture_progress = barRed
 	if value <= 0:
-		if get_parent().is_in_group("player_team"):
-			SceneController.emit_signal("knockout", get_parent(), "blue")
-		else:
-			SceneController.emit_signal("knockout", get_parent(), "red")
-		yield(get_tree(), "idle_frame")
 		if get_parent() == get_node("../../Ball").playerInPossession:
 			SceneController.emit_signal("inPossession", null)
 		if get_parent().controlling:
@@ -33,6 +28,10 @@ func update_healthbar(value):
 		animPlayer.frame = 0
 		animPlayer.playing = true
 		yield(animPlayer,"animation_finished")
+		if get_parent().is_in_group("player_team"):
+			SceneController.emit_signal("knockout", get_parent(), "blue")
+		else:
+			SceneController.emit_signal("knockout", get_parent(), "red")
 		get_parent().call_deferred("free")
 	healthbar.value = value
 

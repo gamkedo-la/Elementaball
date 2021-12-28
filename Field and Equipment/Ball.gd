@@ -31,6 +31,7 @@ var lastInPossession
 onready var controllingPlayer = get_node("../Player")
 
 export var kickSpeed = 500
+onready var matchAnims = get_node("../GUICanvasLayer/MatchStatusAnims")
 
 func _ready():
 	ballEffects = get_node("../BallEffects")
@@ -197,13 +198,11 @@ func check_kick_collisions():
 
 func out_of_bounds():
 	outOfBounds = true
-	print("out of bounds")
 	SceneController.emit_signal("outOfBounds")
 
 func score_goal(goal):
 	SceneController.emit_signal("goalScored", goal)
 	out_of_bounds()
-	goalScoring = false
 
 func _on_KickMenu_id_pressed(id):
 	initialize_kick(id)
