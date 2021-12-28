@@ -155,6 +155,7 @@ extents = Vector2( 17.9827, 749.178 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 29 )
+playerSelectMenu = NodePath("GUICanvasLayer/PlayerSelectMenu")
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 inPossession = false
@@ -163,7 +164,7 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="AnimatedSprite" parent="Player/Health Bar" index="1"]
 visible = true
-frame = 3
+frame = 1
 
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
@@ -183,7 +184,7 @@ fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player2/Health Bar" index="1"]
-frame = 3
+frame = 1
 
 [node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 2 )
@@ -198,7 +199,7 @@ fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player3/Health Bar" index="1"]
-frame = 3
+frame = 1
 
 [node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 3 )
@@ -292,6 +293,7 @@ margin_bottom = 6.0
 
 [node name="AnimatedSprite" parent="Enemy/Health Bar" index="1"]
 position = Vector2( 7.8787, -8.25085 )
+frame = 8
 
 [node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 17 )
@@ -316,6 +318,9 @@ position = Vector2( -0.161133, 0.0360718 )
 margin_top = -21.0
 margin_bottom = -21.0
 
+[node name="AnimatedSprite" parent="Enemy3/Health Bar" index="1"]
+frame = 8
+
 [node name="AnimationTree" parent="Enemy3" index="5"]
 parameters/playback = SubResource( 18 )
 
@@ -334,6 +339,9 @@ starting_stats = ExtResource( 10 )
 [node name="Health Bar" parent="Enemy2" index="2"]
 margin_top = -21.0
 margin_bottom = -21.0
+
+[node name="AnimatedSprite" parent="Enemy2/Health Bar" index="1"]
+frame = 8
 
 [node name="EnemyCollider" parent="Enemy2" index="3"]
 rotation = 1.52987
@@ -463,8 +471,12 @@ mutedIcon = ExtResource( 30 )
 unmutedIcon = ExtResource( 12 )
 
 [node name="PlayerSelectMenu" parent="GUICanvasLayer" instance=ExtResource( 17 )]
+pause_mode = 2
 visible = false
 selectablePitches = [ ExtResource( 24 ), ExtResource( 26 ), ExtResource( 25 ) ]
+
+[node name="SelectionMenuPopup" parent="GUICanvasLayer/PlayerSelectMenu" index="0"]
+visible = false
 
 [node name="AbilityMenuPopup" parent="GUICanvasLayer/PlayerSelectMenu" index="1"]
 script = ExtResource( 22 )
@@ -652,3 +664,5 @@ disabled = true
 [editable path="PlayerCenter"]
 [editable path="GUICanvasLayer/ScoreBoard"]
 [editable path="GUICanvasLayer/PlayerSelectMenu"]
+[editable path="GUICanvasLayer/PlayerSelectMenu/SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect"]
+[editable path="GUICanvasLayer/PlayerSelectMenu/SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect"]

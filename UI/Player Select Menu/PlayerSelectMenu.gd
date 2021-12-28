@@ -4,6 +4,7 @@ export(Array, Resource) var selectablePlayers
 export(Array, Resource) var selectablePitches
 
 export var startButton : NodePath
+export var closeButton : NodePath
 
 var pitchIndex = 0
 var centerIndex = 0
@@ -34,8 +35,8 @@ onready var gamePitch = get_node("../../ParallaxBackground/Sprite")
 var main
 
 func _ready():
-	get_tree().paused = true
-	$SelectionMenuPopup.popup()
+	$SelectionMenuPopup.show()
+	get_node(closeButton).grab_focus()
 	centerPlayer.starting_stats = selectablePlayers[centerIndex]
 	centerPlayer.initialize_stats(centerPlayer.starting_stats)
 	rightPlayer.starting_stats = selectablePlayers[rightIndex]
@@ -100,3 +101,8 @@ func _on_StartButton_pressed():
 	$AbilityMenuPopup.hide()
 	get_tree().paused = false
 	emit_signal("matchStarted")
+
+
+func _on_PlayerSelectMenu_focus_entered():
+	print("focus entered")
+	get_node(closeButton).grab_focus()
