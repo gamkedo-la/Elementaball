@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Players/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/blue_idle.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Art/Sprites/green_idle.png" type="Texture" id=16]
 [ext_resource path="res://Art/Sprites/green_run_1.png" type="Texture" id=17]
 [ext_resource path="res://Players/SteeringNode.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Art/Sprites/red_run/red_run.png" type="Texture" id=19]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "Blue Idle"
@@ -621,6 +622,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ "red idle" ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("ThingsToFlip/Position2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 12.9999, 3.90676 ) ]
+}
 
 [sub_resource type="Animation" id=47]
 length = 0.4
@@ -635,7 +648,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 6.27285, -1.25738 ), Vector2( 9.87112, -1.07499 ), Vector2( 10.118, -0.449659 ), Vector2( 9.8861, -0.596247 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
+"values": [ Vector2( -1.40247, 4.91625 ), Vector2( -0.974453, -3.57781 ), Vector2( 0.273556, 5.55713 ), Vector2( 0.54222, 4.40941 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("EnemyCollider:rotation_degrees")
@@ -659,7 +672,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ "red idle" ]
+"values": [ "red run" ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
@@ -670,8 +683,8 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0, 1, 2, 1 ]
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
@@ -680,10 +693,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 13.0957, 4.4646 ), Vector2( 12.3039, 4.91977 ), Vector2( 13.4285, 5.00074 ), Vector2( 11.9988, 4.74104 ) ]
+"values": [ Vector2( 15.4317, -0.374191 ), Vector2( 14.9736, -4.0904 ), Vector2( 15.2639, 4.50018 ), Vector2( 14.3348, 13.0838 ), Vector2( 14.8353, 12.9169 ) ]
 }
 
 [sub_resource type="Animation" id=48]
@@ -818,12 +831,28 @@ tracks/8/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=49]
-radius = 6.55289
-height = 16.0149
+radius = 12.9326
+height = 0.0
 
 [sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 32, 16 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 19 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 19 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 19 )
+region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=51]
 animations = [ {
@@ -856,6 +885,11 @@ animations = [ {
 "loop": false,
 "name": "blue tackle",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
+"loop": true,
+"name": "red run",
+"speed": 5.0
 } ]
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -881,7 +915,8 @@ margin_right = -8.75441
 margin_bottom = -22.4966
 
 [node name="AnimatedSprite" parent="Health Bar" index="1"]
-frame = 5
+animation = "default"
+frame = 3
 
 [node name="AnimationTree" parent="." instance=ExtResource( 5 )]
 tree_root = SubResource( 37 )
@@ -902,13 +937,13 @@ parameters/playback = SubResource( 38 )
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.159099, -0.198006 )
-rotation = 0.0250886
+rotation = 0.0115828
 shape = SubResource( 49 )
 
 [node name="ThingsToFlip" type="Node2D" parent="."]
 
 [node name="Position2D" type="Position2D" parent="ThingsToFlip"]
-position = Vector2( 11.9988, 4.74104 )
+position = Vector2( 12.9999, 3.90676 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
 frames = SubResource( 51 )
