@@ -916,7 +916,7 @@ margin_bottom = -22.4966
 
 [node name="AnimatedSprite" parent="Health Bar" index="1"]
 animation = "default"
-frame = 6
+frame = 2
 
 [node name="AnimationTree" parent="." instance=ExtResource( 5 )]
 tree_root = SubResource( 37 )

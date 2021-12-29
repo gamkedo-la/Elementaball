@@ -299,8 +299,16 @@ func calc_intercept_damage(interceptor):
 	totalDamage = calc_element_damage(kickedType, interceptor.type, baseDamage)
 	interceptor.HP -= totalDamage	
 	interceptor.get_node("Health Bar").update_healthbar(interceptor.HP)
-	kicking = false
-	SceneController.emit_signal("inPossession", interceptor)
+	if interceptor.HP > 0:
+		kicking = false
+		SceneController.emit_signal("inPossession", interceptor)
+	else:
+		kicking = false
+		if interceptor.is_in_group("player_team"):
+			lastInPossession = "player_team"
+		else:
+			lastInPossession = "enemy_team"
+		out_of_bounds()
 
 func _on_TackleMenu_id_pressed(id):
 	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)

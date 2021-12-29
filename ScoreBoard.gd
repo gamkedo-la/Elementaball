@@ -25,7 +25,7 @@ func score_goal(goal):
 		
 	refresh_score()
 
-func record_KO(player, team):
+func record_KO(_player, team):
 	if team == "blue":
 		blueKO += 1
 	else:

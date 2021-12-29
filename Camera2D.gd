@@ -66,6 +66,6 @@ func add_target(target):
 	if not target in targets:
 		targets.append(target)
 
-func remove_target(target, team):
+func remove_target(target, _team):
 	if target in targets:
-		targets.erase(target)
+		targets = [ball]

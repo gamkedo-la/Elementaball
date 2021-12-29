@@ -12,8 +12,7 @@ func _ready():
 	animationTree = $AnimationTree.get("parameters/playback")
 
 
-func goal_scored(goal):
-	print("goal")
+func goal_scored(_goal):
 	animationTree.travel("Goal")
 	
 func out():
