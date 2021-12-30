@@ -201,7 +201,14 @@ func out_of_bounds():
 	outOfBounds = true
 	SceneController.emit_signal("outOfBounds")
 
+func in_bounds():
+	outOfBounds = false
+	for player in get_tree().get_nodes_in_group("all_players"): 
+		player.outOfBounds = false
+	throwingIn = false
+
 func score_goal(goal):
+	throwingIn = false
 	SceneController.emit_signal("goalScored", goal)
 	out_of_bounds()
 
@@ -396,12 +403,8 @@ func calc_damage_reduction(attackType):
 
 func _on_Boundary_Line_body_entered(body):
 	if throwingIn and outOfBounds:
-		if body == self and playerInPossession == null:
-			outOfBounds = false
-			yield(get_tree().create_timer(1.0), "timeout")
-			for player in get_tree().get_nodes_in_group("all_players"): 
-				player.outOfBounds = false
-			throwingIn = false
+		if body == self:
+			in_bounds()
 	elif body.is_in_group("all_players") and body.offField == true:
 		body.offField = false
 

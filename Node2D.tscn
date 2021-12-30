@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://Players/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Field and Equipment/Ball.tscn" type="PackedScene" id=2]
@@ -36,7 +36,6 @@
 [ext_resource path="res://MatchStatusAnims.gd" type="Script" id=34]
 [ext_resource path="res://Art/green_pitch.tres" type="Resource" id=35]
 [ext_resource path="res://Art/UI/KO.png" type="Texture" id=36]
-[ext_resource path="res://QuitButton.gd" type="Script" id=37]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -412,7 +411,7 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="AnimatedSprite" parent="Player/Health Bar" index="1"]
 visible = true
-frame = 2
+frame = 3
 
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
@@ -432,7 +431,7 @@ fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player2/Health Bar" index="1"]
-frame = 2
+frame = 3
 
 [node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 2 )
@@ -447,7 +446,7 @@ fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player3/Health Bar" index="1"]
-frame = 2
+frame = 3
 
 [node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 3 )
@@ -542,7 +541,7 @@ margin_bottom = 6.0
 [node name="AnimatedSprite" parent="Enemy/Health Bar" index="1"]
 position = Vector2( 7.8787, -8.25085 )
 animation = "default"
-frame = 2
+frame = 3
 
 [node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 17 )
@@ -569,7 +568,7 @@ margin_bottom = -21.0
 
 [node name="AnimatedSprite" parent="Enemy3/Health Bar" index="1"]
 animation = "default"
-frame = 2
+frame = 3
 
 [node name="AnimationTree" parent="Enemy3" index="5"]
 parameters/playback = SubResource( 18 )
@@ -592,7 +591,7 @@ margin_bottom = -21.0
 
 [node name="AnimatedSprite" parent="Enemy2/Health Bar" index="1"]
 animation = "default"
-frame = 2
+frame = 3
 
 [node name="EnemyCollider" parent="Enemy2" index="3"]
 rotation = 1.52987
@@ -737,12 +736,6 @@ script = ExtResource( 21 )
 
 [node name="FinalScore" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer" index="1"]
 enemyGoal = NodePath("../../../../../../../../../Enemy Goal/Goal")
-
-[node name="QuitButton" type="Button" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer" index="4"]
-margin_right = 10.0
-margin_bottom = 20.0
-text = "Quit"
-script = ExtResource( 37 )
 
 [node name="PauseMenu" type="Control" parent="GUICanvasLayer"]
 pause_mode = 2
@@ -907,7 +900,6 @@ disabled = true
 [connection signal="initializeMenu" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2/AbilityMenu2" to="Player3/AbilityHandler" method="_on_AbilityMenu2_initializeMenu"]
 [connection signal="initializeMenu" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer/AbilityMenu3" to="Player3/AbilityHandler" method="_on_AbilityMenu3_initializeMenu"]
 [connection signal="initializeMenu" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer/AbilityMenu4" to="Player3/AbilityHandler" method="_on_AbilityMenu4_initializeMenu"]
-[connection signal="pressed" from="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/QuitButton" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/QuitButton" method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="GUICanvasLayer/PauseMenu/PauseContainer/Resume" to="GUICanvasLayer/PauseMenu" method="_on_Resume_pressed"]
 [connection signal="pressed" from="GUICanvasLayer/PauseMenu/PauseContainer/Quit" to="GUICanvasLayer/PauseMenu" method="_on_Quit_pressed"]
 
