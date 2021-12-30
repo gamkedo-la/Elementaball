@@ -299,7 +299,7 @@ func find_attacker(attackAction):
 		return controllingPlayer
 
 func find_blocker():
-	return controllingPlayer
+	return target
 
 func calc_intercept_damage(interceptor):
 	var baseDamage = 10
@@ -334,12 +334,18 @@ func calc_tackle_damage(tackledType):
 	totalDamage = calc_element_damage(tackledType, target.type, baseDamage)
 	
 	#if enemy is tackling the player, they have a chance to defend. TODO: Allow AI to defend as well
-	if enemyPossession == true:
+	if enemyPossession == true or target.controlling != true:
+		target.try_block()
+		yield(self, "blocked")
+			
+		var damageReduction = calc_damage_reduction(tackledType)
+		totalDamage = ((totalDamage * damageReduction) - blocker.power)
+		if totalDamage <= 0:
+			totalDamage = 1
 		emit_signal("calculated")
 		target.HP -= totalDamage	
 		target.get_node("Health Bar").update_healthbar(target.HP)
 		target.start_steal_cooldown()
-		SceneController.emit_signal("inPossession", controllingPlayer)
 	else:
 		player_block(tackledType)
 	

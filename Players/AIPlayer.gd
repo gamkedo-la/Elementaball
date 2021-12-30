@@ -366,6 +366,13 @@ func try_pass():
 	rng.randomize()
 	var moveChosen = rng.randi_range(0, ball.menuAbilities.size()-1)
 	ball._on_PassMenu_id_pressed(moveChosen, self)
+
+func try_block():
+	preblock()
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var moveChosen = rng.randi_range(0, ball.menuAbilities.size()-1)
+	ball._on_BlockMenu_id_pressed(moveChosen)
 	
 func find_receiver():
 	var openTeammates = get_tree().get_nodes_in_group(myTeam)
@@ -394,6 +401,20 @@ func prekick():
 			if ability != null and ability.action == "Kick":
 				kickMenu.add_item(ability.name)
 				ball.menuAbilities.append(ability)
+			
+func preblock():
+	#Bring up the Kick Menu
+	var blockMenu = get_node("../Popup/BlockMenu")
+	blockMenu.clear()
+	var player = self
+	#Add the kick abilities available for the player to the menu
+	#TODO: Make a default (no element) kick ability and calculate damage for it
+	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,defaultKick]
+	ball.menuAbilities = []
+	for ability in abilities:
+		if ability != null and ability.action == "Block":
+			blockMenu.add_item(ability.name)
+			ball.menuAbilities.append(ability)
 
 func _try_steal():
 	tacklerIsSelf = true
