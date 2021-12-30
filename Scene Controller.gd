@@ -28,7 +28,7 @@ var enemyTeam = []
 var allPlayers = []
 
 func _ready():
-	pause_mode = Node.PAUSE_MODE_PROCESS
+	pause_mode = Node.PAUSE_MODE_STOP
 	set_process(true)
 # warning-ignore:return_value_discarded
 	connect("inPossession", self, "possession_control")

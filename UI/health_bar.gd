@@ -24,7 +24,6 @@ func update_healthbar(value):
 		animPlayer.animation = "KO"
 		animPlayer.frame = 0
 		animPlayer.playing = true
-		yield(animPlayer,"animation_finished")
 		if get_parent().is_in_group("player_team"):
 			SceneController.emit_signal("knockout", get_parent(), "blue")
 		else:

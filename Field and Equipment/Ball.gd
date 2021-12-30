@@ -10,6 +10,7 @@ var attacker
 var blocker
 var selecting = false
 var goalScoring = false
+var KO = false
 
 #Variables for abilities
 var menuAbilities = []
@@ -303,12 +304,16 @@ func calc_intercept_damage(interceptor):
 		kicking = false
 		SceneController.emit_signal("inPossession", interceptor)
 	else:
-		kicking = false
-		if interceptor.is_in_group("player_team"):
-			lastInPossession = "player_team"
-		else:
-			lastInPossession = "enemy_team"
-		out_of_bounds()
+		KO(interceptor)
+
+func KO(interceptor):
+	kicking = false
+	KO = true
+	if interceptor.is_in_group("player_team"):
+		lastInPossession = "player_team"
+	else:
+		lastInPossession = "enemy_team"
+	out_of_bounds()
 
 func _on_TackleMenu_id_pressed(id):
 	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
