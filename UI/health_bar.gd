@@ -20,10 +20,11 @@ func update_healthbar(value):
 		healthbar.texture_progress = barRed
 	healthbar.value = value
 	if healthbar.value <= 0:
-		animPlayer.visible = true
-		animPlayer.animation = "KO"
-		animPlayer.frame = 0
-		animPlayer.playing = true
+		if animPlayer:
+			animPlayer.visible = true
+			animPlayer.animation = "KO"
+			animPlayer.frame = 0
+			animPlayer.playing = true
 		if get_parent().is_in_group("player_team"):
 			SceneController.emit_signal("knockout", get_parent(), "blue")
 		else:
