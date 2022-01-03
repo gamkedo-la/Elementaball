@@ -139,6 +139,7 @@ func _physics_process(_delta):
 				#move self to throw in point
 				self.position = throwInPoint
 				destination = throwInPoint
+				offField = true
 				check_and_slide()
 				
 				#Enable the boundary so the player can't cross into the field when throwing in
@@ -149,11 +150,6 @@ func _physics_process(_delta):
 				 
 				if controlling == false:
 					throw_in()
-		elif ball.throwingIn == false:
-			#move self back onto field
-			self.position = defenseZone.position
-			destination = defenseZone.position
-			check_and_slide()
 			
 		if controlling == false:
 			if onOffense and throwInPlayer != self:
@@ -331,6 +327,12 @@ func out_of_bounds():
 				
 		if closestPosition:
 			throwInPoint = closestPosition.position
+			
+		if offField and throwInPlayer != self:
+			#move self back onto field
+			self.position = defenseZone.position
+			destination = defenseZone.position
+			check_and_slide()
 
 func intercept():
 	if destination != ball.position and destination != ball.playerInPossession.position:

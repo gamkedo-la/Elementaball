@@ -416,6 +416,7 @@ func _on_Boundary_Line_body_entered(body):
 func _on_Boundary_Line_body_exited(body):			
 	if not outOfBounds:
 		if body.is_in_group("all_players") and body.inPossession:
+			body.offField = true
 			out_of_bounds()
 		elif body.is_in_group("all_players") and body.offField == false:
 			body.offField = true
