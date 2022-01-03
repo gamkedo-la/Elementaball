@@ -101,6 +101,8 @@ func _on_StartButton_pressed():
 	$AbilityMenuPopup.hide()
 	get_tree().paused = false
 	emit_signal("matchStarted")
+	AudioQueen.emit_signal("stopSound", "Menu Music")
+	AudioQueen.emit_signal("playSound", "Gameplay Music")
 
 
 func _on_PlayerSelectMenu_focus_entered():

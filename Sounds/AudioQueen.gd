@@ -2,6 +2,7 @@ extends Node2D
 
 # warning-ignore:unused_signal
 signal playSound(sound)
+signal stopSound(sound)
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
@@ -12,11 +13,16 @@ func _ready():
 	
 # warning-ignore:return_value_discarded
 	connect("playSound", self, "play_sound")
-	play_sound("Gameplay Music")
+	connect("stopSound", self, "stop_sound")
+	play_sound("Menu Music")
 
 func play_sound(sound):
 	if has_node(sound):
 		get_node(sound).play()
+		
+func stop_sound(sound):
+	if has_node(sound):
+		get_node(sound).stop()
 
 func _on_SceneTree_node_added(node):
 	if node is Button:

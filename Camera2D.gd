@@ -55,7 +55,6 @@ func _process(_delta):
 
 func set_targets(player):
 	if player:
-		yield(get_tree(), "idle_frame")
 		if player.inPossession:
 			targets = [player, player.myGoal]
 		else:
