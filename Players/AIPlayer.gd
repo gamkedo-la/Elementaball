@@ -148,10 +148,7 @@ func _physics_process(_delta):
 				#Player controlled character stops here, player can throw or pass
 				 
 				if controlling == false:
-					yield(get_tree().create_timer(3.0), "timeout")
-					if controlling == false:	
-						try_pass()
-						yield(get_tree().create_timer(1.0), "timeout")
+					throw_in()
 		elif ball.throwingIn == false:
 			#move self back onto field
 			self.position = defenseZone.position
@@ -213,6 +210,12 @@ func _physics_process(_delta):
 		aniMachine.travel(runningAnim)
 
 				
+func throw_in():
+	yield(get_tree().create_timer(3.0), "timeout")
+	if controlling == false:	
+		try_pass()
+		yield(get_tree().create_timer(1.0), "timeout")
+
 func pass_and_shoot():
 	var distance2Goal = position.distance_to(myGoal.position)
 	var distanceFromPossession = possessionPosition.distance_to(self.position)

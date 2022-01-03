@@ -43,6 +43,8 @@ func next_player():
 	if playerIndex > playerTeam.size() - 1:
 		playerIndex = 0
 	emit_signal("controlling", playerTeam[playerIndex])	
+	if playerTeam[playerIndex].throwInPlayer == playerTeam[playerIndex]:
+		playerTeam[playerIndex].throw_in()
 
 func possession_control(player):
 	if player in playerTeam:
