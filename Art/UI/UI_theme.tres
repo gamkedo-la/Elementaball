@@ -11,7 +11,7 @@
 [ext_resource path="res://Art/UI/radio_item.png" type="Texture" id=9]
 [ext_resource path="res://Art/UI/checked_radio_item.png" type="Texture" id=10]
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 20, 22 )
 margin_left = 5.0
@@ -19,7 +19,7 @@ margin_right = 5.0
 margin_top = 1.0
 margin_bottom = 3.0
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 20, 20 )
 margin_left = 5.0
@@ -27,7 +27,7 @@ margin_right = 5.0
 margin_top = 5.0
 margin_bottom = 7.0
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 20, 20 )
 margin_left = 5.0
@@ -35,7 +35,7 @@ margin_right = 5.0
 margin_top = 5.0
 margin_bottom = 7.0
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 20, 20 )
 margin_left = 5.0
@@ -43,7 +43,7 @@ margin_right = 5.0
 margin_top = 4.0
 margin_bottom = 7.0
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 16, 16 )
 margin_left = 2.0
@@ -59,7 +59,7 @@ margin_right = 2.0
 margin_top = 1.0
 margin_bottom = 2.0
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 16, 16 )
 margin_left = 3.0
@@ -84,21 +84,21 @@ Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
 Button/styles/disabled = null
-Button/styles/focus = SubResource( 4 )
-Button/styles/hover = SubResource( 3 )
-Button/styles/normal = SubResource( 1 )
-Button/styles/pressed = SubResource( 2 )
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
 MenuButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 MenuButton/colors/font_color_disabled = Color( 1, 1, 1, 0.3 )
 MenuButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 MenuButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 MenuButton/constants/hseparation = 3
 MenuButton/fonts/font = null
-MenuButton/styles/disabled = SubResource( 1 )
-MenuButton/styles/focus = SubResource( 4 )
-MenuButton/styles/hover = SubResource( 3 )
-MenuButton/styles/normal = SubResource( 1 )
-MenuButton/styles/pressed = SubResource( 2 )
+MenuButton/styles/disabled = SubResource( 3 )
+MenuButton/styles/focus = SubResource( 1 )
+MenuButton/styles/hover = SubResource( 2 )
+MenuButton/styles/normal = SubResource( 3 )
+MenuButton/styles/pressed = SubResource( 4 )
 OptionButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 OptionButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -108,11 +108,11 @@ OptionButton/constants/hseparation = 2
 OptionButton/fonts/font = null
 OptionButton/icons/arrow = ExtResource( 8 )
 OptionButton/styles/disabled = null
-OptionButton/styles/focus = SubResource( 4 )
-OptionButton/styles/hover = SubResource( 3 )
-OptionButton/styles/normal = SubResource( 1 )
-OptionButton/styles/pressed = SubResource( 2 )
-Panel/styles/panel = SubResource( 7 )
+OptionButton/styles/focus = SubResource( 1 )
+OptionButton/styles/hover = SubResource( 2 )
+OptionButton/styles/normal = SubResource( 3 )
+OptionButton/styles/pressed = SubResource( 4 )
+Panel/styles/panel = SubResource( 5 )
 PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
 PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
@@ -129,7 +129,7 @@ PopupMenu/icons/unchecked = null
 PopupMenu/styles/hover = SubResource( 6 )
 PopupMenu/styles/labeled_separator_left = null
 PopupMenu/styles/labeled_separator_right = null
-PopupMenu/styles/panel = SubResource( 5 )
+PopupMenu/styles/panel = SubResource( 7 )
 PopupMenu/styles/panel_disabled = null
 PopupMenu/styles/separator = null
 PopupPanel/styles/panel = SubResource( 8 )
