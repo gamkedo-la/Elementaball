@@ -8,6 +8,7 @@ func _ready():
 	# when _ready is called, there might already be nodes in the tree, so connect all existing buttons
 	connect_buttons(get_tree().root)
 	get_tree().connect("node_added", self, "_on_SceneTree_node_added")
+	SceneController.connect("knockout", self, "play_KO")
 	
 # warning-ignore:return_value_discarded
 	connect("playSound", self, "play_sound")
@@ -44,3 +45,6 @@ func connect_buttons(root):
 
 func connect_to_button(button):
 	button.connect("pressed", self, "_on_Button_pressed")
+	
+func play_KO(_player, _team):
+	play_sound("KO")

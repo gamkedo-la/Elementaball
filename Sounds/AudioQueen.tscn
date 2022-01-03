@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Sounds/Menu Select.wav" type="AudioStream" id=1]
 [ext_resource path="res://Sounds/AudioQueen.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Sounds/gameplayMusic.wav" type="AudioStream" id=12]
 [ext_resource path="res://Sounds/Menu Up-Down.wav" type="AudioStream" id=13]
 [ext_resource path="res://Sounds/Menu Cancel.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/characterknockout.wav" type="AudioStream" id=15]
 
 [node name="Audio Queen" type="Node2D"]
 script = ExtResource( 2 )
@@ -68,4 +69,8 @@ volume_db = 1.0
 
 [node name="Gameplay Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+volume_db = 1.0
+
+[node name="KO" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
 volume_db = 1.0
