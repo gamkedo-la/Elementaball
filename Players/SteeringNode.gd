@@ -4,7 +4,7 @@ extends Node2D
 onready var player = get_parent()
 onready var boundary = get_node("../../Boundary Line")
 
-onready var max_speed = player.speed
+onready var max_speed = 350
 export var steer_force = 0.05
 export var look_ahead = 100
 export var num_rays = 8
@@ -28,14 +28,48 @@ func _ready():
 		var angle = i * 2 * PI / num_rays
 		ray_directions[i] = Vector2.RIGHT.rotated(angle)
 		
-func steer(_delta):
+func steer(delta):
 	set_interest()
 	set_danger()
 	choose_direction()
+	#Find the trajectory we'd like to be on
 	var desired_velocity = (chosen_dir).normalized() * (max_speed/2)
+
+
 	velocity = velocity.linear_interpolate(desired_velocity, steer_force)
-	player.velocity = player.move_and_slide(velocity)
+	player.velocity = velocity
 	update()
+
+func find_final_heading(desired_velocity, delta):
+		#How fast can we rotate each step (in degrees for now)
+	var steer_speed = 15
+	#What's the difference between my current position and my desired trajectorry?
+	var relativeAngle = player.position.angle_to(desired_velocity)
+	var magnitude
+	#If the angle to where I want to go is large, I need to slow down and turn.
+	if relativeAngle > -0.5 and relativeAngle < 0.5:
+		magnitude = max_speed
+	else:
+		magnitude = max_speed/2
+	 
+	#If my desired path is to the left, turn left at my steering speed
+	if relativeAngle < 0:
+		steer_speed = -deg2rad(steer_speed)
+		
+		#
+		velocity = transform.x * magnitude
+		var newHeading = velocity.rotated(steer_speed) * delta
+		newHeading = newHeading.normalized()
+		velocity = newHeading * velocity.length()
+	#If it's right, turn right
+	elif relativeAngle > 0:
+		steer_speed = deg2rad(steer_speed)
+		#velocity.x = sin(steer_speed)*magnitude
+		#velocity.y = cos(steer_speed)*magnitude
+		velocity = transform.x * magnitude
+		var newHeading = velocity.rotated(steer_speed) * delta
+		newHeading = newHeading.normalized()
+		velocity = newHeading * velocity.length()
 	
 func set_interest():
 # Set interest in each slot based on world direction

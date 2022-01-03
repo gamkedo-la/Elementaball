@@ -166,7 +166,6 @@ func _physics_process(_delta):
 				defend_zone()
 			
 			if ball.selecting == false:
-				#velocity = move_and_slide(velocity)
 				check_and_slide(velocity)
 				
 	elif ball.selecting == false and controlling == false:
@@ -468,11 +467,12 @@ func check_steal():
 			tackleMenu.rect_position = self.global_position
 		else:
 			ball.calc_tackle_damage(type)
-			yield(ball, "calculated")
-			intercepting = false
-			tacklerIsSelf = false
-			SceneController.emit_signal("inPossession", self)
-			SceneController.emit_signal("tackling", false)
+			
+		yield(ball, "calculated")
+		intercepting = false
+		tacklerIsSelf = false
+		SceneController.emit_signal("inPossession", self)
+		SceneController.emit_signal("tackling", false)
 	start_steal_cooldown()
 
 func start_steal_cooldown():

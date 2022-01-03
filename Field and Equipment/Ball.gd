@@ -336,7 +336,6 @@ func calc_tackle_damage(tackledType):
 	#if enemy is tackling the player, they have a chance to defend. TODO: Allow AI to defend as well
 	if enemyPossession == true or target.controlling != true:
 		target.try_block()
-		yield(self, "blocked")
 			
 		var damageReduction = calc_damage_reduction(tackledType)
 		totalDamage = ((totalDamage * damageReduction) - blocker.power)
