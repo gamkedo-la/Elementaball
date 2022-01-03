@@ -408,7 +408,7 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="AnimatedSprite" parent="Player/Health Bar" index="1"]
 visible = true
-frame = 0
+frame = 2
 
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
@@ -428,7 +428,7 @@ fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player2/Health Bar" index="1"]
-frame = 0
+frame = 2
 
 [node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 2 )
@@ -443,7 +443,7 @@ fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player3/Health Bar" index="1"]
-frame = 0
+frame = 2
 
 [node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 3 )
@@ -471,7 +471,7 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 16 )
 animation = "plant ball"
-frame = 3
+frame = 2
 playing = true
 script = ExtResource( 16 )
 
@@ -549,8 +549,6 @@ margin_bottom = 6.0
 
 [node name="AnimatedSprite" parent="Enemy/Health Bar" index="1"]
 position = Vector2( 7.8787, -8.25085 )
-animation = "default"
-frame = 0
 
 [node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 17 )
@@ -575,10 +573,6 @@ position = Vector2( -0.161133, 0.0360718 )
 margin_top = -21.0
 margin_bottom = -21.0
 
-[node name="AnimatedSprite" parent="Enemy3/Health Bar" index="1"]
-animation = "default"
-frame = 0
-
 [node name="AnimationTree" parent="Enemy3" index="5"]
 parameters/playback = SubResource( 18 )
 
@@ -597,10 +591,6 @@ starting_stats = ExtResource( 10 )
 [node name="Health Bar" parent="Enemy2" index="2"]
 margin_top = -21.0
 margin_bottom = -21.0
-
-[node name="AnimatedSprite" parent="Enemy2/Health Bar" index="1"]
-animation = "default"
-frame = 0
 
 [node name="EnemyCollider" parent="Enemy2" index="3"]
 rotation = 1.52987
