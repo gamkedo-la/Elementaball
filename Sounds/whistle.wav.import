@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/whistle.wav-a1a2555e4301049a852c44de7123dc33.sample"
+
+[deps]
+
+source_file="res://Sounds/whistle.wav"
+dest_files=[ "res://.import/whistle.wav-a1a2555e4301049a852c44de7123dc33.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -408,7 +408,7 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="AnimatedSprite" parent="Player/Health Bar" index="1"]
 visible = true
-frame = 2
+frame = 5
 
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
@@ -428,7 +428,7 @@ fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player2/Health Bar" index="1"]
-frame = 2
+frame = 5
 
 [node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 2 )
@@ -443,7 +443,7 @@ fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player3/Health Bar" index="1"]
-frame = 2
+frame = 5
 
 [node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 3 )
@@ -549,6 +549,7 @@ margin_bottom = 6.0
 
 [node name="AnimatedSprite" parent="Enemy/Health Bar" index="1"]
 position = Vector2( 7.8787, -8.25085 )
+frame = 3
 
 [node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 17 )
@@ -573,6 +574,9 @@ position = Vector2( -0.161133, 0.0360718 )
 margin_top = -21.0
 margin_bottom = -21.0
 
+[node name="AnimatedSprite" parent="Enemy3/Health Bar" index="1"]
+frame = 3
+
 [node name="AnimationTree" parent="Enemy3" index="5"]
 parameters/playback = SubResource( 18 )
 
@@ -591,6 +595,9 @@ starting_stats = ExtResource( 10 )
 [node name="Health Bar" parent="Enemy2" index="2"]
 margin_top = -21.0
 margin_bottom = -21.0
+
+[node name="AnimatedSprite" parent="Enemy2/Health Bar" index="1"]
+frame = 3
 
 [node name="EnemyCollider" parent="Enemy2" index="3"]
 rotation = 1.52987
@@ -917,8 +924,8 @@ disabled = true
 [connection signal="body_exited" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_entered"]
 [connection signal="body_exited" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_exited"]
-[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" method="_on_Timer_gameOver"]
 [connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/XTeamWon" method="_on_Timer_gameOver"]
+[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" method="_on_Timer_gameOver"]
 [connection signal="pressed" from="GUICanvasLayer/MuteButton" to="GUICanvasLayer/MuteButton" method="_on_MuteButton_pressed"]
 [connection signal="matchStarted" from="GUICanvasLayer/PlayerSelectMenu" to="GUICanvasLayer/PauseMenu" method="_on_PlayerSelectMenu_matchStarted"]
 [connection signal="about_to_show" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup" to="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup" method="_on_AbilityMenuPopup_about_to_show"]

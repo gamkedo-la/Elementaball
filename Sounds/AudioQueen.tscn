@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Sounds/Menu Select.wav" type="AudioStream" id=1]
 [ext_resource path="res://Sounds/AudioQueen.gd" type="Script" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Sounds/Menu Cancel.wav" type="AudioStream" id=14]
 [ext_resource path="res://Sounds/characterknockout.wav" type="AudioStream" id=15]
 [ext_resource path="res://Sounds/Menu Music.mp3" type="AudioStream" id=16]
+[ext_resource path="res://Sounds/whistle.wav" type="AudioStream" id=17]
+[ext_resource path="res://Sounds/whistle_endgame.wav" type="AudioStream" id=18]
 
 [node name="Audio Queen" type="Node2D"]
 script = ExtResource( 2 )
@@ -79,3 +81,11 @@ volume_db = 1.0
 [node name="KO" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 volume_db = 1.0
+
+[node name="Whistle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+volume_db = 3.0
+
+[node name="Long Whistle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = 3.0

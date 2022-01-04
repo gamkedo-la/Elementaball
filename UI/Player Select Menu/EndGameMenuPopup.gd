@@ -8,6 +8,7 @@ func _ready():
 	SceneController.connect("allKO",self,"_on_Timer_gameOver")
 
 func _on_Timer_gameOver(_winOrLose):
+	AudioQueen.play_sound("Long Whistle")
 	get_tree().paused = true
 	self.show()
 	get_node(restartButton).grab_focus()

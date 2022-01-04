@@ -10,6 +10,7 @@ func _ready():
 	connect_buttons(get_tree().root)
 	get_tree().connect("node_added", self, "_on_SceneTree_node_added")
 	SceneController.connect("knockout", self, "play_KO")
+	SceneController.connect("outOfBounds", self, "short_whistle")
 	
 # warning-ignore:return_value_discarded
 	connect("playSound", self, "play_sound")
@@ -54,3 +55,6 @@ func connect_to_button(button):
 	
 func play_KO(_player, _team):
 	play_sound("KO")
+
+func short_whistle():
+	play_sound("Whistle")
