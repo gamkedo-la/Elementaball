@@ -288,7 +288,7 @@ func set_control(player):
 	else:
 		controlling = false
 		get_node("Health Bar/AnimatedSprite").visible = false
-		if ball.outOfBounds and self.throwInPlayer:
+		if ball.outOfBounds and ball.throwingIn and self.throwInPlayer:
 			throw_in()
 		else:
 			set_physics_process(true)

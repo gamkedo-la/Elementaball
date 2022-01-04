@@ -205,6 +205,7 @@ func in_bounds():
 	outOfBounds = false
 	for player in get_tree().get_nodes_in_group("all_players"): 
 		player.outOfBounds = false
+		player.throwInPlayer = false
 	throwingIn = false
 
 func score_goal(goal):
