@@ -33,6 +33,7 @@ onready var enemies = get_node("SelectionMenuPopup/SelectionMenuContainer/Margin
 onready var effects = get_node("SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/VBoxContainer/Effects")
 onready var pitchText = get_node("SelectionMenuPopup/SelectionMenuContainer/PitchSelect/Label")
 onready var gamePitch = get_node("../../ParallaxBackground/Sprite")
+onready var newPitch = selectablePitches[pitchIndex]
 
 onready var centerEnemy = get_node("../../Enemy")
 onready var leftEnemy = get_node("../../Enemy2")
@@ -94,7 +95,7 @@ func _on_PitchSelect_change(direction, buttons):
 		pitchIndex = 0
 	if pitchIndex < 0:
 		pitchIndex = selectablePitches.size() - 1
-	var newPitch = selectablePitches[pitchIndex]
+	newPitch = selectablePitches[pitchIndex]
 	pitchSprite.texture = newPitch.sprite
 	gamePitch.texture = pitchSprite.texture
 	buttons.get_node("Label").text = newPitch.name
@@ -107,7 +108,26 @@ func _on_PitchSelect_change(direction, buttons):
 	enemies.text = newPitch.enemies
 	effects.text = newPitch.effects
 	
+func apply_pitch_buffs():
+	var allPlayers = get_tree().get_nodes_in_group("all_players")
+	if newPitch.type == "Blue":
+		for player in allPlayers:
+			if player.type == newPitch.type:
+				player.speed = 185
+				
+	if newPitch.type == "Red":
+		for player in allPlayers:
+			if player.type == newPitch.type:
+				player.power = 4
+				
+	if newPitch.type == "Green":
+		for player in allPlayers:
+			if player.type == newPitch.type:
+				player.maxHP = 75
+				player.HP = 75
+
 func _on_CloseButton_pressed():
+	apply_pitch_buffs()
 	$SelectionMenuPopup.hide()
 	$AbilityMenuPopup.show()	
 	get_node(startButton).grab_focus()

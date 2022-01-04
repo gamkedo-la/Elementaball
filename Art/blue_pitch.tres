@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Blue Pitch"
+type = "Blue"
 sprite = ExtResource( 2 )
 centerEnemy = ExtResource( 3 )
 leftEnemy = ExtResource( 3 )
