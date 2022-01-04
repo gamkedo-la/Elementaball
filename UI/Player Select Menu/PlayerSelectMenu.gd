@@ -32,6 +32,10 @@ onready var pitchSprite = get_node("SelectionMenuPopup/SelectionMenuContainer/Ma
 onready var pitchText = get_node("SelectionMenuPopup/SelectionMenuContainer/PitchSelect/Label")
 onready var gamePitch = get_node("../../ParallaxBackground/Sprite")
 
+onready var centerEnemy = get_node("../../Enemy")
+onready var leftEnemy = get_node("../../Enemy2")
+onready var rightEnemy = get_node("../../Enemy3")
+
 var main
 
 func _ready():
@@ -88,9 +92,16 @@ func _on_PitchSelect_change(direction, buttons):
 		pitchIndex = 0
 	if pitchIndex < 0:
 		pitchIndex = selectablePitches.size() - 1
-	pitchSprite.texture = selectablePitches[pitchIndex].sprite
+	var newPitch = selectablePitches[pitchIndex]
+	pitchSprite.texture = newPitch.sprite
 	gamePitch.texture = pitchSprite.texture
-	buttons.get_node("Label").text = selectablePitches[pitchIndex].name
+	buttons.get_node("Label").text = newPitch.name
+	centerEnemy.starting_stats = newPitch.centerEnemy
+	centerEnemy.initialize_stats(centerEnemy.starting_stats)
+	leftEnemy.starting_stats = newPitch.leftEnemy
+	leftEnemy.initialize_stats(leftEnemy.starting_stats)
+	rightEnemy.starting_stats = newPitch.rightEnemy
+	rightEnemy.initialize_stats(rightEnemy.starting_stats)
 	
 func _on_CloseButton_pressed():
 	$SelectionMenuPopup.hide()
@@ -106,5 +117,4 @@ func _on_StartButton_pressed():
 
 
 func _on_PlayerSelectMenu_focus_entered():
-	print("focus entered")
 	get_node(closeButton).grab_focus()
