@@ -689,6 +689,7 @@ animations = [ {
 } ]
 
 [node name="Enemy" type="KinematicBody2D"]
+z_index = -1
 collision_mask = 3
 script = ExtResource( 2 )
 speed = 150
@@ -709,7 +710,7 @@ margin_bottom = 3.32428
 
 [node name="AnimatedSprite" parent="Health Bar" index="1"]
 position = Vector2( -0.14843, -11.9671 )
-frame = 4
+frame = 2
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.159099, -0.198006 )
