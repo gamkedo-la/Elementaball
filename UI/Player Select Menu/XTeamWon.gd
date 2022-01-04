@@ -7,6 +7,7 @@ func _ready():
 func _on_Timer_gameOver(winOrLose):
 	if winOrLose == "win":
 		self.text = "You won!"
+		SceneController.emit_signal("winner", "Blue")
 	if winOrLose == "lose":
 		self.text = "You lost!"
 	if winOrLose == "draw":
@@ -15,5 +16,6 @@ func _on_Timer_gameOver(winOrLose):
 func all_KO(winningTeam):
 	if winningTeam == "blue":
 		self.text = "You won!"
+		SceneController.emit_signal("winner", "Blue")
 	else:
 		self.text = "You lost!"

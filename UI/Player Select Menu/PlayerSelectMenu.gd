@@ -31,9 +31,12 @@ onready var rightPlayer = get_node("../../Player3")
 onready var pitchSprite = get_node("SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/FieldImage")
 onready var enemies = get_node("SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/VBoxContainer/Enemies")
 onready var effects = get_node("SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/VBoxContainer/Effects")
+onready var wins = get_node("SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/VBoxContainer/Wins")
 onready var pitchText = get_node("SelectionMenuPopup/SelectionMenuContainer/PitchSelect/Label")
 onready var gamePitch = get_node("../../ParallaxBackground/Sprite")
 onready var newPitch = selectablePitches[pitchIndex]
+
+var standings
 
 onready var centerEnemy = get_node("../../Enemy")
 onready var leftEnemy = get_node("../../Enemy2")
@@ -42,6 +45,8 @@ onready var rightEnemy = get_node("../../Enemy3")
 var main
 
 func _ready():
+	yield(SceneController, "gameLoaded")
+	set_wins("Mixed")
 	$SelectionMenuPopup.show()
 	get_node(closeButton).grab_focus()
 	centerPlayer.starting_stats = selectablePlayers[centerIndex]
@@ -107,8 +112,23 @@ func _on_PitchSelect_change(direction, buttons):
 	rightEnemy.initialize_stats(rightEnemy.starting_stats)
 	enemies.text = newPitch.enemies
 	effects.text = newPitch.effects
+	set_wins(newPitch.type)
 	
+func set_wins(pitch):
+	standings = get_node("../../TournamentStandings")
+	if pitch == "Mixed" and standings.mixedPitch == true:
+		wins.text = "Match won: Yes"
+	elif pitch == "Blue" and standings.bluePitch == true:
+		wins.text = "Match won: Yes"
+	elif pitch == "Red" and standings.redPitch == true:
+		wins.text = "Match won: Yes"
+	elif pitch == "Green" and standings.greenPitch == true:
+		wins.text = "Match won: Yes"
+	else:
+		wins.text = "Match won: No"
+		
 func apply_pitch_buffs():
+	SceneController.emit_signal("pitchSet", newPitch.type)
 	var allPlayers = get_tree().get_nodes_in_group("all_players")
 	if newPitch.type == "Blue":
 		for player in allPlayers:

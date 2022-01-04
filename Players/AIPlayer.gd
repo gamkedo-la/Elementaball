@@ -284,9 +284,14 @@ func set_control(player):
 	if player == self:
 		controlling = true
 		get_node("Health Bar/AnimatedSprite").visible = true
+		set_physics_process(true)
 	else:
 		controlling = false
 		get_node("Health Bar/AnimatedSprite").visible = false
+		if ball.outOfBounds and self.throwInPlayer:
+			throw_in()
+		else:
+			set_physics_process(true)
 
 func out_of_bounds():
 	if outOfBounds == false:

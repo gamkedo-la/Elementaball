@@ -15,6 +15,9 @@ signal outOfBounds()
 signal knockout(player, team)
 # warning-ignore:unused_signal
 signal allKO(winningTeam)
+signal pitchSet(pitch)
+signal winner(winner)
+signal gameLoaded()
 
 var playerIndex = 0
 
@@ -43,8 +46,6 @@ func next_player():
 	if playerIndex > playerTeam.size() - 1:
 		playerIndex = 0
 	emit_signal("controlling", playerTeam[playerIndex])	
-	if playerTeam[playerIndex].throwInPlayer == playerTeam[playerIndex]:
-		playerTeam[playerIndex].throw_in()
 
 func possession_control(player):
 	if player in playerTeam:

@@ -70,3 +70,8 @@ func remove_target(target, team):
 		targets.erase(target)
 	if !ball in targets:
 		add_target(ball)
+	var playerTeam = get_tree().get_nodes_in_group("player_team")
+	for player in playerTeam:
+		if player.controlling:
+			if !player in targets:
+				add_target(player)
