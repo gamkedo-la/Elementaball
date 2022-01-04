@@ -8,4 +8,5 @@ export var sprite : Texture
 export var centerEnemy : Resource
 export var leftEnemy : Resource
 export var rightEnemy : Resource
-export var description : String = "Description"
+export var enemies : String = "Enemies"
+export var effects : String = "Effects"

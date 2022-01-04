@@ -29,6 +29,8 @@ onready var rightText = get_node("SelectionMenuPopup/SelectionMenuContainer/Play
 onready var rightPlayer = get_node("../../Player3")
 
 onready var pitchSprite = get_node("SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/FieldImage")
+onready var enemies = get_node("SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/VBoxContainer/Enemies")
+onready var effects = get_node("SelectionMenuPopup/SelectionMenuContainer/MarginContainer3/TopRowContainer/VBoxContainer/Effects")
 onready var pitchText = get_node("SelectionMenuPopup/SelectionMenuContainer/PitchSelect/Label")
 onready var gamePitch = get_node("../../ParallaxBackground/Sprite")
 
@@ -102,6 +104,8 @@ func _on_PitchSelect_change(direction, buttons):
 	leftEnemy.initialize_stats(leftEnemy.starting_stats)
 	rightEnemy.starting_stats = newPitch.rightEnemy
 	rightEnemy.initialize_stats(rightEnemy.starting_stats)
+	enemies.text = newPitch.enemies
+	effects.text = newPitch.effects
 	
 func _on_CloseButton_pressed():
 	$SelectionMenuPopup.hide()

@@ -11,4 +11,5 @@ sprite = ExtResource( 2 )
 centerEnemy = ExtResource( 3 )
 leftEnemy = ExtResource( 3 )
 rightEnemy = ExtResource( 3 )
-description = "Description"
+enemies = "Enemies: Blue Myrmids"
+effects = "Effects: Blue types +Speed"

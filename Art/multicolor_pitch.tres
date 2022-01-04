@@ -13,4 +13,5 @@ sprite = ExtResource( 2 )
 centerEnemy = ExtResource( 5 )
 leftEnemy = ExtResource( 4 )
 rightEnemy = ExtResource( 3 )
-description = "Description"
+enemies = "Enemies: Mixed"
+effects = "Effects: None"
