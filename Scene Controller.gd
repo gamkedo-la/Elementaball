@@ -18,6 +18,7 @@ signal allKO(winningTeam)
 signal pitchSet(pitch)
 signal winner(winner)
 signal gameLoaded()
+signal champion()
 
 var playerIndex = 0
 

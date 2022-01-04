@@ -24,6 +24,13 @@ func save_win(winner):
 		if selectedPitch == "Mixed":
 			mixedPitch = true
 		get_node("../SaveSystem").save_game()
+	var allPitches = [bluePitch, redPitch, greenPitch, mixedPitch]
+	var wins = 0
+	for pitch in allPitches:
+		if pitch == true:
+			wins += 1
+	if wins >= 4:
+		SceneController.emit_signal("champion") 
 
 func save():
 	var save_dict = {
