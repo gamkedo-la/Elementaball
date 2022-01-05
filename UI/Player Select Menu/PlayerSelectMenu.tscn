@@ -159,9 +159,12 @@ margin_right = 258.0
 margin_bottom = 217.0
 
 [node name="CenterFieldSprite" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer"]
-margin_right = 258.0
+margin_left = 113.0
+margin_right = 145.0
 margin_bottom = 32.0
-rect_min_size = Vector2( 0, 32 )
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
@@ -185,9 +188,12 @@ margin_right = 127.0
 margin_bottom = 56.0
 
 [node name="LeftFieldSprite" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField"]
-margin_right = 69.0
+margin_left = 18.0
+margin_right = 50.0
 margin_bottom = 32.0
-rect_min_size = Vector2( 16, 32 )
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
@@ -221,9 +227,12 @@ margin_right = 200.0
 margin_bottom = 56.0
 
 [node name="RightFieldSprite" type="TextureRect" parent="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField"]
-margin_right = 69.0
+margin_left = 18.0
+margin_right = 50.0
 margin_bottom = 32.0
-rect_min_size = Vector2( 16, 32 )
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
@@ -320,34 +329,37 @@ margin_bottom = 180.0
 alignment = 1
 
 [node name="PlayersContainer" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer"]
-margin_right = 174.0
+margin_right = 190.0
 margin_bottom = 156.0
 size_flags_horizontal = 2
 custom_constants/separation = 0
 
 [node name="CenterLabel" type="Label" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer"]
-margin_right = 174.0
+margin_right = 190.0
 margin_bottom = 8.0
 custom_fonts/font = ExtResource( 8 )
 text = "Center Field"
 
 [node name="CenterField" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer"]
 margin_top = 8.0
-margin_right = 174.0
+margin_right = 190.0
 margin_bottom = 52.0
 
 [node name="CenterFieldSprite" type="TextureRect" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField"]
-margin_right = 16.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 16, 32 )
+margin_top = 6.0
+margin_right = 32.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 12 )
 
 [node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField"]
-margin_left = 20.0
-margin_right = 174.0
+margin_left = 36.0
+margin_right = 190.0
 margin_bottom = 44.0
 custom_constants/margin_left = 38
 
@@ -409,32 +421,34 @@ script = ExtResource( 19 )
 
 [node name="LeftLabel" type="Label" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer"]
 margin_top = 52.0
-margin_right = 174.0
+margin_right = 190.0
 margin_bottom = 60.0
 custom_fonts/font = ExtResource( 8 )
 text = "Left Wing"
 
 [node name="LeftField" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer"]
 margin_top = 60.0
-margin_right = 174.0
+margin_right = 190.0
 margin_bottom = 104.0
 
 [node name="LeftField" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField"]
-margin_right = 16.0
+margin_right = 32.0
 margin_bottom = 44.0
 
 [node name="LeftFieldSprite" type="TextureRect" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/LeftField"]
-margin_right = 16.0
+margin_right = 32.0
 margin_bottom = 32.0
-rect_min_size = Vector2( 16, 32 )
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 13 )
 
 [node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField"]
-margin_left = 20.0
-margin_right = 174.0
+margin_left = 36.0
+margin_right = 190.0
 margin_bottom = 44.0
 custom_constants/margin_left = 38
 
@@ -496,32 +510,34 @@ script = ExtResource( 19 )
 
 [node name="RightLabel" type="Label" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer"]
 margin_top = 104.0
-margin_right = 174.0
+margin_right = 190.0
 margin_bottom = 112.0
 custom_fonts/font = ExtResource( 8 )
 text = "Right Wing"
 
 [node name="RightField" type="HBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer"]
 margin_top = 112.0
-margin_right = 174.0
+margin_right = 190.0
 margin_bottom = 156.0
 
 [node name="RightField" type="VBoxContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField"]
-margin_right = 16.0
+margin_right = 32.0
 margin_bottom = 44.0
 
 [node name="RightFieldSprite" type="TextureRect" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/RightField"]
-margin_right = 16.0
+margin_right = 32.0
 margin_bottom = 32.0
-rect_min_size = Vector2( 16, 32 )
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 14 )
 
 [node name="MarginContainer" type="MarginContainer" parent="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField"]
-margin_left = 20.0
-margin_right = 174.0
+margin_left = 36.0
+margin_right = 190.0
 margin_bottom = 44.0
 custom_constants/margin_left = 38
 
@@ -584,7 +600,6 @@ selected = 0
 script = ExtResource( 19 )
 
 [node name="EndGameMenuPopup" type="PopupPanel" parent="."]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 16 )

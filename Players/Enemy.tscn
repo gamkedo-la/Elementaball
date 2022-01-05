@@ -711,7 +711,7 @@ margin_bottom = 3.32428
 
 [node name="AnimatedSprite" parent="Health Bar" index="1"]
 position = Vector2( -0.14843, -11.9671 )
-frame = 5
+frame = 6
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.159099, -0.198006 )
