@@ -167,6 +167,7 @@ func player_block(tackledType):
 	totalDamage = ((totalDamage * damageReduction) - blocker.power)
 	if totalDamage <= 0:
 		totalDamage = 1
+	totalDamage = ceil(totalDamage)
 	target.HP -= totalDamage
 	target.get_node("Health Bar").floatingNumbers(totalDamage)	
 	target.get_node("Health Bar").update_healthbar(target.HP)
@@ -307,6 +308,7 @@ func calc_intercept_damage(interceptor):
 	var baseDamage = 10
 	baseDamage = calc_power_modifier(baseDamage)
 	totalDamage = calc_element_damage(kickedType, interceptor.type, baseDamage)
+	totalDamage = ceil(totalDamage)
 	interceptor.HP -= totalDamage	
 	interceptor.get_node("Health Bar").floatingNumbers(totalDamage)
 	interceptor.get_node("Health Bar").update_healthbar(interceptor.HP)
@@ -344,6 +346,7 @@ func calc_tackle_damage(tackledType):
 		totalDamage = ((totalDamage * damageReduction) - blocker.power)
 		if totalDamage <= 0:
 			totalDamage = 1
+		totalDamage = ceil(totalDamage)
 		emit_signal("calculated")
 		target.HP -= totalDamage	
 		target.get_node("Health Bar").update_healthbar(target.HP)

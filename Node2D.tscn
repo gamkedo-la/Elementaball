@@ -412,6 +412,7 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="AnimatedSprite" parent="Player/Health Bar" index="1"]
 visible = true
+frame = 0
 
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
@@ -430,6 +431,9 @@ inPossession = false
 fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
+[node name="AnimatedSprite" parent="Player2/Health Bar" index="1"]
+frame = 0
+
 [node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 2 )
 
@@ -441,6 +445,9 @@ controlling = false
 inPossession = false
 fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
+
+[node name="AnimatedSprite" parent="Player3/Health Bar" index="1"]
+frame = 0
 
 [node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 3 )
@@ -532,7 +539,7 @@ margin_bottom = 6.0
 
 [node name="AnimatedSprite" parent="Enemy/Health Bar" index="1"]
 position = Vector2( 7.8787, -8.25085 )
-frame = 8
+frame = 4
 
 [node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 17 )
@@ -557,7 +564,7 @@ margin_top = -21.0
 margin_bottom = -21.0
 
 [node name="AnimatedSprite" parent="Enemy3/Health Bar" index="1"]
-frame = 8
+frame = 4
 
 [node name="AnimationTree" parent="Enemy3" index="5"]
 parameters/playback = SubResource( 18 )
@@ -579,7 +586,7 @@ margin_top = -21.0
 margin_bottom = -21.0
 
 [node name="AnimatedSprite" parent="Enemy2/Health Bar" index="1"]
-frame = 8
+frame = 4
 
 [node name="EnemyCollider" parent="Enemy2" index="3"]
 rotation = 1.52987
@@ -718,9 +725,6 @@ visible = false
 [node name="AbilityMenuPopup" parent="GUICanvasLayer/PlayerSelectMenu" index="1"]
 script = ExtResource( 22 )
 closeButton = NodePath("MarginContainer/SelectionMenuContainer/Top Margin/StartButton")
-
-[node name="MarginContainer" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" index="0"]
-margin_bottom = 213.0
 
 [node name="EndCondition" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 script = ExtResource( 21 )

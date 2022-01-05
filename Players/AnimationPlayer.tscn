@@ -82,25 +82,13 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=3]
 length = 0.6
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:speed")
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 150, 300, 150 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
@@ -126,85 +114,85 @@ tracks/1/keys = {
 "method": "tackle_ended"
 } ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("EnemyCollider:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("EnemyCollider:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0.148666, -0.743263 ), Vector2( 0.928307, 5.15279 ), Vector2( 2.00716, 9.96906 ), Vector2( 0.00278926, 9.3362 ), Vector2( 3.53649, 3.76911 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("EnemyCollider:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("EnemyCollider:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1.62307, 1.13498, 85.2222, 81.9966, 0.663645, 1.20974 ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("InterceptArea:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("InterceptArea:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0.891907, -0.817585 ), Vector2( -0.816132, 0.106384 ), Vector2( -0.155266, -0.0484543 ), Vector2( -0.540016, 0.162682 ), Vector2( 0.126373, -0.256859 ), Vector2( -0.161133, 0.0360718 ) ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("InterceptArea:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/path = NodePath("InterceptArea:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath(".:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray(  ),
 "transitions": PoolRealArray(  ),
 "update": 0,
 "values": [  ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ "Blue Enemy Tackle" ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
@@ -517,28 +505,16 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "Green Tackle"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:speed")
+length = 0.3
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 150, 300, 150 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "check_steal"
@@ -550,101 +526,98 @@ tracks/1/keys = {
 "method": "check_steal"
 }, {
 "args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
-"method": "check_steal"
-}, {
-"args": [  ],
 "method": "tackle_ended"
+}, {
+"args": [  ],
+"method": "check_steal"
+}, {
+"args": [  ],
+"method": "check_steal"
 } ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("EnemyCollider:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("EnemyCollider:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1.62307, -91.6483, 85.2222, 2.31795, 0.663645, 1.20974 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("InterceptArea:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("InterceptArea:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0.891907, -0.817585 ), Vector2( -0.816132, 0.106384 ), Vector2( -0.155266, -0.0484543 ), Vector2( -0.540016, 0.162682 ), Vector2( 0.126373, -0.256859 ), Vector2( -0.161133, 0.0360718 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("InterceptArea:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("InterceptArea:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray(  ),
 "transitions": PoolRealArray(  ),
 "update": 0,
 "values": [  ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "green tackle" ]
+}
 tracks/6/type = "value"
-tracks/6/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
+tracks/6/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ "green idle" ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("ThingsToFlip/AnimatedSprite:frame")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("EnemyCollider:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.628354, 1.69188 ), Vector2( 0.313375, 9.88136 ), Vector2( 2.51823, 0.746936 ), Vector2( -0.316592, 0.116977 ) ]
+tracks/7/type = "value"
+tracks/7/path = NodePath("EnemyCollider:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -16.4149, 1.69188 ), Vector2( -4.36883, 8.00848 ), Vector2( 14.2451, 4.75228 ), Vector2( 2.51823, 0.746936 ), Vector2( -0.316592, 0.116977 ) ]
 }
 
 [sub_resource type="Animation" id=10]

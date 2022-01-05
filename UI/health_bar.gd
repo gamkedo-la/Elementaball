@@ -9,6 +9,8 @@ var barYellow = preload("res://Art/UI/health_bar_yellow.png")
 onready var healthbar = get_node("Health Bar")
 onready var animPlayer = get_node("StatusAnimations")
 
+var knockedOut = false
+
 func _ready():
 	update_healthbar(healthbar.max_value)
 
@@ -21,7 +23,8 @@ func update_healthbar(value):
 	if value < healthbar.max_value * 0.35:
 		healthbar.texture_progress = barRed
 	healthbar.value = value
-	if healthbar.value <= 0:
+	if healthbar.value <= 0 and !knockedOut:
+		knockedOut = true
 		if animPlayer:
 			animPlayer.visible = true
 			animPlayer.animation = "KO"

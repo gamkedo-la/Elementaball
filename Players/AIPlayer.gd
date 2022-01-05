@@ -5,6 +5,7 @@ var velocity = Vector2()
 onready var initialScale = scale
 var destination = Vector2()
 var previousPosition = position
+var speedModified = false
 
 #States for defense
 var onDefense = false
@@ -255,7 +256,7 @@ func get_in_position():
 func defend_zone():
 	destination = defenseZone.get_node("Path2D").curve.get_closest_point(ball.position)
 	
-	if enemyInZone:
+	if enemyInZone and defenseZone:
 		destination = defenseZone.get_node("Path2D").curve.get_closest_point(enemyInZone.position)
 	
 	velocity = (destination-self.position).normalized()*speed;	
@@ -439,6 +440,9 @@ func toggle_blocking(trueOrFalse):
 		blockingInProgress = trueOrFalse
 
 func tackle_ended():
+	if speedModified:
+		speedModified = false
+		speed = speed/2
 	if inPossession == false:
 		if blockingInProgress:
 			yield(SceneController, "blocking")
@@ -455,6 +459,9 @@ func reset_intercept():
 	_move_to_target()
 	
 func check_steal():
+	if !speedModified:
+		speedModified = true
+		speed = speed * 2
 	if _check_collisions() and _check_collisions() == ball.playerInPossession:
 		if self.controlling:
 			#Bring up the Tackle Menu to let the player choose an ability
