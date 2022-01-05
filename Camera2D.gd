@@ -59,6 +59,11 @@ func set_targets(player):
 			targets = [player, player.myGoal]
 		else:
 			targets = [player, ball]
+	var playerTeam = get_tree().get_nodes_in_group("player_team")
+	for player in playerTeam:
+		if player.controlling:
+			if !player in targets:
+				add_target(player)
 		set_process(true)
 
 func add_target(target):
