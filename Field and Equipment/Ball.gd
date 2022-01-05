@@ -167,7 +167,8 @@ func player_block(tackledType):
 	totalDamage = ((totalDamage * damageReduction) - blocker.power)
 	if totalDamage <= 0:
 		totalDamage = 1
-	target.HP -= totalDamage	
+	target.HP -= totalDamage
+	target.get_node("Health Bar").floatingNumbers(totalDamage)	
 	target.get_node("Health Bar").update_healthbar(target.HP)
 	emit_signal("calculated")
 
@@ -307,6 +308,7 @@ func calc_intercept_damage(interceptor):
 	baseDamage = calc_power_modifier(baseDamage)
 	totalDamage = calc_element_damage(kickedType, interceptor.type, baseDamage)
 	interceptor.HP -= totalDamage	
+	interceptor.get_node("Health Bar").floatingNumbers(totalDamage)
 	interceptor.get_node("Health Bar").update_healthbar(interceptor.HP)
 	if interceptor.HP > 0:
 		kicking = false
@@ -345,6 +347,7 @@ func calc_tackle_damage(tackledType):
 		emit_signal("calculated")
 		target.HP -= totalDamage	
 		target.get_node("Health Bar").update_healthbar(target.HP)
+		target.get_node("Health Bar").floatingNumbers(totalDamage)
 		target.start_steal_cooldown()
 	else:
 		player_block(tackledType)

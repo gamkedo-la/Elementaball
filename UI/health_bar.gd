@@ -1,5 +1,7 @@
 extends Control
 
+var floatingText = preload("res://UI/DamageNumbers.tscn")
+
 var barRed = preload("res://Art/UI/health_bar_red.png")
 var barGreen = preload("res://Art/UI/health_bar_green.png")
 var barYellow = preload("res://Art/UI/health_bar_yellow.png")
@@ -36,4 +38,7 @@ func update_healthbar(value):
 			SceneController.emit_signal("inPossession", null)
 		get_parent().queue_free()
 
-
+func floatingNumbers(damage):
+	var text = floatingText.instance()
+	text.amount = damage
+	add_child(text)

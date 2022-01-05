@@ -403,7 +403,6 @@ func prekick():
 		kickMenu.clear()
 		var player = self
 		#Add the kick abilities available for the player to the menu
-		#TODO: Make a default (no element) kick ability and calculate damage for it
 		var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,defaultKick]
 		ball.menuAbilities = []
 		for ability in abilities:
@@ -417,7 +416,6 @@ func preblock():
 	blockMenu.clear()
 	var player = self
 	#Add the kick abilities available for the player to the menu
-	#TODO: Make a default (no element) kick ability and calculate damage for it
 	var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,defaultKick]
 	ball.menuAbilities = []
 	for ability in abilities:
@@ -465,7 +463,6 @@ func check_steal():
 			tackleMenu.clear()
 			var player = ball.controllingPlayer
 			#Add the tackle abilities available for the player to the menu
-			#TODO: Make a default (no element) tackle ability and calculate damage for it
 			var abilities = [player.ability1,player.ability2,player.ability3,player.ability4,player.defaultTackle]
 			ball.menuAbilities = []
 			if abilities.size() > 0:
