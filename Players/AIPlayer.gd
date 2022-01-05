@@ -189,14 +189,14 @@ func _physics_process(_delta):
 	if ball.selecting == false:
 		velocity = move_and_slide(velocity)
 	
-	if velocity.x > 0.1:
+	if velocity.x > 0.1 and !ball.flipping:
 		$ThingsToFlip.scale.x = 1
-		if has_node("EnemyCollider"): # players don't have this
+		if has_node("EnemyCollider"):
 			$EnemyCollider.scale.x = 1
 	
-	elif velocity.x < -0.1:
+	elif velocity.x < -0.1 and !ball.flipping:
 		$ThingsToFlip.scale.x = -1
-		if has_node("EnemyCollider"): # players don't have this
+		if has_node("EnemyCollider"):
 			$EnemyCollider.scale.x = -1
 
 	if tacklingInProgress and tacklerIsSelf:
@@ -412,7 +412,7 @@ func prekick():
 				ball.menuAbilities.append(ability)
 			
 func preblock():
-	#Bring up the Kick Menu
+	#Bring up the Block Menu
 	var blockMenu = get_node("../Popup/BlockMenu")
 	blockMenu.clear()
 	var player = self
@@ -431,7 +431,6 @@ func _try_steal():
 	ball.target = ball.playerInPossession
 	destination = ball.playerInPossession.position
 	check_and_slide()
-	aniMachine.travel(tackleAnim)
 
 func toggle_tackling(trueOrFalse):
 		tacklingInProgress = trueOrFalse
@@ -463,7 +462,7 @@ func check_steal():
 		speedModified = true
 		speed = speed * 2
 	if _check_collisions() and _check_collisions() == ball.playerInPossession:
-		if self.controlling:
+		if self.controlling and !ball.selecting:
 			#Bring up the Tackle Menu to let the player choose an ability
 			ball.selecting = true
 			var tackleMenu = get_node("../Popup/TackleMenu")
@@ -479,7 +478,7 @@ func check_steal():
 						ball.menuAbilities.append(ability)
 			tackleMenu.popup()
 			tackleMenu.rect_position = self.global_position
-		else:
+		elif !ball.selecting:
 			ball.calc_tackle_damage(type)
 			
 		yield(ball, "calculated")
@@ -487,6 +486,8 @@ func check_steal():
 		tacklerIsSelf = false
 		SceneController.emit_signal("inPossession", self)
 		SceneController.emit_signal("tackling", false)
+		tackle_ended()
+	
 	start_steal_cooldown()
 
 func start_steal_cooldown():

@@ -11,6 +11,7 @@ var blocker
 var selecting = false
 var goalScoring = false
 var KO = false
+var flipping = false
 
 #Variables for abilities
 var menuAbilities = []
@@ -64,13 +65,15 @@ func _draw():
 
 		
 func _input(_event):
-	if playerInPossession == controllingPlayer and Input.is_action_just_pressed("ui_kick") and selecting == false:
+	if playerInPossession == controllingPlayer and Input.is_action_just_released("ui_kick") and selecting == false:
+		selecting = true
 		player_kick()
 		
-	if playerInPossession == controllingPlayer and Input.is_action_just_pressed("ui_pass") and selecting == false:
+	if playerInPossession == controllingPlayer and Input.is_action_just_released("ui_pass") and selecting == false:
+		selecting = true
 		player_pass()
 		
-	if enemyPossession == true and Input.is_action_just_pressed("ui_steal") and selecting == false:
+	if enemyPossession == true and Input.is_action_just_released("ui_steal") and selecting == false:
 		player_steal()
 
 func set_possession(player):
@@ -237,13 +240,22 @@ func _on_KickMenu_id_pressed(id):
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var shotIndex = rng.randf_range(0, 2)
-	SceneController.emit_signal("inPossession", null)
-	kicking = true
+	
 	get_node("../Throw In Boundary/CollisionPolygon2D").disabled = true
+	
+	var kickTarget = possibleShots[shotIndex]
+	var kickDirection = (possibleShots[shotIndex] - self.global_position).normalized() * kickSpeed
+	check_player_direction(kickDirection)
+	kickDirection = (kickTarget - self.global_position).normalized() * kickSpeed
 	self.mode = RigidBody2D.MODE_RIGID
+	kicking = true
+	SceneController.emit_signal("inPossession", null)
+	set_linear_velocity(kickDirection)
+	
+	yield(get_tree().create_timer(0.1), "timeout")
 	get_node("CollisionShape2D").disabled = false
-	set_linear_velocity((possibleShots[shotIndex] - self.global_position).normalized() * kickSpeed)
-	#apply_torque_impulse(rng.randf_range(500, 2000))
+	flipping = false
+	selecting = false
 
 func _on_PassMenu_id_pressed(id, kicker = playerInPossession):
 	initialize_kick(id)
@@ -262,18 +274,23 @@ func _on_PassMenu_id_pressed(id, kicker = playerInPossession):
 		nearestMate = kicker.myGoal
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	SceneController.emit_signal("inPossession", null)
-	kicking = true
+	
 	get_node("../Throw In Boundary/CollisionPolygon2D").disabled = true
+	var kickTarget = nearestMate.position
+	var kickDirection = (kickTarget - self.global_position).normalized() * kickSpeed
+	check_player_direction(kickDirection)
+	kickDirection = (kickTarget - self.global_position).normalized() * kickSpeed
 	self.mode = RigidBody2D.MODE_RIGID
-	set_linear_velocity((nearestMate.position - self.global_position).normalized() * kickSpeed)
-	#apply_torque_impulse(rng.randf_range(500, 2000))
+	kicking = true
+	SceneController.emit_signal("inPossession", null)
+	set_linear_velocity(kickDirection)
 	yield(get_tree().create_timer(0.1), "timeout")
 	get_node("CollisionShape2D").disabled = false
+	flipping = false
+	selecting = false
 	
 	
 func initialize_kick(id):
-	selecting = false
 	attacker = find_attacker("kick")
 	
 	if menuAbilities[id].type == "None":
@@ -292,6 +309,22 @@ func initialize_kick(id):
 		kickedType = "Blue"
 		
 	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
+
+
+func check_player_direction(kickDirection):
+	if playerInPossession:
+		var thingsToFlip = playerInPossession.get_node("ThingsToFlip")
+		if playerInPossession.position.x > kickDirection.x and thingsToFlip.scale.x == 1:
+			flipping = true
+			thingsToFlip.scale.x = -1
+			playerInPossession.get_node("EnemyCollider").scale.x = -1
+			self.global_transform.origin = possessionNode.get_global_position()
+			
+		elif playerInPossession.position.x < kickDirection.x and thingsToFlip.scale.x == -1:
+			flipping = true
+			thingsToFlip.scale.x = 1
+			playerInPossession.get_node("EnemyCollider").scale.x = 1
+			self.global_transform.origin = possessionNode.get_global_position()
 
 func find_attacker(attackAction):
 	if attackAction == "kick":
@@ -331,7 +364,6 @@ func _on_TackleMenu_id_pressed(id):
 	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
 	attacker = find_attacker("tackle")
 	calc_tackle_damage(menuAbilities[id].type)
-	yield(get_tree(), "idle_frame")
 	selecting = false
 	
 func calc_tackle_damage(tackledType):
@@ -359,9 +391,9 @@ func _on_BlockMenu_id_pressed(id):
 	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
 	blocker = find_blocker()
 	blockedType = menuAbilities[id].type
-	selecting = false
 	emit_signal("blocked")
 	SceneController.emit_signal("blocking", false)
+	selecting = false
 
 func calc_power_modifier(baseDamage):
 	if attacker:

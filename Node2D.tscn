@@ -417,9 +417,6 @@ frame = 0
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
 
-[node name="InterceptArea" parent="Player" index="5"]
-position = Vector2( -0.161133, 0.0360718 )
-
 [node name="AnimationPlayer" parent="Player" instance=ExtResource( 14 )]
 
 [node name="AbilityHandler" parent="Player" instance=ExtResource( 23 )]
@@ -460,7 +457,7 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 16 )
 animation = "plant ball"
-frame = 2
+frame = 3
 playing = true
 script = ExtResource( 16 )
 
@@ -883,8 +880,8 @@ script = ExtResource( 40 )
 [connection signal="body_exited" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_entered"]
 [connection signal="body_exited" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_exited"]
-[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" method="_on_Timer_gameOver"]
 [connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/XTeamWon" method="_on_Timer_gameOver"]
+[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" method="_on_Timer_gameOver"]
 [connection signal="pressed" from="GUICanvasLayer/MuteButton" to="GUICanvasLayer/MuteButton" method="_on_MuteButton_pressed"]
 [connection signal="matchStarted" from="GUICanvasLayer/PlayerSelectMenu" to="GUICanvasLayer/PauseMenu" method="_on_PlayerSelectMenu_matchStarted"]
 [connection signal="about_to_show" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup" to="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup" method="_on_AbilityMenuPopup_about_to_show"]
