@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://Art/Sprites/blue_enemy_idle.png" type="Texture" id=1]
 [ext_resource path="res://Players/AIPlayer.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Art/Sprites/dragito_enemy_idle.png" type="Texture" id=15]
 [ext_resource path="res://Art/Sprites/green_enemy_idle.png" type="Texture" id=16]
 [ext_resource path="res://Art/Sprites/red_run/red_enemy_run.png" type="Texture" id=17]
+[ext_resource path="res://Art/Sprites/green_run/green_enemy_run.png" type="Texture" id=18]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.73978
@@ -49,9 +50,9 @@ tracks/1/keys = {
 "values": [ Vector2( -0.159099, -0.198006 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=59]
 resource_name = "Green Enemy Run"
-length = 0.4
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("EnemyCollider:position")
@@ -63,7 +64,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 6.27285, -1.25738 ), Vector2( 9.87112, -1.07499 ), Vector2( 10.118, -0.449659 ), Vector2( 9.8861, -0.596247 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
+"values": [ Vector2( -0.656822, -1.07009 ), Vector2( 0.13213, 0.61061 ), Vector2( -1.68116, -1.3861 ), Vector2( 9.8861, -0.596247 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("EnemyCollider:rotation_degrees")
@@ -99,7 +100,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0, 1, 2, 1 ]
+"values": [ 0, 1, 2, 3 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
@@ -111,7 +112,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
+"values": [ Vector2( 0.47937, 6.40905 ), Vector2( -1.33406, 6.09802 ), Vector2( 2.20138, 7.88842 ), Vector2( 3.81267, 5.48004 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -592,9 +593,21 @@ graph_offset = Vector2( -587.114, -17.1792 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 16 )
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 18 )
 region = Rect2( 0, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 18 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 18 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 18 )
+region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 15 )
@@ -642,7 +655,7 @@ region = Rect2( 192, 0, 64, 32 )
 
 [sub_resource type="SpriteFrames" id=40]
 animations = [ {
-"frames": [ SubResource( 28 ) ],
+"frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
 "name": "green enemy run",
 "speed": 5.0
@@ -710,15 +723,16 @@ margin_bottom = 3.32428
 
 [node name="AnimatedSprite" parent="Health Bar" index="1"]
 position = Vector2( -0.14843, -11.9671 )
+frame = 3
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.159099, -0.198006 )
-rotation = 0.0283279
+rotation = 0.0198091
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." instance=ExtResource( 12 )]
 "anims/Green Enemy Idle" = SubResource( 2 )
-"anims/Green Enemy Run" = SubResource( 3 )
+"anims/Green Enemy Run" = SubResource( 59 )
 "anims/Green Enemy Tackle" = SubResource( 4 )
 "anims/Red Enemy Idle" = SubResource( 5 )
 "anims/Red Enemy Run" = SubResource( 6 )
@@ -734,9 +748,10 @@ parameters/playback = SubResource( 27 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
 frames = SubResource( 40 )
-animation = "green enemy idle"
+animation = "green enemy run"
+frame = 1
 
 [node name="Position2D" type="Position2D" parent="ThingsToFlip"]
-position = Vector2( 1.41581, -0.707909 )
+position = Vector2( -1.33406, 6.09802 )
 
 [editable path="Health Bar"]

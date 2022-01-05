@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Players/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/blue_idle.png" type="Texture" id=2]
@@ -16,7 +16,7 @@
 [ext_resource path="res://Art/Sprites/dragito_idle.png" type="Texture" id=14]
 [ext_resource path="res://Players/red_player_stats.tres" type="Resource" id=15]
 [ext_resource path="res://Art/Sprites/green_idle.png" type="Texture" id=16]
-[ext_resource path="res://Art/Sprites/green_run_1.png" type="Texture" id=17]
+[ext_resource path="res://Art/Sprites/green_run/green_run_1-sheet.png" type="Texture" id=17]
 [ext_resource path="res://Players/SteeringNode.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Art/Sprites/red_run/red_run.png" type="Texture" id=19]
 [ext_resource path="res://Art/Sprites/red_tackle/red_tackle.png" type="Texture" id=20]
@@ -832,7 +832,7 @@ tracks/8/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=49]
-radius = 12.9326
+radius = 7.88569
 height = 14.2349
 
 [sub_resource type="AtlasTexture" id=56]
@@ -854,6 +854,22 @@ region = Rect2( 192, 0, 64, 32 )
 [sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 32, 16 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 17 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 17 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 17 )
+region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=51]
 atlas = ExtResource( 19 )
@@ -898,7 +914,7 @@ animations = [ {
 "name": "red idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 16 ) ],
+"frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
 "name": "green run",
 "speed": 5.0
@@ -937,6 +953,9 @@ margin_top = -22.4966
 margin_right = -8.75441
 margin_bottom = -22.4966
 
+[node name="AnimatedSprite" parent="Health Bar" index="1"]
+frame = 4
+
 [node name="AnimationTree" parent="." instance=ExtResource( 5 )]
 tree_root = SubResource( 37 )
 active = true
@@ -956,13 +975,13 @@ parameters/playback = SubResource( 38 )
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.159099, -0.198006 )
-rotation = 0.0115828
+rotation = 0.0250886
 shape = SubResource( 49 )
 
 [node name="ThingsToFlip" type="Node2D" parent="."]
 
 [node name="Position2D" type="Position2D" parent="ThingsToFlip"]
-position = Vector2( 12.9999, 3.90676 )
+position = Vector2( 3.81267, 5.48004 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
 position = Vector2( -0.992128, -0.992126 )

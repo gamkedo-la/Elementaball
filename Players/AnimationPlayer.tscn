@@ -452,7 +452,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=8]
 resource_name = "Green Run"
-length = 0.4
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("EnemyCollider:position")
@@ -464,7 +464,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 6.27285, -1.25738 ), Vector2( 9.87112, -1.07499 ), Vector2( 10.118, -0.449659 ), Vector2( 9.8861, -0.596247 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
+"values": [ Vector2( -0.656822, -1.07009 ), Vector2( 0.13213, 0.61061 ), Vector2( -1.68116, -1.3861 ), Vector2( 9.8861, -0.596247 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("EnemyCollider:rotation_degrees")
@@ -500,7 +500,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0, 1, 2, 1 ]
+"values": [ 0, 1, 2, 3 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("ThingsToFlip/Position2D:position")
@@ -512,7 +512,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
+"values": [ Vector2( 0.47937, 6.40905 ), Vector2( -1.33406, 6.09802 ), Vector2( 2.20138, 7.88842 ), Vector2( 3.81267, 5.48004 ) ]
 }
 
 [sub_resource type="Animation" id=9]
