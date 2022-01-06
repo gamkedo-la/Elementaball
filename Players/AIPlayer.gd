@@ -296,7 +296,9 @@ func set_control(player):
 			set_physics_process(true)
 
 func out_of_bounds():
-
+	if tacklingInProgress:
+		tackle_ended()
+	
 	outOfBounds = true
 	var throwInTeam
 	if ball.lastInPossession == "player_team":
