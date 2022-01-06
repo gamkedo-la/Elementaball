@@ -337,9 +337,17 @@ func out_of_bounds():
 		
 	if offField and throwInPlayer != self:
 		#move self back onto field
-		self.position = defenseZone.position
-		destination = defenseZone.position
-		check_and_slide()
+		closestDistance = 9999
+		var closestGuard
+		for point in get_tree().get_nodes_in_group("guard_points"):
+			if point.position.distance_to(ball.position) < closestDistance:
+				closestDistance = point.position.distance_to(self.position)
+				closestGuard = point
+				
+		if closestGuard:
+			self.position = closestGuard.position
+			destination = defenseZone.position
+			check_and_slide()
 		
 	set_physics_process(true)
 
