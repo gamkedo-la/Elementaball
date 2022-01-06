@@ -21,8 +21,8 @@
 [ext_resource path="res://Art/Sprites/green_tackle/green_enemy_tackle.png" type="Texture" id=19]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.73978
-height = 18.4876
+radius = 13.6327
+height = 0.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "Green Enemy Idle"
@@ -261,7 +261,7 @@ tracks/1/keys = {
 "values": [ "red enemy idle" ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=69]
 resource_name = "Red Enemy Run"
 length = 0.4
 loop = true
@@ -272,10 +272,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 6.27285, -1.25738 ), Vector2( 9.87112, -1.07499 ), Vector2( 10.118, -0.449659 ), Vector2( 9.8861, -0.596247 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
+"values": [ Vector2( 0.137665, 3.22603 ), Vector2( -0.275532, -1.54693 ), Vector2( -0.275532, -1.54693 ), Vector2( -0.0286522, 4.26972 ), Vector2( 0.683318, 2.70732 ), Vector2( 0.126343, 0.33773 ), Vector2( -0.161148, 0.0360641 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("EnemyCollider:rotation_degrees")
@@ -284,10 +284,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1.62307, 1.13498, 1.43747, 0.663645, 1.20974 ]
+"values": [ 48.6573, 62.914, 103.162, 1.43747, 0.663645, 1.20974 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("ThingsToFlip/AnimatedSprite:animation")
@@ -323,7 +323,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 1.41581, -0.707909 ), Vector2( 8.9668, 1.41581 ), Vector2( 17.9336, 2.83163 ), Vector2( 8.49488, 0.23597 ) ]
+"values": [ Vector2( 12.5063, 0.235969 ), Vector2( 13.2142, -4.95534 ), Vector2( 13.6862, 4.24745 ), Vector2( 12.7423, 11.5625 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -711,11 +711,11 @@ margin_bottom = 3.32428
 
 [node name="AnimatedSprite" parent="Health Bar" index="1"]
 position = Vector2( -0.14843, -11.9671 )
-frame = 6
+frame = 7
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.159099, -0.198006 )
-rotation = 0.0404559
+rotation = 1.09806
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." instance=ExtResource( 12 )]
@@ -723,7 +723,7 @@ shape = SubResource( 1 )
 "anims/Green Enemy Run" = SubResource( 59 )
 "anims/Green Enemy Tackle" = SubResource( 64 )
 "anims/Red Enemy Idle" = SubResource( 5 )
-"anims/Red Enemy Run" = SubResource( 6 )
+"anims/Red Enemy Run" = SubResource( 69 )
 "anims/Red Enemy Tackle" = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -736,10 +736,10 @@ parameters/playback = SubResource( 27 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
 frames = SubResource( 40 )
-animation = "red enemy tackle"
-frame = 3
+animation = "red enemy run"
+frame = 1
 
 [node name="Position2D" type="Position2D" parent="ThingsToFlip"]
-position = Vector2( -1.33406, 6.09802 )
+position = Vector2( 13.2142, -4.95534 )
 
 [editable path="Health Bar"]
