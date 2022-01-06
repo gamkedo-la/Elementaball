@@ -28,16 +28,14 @@ func _ready():
 	set_targets(get_node("../Player"))
 
 func _process(_delta):
-	yield(get_tree(), "idle_frame")
 	if !targets:
 		return
 	# Keep the camera centered between the targets
 
 	var pos = Vector2.ZERO
 	for target in targets:
-		if target != null: 
-			if target.position != null:
-				pos += target.get_position()
+		if target: 
+			pos += target.get_position()
 	pos /= targets.size()
 	position = lerp(position, pos, move_speed)
 	
@@ -79,7 +77,7 @@ func remove_target(target, team):
 		add_target(ball)
 	var playerTeam = get_tree().get_nodes_in_group("player_team")
 	for player in playerTeam:
-		if player.controlling:
+		if player.controlling and player != target:
 			if !player in targets:
 				add_target(player)
 	set_process(true)

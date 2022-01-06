@@ -79,6 +79,7 @@ func _ready():
 	SceneController.connect("blocking", self, "toggle_blocking")
 # warning-ignore:return_value_discarded
 	SceneController.connect("outOfBounds", self, "out_of_bounds")
+	SceneController.connect("knockout", self, "check_KO_targets")
 	initialize_stats(starting_stats)
 		
 func initialize_stats(stats : StartingStats):
@@ -496,6 +497,10 @@ func start_steal_cooldown():
 	var cooldownTimer = get_tree().create_timer(3.0)
 	yield(cooldownTimer, "timeout")
 	stealCooldown = false
+
+func check_KO_targets(player, team):
+	if player == enemyInZone:
+		enemyInZone = null
 
 func _on_InterceptArea_body_entered(body):
 	if body == ball.playerInPossession and body.is_in_group(myOpponent):
