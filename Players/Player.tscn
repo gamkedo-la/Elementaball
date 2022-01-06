@@ -946,7 +946,7 @@ controlling = true
 inPossession = true
 fieldPosition = "PlayerCenter"
 starting_stats = ExtResource( 15 )
-speed = 300
+speed = 150
 
 [node name="Health Bar" parent="." instance=ExtResource( 3 )]
 margin_left = -8.75441
@@ -955,7 +955,7 @@ margin_right = -8.75441
 margin_bottom = -22.4966
 
 [node name="AnimatedSprite" parent="Health Bar" index="1"]
-frame = 2
+frame = 3
 
 [node name="AnimationTree" parent="." instance=ExtResource( 5 )]
 tree_root = SubResource( 37 )
@@ -982,7 +982,7 @@ shape = SubResource( 49 )
 [node name="ThingsToFlip" type="Node2D" parent="."]
 
 [node name="Position2D" type="Position2D" parent="ThingsToFlip"]
-position = Vector2( 3.81267, 5.48004 )
+position = Vector2( 8.49488, 0.23597 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ThingsToFlip"]
 position = Vector2( -0.992128, -0.992126 )

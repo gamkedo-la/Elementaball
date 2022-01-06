@@ -364,7 +364,6 @@ func _on_TackleMenu_id_pressed(id):
 	AudioQueen.emit_signal("playSound", menuAbilities[id].sound)
 	attacker = find_attacker("tackle")
 	calc_tackle_damage(menuAbilities[id].type)
-	selecting = false
 	
 func calc_tackle_damage(tackledType):
 	var baseDamage = 5
@@ -393,6 +392,7 @@ func _on_BlockMenu_id_pressed(id):
 	blockedType = menuAbilities[id].type
 	emit_signal("blocked")
 	SceneController.emit_signal("blocking", false)
+	yield(get_tree().create_timer(0.3), "timeout")
 	selecting = false
 
 func calc_power_modifier(baseDamage):
