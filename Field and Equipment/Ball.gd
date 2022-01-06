@@ -352,7 +352,6 @@ func calc_intercept_damage(interceptor):
 		KO(interceptor)
 
 func KO(interceptor):
-	kicking = false
 	KO = true
 	if interceptor.is_in_group("player_team"):
 		lastInPossession = "player_team"

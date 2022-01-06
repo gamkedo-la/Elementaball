@@ -339,6 +339,8 @@ func out_of_bounds():
 			self.position = defenseZone.position
 			destination = defenseZone.position
 			check_and_slide()
+		
+		set_physics_process(true)
 
 func intercept():
 	if destination != ball.position and destination != ball.playerInPossession.position:
@@ -505,7 +507,7 @@ func _on_InterceptArea_body_exited(body):
 	if body == ball.playerInPossession and body.is_in_group(myOpponent):
 		intercepting = false
 	elif body.is_in_group(myOpponent):
-		enemyInZone = body
+		enemyInZone = null
 		
 func _check_collisions():
 	var slide_count = get_slide_count()
