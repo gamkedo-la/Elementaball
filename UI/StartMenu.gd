@@ -43,6 +43,7 @@ func _start_camera_animation() -> void:
 #	plaxTween.interpolate_property(background, "scroll_offset:y", background.scroll_offset.y, targ_y, 4.0, Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
 	plaxTween.start()
 	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+
+func _on_CreditsPanel_creditsClosing():
+	get_node(startButton).grab_focus()

@@ -1,10 +1,8 @@
 extends PopupPanel
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+onready var backButton = get_node("VBoxContainer/BackButton")
+signal creditsClosing()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +16,9 @@ func _ready():
 
 func _on_BackButton_pressed():
 	self.hide()
+	self.emit_signal("creditsClosing")
 
 
 func _on_CreditsButton_pressed():
 	self.show()
+	backButton.grab_focus()
