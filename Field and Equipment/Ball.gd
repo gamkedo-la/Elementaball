@@ -241,7 +241,7 @@ func _on_KickMenu_id_pressed(id):
 	rng.randomize()
 	var shotIndex = rng.randf_range(0, 2)
 	
-	get_node("../Throw In Boundary/CollisionPolygon2D").disabled = true
+	get_node("../Throw In Boundary").set_collision_layer_bit(0, false)
 	
 	var kickTarget = possibleShots[shotIndex]
 	var kickDirection = (possibleShots[shotIndex] - self.global_position).normalized() * kickSpeed
@@ -275,7 +275,7 @@ func _on_PassMenu_id_pressed(id, kicker = playerInPossession):
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	
-	get_node("../Throw In Boundary/CollisionPolygon2D").disabled = true
+	get_node("../Throw In Boundary").set_collision_layer_bit(0, false)
 	var kickTarget = nearestMate.position
 	var kickDirection = (kickTarget - self.global_position).normalized() * kickSpeed
 	check_player_direction(kickDirection)

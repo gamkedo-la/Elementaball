@@ -793,7 +793,7 @@ Abhishek @akhmin_ak: Knock out sound, green character run animation improvement
 
 Kyle Black: Start menu, animated logo, asset import fix
 
-Christer \"McFunkypants\" Kaitila: Whistle effect, mute button
+Christer \"McFunkypants\" Kaitila: Whistle effects, mute button
 
 Stebs: Testing"
 autowrap = true
@@ -821,6 +821,7 @@ position = Vector2( -298.5, 301.5 )
 
 [node name="BRight" type="Position2D" parent="."]
 position = Vector2( 616.5, 306 )
+
 [connection signal="pressed" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" method="_on_StartButton_pressed"]
 [connection signal="ready" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" to="MainMenu/Control/CreditsPanel" method="_on_StartButton_ready"]
 [connection signal="pressed" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Credits/CreditsButton" to="MainMenu/Control/CreditsPanel" method="_on_CreditsButton_pressed"]

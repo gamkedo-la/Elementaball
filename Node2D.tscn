@@ -413,7 +413,7 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="AnimatedSprite" parent="Player/Health Bar" index="1"]
 visible = true
-frame = 1
+frame = 0
 
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 1 )
@@ -430,7 +430,7 @@ fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player2/Health Bar" index="1"]
-frame = 1
+frame = 0
 
 [node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 2 )
@@ -445,7 +445,7 @@ fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player3/Health Bar" index="1"]
-frame = 1
+frame = 0
 
 [node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 3 )
@@ -538,7 +538,7 @@ margin_bottom = 6.0
 
 [node name="AnimatedSprite" parent="Enemy/Health Bar" index="1"]
 position = Vector2( 7.8787, -8.25085 )
-frame = 7
+frame = 6
 
 [node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 17 )
@@ -563,7 +563,7 @@ margin_top = -21.0
 margin_bottom = -21.0
 
 [node name="AnimatedSprite" parent="Enemy3/Health Bar" index="1"]
-frame = 7
+frame = 6
 
 [node name="AnimationTree" parent="Enemy3" index="5"]
 parameters/playback = SubResource( 18 )
@@ -585,7 +585,7 @@ margin_top = -21.0
 margin_bottom = -21.0
 
 [node name="AnimatedSprite" parent="Enemy2/Health Bar" index="1"]
-frame = 7
+frame = 6
 
 [node name="EnemyCollider" parent="Enemy2" index="3"]
 rotation = 1.52987
@@ -910,11 +910,12 @@ position = Vector2( 170.057, 257.09 )
 position = Vector2( -127.998, 215.276 )
 
 [node name="Throw In Boundary" type="StaticBody2D" parent="."]
-collision_layer = 0
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Throw In Boundary"]
+visible = false
 polygon = PoolVector2Array( -168.208, -142.01, -337.162, 329.927, -71.5145, 328.648, -49.2415, 432.11, -6.47839, 432.11, 23.8094, 328.189, 295.29, 326.881, 311.005, 436.401, 346.964, 434.903, 370.938, 326.517, 686, 325, 515.45, -143.085, 352.29, -143.085, 334.651, -182.772, 304.413, -182.772, 293.703, -143.085, 68.7898, -144.363, 59.3582, -186.552, 24.0804, -184.662, 17.149, -144.656, -149.789, -145.605, -152.162, -130.683, 471.739, -130.683, 607.656, 295.948, -289.024, 296.892, -154.05, -125.964, -149.789, -146.235 )
-disabled = true
 
 [node name="TournamentStandings" parent="." instance=ExtResource( 39 )]
 
