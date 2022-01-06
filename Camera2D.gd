@@ -52,6 +52,7 @@ func _process(_delta):
 	zoom = lerp(zoom, Vector2.ONE * zoomTarget, zoom_speed)
 
 func set_targets(player):
+	set_process(false)
 	if player:
 		if player.inPossession:
 			targets = [player, player.myGoal]
@@ -64,13 +65,14 @@ func set_targets(player):
 				add_target(player)
 		elif !player.inPossession:
 			remove_target(player, playerTeam)
-		set_process(true)
+	set_process(true)
 
 func add_target(target):
-	if not target in targets:
+	if target and not target in targets:
 		targets.append(target)
 
 func remove_target(target, team):
+	set_process(false)
 	if target in targets:
 		targets.erase(target)
 	if !ball in targets:

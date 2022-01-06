@@ -82,13 +82,19 @@ func set_interest():
 		interest[i] = max(1, d)
 		
 func set_danger():
+	var safeThings
+	if player.offField:
+		safeThings = [self, player, player.ball, boundary, player.throwInBoundary]
+	else:
+		safeThings = [self, player, player.ball, boundary]
+	
 	# Cast rays to find danger directions
 
 	var space_state = get_world_2d().direct_space_state
 	for i in num_rays:
 		var result = space_state.intersect_ray(player.global_position,
 				player.global_position + ray_directions[i].rotated(rotation) * look_ahead,
-				[self, player, player.ball, boundary])
+				safeThings)
 		danger[i] = 1.0 if result else 0.0
 		
 func choose_direction():

@@ -11,6 +11,7 @@ onready var animPlayer = get_node("StatusAnimations")
 
 var knockedOut = false
 
+
 func _ready():
 	update_healthbar(healthbar.max_value)
 
@@ -30,16 +31,21 @@ func update_healthbar(value):
 			animPlayer.animation = "KO"
 			animPlayer.frame = 0
 			animPlayer.playing = true
-		if get_parent().controlling:
-			SceneController.next_player()
+		
+		get_parent().get_node("EnemyCollider").disabled = true		
+		
 		if get_parent().inPossession:
 			SceneController.emit_signal("inPossession", null)
+
+		if get_parent().controlling:
+			SceneController.next_player()
+
 		if get_parent().is_in_group("player_team"):
 			SceneController.emit_signal("knockout", get_parent(), "blue")
 		else:
 			SceneController.emit_signal("knockout", get_parent(), "red")
-		get_parent().get_node("EnemyCollider").disabled = true
-		yield(get_tree().create_timer(0.3), "timeout")
+		
+		yield(get_tree().create_timer(0.5), "timeout")
 		get_parent().queue_free()
 
 func floatingNumbers(damage):

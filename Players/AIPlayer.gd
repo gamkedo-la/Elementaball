@@ -32,6 +32,7 @@ var outOfBounds = false
 var offField = false
 var throwInPlayer
 var throwInPoint
+onready var throwInBoundary = get_node("../Throw In Boundary")
 
 export var fieldPosition : String
 var rng = RandomNumberGenerator.new()
@@ -145,7 +146,7 @@ func _physics_process(_delta):
 				check_and_slide()
 				
 				#Enable the boundary so the player can't cross into the field when throwing in
-				get_node("../Throw In Boundary").set_collision_layer_bit(0, true)
+				throwInBoundary.set_collision_layer_bit(0, true)
 				
 				ball.throwingIn = true
 				#Player controlled character stops here, player can throw or pass
