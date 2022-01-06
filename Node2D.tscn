@@ -453,7 +453,6 @@ parameters/playback = SubResource( 3 )
 [node name="AbilityHandler" parent="Player3" instance=ExtResource( 23 )]
 
 [node name="BallEffects" type="AnimatedSprite" parent="."]
-visible = false
 position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 16 )
@@ -468,6 +467,18 @@ linear_damp = 0.0
 [node name="Popup" parent="." instance=ExtResource( 3 )]
 theme = ExtResource( 31 )
 script = ExtResource( 41 )
+
+[node name="KickMenu" parent="Popup" index="0"]
+items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="PassMenu" parent="Popup" index="1"]
+items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="TackleMenu" parent="Popup" index="2"]
+items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Swipe", null, 0, false, false, 1, 0, null, "", false, "Flame Tackle", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="BlockMenu" parent="Popup" index="3"]
+items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping Wave", null, 0, false, false, 1, 0, null, "", false, "Flame Wall", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="Goal" parent="." groups=[
 "goal",
@@ -724,6 +735,42 @@ visible = false
 script = ExtResource( 22 )
 closeButton = NodePath("MarginContainer/SelectionMenuContainer/Top Margin/StartButton")
 
+[node name="AbilityMenu1" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu2" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu3" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu4" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu1" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer2" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu2" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer2" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu3" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu4" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu1" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu2" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu3" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu4" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
 [node name="EndCondition" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 script = ExtResource( 21 )
 
@@ -782,6 +829,17 @@ margin_top = -20.0
 margin_right = 23.0
 margin_bottom = -6.0
 text = "Paused"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="GUICanvasLayer/PauseMenu"]
+margin_left = -74.3394
+margin_top = -0.996605
+margin_right = -24.3394
+margin_bottom = 15.0034
+min_value = -50.0
+max_value = 5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -913,7 +971,6 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Throw In Boundary"]
-visible = false
 polygon = PoolVector2Array( -168.208, -142.01, -337.162, 329.927, -71.5145, 328.648, -49.2415, 432.11, -6.47839, 432.11, 23.8094, 328.189, 295.29, 326.881, 311.005, 436.401, 346.964, 434.903, 370.938, 326.517, 686, 325, 515.45, -143.085, 352.29, -143.085, 334.651, -182.772, 304.413, -182.772, 293.703, -143.085, 68.7898, -144.363, 59.3582, -186.552, 24.0804, -184.662, 17.149, -144.656, -149.789, -145.605, -152.162, -130.683, 471.739, -130.683, 607.656, 295.948, -289.024, 296.892, -154.05, -125.964, -149.789, -146.235 )
 
 [node name="TournamentStandings" parent="." instance=ExtResource( 39 )]
@@ -936,8 +993,8 @@ script = ExtResource( 40 )
 [connection signal="body_exited" from="Enemy2/InterceptArea" to="Enemy2" method="_on_InterceptArea_body_exited"]
 [connection signal="body_entered" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_entered"]
 [connection signal="body_exited" from="Boundary Line" to="Ball" method="_on_Boundary_Line_body_exited"]
-[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/XTeamWon" method="_on_Timer_gameOver"]
 [connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" method="_on_Timer_gameOver"]
+[connection signal="gameOver" from="GUICanvasLayer/ScoreBoard/HBoxContainer/Timer" to="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/XTeamWon" method="_on_Timer_gameOver"]
 [connection signal="pressed" from="GUICanvasLayer/MuteButton" to="GUICanvasLayer/MuteButton" method="_on_MuteButton_pressed"]
 [connection signal="matchStarted" from="GUICanvasLayer/PlayerSelectMenu" to="GUICanvasLayer/PauseMenu" method="_on_PlayerSelectMenu_matchStarted"]
 [connection signal="about_to_show" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup" to="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup" method="_on_AbilityMenuPopup_about_to_show"]
@@ -956,6 +1013,7 @@ script = ExtResource( 40 )
 [connection signal="initializeMenu" from="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer/AbilityMenu4" to="Player3/AbilityHandler" method="_on_AbilityMenu4_initializeMenu"]
 [connection signal="pressed" from="GUICanvasLayer/PauseMenu/PauseContainer/Resume" to="GUICanvasLayer/PauseMenu" method="_on_Resume_pressed"]
 [connection signal="pressed" from="GUICanvasLayer/PauseMenu/PauseContainer/Quit" to="GUICanvasLayer/PauseMenu" method="_on_Quit_pressed"]
+[connection signal="value_changed" from="GUICanvasLayer/PauseMenu/HSlider" to="GUICanvasLayer/PauseMenu" method="_on_HSlider_value_changed"]
 
 [editable path="Player"]
 [editable path="Player/Health Bar"]
