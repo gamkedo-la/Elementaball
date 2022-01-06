@@ -295,52 +295,52 @@ func set_control(player):
 			set_physics_process(true)
 
 func out_of_bounds():
-	if outOfBounds == false:
-		outOfBounds = true
-		var throwInTeam
-		if ball.lastInPossession == "player_team":
-			throwInTeam = "enemy_team"
-			if self.is_in_group("player_team"):
-				onDefense = true
-				onOffense = false
-			if self.is_in_group("enemy_team"):
-				onOffense = true
-				onDefense = false
-		else:
-			throwInTeam = "player_team" 
-			if self.is_in_group("player_team"):
-				onDefense = false
-				onOffense = true
-			if self.is_in_group("enemy_team"):
-				onOffense = false
-				onDefense = true
-		
-		var closestDistance = 9999
-		var closestPlayer
-		for player in get_tree().get_nodes_in_group(throwInTeam):
-			if player.position.distance_to(ball.position) < closestDistance:
-				closestDistance = player.position.distance_to(ball.position)
-				closestPlayer = player
-				
-		throwInPlayer = closestPlayer
-		
-		closestDistance = 9999
-		var closestPosition
-		for point in get_tree().get_nodes_in_group("throw_in_positions"):
-			if point.position.distance_to(ball.position) < closestDistance:
-				closestDistance = point.position.distance_to(ball.position)
-				closestPosition = point
-				
-		if closestPosition:
-			throwInPoint = closestPosition.position
+
+	outOfBounds = true
+	var throwInTeam
+	if ball.lastInPossession == "player_team":
+		throwInTeam = "enemy_team"
+		if self.is_in_group("player_team"):
+			onDefense = true
+			onOffense = false
+		if self.is_in_group("enemy_team"):
+			onOffense = true
+			onDefense = false
+	else:
+		throwInTeam = "player_team" 
+		if self.is_in_group("player_team"):
+			onDefense = false
+			onOffense = true
+		if self.is_in_group("enemy_team"):
+			onOffense = false
+			onDefense = true
+	
+	var closestDistance = 9999
+	var closestPlayer
+	for player in get_tree().get_nodes_in_group(throwInTeam):
+		if player.position.distance_to(ball.position) < closestDistance:
+			closestDistance = player.position.distance_to(ball.position)
+			closestPlayer = player
 			
-		if offField and throwInPlayer != self:
-			#move self back onto field
-			self.position = defenseZone.position
-			destination = defenseZone.position
-			check_and_slide()
+	throwInPlayer = closestPlayer
+	
+	closestDistance = 9999
+	var closestPosition
+	for point in get_tree().get_nodes_in_group("throw_in_positions"):
+		if point.position.distance_to(ball.position) < closestDistance:
+			closestDistance = point.position.distance_to(ball.position)
+			closestPosition = point
+			
+	if closestPosition:
+		throwInPoint = closestPosition.position
 		
-		set_physics_process(true)
+	if offField and throwInPlayer != self:
+		#move self back onto field
+		self.position = defenseZone.position
+		destination = defenseZone.position
+		check_and_slide()
+		
+	set_physics_process(true)
 
 func intercept():
 	if destination != ball.position and destination != ball.playerInPossession.position:
@@ -352,10 +352,10 @@ func _move_to_target():
 	var distance2Target = destination.distance_to(self.position);
 	var ballPosition = ball.position
 	if ball.playerInPossession:
-		if (distance2Target <= 32 and destination != ballPosition):
+		if (distance2Target <= 64 and destination != ballPosition):
 			destination = ballPosition
 			check_and_slide()
-		elif distance2Target >= 32:
+		elif distance2Target >= 64:
 			check_and_slide()
 		elif (destination == ballPosition and ball.kicking == false and stealCooldown == false and tacklingInProgress == false):
 			_try_steal();
@@ -493,7 +493,7 @@ func check_steal():
 	start_steal_cooldown()
 
 func start_steal_cooldown():
-	var cooldownTimer = get_tree().create_timer(2.0)
+	var cooldownTimer = get_tree().create_timer(3.0)
 	yield(cooldownTimer, "timeout")
 	stealCooldown = false
 

@@ -64,6 +64,8 @@ func set_targets(player):
 		if player.controlling:
 			if !player in targets:
 				add_target(player)
+		elif !player.inPossession:
+			remove_target(player, playerTeam)
 		set_process(true)
 
 func add_target(target):
@@ -80,3 +82,4 @@ func remove_target(target, team):
 		if player.controlling:
 			if !player in targets:
 				add_target(player)
+	set_process(true)
