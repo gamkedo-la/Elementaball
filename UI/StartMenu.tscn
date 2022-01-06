@@ -762,16 +762,16 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -135.0
-margin_top = 31.0
-margin_right = 133.0
-margin_bottom = 1.0
+margin_left = -230.0
+margin_top = 10.0
+margin_right = 230.0
+margin_bottom = -10.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="MainMenu/Control/CreditsPanel/VBoxContainer"]
-margin_right = 268.0
+margin_right = 460.0
 margin_bottom = 19.0
 text = "Credits
 "
@@ -779,15 +779,29 @@ align = 1
 
 [node name="Credits" type="Label" parent="MainMenu/Control/CreditsPanel/VBoxContainer"]
 margin_top = 23.0
-margin_right = 268.0
-margin_bottom = 42.0
-text = "Created by Nic Barkdull
+margin_right = 460.0
+margin_bottom = 218.0
+text = "Nic Barkdull: Project lead, core gameplay, AI, sport rules design, environment and sprite art, camera movement, controller support, ability authoring, particles, boundary handling, match setup menus, asset integration, font selection, assorted bug fixes
+
+Alan Zaring: Original music
+
+Ryan Young: Sounds (water/fire/plant tackle, fire kick, menu sounds)
+
+George Carter: Pause functionality, quit button on main menu, movement bug fix
+
+Abhishek @akhmin_ak: Knock out sound, green character run animation improvement
+
+Kyle Black: Start menu, animated logo, asset import fix
+
+Christer \"McFunkypants\" Kaitila: Whistle effect, mute button
+
 Stebs: Testing"
+autowrap = true
 
 [node name="BackButton" type="Button" parent="MainMenu/Control/CreditsPanel/VBoxContainer"]
-margin_top = 46.0
+margin_top = 222.0
 margin_right = 35.0
-margin_bottom = 66.0
+margin_bottom = 242.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Back"
@@ -807,7 +821,6 @@ position = Vector2( -298.5, 301.5 )
 
 [node name="BRight" type="Position2D" parent="."]
 position = Vector2( 616.5, 306 )
-
 [connection signal="pressed" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" method="_on_StartButton_pressed"]
 [connection signal="ready" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" to="MainMenu/Control/CreditsPanel" method="_on_StartButton_ready"]
 [connection signal="pressed" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Credits/CreditsButton" to="MainMenu/Control/CreditsPanel" method="_on_CreditsButton_pressed"]
