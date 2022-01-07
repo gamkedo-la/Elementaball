@@ -44,9 +44,7 @@ func update_healthbar(value):
 			SceneController.emit_signal("knockout", get_parent(), "blue")
 		else:
 			SceneController.emit_signal("knockout", get_parent(), "red")
-		
-		yield(get_tree().create_timer(0.5), "timeout")
-		get_parent().queue_free()
+
 
 func floatingNumbers(damage):
 	var text = floatingText.instance()

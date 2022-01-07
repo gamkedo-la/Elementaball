@@ -26,7 +26,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	SceneController.connect("inPossession", self, "set_targets")
 # warning-ignore:return_value_discarded
-	SceneController.connect("knockout", self, "remove_target")
+	SceneController.connect("knockout", self, "knockout")
 	set_targets(get_node("../Player"))
 
 func _process(_delta):
@@ -36,7 +36,7 @@ func _process(_delta):
 
 	var pos = Vector2.ZERO
 	for target in targets:
-		if target: 
+		if is_instance_valid(target): 
 			pos += target.position
 	pos /= targets.size()
 	position = lerp(position, pos, move_speed)
@@ -44,7 +44,8 @@ func _process(_delta):
 	# Find the zoom that will contain all targets
 	var rect = Rect2(position, Vector2.ONE)
 	for target in targets:
-		rect = rect.expand(target.position)
+		if is_instance_valid(target): 
+			rect = rect.expand(target.position)
 	rect = rect.grow_individual(margin.x, margin.y, margin.x, margin.y)
 	var zoomTarget
 	if rect.size.x > rect.size.y * screen_size.aspect():
@@ -65,13 +66,13 @@ func set_targets(player):
 			if !player in targets:
 				add_target(player)
 		elif !player.inPossession:
-			remove_target(player, playerTeam)
+			remove_target(player)
 
 func add_target(target):
 	if target and not target in targets:
 		targets.append(target)
 
-func remove_target(target, _team):
+func remove_target(target):
 	if target in targets:
 		targets.erase(target)
 	if !ball in targets:
@@ -81,3 +82,11 @@ func remove_target(target, _team):
 		if player.controlling and player != target:
 			if !player in targets:
 				add_target(player)
+
+func knockout(target, _team):
+	remove_target(target)
+	if target.inPossession:
+		SceneController.emit_signal("inPossession", null)
+	if target.controlling:
+		SceneController.next_player()
+	target.queue_free()

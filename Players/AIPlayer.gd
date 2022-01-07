@@ -510,7 +510,8 @@ func check_steal():
 func start_steal_cooldown():
 	var cooldownTimer = get_tree().create_timer(3.0)
 	yield(cooldownTimer, "timeout")
-	stealCooldown = false
+	if is_instance_valid(self):
+		stealCooldown = false
 
 func check_KO_targets(player, _team):
 	if player == enemyInZone:
