@@ -104,7 +104,6 @@ __meta__ = {
 visible = false
 position = Vector2( 7.95325, -17.2452 )
 frames = SubResource( 11 )
-frame = 4
 playing = true
 
 [node name="StatusAnimations" type="AnimatedSprite" parent="."]

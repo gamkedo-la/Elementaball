@@ -36,8 +36,6 @@ func _process(_delta):
 
 	var pos = Vector2.ZERO
 	for target in targets:
-		if target == null:
-			remove_target(target, "nullTeam")
 		if target: 
 			pos += target.position
 	pos /= targets.size()
