@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=2]
+[gd_scene load_steps=166 format=2]
 
 [ext_resource path="res://Field and Equipment/ParallaxBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/StartMenu.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://UI/QuitButton.gd" type="Script" id=6]
 [ext_resource path="res://Art/UI/UI_theme.tres" type="Theme" id=7]
 [ext_resource path="res://UI/CreditsPanel.gd" type="Script" id=8]
+[ext_resource path="res://Fonts/new_pixellari_font.tres" type="DynamicFont" id=9]
+[ext_resource path="res://UI/CreditsButton.gd" type="Script" id=10]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -685,15 +687,18 @@ margin_right = 86.0
 margin_bottom = 270.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 7 )
+alignment = 1
 
 [node name="Title" type="HBoxContainer" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons"]
+margin_top = 62.0
 margin_right = 86.0
-margin_bottom = 50.0
+margin_bottom = 112.0
 rect_min_size = Vector2( 0, 50 )
 alignment = 1
 
 [node name="TextureRect" type="AnimatedSprite" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Title"]
-position = Vector2( 43, 20 )
+position = Vector2( 43, 3 )
 frames = SubResource( 153 )
 animation = "Entrance"
 
@@ -703,53 +708,51 @@ method_call_mode = 1
 anims/Entrance = SubResource( 154 )
 
 [node name="Start" type="HBoxContainer" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons"]
-margin_top = 54.0
+margin_top = 116.0
 margin_right = 86.0
-margin_bottom = 76.0
+margin_bottom = 144.0
 alignment = 1
 
 [node name="StartButton" type="Button" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start"]
-self_modulate = Color( 0, 0.498039, 0.623529, 1 )
-margin_right = 86.0
-margin_bottom = 22.0
-custom_fonts/font = SubResource( 155 )
+margin_left = 1.0
+margin_right = 85.0
+margin_bottom = 28.0
+focus_neighbour_top = NodePath("../../Quit/QuitButton")
+theme = ExtResource( 7 )
+custom_fonts/font = ExtResource( 9 )
 text = "New Game"
-flat = true
 script = ExtResource( 5 )
 
 [node name="Credits" type="HBoxContainer" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons"]
-margin_top = 80.0
+margin_top = 148.0
 margin_right = 86.0
-margin_bottom = 102.0
+margin_bottom = 176.0
 alignment = 1
 
 [node name="CreditsButton" type="Button" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Credits"]
-self_modulate = Color( 0, 0.498039, 0.623529, 1 )
-margin_left = 11.0
-margin_right = 75.0
-margin_bottom = 22.0
+margin_left = 12.0
+margin_right = 74.0
+margin_bottom = 28.0
 custom_fonts/font = SubResource( 155 )
 text = "Credits"
-flat = true
+script = ExtResource( 10 )
 
 [node name="Quit" type="HBoxContainer" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons"]
-margin_top = 106.0
+margin_top = 180.0
 margin_right = 86.0
-margin_bottom = 128.0
+margin_bottom = 208.0
 alignment = 1
 
 [node name="QuitButton" type="Button" parent="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Quit"]
-self_modulate = Color( 0, 0.498039, 0.623529, 1 )
-margin_left = 22.0
-margin_right = 63.0
-margin_bottom = 22.0
+margin_left = 23.0
+margin_right = 62.0
+margin_bottom = 28.0
+focus_neighbour_bottom = NodePath("../../Start/StartButton")
 custom_fonts/font = SubResource( 155 )
 text = "Quit"
-flat = true
 script = ExtResource( 6 )
 
 [node name="CreditsPanel" type="PopupPanel" parent="MainMenu/Control"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 7 )
@@ -822,8 +825,14 @@ position = Vector2( -298.5, 301.5 )
 [node name="BRight" type="Position2D" parent="."]
 position = Vector2( 616.5, 306 )
 
+[connection signal="focus_entered" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" method="_on_StartButton_focus_entered"]
+[connection signal="focus_exited" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" method="_on_StartButton_focus_exited"]
 [connection signal="pressed" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" method="_on_StartButton_pressed"]
+[connection signal="focus_entered" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Credits/CreditsButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Credits/CreditsButton" method="_on_CreditsButton_focus_entered"]
+[connection signal="focus_exited" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Credits/CreditsButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Credits/CreditsButton" method="_on_CreditsButton_focus_exited"]
 [connection signal="pressed" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Credits/CreditsButton" to="MainMenu/Control/CreditsPanel" method="_on_CreditsButton_pressed"]
+[connection signal="focus_entered" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Quit/QuitButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Quit/QuitButton" method="_on_QuitButton_focus_entered"]
+[connection signal="focus_exited" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Quit/QuitButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Quit/QuitButton" method="_on_QuitButton_focus_exited"]
 [connection signal="pressed" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Quit/QuitButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Quit/QuitButton" method="_on_QuitButton_pressed"]
 [connection signal="creditsClosing" from="MainMenu/Control/CreditsPanel" to="." method="_on_CreditsPanel_creditsClosing"]
 [connection signal="pressed" from="MainMenu/Control/CreditsPanel/VBoxContainer/BackButton" to="MainMenu/Control/CreditsPanel" method="_on_BackButton_pressed"]

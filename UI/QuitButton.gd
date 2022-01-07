@@ -18,3 +18,11 @@ func _ready():
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
+
+
+func _on_QuitButton_focus_entered():
+	AudioQueen.play_sound("Menu Up-Down")
+
+
+func _on_QuitButton_focus_exited():
+	AudioQueen.play_sound("Menu Up-Down")

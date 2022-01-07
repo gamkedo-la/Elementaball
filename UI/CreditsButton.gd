@@ -14,3 +14,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_CreditsButton_focus_entered():
+	AudioQueen.play_sound("Menu Up-Down")
+
+
+func _on_CreditsButton_focus_exited():
+	AudioQueen.play_sound("Menu Up-Down")

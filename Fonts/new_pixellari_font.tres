@@ -3,5 +3,5 @@
 [ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=1]
 
 [resource]
-outline_color = Color( 0, 0, 0, 1 )
+outline_color = Color( 0.380392, 0.827451, 0.890196, 1 )
 font_data = ExtResource( 1 )

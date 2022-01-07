@@ -71,35 +71,35 @@ atlas = ExtResource( 18 )
 region = Rect2( 144, 0, 48, 16 )
 
 [sub_resource type="AtlasTexture" id=67]
-atlas = ExtResource( 28 )
+atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 48, 16 )
 
 [sub_resource type="AtlasTexture" id=68]
-atlas = ExtResource( 28 )
+atlas = ExtResource( 15 )
 region = Rect2( 48, 0, 48, 16 )
 
 [sub_resource type="AtlasTexture" id=69]
-atlas = ExtResource( 28 )
+atlas = ExtResource( 15 )
 region = Rect2( 96, 0, 48, 16 )
 
 [sub_resource type="AtlasTexture" id=70]
-atlas = ExtResource( 28 )
+atlas = ExtResource( 15 )
 region = Rect2( 144, 0, 48, 16 )
 
 [sub_resource type="AtlasTexture" id=71]
-atlas = ExtResource( 15 )
+atlas = ExtResource( 28 )
 region = Rect2( 0, 0, 48, 16 )
 
 [sub_resource type="AtlasTexture" id=72]
-atlas = ExtResource( 15 )
+atlas = ExtResource( 28 )
 region = Rect2( 48, 0, 48, 16 )
 
 [sub_resource type="AtlasTexture" id=73]
-atlas = ExtResource( 15 )
+atlas = ExtResource( 28 )
 region = Rect2( 96, 0, 48, 16 )
 
 [sub_resource type="AtlasTexture" id=74]
-atlas = ExtResource( 15 )
+atlas = ExtResource( 28 )
 region = Rect2( 144, 0, 48, 16 )
 
 [sub_resource type="SpriteFrames" id=75]
@@ -116,13 +116,13 @@ animations = [ {
 }, {
 "frames": [ SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ) ],
 "loop": true,
-"name": "plant ball",
-"speed": 5.0
+"name": "water ball",
+"speed": 10.0
 }, {
 "frames": [ SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ) ],
 "loop": true,
-"name": "water ball",
-"speed": 10.0
+"name": "plant ball",
+"speed": 5.0
 } ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=76]
@@ -169,7 +169,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id=85]
 extents = Vector2( 17.9827, 749.178 )
 
-[sub_resource type="StyleBoxTexture" id=107]
+[sub_resource type="StyleBoxTexture" id=86]
 texture = ExtResource( 43 )
 region_rect = Rect2( 0, 0, 16, 16 )
 margin_left = 5.0
@@ -177,104 +177,104 @@ margin_right = 5.0
 margin_top = 5.0
 margin_bottom = 5.0
 
-[sub_resource type="StyleBoxFlat" id=108]
+[sub_resource type="StyleBoxFlat" id=87]
 bg_color = Color( 0.380392, 0.827451, 0.890196, 1 )
 border_width_left = 2
 border_width_top = 2
 border_width_bottom = 2
 border_color = Color( 0.8, 0.8, 0.8, 0 )
 
-[sub_resource type="StyleBoxFlat" id=109]
+[sub_resource type="StyleBoxFlat" id=88]
 bg_color = Color( 0.572549, 0.827451, 1, 1 )
 border_width_left = 2
 border_width_top = 2
 border_width_bottom = 2
 border_color = Color( 0.8, 0.8, 0.8, 0 )
 
-[sub_resource type="AtlasTexture" id=86]
-atlas = ExtResource( 33 )
-region = Rect2( 0, 0, 320, 160 )
-
-[sub_resource type="AtlasTexture" id=87]
-atlas = ExtResource( 33 )
-region = Rect2( 320, 0, 320, 160 )
-
-[sub_resource type="AtlasTexture" id=88]
-atlas = ExtResource( 33 )
-region = Rect2( 640, 0, 320, 160 )
-
 [sub_resource type="AtlasTexture" id=89]
 atlas = ExtResource( 33 )
-region = Rect2( 960, 0, 320, 160 )
+region = Rect2( 0, 0, 320, 160 )
 
 [sub_resource type="AtlasTexture" id=90]
 atlas = ExtResource( 33 )
-region = Rect2( 1280, 0, 320, 160 )
-
-[sub_resource type="AtlasTexture" id=91]
-atlas = ExtResource( 32 )
-region = Rect2( 0, 0, 320, 160 )
-
-[sub_resource type="AtlasTexture" id=92]
-atlas = ExtResource( 32 )
 region = Rect2( 320, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=93]
-atlas = ExtResource( 32 )
+[sub_resource type="AtlasTexture" id=91]
+atlas = ExtResource( 33 )
 region = Rect2( 640, 0, 320, 160 )
+
+[sub_resource type="AtlasTexture" id=92]
+atlas = ExtResource( 33 )
+region = Rect2( 960, 0, 320, 160 )
+
+[sub_resource type="AtlasTexture" id=93]
+atlas = ExtResource( 33 )
+region = Rect2( 1280, 0, 320, 160 )
 
 [sub_resource type="AtlasTexture" id=94]
 atlas = ExtResource( 32 )
-region = Rect2( 960, 0, 320, 160 )
+region = Rect2( 0, 0, 320, 160 )
 
 [sub_resource type="AtlasTexture" id=95]
 atlas = ExtResource( 32 )
-region = Rect2( 1280, 0, 320, 160 )
+region = Rect2( 320, 0, 320, 160 )
 
 [sub_resource type="AtlasTexture" id=96]
-atlas = ExtResource( 36 )
-region = Rect2( 0, 0, 96, 64 )
+atlas = ExtResource( 32 )
+region = Rect2( 640, 0, 320, 160 )
 
 [sub_resource type="AtlasTexture" id=97]
-atlas = ExtResource( 36 )
-region = Rect2( 96, 0, 96, 64 )
+atlas = ExtResource( 32 )
+region = Rect2( 960, 0, 320, 160 )
 
 [sub_resource type="AtlasTexture" id=98]
-atlas = ExtResource( 36 )
-region = Rect2( 192, 0, 96, 64 )
+atlas = ExtResource( 32 )
+region = Rect2( 1280, 0, 320, 160 )
 
 [sub_resource type="AtlasTexture" id=99]
 atlas = ExtResource( 36 )
-region = Rect2( 288, 0, 96, 64 )
+region = Rect2( 0, 0, 96, 64 )
 
 [sub_resource type="AtlasTexture" id=100]
 atlas = ExtResource( 36 )
+region = Rect2( 96, 0, 96, 64 )
+
+[sub_resource type="AtlasTexture" id=101]
+atlas = ExtResource( 36 )
+region = Rect2( 192, 0, 96, 64 )
+
+[sub_resource type="AtlasTexture" id=102]
+atlas = ExtResource( 36 )
+region = Rect2( 288, 0, 96, 64 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 36 )
 region = Rect2( 384, 0, 96, 64 )
 
-[sub_resource type="SpriteFrames" id=101]
+[sub_resource type="SpriteFrames" id=104]
 animations = [ {
 "frames": [ null ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), null ],
+"frames": [ SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), null ],
 "loop": false,
 "name": "out",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), null ],
+"frames": [ SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), null ],
 "loop": false,
 "name": "goal",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ) ],
+"frames": [ SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ) ],
 "loop": true,
 "name": "KO",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=102]
+[sub_resource type="Animation" id=105]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -300,7 +300,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 5 ]
 }
 
-[sub_resource type="Animation" id=103]
+[sub_resource type="Animation" id=106]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -326,8 +326,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=104]
-resource_name = "KO"
+[sub_resource type="Animation" id=107]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
@@ -354,7 +353,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=105]
+[sub_resource type="Animation" id=108]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -428,7 +427,7 @@ states/Out/position = Vector2( 132, 179 )
 transitions = [ "Idle", "Goal", SubResource( 51 ), "Idle", "Out", SubResource( 52 ), "Out", "Idle", SubResource( 53 ), "Goal", "Idle", SubResource( 54 ), "Out", "Goal", SubResource( 55 ), "Goal", "Out", SubResource( 56 ), "Idle", "KO", SubResource( 57 ), "KO", "Idle", SubResource( 58 ) ]
 start_node = "Idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=106]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=109]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 29 )
@@ -441,7 +440,7 @@ selectableAbilities = [ ExtResource( 19 ), ExtResource( 20 ) ]
 
 [node name="AnimatedSprite" parent="Player/Health Bar" index="1"]
 visible = true
-frame = 2
+frame = 4
 
 [node name="AnimationTree" parent="Player" index="1"]
 parameters/playback = SubResource( 60 )
@@ -458,7 +457,7 @@ fieldPosition = "PlayerLeft"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player2/Health Bar" index="1"]
-frame = 2
+frame = 4
 
 [node name="AnimationTree" parent="Player2" index="1"]
 parameters/playback = SubResource( 61 )
@@ -473,7 +472,7 @@ fieldPosition = "PlayerRight"
 starting_stats = ExtResource( 10 )
 
 [node name="AnimatedSprite" parent="Player3/Health Bar" index="1"]
-frame = 2
+frame = 4
 
 [node name="AnimationTree" parent="Player3" index="1"]
 parameters/playback = SubResource( 62 )
@@ -486,7 +485,6 @@ position = Vector2( 153.505, 67.5925 )
 z_index = 3
 frames = SubResource( 75 )
 animation = "plant ball"
-frame = 1
 playing = true
 script = ExtResource( 16 )
 
@@ -497,6 +495,18 @@ linear_damp = 0.0
 [node name="Popup" parent="." instance=ExtResource( 3 )]
 theme = ExtResource( 31 )
 script = ExtResource( 41 )
+
+[node name="KickMenu" parent="Popup" index="0"]
+items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="PassMenu" parent="Popup" index="1"]
+items = [ "Grass Kick", null, 0, false, false, 0, 0, null, "", false, "Fire Kick", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="TackleMenu" parent="Popup" index="2"]
+items = [ "Branch Swipe", null, 0, false, false, 0, 0, null, "", false, "Tail Swipe", null, 0, false, false, 1, 0, null, "", false, "Flame Tackle", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="BlockMenu" parent="Popup" index="3"]
+items = [ "Tree Wall", null, 0, false, false, 0, 0, null, "", false, "Sweeping Wave", null, 0, false, false, 1, 0, null, "", false, "Flame Wall", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="Goal" parent="." groups=[
 "goal",
@@ -566,6 +576,7 @@ margin_bottom = 6.0
 
 [node name="AnimatedSprite" parent="Enemy/Health Bar" index="1"]
 position = Vector2( 7.8787, -8.25085 )
+frame = 2
 
 [node name="AnimationTree" parent="Enemy" index="5"]
 parameters/playback = SubResource( 76 )
@@ -589,6 +600,9 @@ position = Vector2( -0.161133, 0.0360718 )
 margin_top = -21.0
 margin_bottom = -21.0
 
+[node name="AnimatedSprite" parent="Enemy3/Health Bar" index="1"]
+frame = 2
+
 [node name="AnimationTree" parent="Enemy3" index="5"]
 parameters/playback = SubResource( 77 )
 
@@ -607,6 +621,9 @@ starting_stats = ExtResource( 37 )
 [node name="Health Bar" parent="Enemy2" index="2"]
 margin_top = -21.0
 margin_bottom = -21.0
+
+[node name="AnimatedSprite" parent="Enemy2/Health Bar" index="1"]
+frame = 2
 
 [node name="EnemyCollider" parent="Enemy2" index="3"]
 rotation = 1.52987
@@ -746,6 +763,42 @@ visible = false
 script = ExtResource( 22 )
 closeButton = NodePath("MarginContainer/SelectionMenuContainer/Top Margin/StartButton")
 
+[node name="AbilityMenu1" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu2" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer2" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu3" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu4" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/MarginContainer/CenterAbilitySelect/VBoxContainer" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu1" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer2" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu2" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer2" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu3" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu4" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/MarginContainer/LeftAbilitySelect/VBoxContainer" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu1" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu2" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer2" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu3" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer" index="0"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
+[node name="AbilityMenu4" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer" index="1"]
+items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
+
 [node name="EndCondition" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 script = ExtResource( 21 )
 
@@ -799,9 +852,9 @@ size_flags_vertical = 4
 custom_icons/grabber_disabled = ExtResource( 42 )
 custom_icons/grabber_highlight = ExtResource( 46 )
 custom_icons/grabber = ExtResource( 42 )
-custom_styles/slider = SubResource( 107 )
-custom_styles/grabber_area_highlight = SubResource( 108 )
-custom_styles/grabber_area = SubResource( 109 )
+custom_styles/slider = SubResource( 86 )
+custom_styles/grabber_area_highlight = SubResource( 87 )
+custom_styles/grabber_area = SubResource( 88 )
 min_value = -50.0
 max_value = 5.0
 script = ExtResource( 47 )
@@ -842,21 +895,21 @@ __meta__ = {
 
 [node name="MatchStatusAnims" type="AnimatedSprite" parent="GUICanvasLayer"]
 position = Vector2( 238.652, 130.562 )
-frames = SubResource( 101 )
+frames = SubResource( 104 )
 animation = "idle"
 script = ExtResource( 34 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUICanvasLayer/MatchStatusAnims"]
-anims/Goal = SubResource( 102 )
-anims/Idle = SubResource( 103 )
-anims/KO = SubResource( 104 )
-anims/Out = SubResource( 105 )
+anims/Goal = SubResource( 105 )
+anims/Idle = SubResource( 106 )
+anims/KO = SubResource( 107 )
+anims/Out = SubResource( 108 )
 
 [node name="AnimationTree" type="AnimationTree" parent="GUICanvasLayer/MatchStatusAnims"]
 tree_root = SubResource( 59 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 106 )
+parameters/playback = SubResource( 109 )
 
 [node name="Throw In Points" type="Node2D" parent="."]
 
