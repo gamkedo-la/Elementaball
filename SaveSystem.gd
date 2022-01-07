@@ -39,7 +39,7 @@ func load_game():
 	# during loading. This will vary wildly depending on the needs of a
 	# project, so take care with this step.
 	# For our example, we will accomplish this by deleting saveable objects.
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
+	#var save_nodes = get_tree().get_nodes_in_group("Persist")
 	#for i in save_nodes:
 	#	i.queue_free()
 

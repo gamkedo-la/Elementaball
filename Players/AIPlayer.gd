@@ -5,6 +5,7 @@ var velocity = Vector2()
 onready var initialScale = scale
 var destination = Vector2()
 var previousPosition = position
+var speedMod = 1.3
 var speedModified = false
 
 #States for defense
@@ -80,6 +81,7 @@ func _ready():
 	SceneController.connect("blocking", self, "toggle_blocking")
 # warning-ignore:return_value_discarded
 	SceneController.connect("outOfBounds", self, "out_of_bounds")
+# warning-ignore:return_value_discarded
 	SceneController.connect("knockout", self, "check_KO_targets")
 	initialize_stats(starting_stats)
 		
@@ -297,7 +299,7 @@ func set_control(player):
 			set_physics_process(true)
 
 func out_of_bounds():
-	if tacklingInProgress:
+	if tacklerIsSelf:
 		tackle_ended()
 	
 	outOfBounds = true
@@ -455,7 +457,8 @@ func toggle_blocking(trueOrFalse):
 func tackle_ended():
 	if speedModified:
 		speedModified = false
-		speed = speed/2
+# warning-ignore:integer_division
+		speed = speed/speedMod
 	if inPossession == false:
 		if blockingInProgress:
 			yield(SceneController, "blocking")
@@ -474,7 +477,7 @@ func reset_intercept():
 func check_steal():
 	if !speedModified:
 		speedModified = true
-		speed = speed * 2
+		speed = speed * speedMod
 	if _check_collisions() and _check_collisions() == ball.playerInPossession:
 		if self.controlling and !ball.selecting:
 			#Bring up the Tackle Menu to let the player choose an ability
@@ -509,7 +512,7 @@ func start_steal_cooldown():
 	yield(cooldownTimer, "timeout")
 	stealCooldown = false
 
-func check_KO_targets(player, team):
+func check_KO_targets(player, _team):
 	if player == enemyInZone:
 		enemyInZone = null
 

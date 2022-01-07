@@ -23,7 +23,9 @@ func _ready():
 	add_target(ball)
 # warning-ignore:return_value_discarded
 	SceneController.connect("controlling", self, "set_targets")
+# warning-ignore:return_value_discarded
 	SceneController.connect("inPossession", self, "set_targets")
+# warning-ignore:return_value_discarded
 	SceneController.connect("knockout", self, "remove_target")
 	set_targets(get_node("../Player"))
 
@@ -34,8 +36,10 @@ func _process(_delta):
 
 	var pos = Vector2.ZERO
 	for target in targets:
+		if target == null:
+			remove_target(target, "nullTeam")
 		if target: 
-			pos += target.get_position()
+			pos += target.position
 	pos /= targets.size()
 	position = lerp(position, pos, move_speed)
 	
@@ -52,7 +56,6 @@ func _process(_delta):
 	zoom = lerp(zoom, Vector2.ONE * zoomTarget, zoom_speed)
 
 func set_targets(player):
-	set_process(false)
 	if player:
 		if player.inPossession:
 			targets = [player, player.myGoal]
@@ -60,19 +63,17 @@ func set_targets(player):
 			targets = [player, ball]
 	var playerTeam = get_tree().get_nodes_in_group("player_team")
 	for player in playerTeam:
-		if player.controlling:
+		if player != null and player.controlling:
 			if !player in targets:
 				add_target(player)
 		elif !player.inPossession:
 			remove_target(player, playerTeam)
-	set_process(true)
 
 func add_target(target):
 	if target and not target in targets:
 		targets.append(target)
 
-func remove_target(target, team):
-	set_process(false)
+func remove_target(target, _team):
 	if target in targets:
 		targets.erase(target)
 	if !ball in targets:
@@ -82,4 +83,3 @@ func remove_target(target, team):
 		if player.controlling and player != target:
 			if !player in targets:
 				add_target(player)
-	set_process(true)

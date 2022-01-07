@@ -15,9 +15,13 @@ signal outOfBounds()
 signal knockout(player, team)
 # warning-ignore:unused_signal
 signal allKO(winningTeam)
+# warning-ignore:unused_signal
 signal pitchSet(pitch)
+# warning-ignore:unused_signal
 signal winner(winner)
+# warning-ignore:unused_signal
 signal gameLoaded()
+# warning-ignore:unused_signal
 signal champion()
 
 var playerIndex = 0

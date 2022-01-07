@@ -28,7 +28,7 @@ func _ready():
 		var angle = i * 2 * PI / num_rays
 		ray_directions[i] = Vector2.RIGHT.rotated(angle)
 		
-func steer(delta):
+func steer(_delta):
 	set_interest()
 	set_danger()
 	choose_direction()

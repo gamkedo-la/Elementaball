@@ -7,8 +7,11 @@ var animationTree
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+# warning-ignore:return_value_discarded
 	SceneController.connect("goalScored", self, "goal_scored")
+# warning-ignore:return_value_discarded
 	SceneController.connect("outOfBounds", self, "out")
+# warning-ignore:return_value_discarded
 	SceneController.connect("knockout", self, "KO")
 	animationTree = $AnimationTree.get("parameters/playback")
 

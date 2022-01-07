@@ -2,18 +2,23 @@ extends Node2D
 
 # warning-ignore:unused_signal
 signal playSound(sound)
+# warning-ignore:unused_signal
 signal stopSound(sound)
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	# when _ready is called, there might already be nodes in the tree, so connect all existing buttons
 	connect_buttons(get_tree().root)
+# warning-ignore:return_value_discarded
 	get_tree().connect("node_added", self, "_on_SceneTree_node_added")
+# warning-ignore:return_value_discarded
 	SceneController.connect("knockout", self, "play_KO")
+# warning-ignore:return_value_discarded
 	SceneController.connect("outOfBounds", self, "short_whistle")
 	
 # warning-ignore:return_value_discarded
 	connect("playSound", self, "play_sound")
+# warning-ignore:return_value_discarded
 	connect("stopSound", self, "stop_sound")
 	play_sound("Menu Music")
 

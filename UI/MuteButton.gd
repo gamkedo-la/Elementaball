@@ -5,7 +5,7 @@ export var mutedIcon : Texture
 export var unmutedIcon : Texture
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("ui_mute"):
 		_on_MuteButton_pressed()
 

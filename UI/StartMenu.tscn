@@ -823,7 +823,6 @@ position = Vector2( -298.5, 301.5 )
 position = Vector2( 616.5, 306 )
 
 [connection signal="pressed" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" method="_on_StartButton_pressed"]
-[connection signal="ready" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Start/StartButton" to="MainMenu/Control/CreditsPanel" method="_on_StartButton_ready"]
 [connection signal="pressed" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Credits/CreditsButton" to="MainMenu/Control/CreditsPanel" method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Quit/QuitButton" to="MainMenu/Control/MarginContainer/HBoxContainer/MenuButtons/Quit/QuitButton" method="_on_QuitButton_pressed"]
 [connection signal="creditsClosing" from="MainMenu/Control/CreditsPanel" to="." method="_on_CreditsPanel_creditsClosing"]

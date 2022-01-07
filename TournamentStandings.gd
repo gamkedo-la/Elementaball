@@ -7,7 +7,9 @@ var redPitch = false
 var selectedPitch
 
 func _ready():
+# warning-ignore:return_value_discarded
 	SceneController.connect("pitchSet", self, "set_pitch")
+# warning-ignore:return_value_discarded
 	SceneController.connect("winner", self, "save_win")
 
 func set_pitch(pitch):

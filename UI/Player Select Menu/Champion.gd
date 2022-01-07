@@ -8,6 +8,7 @@ extends Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+# warning-ignore:return_value_discarded
 	SceneController.connect("champion", self, "set_champion")
 
 func set_champion():
