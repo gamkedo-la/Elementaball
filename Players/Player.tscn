@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://Players/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/blue_idle.png" type="Texture" id=2]
@@ -21,6 +21,9 @@
 [ext_resource path="res://Art/Sprites/red_run/red_run.png" type="Texture" id=19]
 [ext_resource path="res://Art/Sprites/red_tackle/red_tackle.png" type="Texture" id=20]
 [ext_resource path="res://Art/Sprites/green_tackle/green_tackle.png" type="Texture" id=21]
+[ext_resource path="res://Art/Sprites/controlling_elipse.png" type="Texture" id=22]
+[ext_resource path="res://Players/Elipse.gd" type="Script" id=23]
+[ext_resource path="res://Art/Sprites/player_elipse.png" type="Texture" id=24]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "Blue Idle"
@@ -954,9 +957,6 @@ margin_top = -22.4966
 margin_right = -8.75441
 margin_bottom = -22.4966
 
-[node name="AnimatedSprite" parent="Health Bar" index="1"]
-frame = 0
-
 [node name="AnimationTree" parent="." instance=ExtResource( 5 )]
 tree_root = SubResource( 37 )
 active = true
@@ -993,5 +993,13 @@ animation = "blue idle"
 position = Vector2( -0.161133, 0.0360718 )
 
 [node name="SteeringNode" parent="." instance=ExtResource( 18 )]
+
+[node name="Elipse" type="Sprite" parent="."]
+position = Vector2( -0.812698, 8.18053 )
+z_index = -2
+texture = ExtResource( 24 )
+script = ExtResource( 23 )
+elipse = ExtResource( 24 )
+controllingElipse = ExtResource( 22 )
 
 [editable path="Health Bar"]
