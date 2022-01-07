@@ -25,5 +25,7 @@ func KO(_player, _team):
 func out():
 	if !ball.goalScoring and !ball.KO:
 		animationTree.travel("Out")
-	ball.goalScoring = false
-	ball.KO = false
+	elif ball.goalScoring:
+		ball.goalScoring = false
+	elif ball.KO:
+		ball.KO = false

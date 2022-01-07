@@ -780,7 +780,7 @@ align = 1
 [node name="Credits" type="Label" parent="MainMenu/Control/CreditsPanel/VBoxContainer"]
 margin_top = 23.0
 margin_right = 460.0
-margin_bottom = 218.0
+margin_bottom = 229.0
 text = "Nic Barkdull: Project lead, core gameplay, AI, sport rules design, environment and sprite art, camera movement, controller support, ability authoring, particles, boundary handling, match setup menus, asset integration, font selection, assorted bug fixes
 
 Alan Zaring: Original music
@@ -789,7 +789,7 @@ Ryan Young: Sounds (water/fire/plant tackle, fire kick, menu sounds)
 
 George Carter: Pause functionality, quit button on main menu, movement bug fix
 
-Abhishek @akhmin_ak: Knock out sound, green character run animation improvement
+Abhishek @akhmin_ak: Knock out sound, green character run animation improvement, volume slider
 
 Kyle Black: Start menu, animated logo, asset import fix
 
@@ -799,9 +799,9 @@ Stebs: Testing"
 autowrap = true
 
 [node name="BackButton" type="Button" parent="MainMenu/Control/CreditsPanel/VBoxContainer"]
-margin_top = 222.0
+margin_top = 233.0
 margin_right = 35.0
-margin_bottom = 242.0
+margin_bottom = 253.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Back"

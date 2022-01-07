@@ -6,6 +6,8 @@ var outOfBounds = false
 var throwingIn = false
 var dribbling = false
 var kicking = false
+var kickTimerActive = false
+onready var kickTimer = $Timer
 var attacker
 var blocker
 var selecting = false
@@ -36,6 +38,7 @@ export var kickSpeed = 500
 onready var matchAnims = get_node("../GUICanvasLayer/MatchStatusAnims")
 
 func _ready():
+	kickTimer.stop()
 	ballEffects = get_node("../BallEffects")
 # warning-ignore:return_value_discarded
 	SceneController.connect("inPossession", self, "set_possession")
@@ -48,14 +51,30 @@ func _physics_process(_delta):
 	if dribbling == true:
 		dribbling()
 
-	if enemyPossession == true:
+	elif enemyPossession == true:
 		dribbling()
 	
-	if kicking == true:
+	elif kicking == true:
+		#if kickTimerActive == false:
+			#start_kick_timer()
 		check_kick_collisions()
 		
-	if groundball == true:
+	elif groundball == true:
 		check_groundball_collisions()
+		
+	elif outOfBounds and playerInPossession == null:
+		yield(get_tree().create_timer(3.0), "timeout")
+		if !goalScoring and !playerInPossession and outOfBounds:
+			out_of_bounds()
+	
+	else:
+		yield(get_tree().create_timer(1.0), "timeout")
+		if !goalScoring and !outOfBounds:
+			out_of_bounds()
+	
+	#if !kicking:
+		#kickTimerActive = false
+		#stop_kick_timer()
 		
 	update()
 
@@ -106,6 +125,16 @@ func dribbling():
 	
 	#Put the ball in the player's dribbling position
 	self.global_transform.origin = possessionNode.get_global_position()
+
+func start_kick_timer():
+	kickTimer.set_wait_time(2)
+	kickTimer.start()
+	yield(kickTimer, "timeout")
+	if kicking:
+		out_of_bounds()
+
+func stop_kick_timer():
+	kickTimer.stop()
 
 func player_kick():
 	#Bring up the Kick Menu
@@ -204,6 +233,7 @@ func check_kick_collisions():
 
 func out_of_bounds():
 	outOfBounds = true
+	kicking = false
 	SceneController.emit_signal("outOfBounds")
 
 func in_bounds():
