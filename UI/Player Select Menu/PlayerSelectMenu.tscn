@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Art/multicolor_pitch.png" type="Texture" id=1]
 [ext_resource path="res://UI/Buttons.tscn" type="PackedScene" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://UI/Player Select Menu/AbilityMenu1.gd" type="Script" id=19]
 [ext_resource path="res://Art/UI/UI_theme.tres" type="Theme" id=20]
 [ext_resource path="res://Art/green_pitch.tres" type="Resource" id=21]
-[ext_resource path="res://QuitButton.gd" type="Script" id=22]
 [ext_resource path="res://UI/Player Select Menu/Champion.gd" type="Script" id=23]
 
 [sub_resource type="Theme" id=1]
@@ -695,14 +694,6 @@ custom_fonts/font = ExtResource( 8 )
 text = "Play Again"
 script = ExtResource( 15 )
 
-[node name="QuitButton" type="Button" parent="EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 132.0
-margin_right = 33.0
-margin_bottom = 152.0
-size_flags_horizontal = 0
-text = "Quit"
-script = ExtResource( 22 )
-
 [connection signal="centerSpriteChange" from="." to="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/CenterField/CenterFieldSprite" method="_on_PlayerSelectMenu_centerSpriteChange"]
 [connection signal="focus_entered" from="." to="." method="_on_PlayerSelectMenu_focus_entered"]
 [connection signal="leftSpriteChange" from="." to="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/LeftField/LeftField/LeftFieldSprite" method="_on_PlayerSelectMenu_leftSpriteChange"]
@@ -714,7 +705,6 @@ script = ExtResource( 22 )
 [connection signal="change" from="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect" to="." method="_on_RightFieldSelect_change"]
 [connection signal="pressed" from="AbilityMenuPopup/MarginContainer/SelectionMenuContainer/Top Margin/HBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/RestartButton" to="EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/RestartButton" method="_on_RestartButton_pressed"]
-[connection signal="pressed" from="EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/QuitButton" to="EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer/QuitButton" method="_on_QuitButton_pressed"]
 
 [editable path="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/LeftField/LeftFieldSelect"]
 [editable path="SelectionMenuPopup/SelectionMenuContainer/PlayersContainer/VBoxContainer/RightField/RightFieldSelect"]

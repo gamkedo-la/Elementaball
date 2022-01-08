@@ -63,7 +63,7 @@ func _physics_process(_delta):
 		check_groundball_collisions()
 		
 	elif outOfBounds and playerInPossession == null:
-		yield(get_tree().create_timer(3.0), "timeout")
+		yield(get_tree().create_timer(2.0), "timeout")
 		if !goalScoring and !playerInPossession and outOfBounds:
 			out_of_bounds()
 	

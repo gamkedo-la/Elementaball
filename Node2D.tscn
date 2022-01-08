@@ -48,128 +48,128 @@
 [ext_resource path="res://Art/UI/slider_button_highlight.png" type="Texture" id=46]
 [ext_resource path="res://VolumeSlider.gd" type="Script" id=47]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=60]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=61]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=62]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
-[sub_resource type="AtlasTexture" id=63]
-atlas = ExtResource( 18 )
-region = Rect2( 0, 0, 48, 16 )
-
-[sub_resource type="AtlasTexture" id=64]
-atlas = ExtResource( 18 )
-region = Rect2( 48, 0, 48, 16 )
-
-[sub_resource type="AtlasTexture" id=65]
-atlas = ExtResource( 18 )
-region = Rect2( 96, 0, 48, 16 )
-
-[sub_resource type="AtlasTexture" id=66]
-atlas = ExtResource( 18 )
-region = Rect2( 144, 0, 48, 16 )
-
-[sub_resource type="AtlasTexture" id=67]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=68]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 15 )
 region = Rect2( 48, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=69]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 15 )
 region = Rect2( 96, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=70]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 15 )
 region = Rect2( 144, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=71]
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 48, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 18 )
+region = Rect2( 48, 0, 48, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 18 )
+region = Rect2( 96, 0, 48, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 18 )
+region = Rect2( 144, 0, 48, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 28 )
 region = Rect2( 0, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=72]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 28 )
 region = Rect2( 48, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=73]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 28 )
 region = Rect2( 96, 0, 48, 16 )
 
-[sub_resource type="AtlasTexture" id=74]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 28 )
 region = Rect2( 144, 0, 48, 16 )
 
-[sub_resource type="SpriteFrames" id=75]
+[sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ) ],
-"loop": true,
-"name": "fire ball",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "water ball",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "fire ball",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "plant ball",
 "speed": 5.0
 } ]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=76]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=77]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=78]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
 
-[sub_resource type="Curve2D" id=79]
+[sub_resource type="Curve2D" id=20]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 5.04538, -46.2493, -5.04538, 46.2493, 217.615, -36.3129, -10.9317, -24.386, 10.9317, 24.386, 234.005, 8.12406, 18.4343, 0.853422, -18.4343, -0.853422, 303.018, 31.6495, 1.32096, 26.4882, -1.32096, -26.4882, 519.238, 15.9868, 5.28384, 9.24986, -5.28384, -9.24986, 487.742, -71.15, 0, 0, 0, 0, 272.394, -67.2446, 0, 0, 0, 0, 218.046, -37.1842 )
 }
 
-[sub_resource type="Curve2D" id=80]
+[sub_resource type="Curve2D" id=21]
 _data = {
 "points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, 245.759, 64.7881, 5.04538, -46.2493, -5.04538, 46.2493, 199.547, 128.086, -10.9317, -24.386, 10.9317, 24.386, 237.933, 174.504, 18.4343, 0.853422, -18.4343, -0.853422, 312.841, 190.329, 1.32096, 26.4882, -1.32096, -26.4882, 438.606, 189.144, 5.28384, 9.24986, -5.28384, -9.24986, 400.333, 62.8728, 0, 0, 0, 0, 283.772, 66.898, 0, 0, 0, 0, 246.504, 65.3156 )
 }
 
-[sub_resource type="Curve2D" id=81]
+[sub_resource type="Curve2D" id=22]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, 302.744, 23.0241, 5.04538, -46.2493, -5.04538, 46.2493, 274.532, 69.6518, -10.9317, -24.386, 10.9317, 24.386, 298.64, 128.196, 18.4343, 0.853422, -18.4343, -0.853422, 406.357, 167.052, 1.32096, 26.4882, -1.32096, -26.4882, 548.417, 147.843, 5.28384, 9.24986, -5.28384, -9.24986, 503.228, 10.2217, 0, 0, 0, 0, 416.616, -7.02494, 0, 0, 0, 0, 301.718, 21.4698 )
 }
 
-[sub_resource type="Curve2D" id=82]
+[sub_resource type="Curve2D" id=23]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, -56.3614, -73.1828, 5.04538, -46.2493, -5.04538, 46.2493, -92.9711, -55.812, -10.9317, -24.386, 10.9317, 24.386, -98.4487, -2.56178, 18.4343, 0.853422, -18.4343, -0.853422, 1.15265, 4.27211, 1.32096, 26.4882, -1.32096, -26.4882, 187.787, -9.40556, 5.28384, 9.24986, -5.28384, -9.24986, 136.493, -48.7801, 0, 0, 0, 0, -51.243, -71.0578, 0, 0, 0, 0, -54.3206, -71.0578 )
 }
 
-[sub_resource type="Curve2D" id=83]
+[sub_resource type="Curve2D" id=24]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, -9.22997, -98.3404, 5.04538, -46.2493, -5.04538, 46.2493, -54.3692, -44.1225, -10.9317, -24.386, 10.9317, 24.386, -55.5892, 2.70195, 18.4343, 0.853422, -18.4343, -0.853422, 33.471, 15.2837, 1.32096, 26.4882, -1.32096, -26.4882, 243.506, -34.9778, 5.28384, 9.24986, -5.28384, -9.24986, 246.738, -102.864, 0, 0, 0, 0, -10.4499, -98.3404, 0, 0, 0, 0, -9.83994, -98.3404 )
 }
 
-[sub_resource type="Curve2D" id=84]
+[sub_resource type="Curve2D" id=25]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 43.7266, -18.9202, -43.7266, 18.9202, -389.099, -109.713, 5.04538, -46.2493, -5.04538, 46.2493, -549.547, -98.3522, -10.9317, -24.386, 10.9317, 24.386, -587.268, 38.6598, 18.4343, 0.853422, -18.4343, -0.853422, -332.228, 18.2254, 1.32096, 26.4882, -1.32096, -26.4882, -265.663, -10.4955, 5.28384, 9.24986, -5.28384, -9.24986, -294.098, -85.5615, 0, 0, 0, 0, -387.16, -108.408, 0, 0, 0, 0, -296.037, -86.867 )
 }
 
-[sub_resource type="RectangleShape2D" id=85]
+[sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 17.9827, 749.178 )
 
-[sub_resource type="StyleBoxTexture" id=86]
+[sub_resource type="StyleBoxTexture" id=27]
 texture = ExtResource( 43 )
 region_rect = Rect2( 0, 0, 16, 16 )
 margin_left = 5.0
@@ -177,104 +177,104 @@ margin_right = 5.0
 margin_top = 5.0
 margin_bottom = 5.0
 
-[sub_resource type="StyleBoxFlat" id=87]
+[sub_resource type="StyleBoxFlat" id=28]
 bg_color = Color( 0.380392, 0.827451, 0.890196, 1 )
 border_width_left = 2
 border_width_top = 2
 border_width_bottom = 2
 border_color = Color( 0.8, 0.8, 0.8, 0 )
 
-[sub_resource type="StyleBoxFlat" id=88]
+[sub_resource type="StyleBoxFlat" id=29]
 bg_color = Color( 0.572549, 0.827451, 1, 1 )
 border_width_left = 2
 border_width_top = 2
 border_width_bottom = 2
 border_color = Color( 0.8, 0.8, 0.8, 0 )
 
-[sub_resource type="AtlasTexture" id=89]
+[sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 33 )
 region = Rect2( 0, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=90]
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 33 )
 region = Rect2( 320, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=91]
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 33 )
 region = Rect2( 640, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=92]
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 33 )
 region = Rect2( 960, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=93]
+[sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 33 )
 region = Rect2( 1280, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=94]
+[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 32 )
 region = Rect2( 0, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=95]
+[sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 32 )
 region = Rect2( 320, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=96]
+[sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 32 )
 region = Rect2( 640, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=97]
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 32 )
 region = Rect2( 960, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=98]
+[sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 32 )
 region = Rect2( 1280, 0, 320, 160 )
 
-[sub_resource type="AtlasTexture" id=99]
+[sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 36 )
 region = Rect2( 0, 0, 96, 64 )
 
-[sub_resource type="AtlasTexture" id=100]
+[sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 36 )
 region = Rect2( 96, 0, 96, 64 )
 
-[sub_resource type="AtlasTexture" id=101]
+[sub_resource type="AtlasTexture" id=42]
 atlas = ExtResource( 36 )
 region = Rect2( 192, 0, 96, 64 )
 
-[sub_resource type="AtlasTexture" id=102]
+[sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 36 )
 region = Rect2( 288, 0, 96, 64 )
 
-[sub_resource type="AtlasTexture" id=103]
+[sub_resource type="AtlasTexture" id=44]
 atlas = ExtResource( 36 )
 region = Rect2( 384, 0, 96, 64 )
 
-[sub_resource type="SpriteFrames" id=104]
+[sub_resource type="SpriteFrames" id=45]
 animations = [ {
 "frames": [ null ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), null ],
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), null ],
 "loop": false,
 "name": "out",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), null ],
+"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), null ],
 "loop": false,
 "name": "goal",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ) ],
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ) ],
 "loop": true,
 "name": "KO",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=105]
+[sub_resource type="Animation" id=46]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -300,7 +300,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 5 ]
 }
 
-[sub_resource type="Animation" id=106]
+[sub_resource type="Animation" id=47]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -326,7 +326,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=107]
+[sub_resource type="Animation" id=48]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
@@ -353,7 +353,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=108]
+[sub_resource type="Animation" id=49]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
@@ -379,55 +379,55 @@ tracks/1/keys = {
 "values": [ 1, 2, 3, 5 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=47]
+[sub_resource type="AnimationNodeAnimation" id=50]
 animation = "Goal"
 
-[sub_resource type="AnimationNodeAnimation" id=48]
+[sub_resource type="AnimationNodeAnimation" id=51]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=49]
+[sub_resource type="AnimationNodeAnimation" id=52]
 animation = "KO"
 
-[sub_resource type="AnimationNodeAnimation" id=50]
+[sub_resource type="AnimationNodeAnimation" id=53]
 animation = "Out"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=51]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=52]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=53]
-switch_mode = 2
-auto_advance = true
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=56]
 switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=57]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=58]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=59]
-states/Goal/node = SubResource( 47 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=62]
+states/Goal/node = SubResource( 50 )
 states/Goal/position = Vector2( 308, 179 )
-states/Idle/node = SubResource( 48 )
+states/Idle/node = SubResource( 51 )
 states/Idle/position = Vector2( 149, 64 )
-states/KO/node = SubResource( 49 )
+states/KO/node = SubResource( 52 )
 states/KO/position = Vector2( 298, 58 )
-states/Out/node = SubResource( 50 )
+states/Out/node = SubResource( 53 )
 states/Out/position = Vector2( 132, 179 )
-transitions = [ "Idle", "Goal", SubResource( 51 ), "Idle", "Out", SubResource( 52 ), "Out", "Idle", SubResource( 53 ), "Goal", "Idle", SubResource( 54 ), "Out", "Goal", SubResource( 55 ), "Goal", "Out", SubResource( 56 ), "Idle", "KO", SubResource( 57 ), "KO", "Idle", SubResource( 58 ) ]
+transitions = [ "Idle", "Goal", SubResource( 54 ), "Idle", "Out", SubResource( 55 ), "Out", "Idle", SubResource( 56 ), "Goal", "Idle", SubResource( 57 ), "Out", "Goal", SubResource( 58 ), "Goal", "Out", SubResource( 59 ), "Idle", "KO", SubResource( 60 ), "KO", "Idle", SubResource( 61 ) ]
 start_node = "Idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=109]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=63]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 29 )
@@ -443,7 +443,7 @@ visible = true
 frame = 4
 
 [node name="AnimationTree" parent="Player" index="1"]
-parameters/playback = SubResource( 60 )
+parameters/playback = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="Player" instance=ExtResource( 14 )]
 
@@ -460,7 +460,7 @@ starting_stats = ExtResource( 10 )
 frame = 4
 
 [node name="AnimationTree" parent="Player2" index="1"]
-parameters/playback = SubResource( 61 )
+parameters/playback = SubResource( 2 )
 
 [node name="AbilityHandler" parent="Player2" instance=ExtResource( 23 )]
 
@@ -475,7 +475,7 @@ starting_stats = ExtResource( 10 )
 frame = 4
 
 [node name="AnimationTree" parent="Player3" index="1"]
-parameters/playback = SubResource( 62 )
+parameters/playback = SubResource( 3 )
 
 [node name="AbilityHandler" parent="Player3" instance=ExtResource( 23 )]
 
@@ -483,7 +483,7 @@ parameters/playback = SubResource( 62 )
 visible = false
 position = Vector2( 153.505, 67.5925 )
 z_index = 3
-frames = SubResource( 75 )
+frames = SubResource( 16 )
 animation = "plant ball"
 playing = true
 script = ExtResource( 16 )
@@ -579,7 +579,7 @@ position = Vector2( 7.8787, -8.25085 )
 frame = 2
 
 [node name="AnimationTree" parent="Enemy" index="5"]
-parameters/playback = SubResource( 76 )
+parameters/playback = SubResource( 17 )
 
 [node name="AnimatedSprite" parent="Enemy/ThingsToFlip" index="0"]
 animation = "Blue Enemy Tackle"
@@ -604,7 +604,7 @@ margin_bottom = -21.0
 frame = 2
 
 [node name="AnimationTree" parent="Enemy3" index="5"]
-parameters/playback = SubResource( 77 )
+parameters/playback = SubResource( 18 )
 
 [node name="AnimatedSprite" parent="Enemy3/ThingsToFlip" index="0"]
 animation = "Blue Enemy Tackle"
@@ -629,7 +629,7 @@ frame = 2
 rotation = 1.52987
 
 [node name="AnimationTree" parent="Enemy2" index="5"]
-parameters/playback = SubResource( 78 )
+parameters/playback = SubResource( 19 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 follow_viewport_enable = true
@@ -639,7 +639,7 @@ position = Vector2( 378.666, -102.779 )
 
 [node name="Path2D" parent="EnemyRight" index="0"]
 position = Vector2( -376.967, 69.7091 )
-curve = SubResource( 79 )
+curve = SubResource( 20 )
 
 [node name="EnemyLeft" parent="." instance=ExtResource( 9 )]
 position = Vector2( 409.333, 250.436 )
@@ -648,35 +648,35 @@ scale = Vector2( 0.84652, 0.829782 )
 [node name="Path2D" parent="EnemyLeft" index="0"]
 position = Vector2( -420.807, -239.543 )
 scale = Vector2( 1.34164, 1.14235 )
-curve = SubResource( 80 )
+curve = SubResource( 21 )
 
 [node name="EnemyCenter" parent="." instance=ExtResource( 9 )]
 position = Vector2( 395.263, 61.9086 )
 
 [node name="Path2D" parent="EnemyCenter" index="0"]
 position = Vector2( -388.913, -74.6078 )
-curve = SubResource( 81 )
+curve = SubResource( 22 )
 
 [node name="PlayerLeft" parent="." instance=ExtResource( 9 )]
 position = Vector2( -50.0031, -93.6567 )
 
 [node name="Path2D" parent="PlayerLeft" index="0"]
 position = Vector2( 1.5874, 71.433 )
-curve = SubResource( 82 )
+curve = SubResource( 23 )
 
 [node name="PlayerRight" parent="." instance=ExtResource( 9 )]
 position = Vector2( -144.729, 261.068 )
 
 [node name="Path2D" parent="PlayerRight" index="0"]
 position = Vector2( 4.76221, -58.7338 )
-curve = SubResource( 83 )
+curve = SubResource( 24 )
 
 [node name="PlayerCenter" parent="." instance=ExtResource( 9 )]
 position = Vector2( -99.1784, 72.3968 )
 
 [node name="Path2D" parent="PlayerCenter" index="0"]
 position = Vector2( 471.218, 7.49155 )
-curve = SubResource( 84 )
+curve = SubResource( 25 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -695,22 +695,22 @@ margin = Vector2( 200, 100 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Outer Walls"]
 position = Vector2( -369.751, 108.122 )
 rotation = 0.41189
-shape = SubResource( 85 )
+shape = SubResource( 26 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Outer Walls"]
 position = Vector2( 695.451, 114.796 )
 rotation = -0.408474
-shape = SubResource( 85 )
+shape = SubResource( 26 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Outer Walls"]
 position = Vector2( 164.185, -197.556 )
 rotation = -1.56684
-shape = SubResource( 85 )
+shape = SubResource( 26 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Outer Walls"]
 position = Vector2( 110.384, 447.11 )
 rotation = -1.56684
-shape = SubResource( 85 )
+shape = SubResource( 26 )
 
 [node name="Boundary Line" type="Area2D" parent="."]
 collision_layer = 4
@@ -799,6 +799,12 @@ items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
 [node name="AbilityMenu4" parent="GUICanvasLayer/PlayerSelectMenu/AbilityMenuPopup/MarginContainer/SelectionMenuContainer/HBoxContainer/PlayersContainer/RightField/MarginContainer/RightAbilitySelect/VBoxContainer" index="1"]
 items = [ "Item 0", null, false, 0, null, "Item 1", null, false, 1, null ]
 
+[node name="MarginContainer" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup" index="0"]
+margin_bottom = 204.0
+
+[node name="SelectionMenuContainer" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer" index="0"]
+margin_bottom = 194.0
+
 [node name="EndCondition" parent="GUICanvasLayer/PlayerSelectMenu/EndGameMenuPopup/MarginContainer/SelectionMenuContainer/MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 script = ExtResource( 21 )
 
@@ -852,9 +858,9 @@ size_flags_vertical = 4
 custom_icons/grabber_disabled = ExtResource( 42 )
 custom_icons/grabber_highlight = ExtResource( 46 )
 custom_icons/grabber = ExtResource( 42 )
-custom_styles/slider = SubResource( 86 )
-custom_styles/grabber_area_highlight = SubResource( 87 )
-custom_styles/grabber_area = SubResource( 88 )
+custom_styles/slider = SubResource( 27 )
+custom_styles/grabber_area_highlight = SubResource( 28 )
+custom_styles/grabber_area = SubResource( 29 )
 min_value = -50.0
 max_value = 5.0
 script = ExtResource( 47 )
@@ -872,12 +878,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="GUICanvasLayer/PauseMenu/PauseContainer"]
+[node name="Restart" type="Button" parent="GUICanvasLayer/PauseMenu/PauseContainer"]
 margin_top = 56.0
 margin_right = 64.0
 margin_bottom = 76.0
 focus_neighbour_bottom = NodePath("../VolumeSlider")
-text = "Quit"
+text = "Restart"
 
 [node name="PauseText" type="Label" parent="GUICanvasLayer/PauseMenu"]
 anchor_left = 0.5
@@ -895,21 +901,21 @@ __meta__ = {
 
 [node name="MatchStatusAnims" type="AnimatedSprite" parent="GUICanvasLayer"]
 position = Vector2( 238.652, 130.562 )
-frames = SubResource( 104 )
+frames = SubResource( 45 )
 animation = "idle"
 script = ExtResource( 34 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUICanvasLayer/MatchStatusAnims"]
-anims/Goal = SubResource( 105 )
-anims/Idle = SubResource( 106 )
-anims/KO = SubResource( 107 )
-anims/Out = SubResource( 108 )
+anims/Goal = SubResource( 46 )
+anims/Idle = SubResource( 47 )
+anims/KO = SubResource( 48 )
+anims/Out = SubResource( 49 )
 
 [node name="AnimationTree" type="AnimationTree" parent="GUICanvasLayer/MatchStatusAnims"]
-tree_root = SubResource( 59 )
+tree_root = SubResource( 62 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 109 )
+parameters/playback = SubResource( 63 )
 
 [node name="Throw In Points" type="Node2D" parent="."]
 
@@ -1071,7 +1077,7 @@ script = ExtResource( 40 )
 [connection signal="value_changed" from="GUICanvasLayer/PauseMenu/PauseContainer/VolumeSlider" to="GUICanvasLayer/PauseMenu/PauseContainer/VolumeSlider" method="_on_VolumeSlider_value_changed"]
 [connection signal="value_changed" from="GUICanvasLayer/PauseMenu/PauseContainer/VolumeSlider" to="GUICanvasLayer/PauseMenu" method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="GUICanvasLayer/PauseMenu/PauseContainer/Resume" to="GUICanvasLayer/PauseMenu" method="_on_Resume_pressed"]
-[connection signal="pressed" from="GUICanvasLayer/PauseMenu/PauseContainer/Quit" to="GUICanvasLayer/PauseMenu" method="_on_Quit_pressed"]
+[connection signal="pressed" from="GUICanvasLayer/PauseMenu/PauseContainer/Restart" to="GUICanvasLayer/PauseMenu" method="_on_Quit_pressed"]
 
 [editable path="Player"]
 [editable path="Player/Health Bar"]

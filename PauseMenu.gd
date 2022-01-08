@@ -19,7 +19,9 @@ func _on_Resume_pressed():
 
 
 func _on_Quit_pressed():
-	get_tree().quit()
+	AudioQueen.emit_signal("stopSound", "Gameplay Music")
+	AudioQueen.emit_signal("playSound", "Menu Music")
+	get_tree().reload_current_scene()
 
 
 func _on_HSlider_value_changed(value):
